@@ -1,9 +1,10 @@
 package com.eads.co.nomad;
 
-import android.R.drawable;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
@@ -11,127 +12,158 @@ import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+/**
+ * Class used to manage the display of the documentation.
+ * @author Nicolas Bruniquel
+ * @author Jérémy Fricou
+ * @author Florian Lefebvre
+ * @author Benjamin Louradour
+ * @author Guillaume Saas
+ */
 public class AMM extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		this.setTitle("XX.XX.XX - Titre documentation");
 		setContentView(R.layout.amm);
 		/* Warnings part */
 		LinearLayout warnings = (LinearLayout) findViewById(R.id.warnings);
 		warnings.setOnClickListener(manageWarnings);
+		((ImageView) findViewById(R.id.stateWarning)).setTag(R.drawable.expand);
 		/* Job Setup part */
 		LinearLayout jobSetUp = (LinearLayout) findViewById(R.id.jobSetUp);
 		jobSetUp.setOnClickListener(manageJobSetUp);
 		collapse((LinearLayout) findViewById(R.id.jobSetUp_text));
+		((ImageView) findViewById(R.id.stateJobSetUp)).setTag(R.drawable.collapse);
 		/* Procedure part */
 		LinearLayout procedure = (LinearLayout) findViewById(R.id.procedure);
 		procedure.setOnClickListener(manageProcedure);
 		collapse((LinearLayout) findViewById(R.id.procedure_text));
+		((ImageView) findViewById(R.id.stateProcedure)).setTag(R.drawable.collapse);
 		/* Close Up part */
 		LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
 		closeUp.setOnClickListener(manageCloseUp);
 		collapse((LinearLayout) findViewById(R.id.closeUp_text));
+		((ImageView) findViewById(R.id.stateCloseUp)).setTag(R.drawable.collapse);
 		/* Tools part */
 		LinearLayout tools = (LinearLayout) findViewById(R.id.tools);
 		tools.setOnClickListener(manageTools);
 		collapse((LinearLayout) findViewById(R.id.tools_text));
+		((ImageView) findViewById(R.id.stateTools)).setTag(R.drawable.collapse);
 		/* Pictures part */
 		LinearLayout pictures = (LinearLayout) findViewById(R.id.pictures);
 		pictures.setOnClickListener(managePictures);
 		collapse((LinearLayout) findViewById(R.id.pictures_text));
+		((ImageView) findViewById(R.id.statePictures)).setTag(R.drawable.collapse);
 	}
 	
-	View.OnClickListener manageWarnings = new View.OnClickListener() {
-		private boolean collapse = false;
+	private View.OnClickListener manageWarnings = new View.OnClickListener() {
 		public void onClick(View v) {
-			if(collapse){
-				expand((LinearLayout) findViewById(R.id.warnings_text));
-				collapse = false;
-				((ImageView) findViewById(R.id.stateWarning)).setImageResource(R.drawable.expand);
-			}else{
-				collapse((LinearLayout) findViewById(R.id.warnings_text));
-				collapse = true;
-				((ImageView) findViewById(R.id.stateWarning)).setImageResource(R.drawable.collapse);
-			}
+			expandOrCollapse(R.id.warnings_text,R.id.stateWarning);
 		}
 	};
-	View.OnClickListener manageJobSetUp = new View.OnClickListener() {
-		private boolean collapse = true;
+	private View.OnClickListener manageJobSetUp = new View.OnClickListener() {
 		public void onClick(View v) {
-			if(collapse){
-				expand((LinearLayout) findViewById(R.id.jobSetUp_text));
-				collapse = false;
-				((ImageView) findViewById(R.id.stateJobSetUp)).setImageResource(R.drawable.expand);
-			}else{
-				collapse((LinearLayout) findViewById(R.id.jobSetUp_text));
-				collapse = true;
-				((ImageView) findViewById(R.id.stateJobSetUp)).setImageResource(R.drawable.collapse);
-			}
+			expandOrCollapse(R.id.jobSetUp_text,R.id.stateJobSetUp);
 		}
 	};
-	View.OnClickListener manageProcedure = new View.OnClickListener() {
-		private boolean collapse = true;
+	private View.OnClickListener manageProcedure = new View.OnClickListener() {
 		public void onClick(View v) {
-			if(collapse){
-				expand((LinearLayout) findViewById(R.id.procedure_text));
-				collapse = false;
-				((ImageView) findViewById(R.id.stateProcedure)).setImageResource(R.drawable.expand);
-			}else{
-				collapse((LinearLayout) findViewById(R.id.procedure_text));
-				collapse = true;
-				((ImageView) findViewById(R.id.stateProcedure)).setImageResource(R.drawable.collapse);
-			}
+			expandOrCollapse(R.id.procedure_text,R.id.stateProcedure);
 		}
 	};
-	View.OnClickListener manageCloseUp = new View.OnClickListener() {
-		private boolean collapse = true;
+	private View.OnClickListener manageCloseUp = new View.OnClickListener() {
 		public void onClick(View v) {
-			if(collapse){
-				expand((LinearLayout) findViewById(R.id.closeUp_text));
-				collapse = false;
-				((ImageView) findViewById(R.id.stateCloseUp)).setImageResource(R.drawable.expand);
-			}else{
-				collapse((LinearLayout) findViewById(R.id.closeUp_text));
-				collapse = true;
-				((ImageView) findViewById(R.id.stateCloseUp)).setImageResource(R.drawable.collapse);
-			}
+			expandOrCollapse(R.id.closeUp_text,R.id.stateCloseUp);
 		}
 	};
-	View.OnClickListener manageTools = new View.OnClickListener() {
-		private boolean collapse = true;
+	private View.OnClickListener manageTools = new View.OnClickListener() {
 		public void onClick(View v) {
-			if(collapse){
-				expand((LinearLayout) findViewById(R.id.tools_text));
-				collapse = false;
-				((ImageView) findViewById(R.id.stateTools)).setImageResource(R.drawable.expand);
-			}else{
-				collapse((LinearLayout) findViewById(R.id.tools_text));
-				collapse = true;
-				((ImageView) findViewById(R.id.stateTools)).setImageResource(R.drawable.collapse);
-			}
+			expandOrCollapse(R.id.tools_text,R.id.stateTools);
 		}
 	};
-	View.OnClickListener managePictures = new View.OnClickListener() {
-		private boolean collapse = true;
+	private View.OnClickListener managePictures = new View.OnClickListener() {
 		public void onClick(View v) {
-			if(collapse){
-				expand((LinearLayout) findViewById(R.id.pictures_text));
-				collapse = false;
-				((ImageView) findViewById(R.id.statePictures)).setImageResource(R.drawable.expand);
-			}else{
-				collapse((LinearLayout) findViewById(R.id.pictures_text));
-				collapse = true;
-				((ImageView) findViewById(R.id.statePictures)).setImageResource(R.drawable.collapse);
-			}
+			expandOrCollapse(R.id.pictures_text,R.id.statePictures);
 		}
 	};
+
+	/**
+	 * Expand or collapse a documentation part.
+	 * @param part, the part to expand or collapse
+	 * @param icon, the icon to manage
+	 */
+	private void expandOrCollapse(int part, int icon) {
+		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag().toString());
+		if(tag == R.drawable.collapse){
+			expand(part, icon);
+		}else{
+			collapse(part, icon);
+		}
+	}
+	/**
+	 * Expand a documentation part.
+	 * @param part, the part to expand 
+	 * @param icon, the icon to manage
+	 */
+	private void expand(int part, int icon) {
+		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag().toString());
+		if(tag != R.drawable.expand){
+			expand((LinearLayout) findViewById(part));
+			((ImageView) findViewById(icon)).setImageResource(R.drawable.expand);
+			((ImageView) findViewById(icon)).setTag(R.drawable.expand);
+		}
+	}
+	/**
+	 * Collapse a documentation part.
+	 * @param part, the part to collapse 
+	 * @param icon, the icon to manage
+	 */
+	private void collapse(int part, int icon) {
+		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag().toString());
+		if(tag != R.drawable.collapse){
+			collapse((LinearLayout) findViewById(part));
+			((ImageView) findViewById(icon)).setImageResource(R.drawable.collapse);
+			((ImageView) findViewById(icon)).setTag(R.drawable.collapse);
+		}
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.menu_amm, menu);
 		return true;
+	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item){       
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				Intent intent = new Intent(this, MainActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				return true;
+			case R.id.menu_expandAll:
+				expand(R.id.warnings_text, R.id.stateWarning);
+				expand(R.id.jobSetUp_text, R.id.stateJobSetUp);
+				expand(R.id.procedure_text, R.id.stateProcedure);
+				expand(R.id.closeUp_text, R.id.stateCloseUp);
+				expand(R.id.tools_text, R.id.stateTools);
+				expand(R.id.pictures_text, R.id.statePictures);
+				return true;
+			case R.id.menu_collapseAll:
+				collapse(R.id.warnings_text, R.id.stateWarning);
+				collapse(R.id.jobSetUp_text, R.id.stateJobSetUp);
+				collapse(R.id.procedure_text, R.id.stateProcedure);
+				collapse(R.id.closeUp_text, R.id.stateCloseUp);
+				collapse(R.id.tools_text, R.id.stateTools);
+				collapse(R.id.pictures_text, R.id.statePictures);
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 
 	private void expand(final View v) {

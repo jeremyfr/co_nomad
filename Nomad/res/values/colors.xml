@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="background1">#fdf6e3</color>
-	<color name="background2">#eee8d5</color>
-	<color name="text1">#586e75</color>
-	<color name="text2">#657b83</color>
+    <!-- Fonds et textes -->
+	<color name="background0">#ffffff</color>
+	<color name="background1_light">#fdf6e3</color> <!-- Base 3 -->
+	<color name="background2_light">#eee8d5</color> <!-- Base 2 -->
+	<color name="text1_light">#586e75</color> <!-- Base 01 -->
+	<color name="text2_light">#657b83</color> <!-- Base 00 -->
+	<color name="background1_dark">#002b36</color> <!-- Base 03 -->
+	<color name="background2_dark">#073642</color> <!-- Base 02 -->
+	<color name="text1_dark">#93a1a1</color> <!-- Base 1 -->
+	<color name="text2_dark">#839496</color> <!-- Base 0 -->
+	
+	<!-- Accent colors -->
+	<color name="yellow">#b58900</color> <!-- yellow -->
+	<color name="orange">#cb4b16</color> <!-- orange -->
+	<color name="red">#dc322f</color> <!-- red -->
+	<color name="magenta">#d33682</color> <!-- magenta -->
+	<color name="violet">#6c71c4</color> <!-- violet -->
+	<color name="blue">#268bd2</color> <!-- blue -->
+	<color name="cyan">#2aa198</color> <!-- cyan -->
+	<color name="green">#859900</color> <!-- green -->
 </resources>

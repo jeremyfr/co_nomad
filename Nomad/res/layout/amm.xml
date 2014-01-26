@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
-    android:background="@color/background1">
+    android:background="@color/background0">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="@dimen/activity_margin"
     tools:context=".MainActivity"
-    android:background="@color/background1">
+    android:background="@color/background0">
 
     <!-- Warnings -->
 	<LinearLayout
@@ -18,14 +18,14 @@
 		android:clickable="true"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-   		android:padding="@dimen/activity_margin"
-	    android:background="@color/background2"
+	    android:background="@color/background1_light"
 	    android:orientation="vertical" >
 	    <!-- Clickable title -->
 		<LinearLayout
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
+   			android:padding="@dimen/activity_margin"
 		    android:layout_weight="1">
 		    <ImageView
 		      android:id="@+id/stateWarning"
@@ -38,57 +38,26 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:text="Warnings"
-			    android:textColor="@color/text1"
+			    android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_2"
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
-	</LinearLayout>
-	<LinearLayout android:id="@+id/warnings_text"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
-    	android:padding="@dimen/activity_margin"
-	    android:background="@color/background1">
-		<!-- Content -->
-		<TextView
+		
+		<LinearLayout android:id="@+id/warnings_text"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world"
-			android:textColor="@color/text1"
-		    android:textSize="@dimen/font_size_4"
-		    android:fontFamily="@string/font"/>
-		
-		<TextView
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world" />
-		
-		<TextView
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world" />
-		
-		<TextView
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world" />
-		
-		<TextView
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world" />
-		
-		<TextView
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world" />
-		
-		
-		<TextView
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world"
-		    android:fontFamily="@string/font"/>
+		    android:orientation="vertical"
+	    	android:padding="@dimen/activity_margin"
+		    android:background="@color/background0">
+			<!-- Content -->
+			<TextView
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+				android:textColor="@color/red"
+			    android:textSize="@dimen/font_size_4"
+			    android:fontFamily="@string/font"
+			    android:text="@string/hello_world"/>
+		</LinearLayout>
 	</LinearLayout>
 
 	<!-- Job Set up -->
@@ -97,14 +66,15 @@
 		android:clickable="true"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-    	android:padding="@dimen/activity_margin"
-	    android:background="@color/background2"
-	    android:orientation="vertical" >
+	    android:background="@color/background1_light"
+	    android:orientation="vertical"
+	    android:layout_marginTop="20dp">
 	    <!-- Clickable title -->
 		<LinearLayout
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
+   			android:padding="@dimen/activity_margin"
 		    android:layout_weight="1">
 		    <ImageView
 		      android:id="@+id/stateJobSetUp"
@@ -117,25 +87,26 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:text="Job Set up"
-			    android:textColor="@color/text1"
+			    android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_2"
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
-	</LinearLayout>
-	<LinearLayout android:id="@+id/jobSetUp_text"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
-    	android:padding="@dimen/activity_margin"
-	    android:background="@color/background1">
-		<!-- Content -->
-		<TextView
+		
+		<LinearLayout android:id="@+id/jobSetUp_text"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world"
-			android:textColor="@color/text1"
-		    android:textSize="@dimen/font_size_4"
-		    android:fontFamily="@string/font"/>
+		    android:orientation="vertical"
+	    	android:padding="@dimen/activity_margin"
+		    android:background="@color/background0">
+			<!-- Content -->
+			<TextView
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:text="@string/hello_world"
+				android:textColor="@color/text1_light"
+			    android:textSize="@dimen/font_size_4"
+			    android:fontFamily="@string/font"/>
+		</LinearLayout>
 	</LinearLayout>
 	
 	<!-- Procedure -->
@@ -144,14 +115,15 @@
 		android:clickable="true"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-    	android:padding="@dimen/activity_margin"
-	    android:background="@color/background2"
-	    android:orientation="vertical" >
+	    android:background="@color/background1_light"
+	    android:orientation="vertical"
+	    android:layout_marginTop="20dp">
 	    <!-- Clickable title -->
 		<LinearLayout
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
+   			android:padding="@dimen/activity_margin"
 		    android:layout_weight="1">
 		    <ImageView
 		      android:id="@+id/stateProcedure"
@@ -164,25 +136,26 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:text="Procedure"
-			    android:textColor="@color/text1"
+			    android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_2"
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
-	</LinearLayout>
-	<LinearLayout android:id="@+id/procedure_text"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
-  	  	android:padding="@dimen/activity_margin"
-	    android:background="@color/background1">
-		<!-- Content -->
-		<TextView
+		
+		<LinearLayout android:id="@+id/procedure_text"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world"
-			android:textColor="@color/text1"
-		    android:textSize="@dimen/font_size_4"
-		    android:fontFamily="@string/font"/>
+		    android:orientation="vertical"
+	  	  	android:padding="@dimen/activity_margin"
+		    android:background="@color/background0">
+			<!-- Content -->
+			<TextView
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:text="@string/hello_world"
+				android:textColor="@color/text1_light"
+			    android:textSize="@dimen/font_size_4"
+			    android:fontFamily="@string/font"/>
+		</LinearLayout>
 	</LinearLayout>
 	
 	<!-- Close up -->
@@ -191,14 +164,15 @@
 		android:clickable="true"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-  		android:padding="@dimen/activity_margin"
-	    android:background="@color/background2"
-	    android:orientation="vertical" >
+	    android:background="@color/background1_light"
+	    android:orientation="vertical"
+	    android:layout_marginTop="20dp">
 	    <!-- Clickable title -->
 		<LinearLayout
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
+   			android:padding="@dimen/activity_margin"
 		    android:layout_weight="1">
 		    <ImageView
 		      android:id="@+id/stateCloseUp"
@@ -211,25 +185,26 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:text="Close up"
-			    android:textColor="@color/text1"
+			    android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_2"
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
-	</LinearLayout>
-	<LinearLayout android:id="@+id/closeUp_text"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
-   		android:padding="@dimen/activity_margin"
-	    android:background="@color/background1">
-		<!-- Content -->
-		<TextView
+		
+		<LinearLayout android:id="@+id/closeUp_text"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world"
-			android:textColor="@color/text1"
-		    android:textSize="@dimen/font_size_4"
-		    android:fontFamily="@string/font"/>
+		    android:orientation="vertical"
+	   		android:padding="@dimen/activity_margin"
+		    android:background="@color/background0">
+			<!-- Content -->
+			<TextView
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:text="@string/hello_world"
+				android:textColor="@color/text1_light"
+			    android:textSize="@dimen/font_size_4"
+			    android:fontFamily="@string/font"/>
+		</LinearLayout>
 	</LinearLayout>
 	
 	<!-- Tools -->
@@ -238,14 +213,15 @@
 		android:clickable="true"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-    	android:padding="@dimen/activity_margin"
-	    android:background="@color/background2"
-	    android:orientation="vertical" >
+	    android:background="@color/background1_light"
+	    android:orientation="vertical"
+	    android:layout_marginTop="20dp">
 	    <!-- Clickable title -->
 		<LinearLayout
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
+   			android:padding="@dimen/activity_margin"
 		    android:layout_weight="1">
 		    <ImageView
 		      android:id="@+id/stateTools"
@@ -258,25 +234,26 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:text="Tools"
-			    android:textColor="@color/text1"
+			    android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_2"
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
-	</LinearLayout>
-	<LinearLayout android:id="@+id/tools_text"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
-    	android:padding="@dimen/activity_margin"
-	    android:background="@color/background1">
-		<!-- Content -->
-		<TextView
+
+		<LinearLayout android:id="@+id/tools_text"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world"
-			android:textColor="@color/text1"
-		    android:textSize="@dimen/font_size_4"
-		    android:fontFamily="@string/font"/>
+		    android:orientation="vertical"
+	    	android:padding="@dimen/activity_margin"
+		    android:background="@color/background0">
+			<!-- Content -->
+			<TextView
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:text="@string/hello_world"
+				android:textColor="@color/text1_light"
+			    android:textSize="@dimen/font_size_4"
+			    android:fontFamily="@string/font"/>
+		</LinearLayout>
 	</LinearLayout>
 	
 	<!-- Pictures -->
@@ -285,14 +262,15 @@
 		android:clickable="true"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-    	android:padding="@dimen/activity_margin"
-	    android:background="@color/background2"
-	    android:orientation="vertical" >
+	    android:background="@color/background1_light"
+	    android:orientation="vertical"
+	    android:layout_marginTop="20dp">
 	    <!-- Clickable title -->
 		<LinearLayout
 		    android:orientation="horizontal"
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
+   			android:padding="@dimen/activity_margin"
 		    android:layout_weight="1">
 		    <ImageView
 		      android:id="@+id/statePictures"
@@ -305,25 +283,26 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:text="Pictures"
-			    android:textColor="@color/text1"
+			    android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_2"
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
-	</LinearLayout>
-	<LinearLayout android:id="@+id/pictures_text"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
-    	android:padding="@dimen/activity_margin"
-	    android:background="@color/background1">
-		<!-- Content -->
-		<TextView
+
+		<LinearLayout android:id="@+id/pictures_text"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:text="@string/hello_world"
-			android:textColor="@color/text1"
-		    android:textSize="@dimen/font_size_4"
-		    android:fontFamily="@string/font"/>
+		    android:orientation="vertical"
+	    	android:padding="@dimen/activity_margin"
+		    android:background="@color/background0">
+			<!-- Content -->
+			<TextView
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:text="@string/hello_world"
+				android:textColor="@color/text1_light"
+			    android:textSize="@dimen/font_size_4"
+			    android:fontFamily="@string/font"/>
+		</LinearLayout>
 	</LinearLayout>
 </LinearLayout>
 </ScrollView>

@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/menu_expandAll"
+        android:icon="@android:drawable/arrow_down_float"
+        android:showAsAction="always"
+        android:title="menu_expandAll"/>
+    <item
+        android:id="@+id/menu_collapseAll"
+        android:icon="@android:drawable/arrow_up_float"
+        android:showAsAction="always"
+        android:title="menu_collapseAll"/>
+</menu>
