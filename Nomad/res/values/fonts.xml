@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="font">sans-serif</string>
+    <!-- Titres -->
+	<dimen name="font_size_1">50dp</dimen>
+    <!-- Sous-titres -->
+	<dimen name="font_size_2">32dp</dimen>
+    <!-- Texte 1 -->
+	<dimen name="font_size_3">26dp</dimen>
+    <!-- Texte 2 -->
+	<dimen name="font_size_4">22dp</dimen>
+    <!-- Notes -->
+	<dimen name="font_size_5">14dp</dimen>
+</resources>

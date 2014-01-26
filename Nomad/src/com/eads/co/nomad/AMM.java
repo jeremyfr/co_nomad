@@ -1,5 +1,6 @@
 package com.eads.co.nomad;
 
+import android.R.drawable;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class AMM extends Activity {
@@ -46,9 +48,11 @@ public class AMM extends Activity {
 			if(collapse){
 				expand((LinearLayout) findViewById(R.id.warnings_text));
 				collapse = false;
+				((ImageView) findViewById(R.id.stateWarning)).setImageResource(R.drawable.expand);
 			}else{
 				collapse((LinearLayout) findViewById(R.id.warnings_text));
 				collapse = true;
+				((ImageView) findViewById(R.id.stateWarning)).setImageResource(R.drawable.collapse);
 			}
 		}
 	};
@@ -58,9 +62,11 @@ public class AMM extends Activity {
 			if(collapse){
 				expand((LinearLayout) findViewById(R.id.jobSetUp_text));
 				collapse = false;
+				((ImageView) findViewById(R.id.stateJobSetUp)).setImageResource(R.drawable.expand);
 			}else{
 				collapse((LinearLayout) findViewById(R.id.jobSetUp_text));
 				collapse = true;
+				((ImageView) findViewById(R.id.stateJobSetUp)).setImageResource(R.drawable.collapse);
 			}
 		}
 	};
@@ -70,9 +76,11 @@ public class AMM extends Activity {
 			if(collapse){
 				expand((LinearLayout) findViewById(R.id.procedure_text));
 				collapse = false;
+				((ImageView) findViewById(R.id.stateProcedure)).setImageResource(R.drawable.expand);
 			}else{
 				collapse((LinearLayout) findViewById(R.id.procedure_text));
 				collapse = true;
+				((ImageView) findViewById(R.id.stateProcedure)).setImageResource(R.drawable.collapse);
 			}
 		}
 	};
@@ -82,9 +90,11 @@ public class AMM extends Activity {
 			if(collapse){
 				expand((LinearLayout) findViewById(R.id.closeUp_text));
 				collapse = false;
+				((ImageView) findViewById(R.id.stateCloseUp)).setImageResource(R.drawable.expand);
 			}else{
 				collapse((LinearLayout) findViewById(R.id.closeUp_text));
 				collapse = true;
+				((ImageView) findViewById(R.id.stateCloseUp)).setImageResource(R.drawable.collapse);
 			}
 		}
 	};
@@ -94,9 +104,11 @@ public class AMM extends Activity {
 			if(collapse){
 				expand((LinearLayout) findViewById(R.id.tools_text));
 				collapse = false;
+				((ImageView) findViewById(R.id.stateTools)).setImageResource(R.drawable.expand);
 			}else{
 				collapse((LinearLayout) findViewById(R.id.tools_text));
 				collapse = true;
+				((ImageView) findViewById(R.id.stateTools)).setImageResource(R.drawable.collapse);
 			}
 		}
 	};
@@ -106,9 +118,11 @@ public class AMM extends Activity {
 			if(collapse){
 				expand((LinearLayout) findViewById(R.id.pictures_text));
 				collapse = false;
+				((ImageView) findViewById(R.id.statePictures)).setImageResource(R.drawable.expand);
 			}else{
 				collapse((LinearLayout) findViewById(R.id.pictures_text));
 				collapse = true;
+				((ImageView) findViewById(R.id.statePictures)).setImageResource(R.drawable.collapse);
 			}
 		}
 	};
