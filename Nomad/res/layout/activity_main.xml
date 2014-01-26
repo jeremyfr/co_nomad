@@ -19,4 +19,14 @@
         android:onClick="toAMM"
         android:text="AMM" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/amm"
+        android:layout_alignRight="@+id/amm"
+        android:layout_below="@+id/amm"
+        android:layout_marginTop="30dp"
+        android:text="Job Card" />
+
 </RelativeLayout>
