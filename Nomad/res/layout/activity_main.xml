@@ -5,29 +5,75 @@
     android:padding="@dimen/activity_margin"
     tools:context=".MainActivity" >
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/identifiant_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-    <Button
-        android:id="@+id/amm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:onClick="toAMM"
-        android:text="AMM" />
+        android:layout_centerVertical="true"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/amm"
-        android:layout_alignRight="@+id/amm"
-        android:layout_below="@+id/amm"
-        android:layout_marginTop="30dp"
-        android:onClick="toJobCard"
-        android:text="Job Card" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
+            <TextView
+                android:id="@+id/identifiant_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+			    android:textSize="@dimen/font_size_3"
+                android:text="Identifiant :        " />
+
+            <EditText
+                android:id="@+id/identifiant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+			    android:textSize="@dimen/font_size_3"
+			    android:ems="10"
+                android:inputType="text"
+                android:imeOptions="actionNext">
+                <requestFocus/>
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/motDePasse_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+			    android:textSize="@dimen/font_size_3"
+                android:text="Mot de passe :  " />
+
+            <EditText
+                android:id="@+id/motDePasse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+			    android:textSize="@dimen/font_size_3"
+			    android:ems="10"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center_horizontal">
+	        <Button
+	            android:id="@+id/connexion"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:onClick="toMenu"
+	            android:text="Connexion"
+	            android:textSize="@dimen/font_size_2" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
