@@ -148,6 +148,34 @@
 	  	  	android:padding="@dimen/activity_margin"
 		    android:background="@color/background0">
 			<!-- Content -->
+
+			<Button
+			    android:id="@+id/previousButton"
+			    style="?android:attr/buttonStyleSmall"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="> Previous Steps" />
+
+			<LinearLayout
+			    android:id="@+id/previousLayout"
+			    android:layout_width="273dp"
+			    android:layout_height="wrap_content"
+			    android:background="@color/background0"
+			    android:orientation="vertical" >
+
+			    <TextView
+			        android:id="@+id/textView2"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="TextView" />
+
+			    <TextView
+			        android:id="@+id/textView3"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="TextView" />
+			</LinearLayout>
+
 			<TextView
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
@@ -155,7 +183,9 @@
 				android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_4"
 			    android:fontFamily="@string/font"/>
+
 		</LinearLayout>
+
 	</LinearLayout>
 	
 	<!-- Close up -->

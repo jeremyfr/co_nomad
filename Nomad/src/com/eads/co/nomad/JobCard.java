@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -18,7 +19,7 @@ public class JobCard extends Activity{
         super.onCreate(savedInstanceState);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
-		this.setTitle("XX.XX.XX - Titre jobcard");
+		this.setTitle("Job card n° XXXXXXXXX MSN:XXXX FSN:XX AIRCRAFT ID: X-XXXX 07-02-2014");
         setContentView(R.layout.job);
 		
 		
@@ -35,6 +36,13 @@ public class JobCard extends Activity{
 		procedure.setOnClickListener(manageProcedure);
 		collapse((LinearLayout) findViewById(R.id.procedure_text));
 		((ImageView) findViewById(R.id.stateProcedure)).setTag(R.drawable.collapse);
+		
+		LinearLayout previous = (LinearLayout)findViewById(R.id.previousLayout);
+		collapse((LinearLayout) findViewById(R.id.previousLayout));
+		
+		Button previousButton = (Button)findViewById(R.id.previousButton);
+		previousButton.setOnClickListener(managePrevious);
+		previousButton.setTag(">");
 		
 		LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
 		closeUp.setOnClickListener(manageCloseUp);
@@ -69,6 +77,22 @@ public class JobCard extends Activity{
 			expandOrCollapse(R.id.procedure_text,R.id.stateProcedure);
 		}
 	};
+	
+	private View.OnClickListener managePrevious = new View.OnClickListener() {
+		public void onClick(View v) {
+			Button b = (Button) findViewById(R.id.previousButton);
+			if(v.getTag().equals(">")){
+				expand((LinearLayout) findViewById(R.id.previousLayout));
+				v.setTag("v");
+				b.setText("v Previous Steps");
+			}else{	
+				collapse((LinearLayout) findViewById(R.id.previousLayout));
+				v.setTag(">");
+				b.setText("> Previous Steps");
+			}
+		}
+	};
+	
 	private View.OnClickListener manageCloseUp = new View.OnClickListener() {
 		public void onClick(View v) {
 			expandOrCollapse(R.id.closeUp_text,R.id.stateCloseUp);
