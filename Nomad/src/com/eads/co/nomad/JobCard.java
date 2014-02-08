@@ -1,27 +1,41 @@
 package com.eads.co.nomad;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class JobCard extends Activity{
 
+	ArrayList<Step> previousSteps;
+	ArrayList<Step> steps;
+	ListView listStep;
+	ListView listStepPrevious;
+	StepAdapter stepAdapt;
+	StepAdapter stepAdaptPrevious;
+	
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setTitle("Job card n° XXXXXXXXX MSN:XXXX FSN:XX AIRCRAFT ID: X-XXXX 07-02-2014");
         setContentView(R.layout.job);
-		
 		
         LinearLayout warnings = (LinearLayout) findViewById(R.id.warnings);
 		warnings.setOnClickListener(manageWarnings);
@@ -36,6 +50,7 @@ public class JobCard extends Activity{
 		procedure.setOnClickListener(manageProcedure);
 		collapse((LinearLayout) findViewById(R.id.procedure_text));
 		((ImageView) findViewById(R.id.stateProcedure)).setTag(R.drawable.collapse);
+
 		
 		LinearLayout previous = (LinearLayout)findViewById(R.id.previousLayout);
 		collapse((LinearLayout) findViewById(R.id.previousLayout));
@@ -43,6 +58,55 @@ public class JobCard extends Activity{
 		Button previousButton = (Button)findViewById(R.id.previousButton);
 		previousButton.setOnClickListener(managePrevious);
 		previousButton.setTag(">");
+		
+		//Remplir la liste de step, voir avec la doc comment on va se demerder, surement du parsage XML
+		steps = new ArrayList<Step>();
+		
+		Step s = new Step();
+		s.setText("Test");
+		steps.add(s);
+		
+		Step s2 = new Step();
+		s2.setText("Test 2");
+		steps.add(s2);
+		
+		stepAdapt = new StepAdapter(this);
+		stepAdapt.setListItems(steps);
+		listStep = (ListView) findViewById(R.id.listStep);
+		listStep.setAdapter(stepAdapt);
+		LayoutParams lpc = listStep.getLayoutParams();
+		lpc.height = 200;
+		listStep.setLayoutParams(lpc);
+		
+		previousSteps = new ArrayList<Step>();		
+		stepAdaptPrevious = new StepAdapter(this);
+		stepAdaptPrevious.setListItems(previousSteps);
+		listStepPrevious = (ListView) findViewById(R.id.listPreviousStep);
+		listStepPrevious.setAdapter(stepAdaptPrevious);
+		
+		
+		listStep.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				if(arg2 == 0){
+					LayoutParams lpp = listStepPrevious.getLayoutParams();
+					lpp.height += 100;
+					LayoutParams lpc = listStep.getLayoutParams();
+					lpc.height -= 100;
+					Step toRemove = steps.remove(arg2);
+					previousSteps.add(toRemove);
+					stepAdapt.notifyDataSetChanged();
+					stepAdaptPrevious.notifyDataSetChanged();
+					listStepPrevious.setLayoutParams(lpp);
+					listStep.setLayoutParams(lpc);
+				}
+			}
+			
+		});
+		
+		
 		
 		LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
 		closeUp.setOnClickListener(manageCloseUp);
@@ -60,7 +124,15 @@ public class JobCard extends Activity{
 		((ImageView) findViewById(R.id.statePictures)).setTag(R.drawable.collapse);
 		
     }
-	
+
+    private View.OnClickListener validateStep = new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			Toast.makeText(getApplicationContext(), "lol", Toast.LENGTH_LONG).show();
+			
+		}
+	};
     
 	private View.OnClickListener manageWarnings = new View.OnClickListener() {
 		public void onClick(View v) {

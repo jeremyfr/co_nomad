@@ -1,9 +1,9 @@
-<ScrollView
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-    android:background="@color/background0">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/yellow" >
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -154,35 +154,41 @@
 			    style="?android:attr/buttonStyleSmall"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:text="> Previous Steps" />
+			    android:text="> Previous Steps"
+			     />
 
 			<LinearLayout
 			    android:id="@+id/previousLayout"
-			    android:layout_width="273dp"
-			    android:layout_height="wrap_content"
-			    android:background="@color/background0"
+			    android:layout_width="match_parent"
+			    android:layout_height="1dp"
+			    android:layout_marginLeft="20dp"
+			    android:background="@color/yellow"
 			    android:orientation="vertical" >
 
-			    <TextView
-			        android:id="@+id/textView2"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:text="TextView" />
+				<ListView
+				    android:id="@+id/listPreviousStep"
+				    android:layout_width="match_parent"
+				    android:layout_height="1dp"
+				    android:clickable="false" >
 
-			    <TextView
-			        android:id="@+id/textView3"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:text="TextView" />
+				</ListView>
 			</LinearLayout>
 
-			<TextView
+			<Space
 			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:text="@string/hello_world"
-				android:textColor="@color/text1_light"
-			    android:textSize="@dimen/font_size_4"
-			    android:fontFamily="@string/font"/>
+			    android:layout_height="wrap_content" />
+
+			<ListView
+			    android:id="@+id/listStep"
+			    android:layout_width="match_parent"
+			    android:layout_height="50dp"
+			    android:clickable="true" >
+
+			</ListView>
+
+			<Space
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content" />
 
 		</LinearLayout>
 
