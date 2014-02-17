@@ -2,6 +2,10 @@ package com.eads.co.nomad;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MotionEvent;
@@ -61,21 +65,44 @@ public class Annexes extends Activity {
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
 		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
 
-		// Listener sur la layout entier (juste sur un lien vers une annexe et
-		// la barre du milieu plus tard)
+		// Ajout du lien sur la doc texte + le scroll.
+		final SpannableString textToShow = new SpannableString(textDocumentation.getText());
+		textToShow.setSpan(new ClickableSpan() {  
+	        @Override
+	        public void onClick(View v) {  
+	        	switch (state) {
+				case NOT_DISPLAYED:
+					setAnnexeXAndX(xmax / 2);
+					state = AnnexesState.DISPLAYED_FREE;
+					break;
+				case DISPLAYED_FREE:
+					setAnnexeX(xmax + xseparator/3);
+					state = AnnexesState.NOT_DISPLAYED;
+					break;
+				case DISPLAYED_PRESSED:
+					setAnnexeX(xmax + xseparator/3);
+					state = AnnexesState.NOT_DISPLAYED;
+					break;
+				case DISPLAYED_FULLSCREEN:
+					break;
+				}
+	        } }, 17, 24, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		textDocumentation.setText(textToShow);
+		textDocumentation.setMovementMethod(LinkMovementMethod.getInstance());
+
+	    
+		// Listener sur le layout entier.
 		layout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
-			public boolean onTouch(View arg0, MotionEvent arg1) {
-				switch (arg1.getAction()) {
+			public boolean onTouch(View v, MotionEvent event) {
+				switch (event.getAction()) {
 
 				case MotionEvent.ACTION_DOWN: // PRESS
 					switch (state) {
 					case NOT_DISPLAYED:
-						setAnnexeXAndX(xmax / 2);
-						state = AnnexesState.DISPLAYED_FREE;
 						break;
 					case DISPLAYED_FREE:
-						if (arg1.getX() >= x - 100 && arg1.getX() <= x + 100) {
+						if (event.getX() >= x - 100 && event.getX() <= x + 100) {
 							state = AnnexesState.DISPLAYED_PRESSED;
 						}
 						break;
@@ -93,8 +120,8 @@ public class Annexes extends Activity {
 					case DISPLAYED_FREE:
 						break;
 					case DISPLAYED_PRESSED:
-						if (arg1.getX() >= xmin && arg1.getX() <= xmax - xmin) {
-							setAnnexeXAndX((int) arg1.getX());
+						if (event.getX() >= xmin && event.getX() <= xmax - xmin) {
+							setAnnexeXAndX((int) event.getX());
 						}
 						state = AnnexesState.DISPLAYED_PRESSED;
 						break;
