@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Annexes" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:orientation="horizontal"
+        android:clickable="true" >
+
+        <TextView
+            android:id="@+id/textDocumentation"
+            android:layout_width="1250px"
+            android:layout_height="wrap_content"
+            android:text="@string/annex_text"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <LinearLayout
+            android:id="@+id/annexLayout"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/annexTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+
+                <Button
+                    android:id="@+id/closeAnnexButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Button" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/annexImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ata" />
+
+            <Button
+                android:id="@+id/fullScreenAnnexButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
