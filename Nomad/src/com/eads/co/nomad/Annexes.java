@@ -15,12 +15,14 @@ import android.widget.Toast;
 
 public class Annexes extends Activity {
 
-	static int xmax = 1250; // 2500 pour la Nexus 10, à changer dans le layout
+	static int xmax = 2500; // 2500 pour la Nexus 10, à changer dans le layout
 							// annexes aussi.
-	static int xmin = xmax/5;
+	static int xmin = xmax / 5;
+	static int xseparator = 160;
 
 	LinearLayout layout;
 	TextView textDocumentation;
+	ImageView separator;
 	LinearLayout annexLayout;
 	Button closeAnnexButton, fullScreenAnnexButton;
 	AnnexesState state = AnnexesState.NOT_DISPLAYED;
@@ -28,15 +30,24 @@ public class Annexes extends Activity {
 	int x = xmax;
 
 	private void setAnnexeX(int x) {
-		textDocumentation.setLayoutParams(new LayoutParams(x,
-				LayoutParams.WRAP_CONTENT, 0f));
-		annexLayout.setLayoutParams(new LayoutParams(xmax - x,
+		textDocumentation.setLayoutParams(new LayoutParams(x - xseparator/3,
 				LayoutParams.WRAP_CONTENT));
+		annexLayout.setLayoutParams(new LayoutParams(
+				xmax - x - xseparator/3, LayoutParams.WRAP_CONTENT));
 	}
 
 	private void setAnnexeXAndX(int x) {
 		setAnnexeX(x);
 		this.x = x;
+	}
+
+	private void displaySeparator() {
+		separator.setImageResource(R.drawable.vertical_line);
+	}
+
+	private void hideSeparator() {
+		separator.setImageResource(R.drawable.vertical_line_empty);
+
 	}
 
 	@Override
@@ -45,6 +56,7 @@ public class Annexes extends Activity {
 		setContentView(R.layout.annexes);
 		layout = (LinearLayout) findViewById(R.id.linearLayout1);
 		textDocumentation = (TextView) findViewById(R.id.textDocumentation);
+		separator = (ImageView) findViewById(R.id.separator);
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
 		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
@@ -118,13 +130,15 @@ public class Annexes extends Activity {
 				case NOT_DISPLAYED:
 					break;
 				case DISPLAYED_FREE:
-					setAnnexeX(xmax);
+					setAnnexeX(xmax + xseparator/3);
 					state = AnnexesState.NOT_DISPLAYED;
 					break;
 				case DISPLAYED_PRESSED:
 					break;
 				case DISPLAYED_FULLSCREEN:
-					setAnnexeX(xmax);
+					setAnnexeX(xmax + xseparator/3);
+					displaySeparator();
+					fullScreenAnnexButton.setText("FullScreen");
 					state = AnnexesState.NOT_DISPLAYED;
 					break;
 				}
@@ -140,14 +154,16 @@ public class Annexes extends Activity {
 				case NOT_DISPLAYED:
 					break;
 				case DISPLAYED_FREE:
-					setAnnexeX(0);
+					setAnnexeX(xseparator/3);
 					fullScreenAnnexButton.setText("Window");
+					hideSeparator();
 					state = AnnexesState.DISPLAYED_FULLSCREEN;
 					break;
 				case DISPLAYED_PRESSED:
 					break;
 				case DISPLAYED_FULLSCREEN:
 					setAnnexeX(x);
+					displaySeparator();
 					fullScreenAnnexButton.setText("FullScreen");
 					state = AnnexesState.DISPLAYED_FREE;
 					break;
