@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 public class Annexes extends Activity {
 
-	static int xmax = 2500; // 2500 pour la Nexus 10, à changer dans le layout
+	static int xmax = 1250; // 2500 pour la Nexus 10, à changer dans le layout
 							// annexes aussi.
 	static int xmin = xmax / 5;
 	static int xseparator = 160;
