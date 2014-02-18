@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,12 +22,14 @@ public class Annexes extends Activity {
 
 	static int xmax = 2500; // 2500 pour la Nexus 10, à changer dans le layout
 							// annexes aussi.
-	static int xmin = xmax / 5;
-	static int xseparator = 160;
+	static int xmin = xmax / 5; // largeur minimale de la zone de texte ou de l'annexe.
+	static int xseparator = 160; // largeur de la barre de séparation.
+	static int yinfobulle = 185; // hauteur de l'image infobulle.
 
 	LinearLayout layout;
 	TextView textDocumentation;
 	ImageView separator;
+	ImageView infobulle;
 	LinearLayout annexLayout;
 	Button closeAnnexButton, fullScreenAnnexButton;
 	AnnexesState state = AnnexesState.NOT_DISPLAYED;
@@ -47,12 +50,21 @@ public class Annexes extends Activity {
 
 	private void displaySeparator() {
 		separator.setImageResource(R.drawable.vertical_line);
+		infobulle.setImageResource(R.drawable.infobulle);
 	}
 
 	private void hideSeparator() {
 		separator.setImageResource(R.drawable.vertical_line_empty);
-
+		infobulle.setImageResource(R.drawable.vertical_line_empty);
 	}
+	
+	private void setInfobulle(int y)
+	{
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(infobulle.getLayoutParams());
+		params.topMargin = y - yinfobulle/3;
+		infobulle.setLayoutParams(params);
+	}
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +73,7 @@ public class Annexes extends Activity {
 		layout = (LinearLayout) findViewById(R.id.linearLayout1);
 		textDocumentation = (TextView) findViewById(R.id.textDocumentation);
 		separator = (ImageView) findViewById(R.id.separator);
+		infobulle = (ImageView) findViewById(R.id.infobulle);
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
 		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
@@ -104,6 +117,7 @@ public class Annexes extends Activity {
 					case DISPLAYED_FREE:
 						if (event.getX() >= x - 100 && event.getX() <= x + 100) {
 							state = AnnexesState.DISPLAYED_PRESSED;
+							setInfobulle((int) event.getY()); // à retirer
 						}
 						break;
 					case DISPLAYED_PRESSED:
@@ -123,6 +137,7 @@ public class Annexes extends Activity {
 						if (event.getX() >= xmin && event.getX() <= xmax - xmin) {
 							setAnnexeXAndX((int) event.getX());
 						}
+						setInfobulle((int) event.getY()); // à retirer
 						state = AnnexesState.DISPLAYED_PRESSED;
 						break;
 					case DISPLAYED_FULLSCREEN:
