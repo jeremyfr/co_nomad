@@ -2,13 +2,10 @@ package com.eads.co.nomad;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.graphics.Rect;
-import android.text.Layout;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Annexes extends Activity {
 
@@ -29,8 +25,8 @@ public class Annexes extends Activity {
 	static int xseparator = 160; // largeur de la barre de séparation.
 	static int yinfobulle = 185; // hauteur de l'image infobulle.
 
-	static int start_link = 1204; // numéro du premier caractère du lien
-	static int end_link = 1213; // numéro du dernier caractère du lien
+	static int start_link = 1204; // numéro du premier caractère du lien.
+	static int end_link = 1213; // numéro du dernier caractère du lien.
 
 	LinearLayout layout;
 	TextView textDocumentation;
@@ -41,8 +37,6 @@ public class Annexes extends Activity {
 	AnnexesState state = AnnexesState.NOT_DISPLAYED;
 
 	int x = xmax;
-
-	int toast = 20;
 
 	private void setAnnexeX(int x) {
 		textDocumentation.setLayoutParams(new LayoutParams(x - xseparator / 3,
@@ -135,7 +129,6 @@ public class Annexes extends Activity {
 					case DISPLAYED_FREE:
 						if (event.getX() >= x - 100 && event.getX() <= x + 100) {
 							state = AnnexesState.DISPLAYED_PRESSED;
-							// setInfobulle((int) event.getY()); // à retirer
 						}
 						break;
 					case DISPLAYED_PRESSED:
@@ -155,7 +148,6 @@ public class Annexes extends Activity {
 						if (event.getX() >= xmin && event.getX() <= xmax - xmin) {
 							setAnnexeXAndX((int) event.getX());
 						}
-						// setInfobulle((int) event.getY()); // à retirer
 						state = AnnexesState.DISPLAYED_PRESSED;
 						break;
 					case DISPLAYED_FULLSCREEN:
@@ -230,29 +222,29 @@ public class Annexes extends Activity {
 				}
 			}
 		});
-		
+
 		// Thread pour la mise à jour de la position de l'infobulle (50ms).
 		Thread t = new Thread() {
 
-	        @Override
-	        public void run() {
-	            try {
-	                while (!isInterrupted()) {
-	                    Thread.sleep(50);
-	                    runOnUiThread(new Runnable() {
-	                        @Override
-	                        public void run() {
-	                            setInfobulle(getY(start_link));
-	                        }
-	                    });
-	                }
-	            } catch (InterruptedException e) {
-	            }
-	        }
-	    };
+			@Override
+			public void run() {
+				try {
+					while (!isInterrupted()) {
+						Thread.sleep(50);
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								setInfobulle(getY(start_link));
+							}
+						});
+					}
+				} catch (InterruptedException e) {
+				}
+			}
+		};
 
-	    t.start();
-		
+		t.start();
+
 	}
 
 	@Override
