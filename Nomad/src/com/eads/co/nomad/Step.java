@@ -1,17 +1,27 @@
 package com.eads.co.nomad;
 
-import android.view.View;
 import android.widget.Button;
 
 public class Step {
-	private String text;
+	private String task;
+	private Button b;
+	
 
-	public String getText() {
-		return text;
+
+	public Button getB() {
+		return b;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setB(Button b) {
+		this.b = b;
+	}
+
+	public String getTask() {
+		return task;
+	}
+
+	public void setTask(String text) {
+		this.task = text;
 	}
 	
 }	

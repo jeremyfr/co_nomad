@@ -34,6 +34,7 @@
             android:name="JobCard"
             android:label="@string/app_name">
         </activity>
+        <activity android:name="Testlistview"></activity>
     </application>
 
 </manifest>

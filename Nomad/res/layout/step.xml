@@ -10,11 +10,19 @@
         android:layout_gravity="right" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/task"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="0.97"
             android:text="TextView" />
+
+        <Button
+            android:id="@+id/Ok"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.97"
+            android:text="Ok" />
 
     </LinearLayout>
 

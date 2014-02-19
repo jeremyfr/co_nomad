@@ -1,38 +1,48 @@
 package com.eads.co.nomad;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import com.eads.co.nomad.StepListAdapter.StepViewHolder;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class JobCard extends Activity{
 
-	ArrayList<Step> previousSteps;
+	ArrayList<String> previousSteps;
 	ArrayList<Step> steps;
 	ListView listStep;
 	ListView listStepPrevious;
-	StepAdapter stepAdapt;
-	StepAdapter stepAdaptPrevious;
+	StepListAdapter2 stepAdapt;
+	ArrayAdapter<String> stepAdaptPrevious;
+	Testlistview t;
 	
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Object mInf = LayoutInflater.from(getApplicationContext());
         getActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setTitle("Job card n° XXXXXXXXX MSN:XXXX FSN:XX AIRCRAFT ID: X-XXXX 07-02-2014");
         setContentView(R.layout.job);
@@ -59,18 +69,19 @@ public class JobCard extends Activity{
 		previousButton.setOnClickListener(managePrevious);
 		previousButton.setTag(">");
 		
+		
 		//Remplir la liste de step, voir avec la doc comment on va se demerder, surement du parsage XML
 		steps = new ArrayList<Step>();
 		
 		Step s = new Step();
-		s.setText("Test");
+		s.setTask("Test");
 		steps.add(s);
 		
 		Step s2 = new Step();
-		s2.setText("Test 2");
+		s2.setTask("Test 2");
 		steps.add(s2);
 		
-		stepAdapt = new StepAdapter(this);
+		stepAdapt = new StepListAdapter2(this);
 		stepAdapt.setListItems(steps);
 		listStep = (ListView) findViewById(R.id.listStep);
 		listStep.setAdapter(stepAdapt);
@@ -78,36 +89,14 @@ public class JobCard extends Activity{
 		lpc.height = 200;
 		listStep.setLayoutParams(lpc);
 		
-		previousSteps = new ArrayList<Step>();		
-		stepAdaptPrevious = new StepAdapter(this);
-		stepAdaptPrevious.setListItems(previousSteps);
+		previousSteps = new ArrayList<String>();		
 		listStepPrevious = (ListView) findViewById(R.id.listPreviousStep);
+		stepAdaptPrevious = new ArrayAdapter<String>(getApplicationContext(),R.layout.mytextview,previousSteps);
 		listStepPrevious.setAdapter(stepAdaptPrevious);
-		
-		
-		listStep.setOnItemClickListener(new OnItemClickListener() {
+		lpc = listStepPrevious.getLayoutParams();
+		lpc.height = 100;
+		listStepPrevious.setLayoutParams(lpc);
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				if(arg2 == 0){
-					LayoutParams lpp = listStepPrevious.getLayoutParams();
-					lpp.height += 100;
-					LayoutParams lpc = listStep.getLayoutParams();
-					lpc.height -= 100;
-					Step toRemove = steps.remove(arg2);
-					previousSteps.add(toRemove);
-					stepAdapt.notifyDataSetChanged();
-					stepAdaptPrevious.notifyDataSetChanged();
-					listStepPrevious.setLayoutParams(lpp);
-					listStep.setLayoutParams(lpc);
-				}
-			}
-			
-		});
-		
-		
-		
 		LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
 		closeUp.setOnClickListener(manageCloseUp);
 		collapse((LinearLayout) findViewById(R.id.closeUp_text));
@@ -319,4 +308,97 @@ public class JobCard extends Activity{
 		a.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density));
 		v.startAnimation(a);
 	}
+	
+	public class StepListAdapter2 extends BaseAdapter{
+
+		private List<Step> mStep;
+		private LayoutInflater mInf;
+		private Button mButton;
+		private Context ct;
+		private int position;
+		
+		public StepListAdapter2(Context c) {
+			mInf = LayoutInflater.from(c);
+			ct = c;
+		}
+
+		@Override
+		public int getCount() {
+			
+			return mStep.size();
+		}
+
+		@Override
+		public Object getItem(int arg0) {
+			return mStep.get(arg0);
+		}
+
+		@Override
+		public long getItemId(int arg0) {
+			
+			return arg0;
+		}
+
+		@Override
+		public View getView(final int pos, View arg1, ViewGroup arg2) {
+			position = pos;
+			StepViewHolder h;
+			if(arg1 == null){
+				
+				arg1 = mInf.inflate(R.layout.step,null);
+				h = new StepViewHolder();
+				h.mTask = (TextView) arg1.findViewById(R.id.task);
+				h.mButton = (Button) arg1.findViewById(R.id.Ok);
+				h.mButton.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View arg0) {
+						if(pos == 0){
+							LayoutParams lpc = listStep.getLayoutParams();
+							lpc.height -= 100;
+							listStep.setLayoutParams(lpc);
+							lpc = listStepPrevious.getLayoutParams();
+							lpc.height +=100;
+							listStepPrevious.setLayoutParams(lpc);
+							
+							Step toDel = steps.remove(pos);
+							stepAdapt.notifyDataSetChanged();
+							previousSteps.add(toDel.getTask());
+							stepAdaptPrevious.notifyDataSetChanged();
+							
+						}
+					}
+				});
+				arg1.setTag(h);
+			}
+			else{
+				h = (StepViewHolder) arg1.getTag();
+			}
+			h.setTask(mStep.get(pos).getTask());
+			h.setButton(mStep.get(pos).getB());
+			
+			return arg1;
+		}
+
+		public void setListItems(List<Step> l){
+			mStep = l;
+		}
+
+		private class StepViewHolder{
+			private TextView mTask;
+			private Button mButton;
+			
+			public void setTask(String t){
+				mTask.setText(t);
+			}
+			
+			public void setButton(Button b){
+				mButton = b;			
+			}
+		}
+
+		
+	}
+	
+	
 }
