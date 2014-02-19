@@ -130,7 +130,7 @@ public class Annexes extends Activity {
 							});
 						}
 					}
-					t.schedule(new SetInfobulleTask(), 200);
+					t.schedule(new SetInfobulleTask(), 100);
 					
 					break;
 				case DISPLAYED_FREE:
