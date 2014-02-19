@@ -3,8 +3,6 @@ package com.eads.co.nomad;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.eads.co.nomad.StepListAdapter.StepViewHolder;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -38,7 +36,6 @@ public class JobCard extends Activity{
 	ListView listStepPrevious;
 	StepListAdapter2 stepAdapt;
 	ArrayAdapter<String> stepAdaptPrevious;
-	Testlistview t;
 	
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
