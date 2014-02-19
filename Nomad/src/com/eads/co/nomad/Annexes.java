@@ -1,5 +1,8 @@
 package com.eads.co.nomad;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Point;
@@ -15,19 +18,16 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Annexes extends Activity {
 
-	int x;
+	int x; // abscisse de la séparation entre la zone de texte et l'annexe.
 	static int xmax; // largeur maximale de la zone de texte ou de l'annexe.
 	static int xmin; // largeur minimale de la zone de texte ou de l'annexe.
 	static int xseparator = 160; // largeur de la barre de séparation.
@@ -75,8 +75,9 @@ public class Annexes extends Activity {
 		infobulle.setLayoutParams(params);
 	}
 
+	// Retourne l'ordonnée en pixel de la ligne contenant le caractère à la
+	// position offset.
 	private int getY(int offset) {
-
 		int line = textDocumentation.getLayout().getLineForOffset(offset);
 		// Position de la ligne contenant le caractère positionné à offset -
 		// valeur du scroll + épaisseur d'une ligne
@@ -115,6 +116,22 @@ public class Annexes extends Activity {
 				case NOT_DISPLAYED:
 					setAnnexeXAndX(xmax / 2);
 					state = AnnexesState.DISPLAYED_FREE;
+					
+					// Timer pour la mise à jour de la position de l'infobulle.
+					Timer t = new Timer();
+					class SetInfobulleTask extends TimerTask {
+						@Override
+						public void run() {
+							runOnUiThread(new Runnable() {
+								@Override
+								public void run() {
+									setInfobulle(getY(start_link));
+								}
+							});
+						}
+					}
+					t.schedule(new SetInfobulleTask(), 200);
+					
 					break;
 				case DISPLAYED_FREE:
 					setAnnexeX(xmax + xseparator / 3);
