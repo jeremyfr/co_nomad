@@ -1,19 +1,26 @@
 package com.eads.co.nomad;
 
-import android.os.Bundle;
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.jdom2.JDOMException;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 /**
  * Class used to manage the display of the documentation.
+ * 
  * @author Nicolas Bruniquel
  * @author Jérémy Fricou
  * @author Florian Lefebvre
@@ -22,110 +29,165 @@ import android.widget.LinearLayout;
  */
 public class AMM extends Activity {
 
+	private DataParsing parser;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		this.setTitle("XX.XX.XX - Titre documentation");
-		setContentView(R.layout.amm);
-		/* Warnings part */
-		LinearLayout warnings = (LinearLayout) findViewById(R.id.warnings);
-		warnings.setOnClickListener(manageWarnings);
-		((ImageView) findViewById(R.id.stateWarning)).setTag(R.drawable.expand);
-		/* Job Setup part */
-		LinearLayout jobSetUp = (LinearLayout) findViewById(R.id.jobSetUp);
-		jobSetUp.setOnClickListener(manageJobSetUp);
-		collapse((LinearLayout) findViewById(R.id.jobSetUp_text));
-		((ImageView) findViewById(R.id.stateJobSetUp)).setTag(R.drawable.collapse);
-		/* Procedure part */
-		LinearLayout procedure = (LinearLayout) findViewById(R.id.procedure);
-		procedure.setOnClickListener(manageProcedure);
-		collapse((LinearLayout) findViewById(R.id.procedure_text));
-		((ImageView) findViewById(R.id.stateProcedure)).setTag(R.drawable.collapse);
-		/* Close Up part */
-		LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
-		closeUp.setOnClickListener(manageCloseUp);
-		collapse((LinearLayout) findViewById(R.id.closeUp_text));
-		((ImageView) findViewById(R.id.stateCloseUp)).setTag(R.drawable.collapse);
-		/* Tools part */
-		LinearLayout tools = (LinearLayout) findViewById(R.id.tools);
-		tools.setOnClickListener(manageTools);
-		collapse((LinearLayout) findViewById(R.id.tools_text));
-		((ImageView) findViewById(R.id.stateTools)).setTag(R.drawable.collapse);
-		/* Pictures part */
-		LinearLayout pictures = (LinearLayout) findViewById(R.id.pictures);
-		pictures.setOnClickListener(managePictures);
-		collapse((LinearLayout) findViewById(R.id.pictures_text));
-		((ImageView) findViewById(R.id.statePictures)).setTag(R.drawable.collapse);
+		/* Retrieving the documentation to show */
+        Bundle bundle = getIntent().getExtras();
+        String ammPart = "";
+        if(bundle!=null){
+        	ammPart = (String) bundle.get("task");
+        }
+		InputStream input = null;
+		try {
+			input = getApplicationContext().getAssets().open(ammPart+".xml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			parser = new DataParsing(input);
+			this.setTitle(parser.getTitle());
+			setContentView(R.layout.amm);
+			/* Warnings part */
+			LinearLayout warnings = (LinearLayout) findViewById(R.id.warnings);
+			warnings.setOnClickListener(manageWarnings);
+			((ImageView) findViewById(R.id.stateWarning)).setTag(R.drawable.expand);
+			WebView warningWV = ((WebView) findViewById(R.id.warnings_text));
+			warningWV.loadDataWithBaseURL("file:///android_asset/", parser.getWarnings(), "text/html", "UTF-8", null);
+			warningWV.setWebViewClient(new SwitchTaskManager(this));
+			/* Job Setup part */
+			LinearLayout jobSetUp = (LinearLayout) findViewById(R.id.jobSetUp);
+			jobSetUp.setOnClickListener(manageJobSetUp);
+			collapse((LinearLayout) findViewById(R.id.jobSetUp_layout));
+			((ImageView) findViewById(R.id.stateJobSetUp)).setTag(R.drawable.collapse);
+			WebView jobSetUpWV = ((WebView) findViewById(R.id.jobSetUp_text));
+			jobSetUpWV.loadDataWithBaseURL("file:///android_asset/", parser.getJobSetUp(), "text/html", "UTF-8", null);
+			jobSetUpWV.setWebViewClient(new SwitchTaskManager(this));
+			/* Procedure part */
+			LinearLayout procedure = (LinearLayout) findViewById(R.id.procedure);
+			procedure.setOnClickListener(manageProcedure);
+			collapse((LinearLayout) findViewById(R.id.procedure_layout));
+			((ImageView) findViewById(R.id.stateProcedure)).setTag(R.drawable.collapse);
+			WebView procedureWV = ((WebView) findViewById(R.id.procedure_text));
+			procedureWV.loadDataWithBaseURL("file:///android_asset/", parser.getProcedure(), "text/html", "UTF-8", null);
+			procedureWV.setWebViewClient(new SwitchTaskManager(this));
+			/* Close Up part */
+			LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
+			closeUp.setOnClickListener(manageCloseUp);
+			collapse((LinearLayout) findViewById(R.id.closeUp_layout));
+			((ImageView) findViewById(R.id.stateCloseUp)).setTag(R.drawable.collapse);
+			WebView closeUpWV = ((WebView) findViewById(R.id.closeUp_text));
+			closeUpWV.loadDataWithBaseURL("file:///android_asset/", parser.getCloseUp(), "text/html", "UTF-8", null);
+			closeUpWV.setWebViewClient(new SwitchTaskManager(this));
+			/* Tools part */
+			LinearLayout tools = (LinearLayout) findViewById(R.id.tools);
+			tools.setOnClickListener(manageTools);
+			collapse((LinearLayout) findViewById(R.id.tools_layout));
+			((ImageView) findViewById(R.id.stateTools)).setTag(R.drawable.collapse);
+			WebView toolsWV = ((WebView) findViewById(R.id.tools_text));
+			toolsWV.loadDataWithBaseURL("file:///android_asset/", parser.getTools(), "text/html", "UTF-8", null);
+			toolsWV.setWebViewClient(new SwitchTaskManager(this));
+			/* Pictures part */
+			LinearLayout pictures = (LinearLayout) findViewById(R.id.pictures);
+			pictures.setOnClickListener(managePictures);
+			collapse((LinearLayout) findViewById(R.id.pictures_layout));
+			((ImageView) findViewById(R.id.statePictures)).setTag(R.drawable.collapse);
+			WebView picturesWV = ((WebView) findViewById(R.id.pictures_text));
+			picturesWV.loadDataWithBaseURL("file:///android_asset/", parser.getPictures(), "text/html", "UTF-8", null);
+			picturesWV.setWebViewClient(new SwitchTaskManager(this));
+		} catch (Exception e) {
+			this.setTitle("Procedure "+ammPart+" introuvable");
+			e.printStackTrace();
+		}
 	}
-	
+
 	private View.OnClickListener manageWarnings = new View.OnClickListener() {
 		public void onClick(View v) {
-			expandOrCollapse(R.id.warnings_text,R.id.stateWarning);
+			expandOrCollapse(R.id.warnings_layout, R.id.stateWarning);
 		}
 	};
 	private View.OnClickListener manageJobSetUp = new View.OnClickListener() {
 		public void onClick(View v) {
-			expandOrCollapse(R.id.jobSetUp_text,R.id.stateJobSetUp);
+			expandOrCollapse(R.id.jobSetUp_layout, R.id.stateJobSetUp);
 		}
 	};
 	private View.OnClickListener manageProcedure = new View.OnClickListener() {
 		public void onClick(View v) {
-			expandOrCollapse(R.id.procedure_text,R.id.stateProcedure);
+			expandOrCollapse(R.id.procedure_layout, R.id.stateProcedure);
 		}
 	};
 	private View.OnClickListener manageCloseUp = new View.OnClickListener() {
 		public void onClick(View v) {
-			expandOrCollapse(R.id.closeUp_text,R.id.stateCloseUp);
+			expandOrCollapse(R.id.closeUp_layout, R.id.stateCloseUp);
 		}
 	};
 	private View.OnClickListener manageTools = new View.OnClickListener() {
 		public void onClick(View v) {
-			expandOrCollapse(R.id.tools_text,R.id.stateTools);
+			expandOrCollapse(R.id.tools_layout, R.id.stateTools);
 		}
 	};
 	private View.OnClickListener managePictures = new View.OnClickListener() {
 		public void onClick(View v) {
-			expandOrCollapse(R.id.pictures_text,R.id.statePictures);
+			expandOrCollapse(R.id.pictures_layout, R.id.statePictures);
 		}
 	};
 
 	/**
 	 * Expand or collapse a documentation part.
-	 * @param part, the part to expand or collapse
-	 * @param icon, the icon to manage
+	 * 
+	 * @param part
+	 *            , the part to expand or collapse
+	 * @param icon
+	 *            , the icon to manage
 	 */
 	private void expandOrCollapse(int part, int icon) {
-		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag().toString());
-		if(tag == R.drawable.collapse){
+		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag()
+				.toString());
+		if (tag == R.drawable.collapse) {
 			expand(part, icon);
-		}else{
+		} else {
 			collapse(part, icon);
 		}
 	}
+
 	/**
 	 * Expand a documentation part.
-	 * @param part, the part to expand 
-	 * @param icon, the icon to manage
+	 * 
+	 * @param part
+	 *            , the part to expand
+	 * @param icon
+	 *            , the icon to manage
 	 */
 	private void expand(int part, int icon) {
-		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag().toString());
-		if(tag != R.drawable.expand){
+		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag()
+				.toString());
+		if (tag != R.drawable.expand) {
 			expand((LinearLayout) findViewById(part));
-			((ImageView) findViewById(icon)).setImageResource(R.drawable.expand);
+			((ImageView) findViewById(icon))
+					.setImageResource(R.drawable.expand);
 			((ImageView) findViewById(icon)).setTag(R.drawable.expand);
 		}
 	}
+
 	/**
 	 * Collapse a documentation part.
-	 * @param part, the part to collapse 
-	 * @param icon, the icon to manage
+	 * 
+	 * @param part
+	 *            , the part to collapse
+	 * @param icon
+	 *            , the icon to manage
 	 */
 	private void collapse(int part, int icon) {
-		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag().toString());
-		if(tag != R.drawable.collapse){
+		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag()
+				.toString());
+		if (tag != R.drawable.collapse) {
 			collapse((LinearLayout) findViewById(part));
-			((ImageView) findViewById(icon)).setImageResource(R.drawable.collapse);
+			((ImageView) findViewById(icon))
+					.setImageResource(R.drawable.collapse);
 			((ImageView) findViewById(icon)).setTag(R.drawable.collapse);
 		}
 	}
@@ -136,33 +198,33 @@ public class AMM extends Activity {
 		getMenuInflater().inflate(R.menu.menu_amm, menu);
 		return true;
 	}
-	
+
 	@Override
-    public boolean onOptionsItemSelected(MenuItem item){       
+	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case android.R.id.home:
-				Intent intent = new Intent(this, MainActivity.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
-				return true;
-			case R.id.menu_expandAll:
-				expand(R.id.warnings_text, R.id.stateWarning);
-				expand(R.id.jobSetUp_text, R.id.stateJobSetUp);
-				expand(R.id.procedure_text, R.id.stateProcedure);
-				expand(R.id.closeUp_text, R.id.stateCloseUp);
-				expand(R.id.tools_text, R.id.stateTools);
-				expand(R.id.pictures_text, R.id.statePictures);
-				return true;
-			case R.id.menu_collapseAll:
-				collapse(R.id.warnings_text, R.id.stateWarning);
-				collapse(R.id.jobSetUp_text, R.id.stateJobSetUp);
-				collapse(R.id.procedure_text, R.id.stateProcedure);
-				collapse(R.id.closeUp_text, R.id.stateCloseUp);
-				collapse(R.id.tools_text, R.id.stateTools);
-				collapse(R.id.pictures_text, R.id.statePictures);
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
+		case android.R.id.home:
+			Intent intent = new Intent(this, MainActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			return true;
+		case R.id.menu_expandAll:
+			expand(R.id.warnings_layout, R.id.stateWarning);
+			expand(R.id.jobSetUp_layout, R.id.stateJobSetUp);
+			expand(R.id.procedure_layout, R.id.stateProcedure);
+			expand(R.id.closeUp_layout, R.id.stateCloseUp);
+			expand(R.id.tools_layout, R.id.stateTools);
+			expand(R.id.pictures_layout, R.id.statePictures);
+			return true;
+		case R.id.menu_collapseAll:
+			collapse(R.id.warnings_layout, R.id.stateWarning);
+			collapse(R.id.jobSetUp_layout, R.id.stateJobSetUp);
+			collapse(R.id.procedure_layout, R.id.stateProcedure);
+			collapse(R.id.closeUp_layout, R.id.stateCloseUp);
+			collapse(R.id.tools_layout, R.id.stateTools);
+			collapse(R.id.pictures_layout, R.id.statePictures);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
 
@@ -216,7 +278,8 @@ public class AMM extends Activity {
 		};
 
 		// 1dp/ms
-		a.setDuration((int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density));
+		a.setDuration((int) (initialHeight / v.getContext().getResources()
+				.getDisplayMetrics().density));
 		v.startAnimation(a);
 	}
 }

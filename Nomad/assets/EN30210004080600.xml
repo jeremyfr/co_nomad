@@ -1,0 +1,722 @@
+<TASK CHAPNBR="30" CHG="R" CONFLTR="A" CONFNBR="00" FUNC="040" KEY="EN30210004080600" PGBLKNBR="04" REVDATE="20100701" SECTNBR="21" SEQ="806" SUBJNBR="00">
+  <EFFECT EFFRG="201400">
+  </EFFECT>
+  <CHGDESC>EFFECTIVITY UPDATED</CHGDESC>
+  <TITLE>Deactivation of the Engine Air Intake Anti-Ice System in the Locked Closed Position</TITLE>
+  <WARNING>
+    <PARA>YOU MUST BE CAREFUL WHEN YOU DO WORK ON THE ENGINE PARTS AFTER THE ENGINE IS SHUTDOWN. THE ENGINE PARTS CAN STAY HOT FOR ALMOST 1 HOUR. </PARA>
+  </WARNING>
+  <WARNING>
+    <PARA>YOU MUST NOT TOUCH HOT PARTS WITHOUT APPLICABLE GLOVES. HOT PARTS CAN CAUSE AN INJURY. IF YOU GET AN INJURY, PUT IT IN COLD WATER FOR 10 MINUTES AND GET MEDICAL AID. </PARA>
+  </WARNING>
+  <ASSODATA>
+    <ZONELST>
+      <ZONE>412</ZONE>
+      <ZONE>422</ZONE>
+      <ZONE>432</ZONE>
+      <ZONE>442</ZONE>
+    </ZONELST>
+    <EINLST>
+      <EINDATA>
+        <EFFECT EFFRG="201400">
+        </EFFECT>
+        <EIN TYPE="EXACT">4000-DN-1</EIN>
+      </EINDATA>
+      <EINDATA>
+        <EFFECT EFFRG="201400">
+        </EFFECT>
+        <EIN TYPE="EXACT">4000-DN-2</EIN>
+      </EINDATA>
+      <EINDATA>
+        <EFFECT EFFRG="201400">
+        </EFFECT>
+        <EIN TYPE="EXACT">4000-DN-3</EIN>
+      </EINDATA>
+      <EINDATA>
+        <EFFECT EFFRG="201400">
+        </EFFECT>
+        <EIN TYPE="EXACT">4000-DN-4</EIN>
+      </EINDATA>
+    </EINLST>
+    <TASKREQ MECHREQ="MECH" PANREQ="NOPAN" TEDREQ="TED">
+      <ELAPSTIM>00:2</ELAPSTIM>
+      <MANHOUR>00:2</MANHOUR>
+      <NBRPERS>1</NBRPERS>
+    </TASKREQ>
+  </ASSODATA>
+  <TFMATR>
+    <PRETOPIC>
+      <TITLE>Reason for the Job</TITLE>
+      <PARA>
+        <REFEXT REFLOC="L.00016982" REFMAN="MMEL">MMEL 30-21-01A</REFEXT>
+      </PARA>
+      <PARA>Engine 1(2)(3)(4) Anti-Ice </PARA>
+    </PRETOPIC>
+    <PRETOPIC>
+      <TITLE>Job Set-up Information</TITLE>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Fixtures, Tools, Test and Support Equipment</PARA>
+          <TABLE>
+            <TGROUP COLS="3">
+              <COLSPEC COLNAME="COL1" COLWIDTH="22*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="4*">
+                  <COLSPEC COLNAME="COL3" COLWIDTH="53*">
+                    <SPANSPEC NAMEEND="COL3" NAMEST="COL1" SPANNAME="WHOLE">
+                      <THEAD>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>REFERENCE</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>QTY</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>DESIGNATION</PARA>
+                          </ENTRY>
+                        </ROW>
+                      </THEAD>
+                      <TBODY>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>1</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <STDNAME>ACCESS PLATFORM 3M (10 FT)- ADJUSTABLE</STDNAME>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>AR</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <STDNAME>SAFETY CLIP - CIRCUIT BREAKER</STDNAME>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>1</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <STDNAME>WARNING NOTICE</STDNAME>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="3.60" MIN="0.20" UNIT="m.daN"><TORVALUE MAX="26.00" MIN="2.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>
+                              <TOOLNBR>98L12003001000</TOOLNBR>
+                            </PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>AR</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>HARNESS,SAFETY</PARA>
+                          </ENTRY>
+                        </ROW>
+                      </TBODY>
+                    </SPANSPEC>
+                  </COLSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Work Zones and Access Panels</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>ZONE/ACCESS</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>ZONE DESCRIPTION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <ZONE>412</ZONE>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>ENGINE 1 FAN</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <ZONE>422</ZONE>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>ENGINE 2 FAN</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <ZONE>432</ZONE>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>ENGINE 3 FAN</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <ZONE>442</ZONE>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>ENGINE 4 FAN</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Referenced Information</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>REFERENCE</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>DESIGNATION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN12000048180100">12-00-00-481-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Fall Restraint Systems for the Safety of Maintenance Personnel and General Precautions for Work at Height</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180100">24-41-00-861-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft Electrical Circuits from the External Power Receptacles 2, 3, 1 and 4</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180101">24-41-00-861-801-A-01</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft  Electrical Circuits from the APU (APU Started with the APU Battery)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180102">24-41-00-861-801-A-02</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft  Electrical Circuits from the External Power Receptacles  2, 3 and 1</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180103">24-41-00-861-801-A-03</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft  Electrical Circuits from the APU (APU Started with the External Power Receptacles 1 and 3)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086280100">24-41-00-862-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>De-energize the Aircraft Electrical Circuits from the External Power Receptacles 4, 1, 3 and 2</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086280101">24-41-00-862-801-A-01</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>De-energize the Aircraft  Electrical Circuits from the APU</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086280102">24-41-00-862-801-A-02</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>De-energize the Aircraft  Electrical Circuits from the External Power Receptacles 1, 3 and 2</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24710086080100">24-71-00-860-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Get Access to the Power Distribution Control Management Pages and to the Mechanical Circuit Breakers</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN45000086080200">45-00-00-860-802-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Close the OMS Session</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN71130001080100">71-13-00-010-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Opening of the Fan Cowl Doors</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN71130041080100">71-13-00-410-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Closing of the Fan Cowl Doors</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN78300004080100">78-30-00-040-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Make the Thrust Reverser Unserviceable for Maintenance</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN78300044080100">78-30-00-440-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Make the Thrust Reverser Serviceable after Maintenance</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN30210099100300001">Pressure Regulating Valve in the Locked-CLOSED Position</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+      </LIST1>
+    </PRETOPIC>
+  </TFMATR>
+  <TOPIC>
+    <TITLE>Job Set-up</TITLE>
+    <SUBTASK CHAPNBR="30" CHG="R" CONFLTR="A" CONFNBR="00" FUNC="860" KEY="EN30210086000600001" PGBLKNBR="04" REVDATE="20100701" SECTNBR="21" SEQ="006" SUBJNBR="00">
+      <EFFECT EFFRG="201400">
+      </EFFECT>
+      <CHGDESC>EFFECTIVITY UPDATED</CHGDESC>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Aircraft Maintenance Configuration</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Energize the aircraft electrical circuits</PARA>
+              <PARA>
+                <REFBLOCK>24-41-00-861-801<REFINT REFID="EN24410086180100"><EFFECT EFFRG="201400"></EFFECT>24-41-00-861-801-A</REFINT><REFINT REFID="EN24410086180101"><EFFECT EFFRG="201400"></EFFECT>24-41-00-861-801-A-01</REFINT><REFINT REFID="EN24410086180102"><EFFECT EFFRG="201400"></EFFECT>24-41-00-861-801-A-02</REFINT><REFINT REFID="EN24410086180103"><EFFECT EFFRG="201400"></EFFECT>24-41-00-861-801-A-03</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>On the OMS Home page, select Power Distribution Control or C/B Management</PARA>
+              <PARA>
+                <REFBLOCK>24-71-00-860-801<REFINT REFID="EN24710086080100"><EFFECT EFFRG="201400"></EFFECT>24-71-00-860-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="R" CONFLTR="A" CONFNBR="00" FUNC="865" KEY="EN30210086500800001" PGBLKNBR="04" REVDATE="20100701" SECTNBR="21" SEQ="008" SUBJNBR="00">
+      <EFFECT EFFRG="201400">
+      </EFFECT>
+      <CHGDESC>EFFECTIVITY UPDATED</CHGDESC>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Open, safety/lock and tag this(these) circuit breaker(s):</PARA>
+          <CBLST ACTION="open" CHKSUM="3BCA6851">
+            <CBSUBLST CHKSUM="DB5F3458">
+              <EIN TYPE="EXACT">4000-EM-1</EIN>
+              <EQUNAME>ENGINE-1</EQUNAME>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="eltro">802-KS-1</CB>
+                <CBNAME>FADEC B ENG1</CBNAME>
+                <PAN PANTYPE="elec">SEPDC2</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="elmec">12-KS-1</CB>
+                <CBNAME>FADEC A ENG 1</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>0961</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+            <CBSUBLST CHKSUM="5018EC65">
+              <EIN TYPE="EXACT">4000-EM-2</EIN>
+              <EQUNAME>ENGINE-2</EQUNAME>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="eltro">803-KS-1</CB>
+                <CBNAME>FADEC B ENG2</CBNAME>
+                <PAN PANTYPE="elec">SEPDC1</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="elmec">12-KS-2</CB>
+                <CBNAME>FADEC A ENG 2</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>1063</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+            <CBSUBLST CHKSUM="974FCF09">
+              <EIN TYPE="EXACT">4000-EM-3</EIN>
+              <EQUNAME>ENGINE-3</EQUNAME>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="eltro">802-KS-2</CB>
+                <CBNAME>FADEC B ENG3</CBNAME>
+                <PAN PANTYPE="elec">SEPDC2</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="elmec">12-KS-3</CB>
+                <CBNAME>FADEC A ENG 3</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>0863</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+            <CBSUBLST CHKSUM="592C369D">
+              <EIN TYPE="EXACT">4000-EM-4</EIN>
+              <EQUNAME>ENGINE-4</EQUNAME>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="eltro">803-KS-2</CB>
+                <CBNAME>FADEC B ENG4</CBNAME>
+                <PAN PANTYPE="elec">SEPDC1</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="elmec">12-KS-4</CB>
+                <CBNAME>FADEC A ENG 4</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>0962</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+          </CBLST>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="R" CONFLTR="A" CONFNBR="00" FUNC="040" KEY="EN30210004000900001" PGBLKNBR="04" REVDATE="20100701" SECTNBR="21" SEQ="009" SUBJNBR="00">
+      <EFFECT EFFRG="201400">
+      </EFFECT>
+      <CHGDESC>EFFECTIVITY UPDATED</CHGDESC>
+      <LIST1>
+        <L1ITEM>
+          <PARA>If you do the procedure on an inboard engine, do the deactivation of the thrust reverser. </PARA>
+          <LIST2>
+            <L2ITEM>
+              <WARNING>
+                <PARA>YOU MUST MAKE THE THRUST REVERSER UNSERVICEABLE (INSTALL AND SAFETY THE INHIBITION DEVICE) BEFORE YOU DO WORK ON OR AROUND THE THRUST REVERSER. IF YOU DO NOT INSTALL AND SAFETY THE INHIBITION DEVICE, YOU CAN CAUSE ACCIDENTAL OPERATION AND/OR DAMAGE TO THE EQUIPMENT. </PARA>
+              </WARNING>
+              <PARA>Make the thrust reverser unserviceable for maintenance <REFBLOCK>78-30-00-040-801<REFINT REFID="EN78300004080100"><EFFECT EFFRG="201400"></EFFECT>78-30-00-040-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="R" CONFLTR="A" CONFNBR="00" FUNC="010" KEY="EN30210001000500001" PGBLKNBR="04" REVDATE="20100701" SECTNBR="21" SEQ="005" SUBJNBR="00">
+      <EFFECT EFFRG="201400">
+      </EFFECT>
+      <CHGDESC>EFFECTIVITY UPDATED</CHGDESC>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Get Access</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Put an <STDNAME>ACCESS PLATFORM 3M (10 FT)- ADJUSTABLE</STDNAME> in position below the external applicable engine. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Open the L/H fan cowl door <REFBLOCK>71-13-00-010-801<REFINT REFID="EN71130001080100"><EFFECT EFFRG="201400"></EFFECT>71-13-00-010-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put on and attach a SAFETY HARNESS before you start work in the work area</PARA>
+              <PARA>
+                <REFBLOCK>12-00-00-481-801<REFINT REFID="EN12000048180100"><EFFECT EFFRG="201400"></EFFECT>12-00-00-481-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+  <TOPIC>
+    <TITLE>Procedure</TITLE>
+    <SUBTASK CHAPNBR="30" CHG="R" CONFLTR="A" CONFNBR="00" FUNC="040" KEY="EN30210004001000001" PGBLKNBR="04" REVDATE="20100701" SECTNBR="21" SEQ="010" SUBJNBR="00">
+      <EFFECT EFFRG="201400">
+      </EFFECT>
+      <CHGDESC>EFFECTIVITY UPDATED</CHGDESC>
+      <CHGDESC>GRAPHIC REFERENCE ADDED, REVISED, OR DELETED</CHGDESC>
+      <LIST1>
+        <L1ITEM>
+          <PARA>De-activate the Anti-Ice Pressure Regulating Valve in the Locked Closed Position </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN30210099100300001" SHOWNOW="0">
+              <EFFECT EFFRG="201400">
+              </EFFECT>
+                          Pressure Regulating Valve in the Locked-CLOSED Position
+                        
+                      </GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <CAUTION>
+                <PARA>YOU MUST NOT APPLY SIDE LOADS OR MORE THAN THE SPECIFIED TORQUE WHEN YOU REMOVE / INSTALL THE LOCK PIN. THE LOCK PIN CAN BECOME BENT OR BROKEN AND PREVENT DEACTIVATION / REACTIVATION OF THE PRESSURE REGULATING VALVE. </PARA>
+              </CAUTION>
+              <PARA>If necessary, use an applicable wrench to move the butterfly valve to the closed position. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the lock pin from its storage position. </PARA>
+              <NOTE>
+                <PARA>The butterfly valve is spring-loaded in the open position. </PARA>
+              </NOTE>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the lock pin through the indicator plate and into the lock boss. TORQUE the lock pin <TOR><TORVALUE MAX="0.51" MIN="0.45" UNIT="m.daN"><TORVALUE MAX="45.13" MIN="39.82" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>The pressure regulating valve is now isolated in the closed position. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="R" CONFLTR="A" CONFNBR="00" FUNC="865" KEY="EN30210086501200001" PGBLKNBR="04" REVDATE="20100701" SECTNBR="21" SEQ="012" SUBJNBR="00">
+      <EFFECT EFFRG="201400">
+      </EFFECT>
+      <CHGDESC>EFFECTIVITY UPDATED</CHGDESC>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Remove the tag(s) and/or the SAFETY CLIP-CIRCUIT BREAKER and close/unlock this(these) circuit breaker(s):</PARA>
+          <CBLST ACTION="close" CHKSUM="3BCA6851">
+            <CBSUBLST CHKSUM="DB5F3458">
+              <EIN TYPE="EXACT">4000-EM-1</EIN>
+              <EQUNAME>ENGINE-1</EQUNAME>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="eltro">802-KS-1</CB>
+                <CBNAME>FADEC B ENG1</CBNAME>
+                <PAN PANTYPE="elec">SEPDC2</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="elmec">12-KS-1</CB>
+                <CBNAME>FADEC A ENG 1</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>0961</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+            <CBSUBLST CHKSUM="5018EC65">
+              <EIN TYPE="EXACT">4000-EM-2</EIN>
+              <EQUNAME>ENGINE-2</EQUNAME>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="eltro">803-KS-1</CB>
+                <CBNAME>FADEC B ENG2</CBNAME>
+                <PAN PANTYPE="elec">SEPDC1</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="elmec">12-KS-2</CB>
+                <CBNAME>FADEC A ENG 2</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>1063</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+            <CBSUBLST CHKSUM="974FCF09">
+              <EIN TYPE="EXACT">4000-EM-3</EIN>
+              <EQUNAME>ENGINE-3</EQUNAME>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="eltro">802-KS-2</CB>
+                <CBNAME>FADEC B ENG3</CBNAME>
+                <PAN PANTYPE="elec">SEPDC2</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="elmec">12-KS-3</CB>
+                <CBNAME>FADEC A ENG 3</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>0863</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+            <CBSUBLST CHKSUM="592C369D">
+              <EIN TYPE="EXACT">4000-EM-4</EIN>
+              <EQUNAME>ENGINE-4</EQUNAME>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="eltro">803-KS-2</CB>
+                <CBNAME>FADEC B ENG4</CBNAME>
+                <PAN PANTYPE="elec">SEPDC1</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="201400">
+                </EFFECT>
+                <CB CBTYPE="elmec">12-KS-4</CB>
+                <CBNAME>FADEC A ENG 4</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>0962</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+          </CBLST>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+  <TOPIC>
+    <TITLE>Close-up</TITLE>
+    <SUBTASK CHAPNBR="30" CHG="R" CONFLTR="A" CONFNBR="00" FUNC="942" KEY="EN30210094200600001" PGBLKNBR="04" REVDATE="20100701" SECTNBR="21" SEQ="006" SUBJNBR="00">
+      <EFFECT EFFRG="201400">
+      </EFFECT>
+      <CHGDESC>EFFECTIVITY UPDATED</CHGDESC>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Put the aircraft back to its initial configuration.</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Remove all of the fixtures, tools, and test and support equipment used during the procedure. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Close the L/H fan cowl door <REFBLOCK>71-13-00-410-801<REFINT REFID="EN71130041080100"><EFFECT EFFRG="201400"></EFFECT>71-13-00-410-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make the thrust reverser serviceable <REFBLOCK>78-30-00-440-801<REFINT REFID="EN78300044080100"><EFFECT EFFRG="201400"></EFFECT>78-30-00-440-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make an applicable entry in the logbook. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put a <STDNAME>WARNING NOTICE</STDNAME> in the cockpit to tell persons which anti-ice system is locked in the closed position. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Close the OMS session</PARA>
+              <PARA>
+                <REFBLOCK>45-00-00-860-802<REFINT REFID="EN45000086080200"><EFFECT EFFRG="201400"></EFFECT>45-00-00-860-802-A</REFINT></REFBLOCK>
+              </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>De-energize the aircraft electrical circuits</PARA>
+              <PARA>
+                <REFBLOCK>24-41-00-862-801<REFINT REFID="EN24410086280100"><EFFECT EFFRG="201400"></EFFECT>24-41-00-862-801-A</REFINT><REFINT REFID="EN24410086280101"><EFFECT EFFRG="201400"></EFFECT>24-41-00-862-801-A-01</REFINT><REFINT REFID="EN24410086280102"><EFFECT EFFRG="201400"></EFFECT>24-41-00-862-801-A-02</REFINT></REFBLOCK>
+              </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+</TASK>

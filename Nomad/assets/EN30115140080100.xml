@@ -1,0 +1,601 @@
+<TASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="400" KEY="EN30115140080100" PGBLKNBR="04" REVDATE="20100201" SECTNBR="11" SEQ="801" SUBJNBR="51">
+  <EFFECT EFFRG="001999">
+  </EFFECT>
+  <TITLE>Installation of the Wing Anti-ice Control-valve</TITLE>
+  <WARNING>
+    <PARA>MAKE SURE THAT THE SAFETY DEVICES AND THE WARNING NOTICES ARE IN POSITION BEFORE YOU START A TASK ON OR NEAR: </PARA>
+    <UNLIST>
+      <UNLITEM>
+        <PARA> THE FLIGHT CONTROLS </PARA>
+      </UNLITEM>
+      <UNLITEM>
+        <PARA> THE FLIGHT CONTROL SURFACES </PARA>
+      </UNLITEM>
+      <UNLITEM>
+        <PARA> THE LANDING GEAR AND RELATED DOORS </PARA>
+      </UNLITEM>
+      <UNLITEM>
+        <PARA> COMPONENTS THAT MOVE. </PARA>
+      </UNLITEM>
+    </UNLIST>
+    <PARA>MOVEMENT OF COMPONENTS CAN KILL OR CAUSE INJURY TO PERSONS AND CAN CAUSE DAMAGE. </PARA>
+  </WARNING>
+  <WARNING>
+    <PARA>BE CAREFUL WHEN YOU USE SOLVENTS/CLEANING AGENTS, SEALANTS AND OTHER MATERIALS. </PARA>
+    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS AND THE LOCAL REGULATIONS. </PARA>
+    <PARA>MAKE SURE THAT THERE IS A GOOD FLOW OF AIR THROUGH THE WORK AREA. </PARA>
+    <PARA>DO NOT BREATHE THE FUMES. </PARA>
+    <PARA>DO NOT SMOKE. </PARA>
+    <PARA>DO NOT USE THESE MATERIALS NEAR A FLAME, SPARKS OR SOURCES OF HEAT. </PARA>
+    <PARA>USE PROTECTIVE CLOTHING, GOGGLES AND GLOVES. </PARA>
+    <PARA>IF YOU GET ONE OF THESE MATERIALS: </PARA>
+    <UNLIST>
+      <UNLITEM>
+        <PARA> ON YOUR SKIN OR IN YOUR EYES, FLUSH IT AWAY WITH A FLOW OF CLEAN WATER. </PARA>
+      </UNLITEM>
+      <UNLITEM>
+        <PARA> IN YOUR MOUTH, GET IMMEDIATE MEDICAL AID. </PARA>
+      </UNLITEM>
+    </UNLIST>
+    <PARA>IN GENERAL, THESE MATERIALS ARE FLAMMABLE, POISONOUS AND SKIN IRRITANTS. </PARA>
+  </WARNING>
+  <ASSODATA>
+    <ZONELST>
+      <ZONE>522</ZONE>
+      <ZONE>622</ZONE>
+    </ZONELST>
+    <EINLST>
+      <EINDATA>
+        <EFFECT EFFRG="001999">
+        </EFFECT>
+        <EIN TYPE="EXACT">10-DL-1</EIN>
+      </EINDATA>
+      <EINDATA>
+        <EFFECT EFFRG="001999">
+        </EFFECT>
+        <EIN TYPE="EXACT">10-DL-2</EIN>
+      </EINDATA>
+      <EINDATA>
+        <EFFECT EFFRG="001999">
+        </EFFECT>
+        <EIN TYPE="EXACT">11-DL-1</EIN>
+      </EINDATA>
+      <EINDATA>
+        <EFFECT EFFRG="001999">
+        </EFFECT>
+        <EIN TYPE="EXACT">11-DL-2</EIN>
+      </EINDATA>
+    </EINLST>
+  </ASSODATA>
+  <TFMATR>
+    <PRETOPIC>
+      <TITLE>Reason for the Job</TITLE>
+      <PARA>Self explanatory</PARA>
+    </PRETOPIC>
+    <PRETOPIC>
+      <TITLE>Job Set-up Information</TITLE>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Fixtures, Tools, Test and Support Equipment</PARA>
+          <TABLE>
+            <TGROUP COLS="3">
+              <COLSPEC COLNAME="COL1" COLWIDTH="22*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="4*">
+                  <COLSPEC COLNAME="COL3" COLWIDTH="53*">
+                    <SPANSPEC NAMEEND="COL3" NAMEST="COL1" SPANNAME="WHOLE">
+                      <THEAD>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>REFERENCE</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>QTY</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>DESIGNATION</PARA>
+                          </ENTRY>
+                        </ROW>
+                      </THEAD>
+                      <TBODY>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>1</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <STDNAME>ACCESS PLATFORM 6M (20 FT) - ADJUSTABLE</STDNAME>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>AR</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <STDNAME>SAFETY CLIP - CIRCUIT BREAKER</STDNAME>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>AR</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <STDNAME>WARNING NOTICE</STDNAME>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="3.60" MIN="0.20" UNIT="m.daN"><TORVALUE MAX="26.00" MIN="2.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                          </ENTRY>
+                        </ROW>
+                      </TBODY>
+                    </SPANSPEC>
+                  </COLSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Consumable Materials</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>REFERENCE</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>DESIGNATION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>07020*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>PAINTS FOR DETAIL (INTERNAL AND EXTERN AL)</PARA>
+                          <PARA>IDENTIFICATION PAINT</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>08048*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>BONDING AND ADHESIVE COMPOUNDS</PARA>
+                          <PARA>LOW STRENGTH THREADLOCKER</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Work Zones and Access Panels</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>ZONE/ACCESS</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>ZONE DESCRIPTION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <ZONE>522</ZONE>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>CENTER FIXED LEADING EDGE STRUCTURE</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <ZONE>622</ZONE>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>CENTER FIXED LEADING EDGE, STRUCTURE</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <PAN PANTYPE="accpan">522NB</PAN>, <PAN PANTYPE="accpan">522QB</PAN>, <PAN PANTYPE="accpan">622NB</PAN>, <PAN PANTYPE="accpan">622QB</PAN></PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Referenced Information</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>REFERENCE</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>DESIGNATION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24710086080100">24-71-00-860-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Get Access to the Power Distribution Control Management Pages and to the Mechanical Circuit Breakers</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN30110071080100">30-11-00-710-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Operational Test of the Wing Ice-protection System</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN57423740080100">57-42-37-400-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Installation of the Mid-Wing Leading-Edge Access-Panels (Quick-Release Fasteners)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN30115199100100001">Wing Anti-ice Control-valve - Location and Detail</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+      </LIST1>
+    </PRETOPIC>
+  </TFMATR>
+  <TOPIC>
+    <TITLE>Job Set-up</TITLE>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="860" KEY="EN30115186000200001" PGBLKNBR="04" REVDATE="20080801" SECTNBR="11" SEQ="002" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>On the OMS Home page, select Power Distribution Control or C/B Management</PARA>
+          <PARA>
+            <REFBLOCK>24-71-00-860-801<REFINT REFID="EN24710086080100"><EFFECT EFFRG="001999"></EFFECT>24-71-00-860-801-A</REFINT></REFBLOCK>.
+		  </PARA>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="865" KEY="EN30115186500200001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="11" SEQ="002" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Make sure that this(these) circuit breaker(s) is(are) open, safetied/ locked and tagged:</PARA>
+          <CBLST ACTION="verif-open" CHKSUM="E8426184">
+            <CBSUBLST>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">801-DL</CB>
+                <CBNAME>WING A-ICE VLV OUTER</CBNAME>
+                <PAN PANTYPE="elec">SEPDC1</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">800-DL</CB>
+                <CBNAME>WING A-ICE VLV INNER</CBNAME>
+                <PAN PANTYPE="elec">SEPDC2</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+          </CBLST>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="941" KEY="EN30115194100200001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="11" SEQ="002" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Safety Precautions and Access </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>In the cockpit (zone 210), make sure that there is a <STDNAME>WARNING NOTICE</STDNAME>: </PARA>
+              <UNLIST BULLTYPE="BULLET">
+                <UNLITEM>
+                  <PARA>On the center pedestal, adjacent to the FLAPS control lever, to tell persons not to operate the flaps (or slats) </PARA>
+                </UNLITEM>
+                <UNLITEM>
+                  <PARA>On the overhead panel, on the ENG START panel, to tell persons not to operate the engines or the APU </PARA>
+                </UNLITEM>
+                <UNLITEM>
+                  <PARA>On the overhead panel, on the AIR panel, to tell persons not to operate the bleed air system. </PARA>
+                </UNLITEM>
+              </UNLIST>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>On the access panel 193BB, make sure there is a <STDNAME>WARNING NOTICE</STDNAME> to tell persons not to pressurize the pneumatic system. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure there is an <STDNAME>ACCESS PLATFORM 6M (20 FT) - ADJUSTABLE</STDNAME> in position below the opening for access panel 522NB (622NB) or 522QB (622QB), as applicable. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+  <TOPIC>
+    <TITLE>Procedure</TITLE>
+    <GRPHCREF REFID="EN30115199100100001" SHOWNOW="0">
+      <EFFECT EFFRG="001999">
+      </EFFECT>Wing Anti-ice Control-valve - Location and Detail</GRPHCREF>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="869" KEY="EN30115186900100001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="11" SEQ="001" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Preparation for Installation</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Remove the <STDNAME>CAP - BLANKING</STDNAME> from the: </PARA>
+              <UNLIST BULLTYPE="BULLET">
+                <UNLITEM>
+                  <PARA>Ports and the electrical receptacles on the wing anti-ice control-valve (control valve) (1) </PARA>
+                </UNLITEM>
+                <UNLITEM>
+                  <PARA>Electrical connectors (5, 6 and 11) </PARA>
+                </UNLITEM>
+                <UNLITEM>
+                  <PARA>Flanged sleeve (9) and the telescopic box assembly (3). </PARA>
+                </UNLITEM>
+              </UNLIST>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Clean the component interface and/or the adjacent area.</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Do a visual inspection of the component interface and/or the adjacent area.</PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN30115142000100001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="11" SEQ="001" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Installation of the Control Valve </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Loosely assemble the clamps (2 and 10) on the flanged sleeve (9) and the telescopic box assembly (3). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put the control valve (1) in position on the telescopic box assembly (3). Make sure the hole in the control valve flange engages with the dowel (4) on the telescopic box assembly. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Align the flanges of the control valve (1) and the telescopic box assembly (3), then install the clamp (2). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure the clamp (2) is in the correct position, then torque the clamp nut <TOR><TORVALUE MAX="0.5" MIN="0.4" UNIT="m.daN"><TORVALUE MAX="44.25" MIN="35.40" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Extend the flanged sleeve (9) until it touches the flange of the control valve (1). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>If necessary, adjust the position of the anti-ice duct (8). With the flanged sleeve (9) touching the control valve (1), the dimension X must be 6 mm (0.24 in.). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Align the flanges of the flanged sleeve (9) and the control valve (1), then install the clamp (10). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure the clamp (10) is in the correct position, then torque the clamp nut <TOR><TORVALUE MAX="0.5" MIN="0.4" UNIT="m.daN"><TORVALUE MAX="44.25" MIN="35.40" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <WARNING>
+                <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 08-048. </PARA>
+                <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+              </WARNING>
+              <CAUTION>
+                <PARA>YOU MUST MAKE SURE THAT THE ELECTRICAL CONNECTORS AND RECEPTACLES ARE CLEAN BEFORE YOU CONNECT THEM. CONTAMINATION ON THE ELECTRICAL CONNECTORS CAN CAUSE DAMAGE TO THE EQUIPMENT. </PARA>
+              </CAUTION>
+              <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>08048*</CONNBR><CONNAME>BONDING AND ADHESIVE COMPOUNDS</CONNAME></CON> to the threads of the electrical receptacles on the control valve (1). Connect the electrical connectors (5, 6 and 11) to the electrical receptacles on the control valve. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="860" KEY="EN30115186000300001" PGBLKNBR="04" REVDATE="20080801" SECTNBR="11" SEQ="003" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>On the OMS Home page, select Power Distribution Control or C/B Management</PARA>
+          <PARA>
+            <REFBLOCK>24-71-00-860-801<REFINT REFID="EN24710086080100"><EFFECT EFFRG="001999"></EFFECT>24-71-00-860-801-A</REFINT></REFBLOCK>. </PARA>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="865" KEY="EN30115186500300001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="11" SEQ="003" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Remove the tag(s) and/or the SAFETY CLIP-CIRCUIT BREAKER and close/unlock this(these) circuit breaker(s):</PARA>
+          <CBLST ACTION="close" CHKSUM="E8426184">
+            <CBSUBLST>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">801-DL</CB>
+                <CBNAME>WING A-ICE VLV OUTER</CBNAME>
+                <PAN PANTYPE="elec">SEPDC1</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">800-DL</CB>
+                <CBNAME>WING A-ICE VLV INNER</CBNAME>
+                <PAN PANTYPE="elec">SEPDC2</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+          </CBLST>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="710" KEY="EN30115171000100001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="11" SEQ="001" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Operational Test</PARA>
+          <LIST2>
+            <L2ITEM>
+              <WARNING>
+                <PARA>YOU MUST NOT TOUCH HOT PARTS WITHOUT APPLICABLE GLOVES. HOT PARTS CAN CAUSE AN INJURY. IF YOU GET AN INJURY, PUT IT IN COLD WATER FOR 10 MINUTES AND GET MEDICAL AID. </PARA>
+              </WARNING>
+              <PARA>Do the operational test of the wing ice-protection system <REFBLOCK>30-11-00-710-801<REFINT REFID="EN30110071080100"><EFFECT EFFRG="001999"></EFFECT>30-11-00-710-801-A</REFINT></REFBLOCK>. During the test: </PARA>
+              <UNLIST BULLTYPE="BULLET">
+                <UNLITEM>
+                  <PARA>Make sure that air flows from the exhaust holes in the bottom skin of slat 4 </PARA>
+                </UNLITEM>
+                <UNLITEM>
+                  <PARA>Examine the control valve connections with the telescopic box assembly and the anti-icing duct for air leakage. There must be no leakage. </PARA>
+                </UNLITEM>
+              </UNLIST>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN30115142000300001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="11" SEQ="003" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Complete the Installation </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Make sure that the nuts on the clamps (2 and 10) are torqued <TOR><TORVALUE MAX="0.5" MIN="0.4" UNIT="m.daN"><TORVALUE MAX="44.25" MIN="35.40" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Use red <CON CONTYPE="AFRM"><CONNBR>07020*</CONNBR><CONNAME>PAINTS FOR DETAIL (INTERNAL AND EXTERN AL)</CONNAME></CON> to make a 2 mm (0.0787 in.) x 8 mm (0.3149 in.) witness mark across the clamp nuts and their related clamps (2 and 10). </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+  <TOPIC>
+    <TITLE>Close-up</TITLE>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="410" KEY="EN30115141000100001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="11" SEQ="001" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Close Access</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Make sure that the work area is clean and clear of tools and other items.</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the access panel <PAN PANTYPE="accpan">522NB</PAN> ( <PAN PANTYPE="accpan">622NB</PAN>) or <PAN PANTYPE="accpan">522QB</PAN> ( <PAN PANTYPE="accpan">622QB</PAN>), as applicable <REFBLOCK>57-42-37-400-801<REFINT REFID="EN57423740080100"><EFFECT EFFRG="001999"></EFFECT>57-42-37-400-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="30" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="942" KEY="EN30115194200100001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="11" SEQ="001" SUBJNBR="51">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Removal of Equipment</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Remove the ACCESS PLATFORM(S).</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the ground support and maintenance equipment, the special and standard tools and all other items.</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the WARNING NOTICE(S).</PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+</TASK>

@@ -1,16 +1,19 @@
-<ScrollView
+<LinearLayout 
 	xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-    android:background="@color/background0">
+	android:layout_height="fill_parent"
+    android:background="@color/background1_light">
+<ScrollView
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="@dimen/activity_margin"
     tools:context=".MainActivity"
-    android:background="@color/background0">
+    android:background="@color/background1_light">
 
     <!-- Warnings -->
 	<LinearLayout
@@ -26,7 +29,8 @@
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
    			android:padding="@dimen/activity_margin"
-		    android:layout_weight="1">
+		    android:layout_weight="1"
+	    	android:background="@color/background2_light">
 		    <ImageView
 		      android:id="@+id/stateWarning"
 		      android:layout_width="30dp"
@@ -43,20 +47,17 @@
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
 		
-		<LinearLayout android:id="@+id/warnings_text"
+		<LinearLayout android:id="@+id/warnings_layout"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-	    	android:padding="@dimen/activity_margin"
-		    android:background="@color/background0">
+		    android:orientation="vertical">
 			<!-- Content -->
-			<TextView
+			<WebView android:id="@+id/warnings_text"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
 				android:textColor="@color/red"
 			    android:textSize="@dimen/font_size_4"
-			    android:fontFamily="@string/font"
-			    android:text="@string/hello_world"/>
+			    android:fontFamily="@string/font"/>
 		</LinearLayout>
 	</LinearLayout>
 
@@ -75,7 +76,8 @@
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
    			android:padding="@dimen/activity_margin"
-		    android:layout_weight="1">
+		    android:layout_weight="1"
+	    	android:background="@color/background2_light">
 		    <ImageView
 		      android:id="@+id/stateJobSetUp"
 		      android:layout_width="30dp"
@@ -92,17 +94,14 @@
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
 		
-		<LinearLayout android:id="@+id/jobSetUp_text"
+		<LinearLayout android:id="@+id/jobSetUp_layout"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-	    	android:padding="@dimen/activity_margin"
-		    android:background="@color/background0">
+		    android:orientation="vertical">
 			<!-- Content -->
-			<TextView
+			<WebView android:id="@+id/jobSetUp_text"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
-			    android:text="@string/hello_world"
 				android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_4"
 			    android:fontFamily="@string/font"/>
@@ -124,7 +123,8 @@
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
    			android:padding="@dimen/activity_margin"
-		    android:layout_weight="1">
+		    android:layout_weight="1"
+	    	android:background="@color/background2_light">
 		    <ImageView
 		      android:id="@+id/stateProcedure"
 		      android:layout_width="30dp"
@@ -141,17 +141,14 @@
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
 		
-		<LinearLayout android:id="@+id/procedure_text"
+		<LinearLayout android:id="@+id/procedure_layout"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-	  	  	android:padding="@dimen/activity_margin"
-		    android:background="@color/background0">
+		    android:orientation="vertical">
 			<!-- Content -->
-			<TextView
+			<WebView android:id="@+id/procedure_text"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
-			    android:text="@string/hello_world"
 				android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_4"
 			    android:fontFamily="@string/font"/>
@@ -173,7 +170,8 @@
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
    			android:padding="@dimen/activity_margin"
-		    android:layout_weight="1">
+		    android:layout_weight="1"
+	    	android:background="@color/background2_light">
 		    <ImageView
 		      android:id="@+id/stateCloseUp"
 		      android:layout_width="30dp"
@@ -190,17 +188,14 @@
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
 		
-		<LinearLayout android:id="@+id/closeUp_text"
+		<LinearLayout android:id="@+id/closeUp_layout"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-	   		android:padding="@dimen/activity_margin"
-		    android:background="@color/background0">
+		    android:orientation="vertical">
 			<!-- Content -->
-			<TextView
+			<WebView android:id="@+id/closeUp_text"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
-			    android:text="@string/hello_world"
 				android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_4"
 			    android:fontFamily="@string/font"/>
@@ -222,7 +217,8 @@
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
    			android:padding="@dimen/activity_margin"
-		    android:layout_weight="1">
+		    android:layout_weight="1"
+	    	android:background="@color/background2_light">
 		    <ImageView
 		      android:id="@+id/stateTools"
 		      android:layout_width="30dp"
@@ -239,17 +235,14 @@
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
 
-		<LinearLayout android:id="@+id/tools_text"
+		<LinearLayout android:id="@+id/tools_layout"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-	    	android:padding="@dimen/activity_margin"
-		    android:background="@color/background0">
+		    android:orientation="vertical">
 			<!-- Content -->
-			<TextView
+			<WebView android:id="@+id/tools_text"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
-			    android:text="@string/hello_world"
 				android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_4"
 			    android:fontFamily="@string/font"/>
@@ -271,7 +264,8 @@
 		    android:layout_width="fill_parent"
 		    android:layout_height="0dp"
    			android:padding="@dimen/activity_margin"
-		    android:layout_weight="1">
+		    android:layout_weight="1"
+	    	android:background="@color/background2_light">
 		    <ImageView
 		      android:id="@+id/statePictures"
 		      android:layout_width="30dp"
@@ -288,17 +282,14 @@
 			    android:fontFamily="@string/font"/>
 		</LinearLayout>
 
-		<LinearLayout android:id="@+id/pictures_text"
+		<LinearLayout android:id="@+id/pictures_layout"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:orientation="vertical"
-	    	android:padding="@dimen/activity_margin"
-		    android:background="@color/background0">
+		    android:orientation="vertical">
 			<!-- Content -->
-			<TextView
+			<WebView android:id="@+id/pictures_text"
 			    android:layout_width="match_parent"
 			    android:layout_height="wrap_content"
-			    android:text="@string/hello_world"
 				android:textColor="@color/text1_light"
 			    android:textSize="@dimen/font_size_4"
 			    android:fontFamily="@string/font"/>
@@ -306,3 +297,4 @@
 	</LinearLayout>
 </LinearLayout>
 </ScrollView>
+</LinearLayout>
