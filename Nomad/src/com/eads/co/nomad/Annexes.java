@@ -2,10 +2,12 @@ package com.eads.co.nomad;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.Point;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,13 +17,13 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Annexes extends Activity {
 
-	static int xmax = 2500; // 2500 pour la Nexus 10, à changer dans le layout
-							// annexes aussi.
-	static int xmin = xmax / 5; // largeur minimale de la zone de texte ou de
-								// l'annexe.
+	int x;
+	static int xmax; // largeur maximale de la zone de texte ou de l'annexe.
+	static int xmin; // largeur minimale de la zone de texte ou de l'annexe.
 	static int xseparator = 160; // largeur de la barre de séparation.
 	static int yinfobulle = 185; // hauteur de l'image infobulle.
 
@@ -35,8 +37,6 @@ public class Annexes extends Activity {
 	LinearLayout annexLayout;
 	Button closeAnnexButton, fullScreenAnnexButton;
 	AnnexesState state = AnnexesState.NOT_DISPLAYED;
-
-	int x = xmax;
 
 	private void setAnnexeX(int x) {
 		textDocumentation.setLayoutParams(new LayoutParams(x - xseparator / 3,
@@ -89,6 +89,16 @@ public class Annexes extends Activity {
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
 		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
+
+		// Récupération de la largeur de l'écran.
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		xmax = size.x - 40; // Padding de 20px à gauche et à droite.
+		xmin = xmax / 5;
+		x = xmax / 2;
+		Toast.makeText(getApplicationContext(), ""+xmax, Toast.LENGTH_LONG).show();
+
 
 		// Ajout du lien sur la doc texte + le scroll.
 		SpannableString textToShow = new SpannableString(
