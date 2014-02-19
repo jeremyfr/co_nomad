@@ -14,6 +14,7 @@ import android.text.Spannable;
 import android.text.method.LinkMovementMethod;
 import android.text.method.Touch;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MotionEvent;
@@ -29,6 +30,7 @@ public class Annexes extends Activity {
 
 	int x; // abscisse de la séparation entre la zone de texte et l'annexe.
 	static int xmax; // largeur maximale de la zone de texte ou de l'annexe.
+	static int ymax;
 	static int xmin; // largeur minimale de la zone de texte ou de l'annexe.
 	static int xseparator = 160; // largeur de la barre de séparation.
 	static int yinfobulle = 185; // hauteur de l'image infobulle.
@@ -36,14 +38,15 @@ public class Annexes extends Activity {
 	static int start_link = 1204; // numéro du premier caractère du lien.
 	static int end_link = 1213; // numéro du dernier caractère du lien.
 
-	LinearLayout layout;
-	TextView textDocumentation;
-	ImageView separator;
-	ImageView infobulle;
-	LinearLayout annexLayout;
-	Button closeAnnexButton, fullScreenAnnexButton;
-	AnnexesState state = AnnexesState.NOT_DISPLAYED;
+	LinearLayout layout; // Layout des instructions
+	TextView textDocumentation; //Le texte de l'annexe
+	ImageView separator; //La barre verticale
+	ImageView infobulle; // l'image de l'infobulle
+	LinearLayout annexLayout; // Layout de l'annexe
+	Button closeAnnexButton, fullScreenAnnexButton; //Boutons d'options des annexes
+	AnnexesState state = AnnexesState.NOT_DISPLAYED; //Etat de l'annexe
 
+	//Affiche l'annexe
 	private void setAnnexeX(int x) {
 		textDocumentation.setLayoutParams(new LayoutParams(x - xseparator / 3,
 				LayoutParams.WRAP_CONTENT));
@@ -52,22 +55,24 @@ public class Annexes extends Activity {
 		setInfobulle(getY(start_link)); // Mise à jour de la position de
 										// l'infobulle.
 	}
-
+	// Affiche l'annexe et met l'abscisse du séparateur
 	private void setAnnexeXAndX(int x) {
 		setAnnexeX(x);
 		this.x = x;
 	}
-
+	//Affiche le séparateur et l'infobulle
 	private void displaySeparator() {
 		separator.setImageResource(R.drawable.vertical_line);
 		infobulle.setImageResource(R.drawable.infobulle);
 	}
-
+	
+	//Cache le séparateur et l'infobulle
 	private void hideSeparator() {
 		separator.setImageResource(R.drawable.vertical_line_empty);
 		infobulle.setImageResource(R.drawable.vertical_line_empty);
 	}
-
+	
+	//Place l'infobulle à l'ordonnée y
 	private void setInfobulle(int y) {
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 				infobulle.getLayoutParams());
@@ -81,6 +86,7 @@ public class Annexes extends Activity {
 		int line = textDocumentation.getLayout().getLineForOffset(offset);
 		// Position de la ligne contenant le caractère positionné à offset -
 		// valeur du scroll + épaisseur d'une ligne
+		Log.i("Information sur la position du lien", "Position : " + (textDocumentation.getLayout().getLineTop(line) - textDocumentation.getScrollY()+ textDocumentation.getLineHeight()/2));
 		return textDocumentation.getLayout().getLineTop(line)
 				- textDocumentation.getScrollY()
 				+ textDocumentation.getLineHeight()/2;
@@ -103,7 +109,8 @@ public class Annexes extends Activity {
 		Point size = new Point();
 		display.getSize(size);
 		xmax = size.x - 40; // Padding de 20px à gauche et à droite.
-		xmin = xmax / 5;
+		ymax = size.y;
+		xmin = xmax / 5; 
 		x = xmax / 2;
 
 		// Ajout du lien sur la documentation textuelle.
@@ -155,7 +162,19 @@ public class Annexes extends Activity {
 			@Override
 			public boolean onTouchEvent(TextView widget, Spannable buffer,
 					MotionEvent event) {
-				setInfobulle(getY(start_link)); // Mise à jour de la position de
+				int infobulleY = getY(start_link);
+				if (infobulleY < 0){
+					infobulle.setImageResource(R.drawable.fleche_haut);
+					setInfobulle(0);
+				}
+				else if (infobulleY > ymax) {
+					infobulle.setImageResource(R.drawable.fleche_bas);
+					setInfobulle(ymax);
+				}
+				else {
+					infobulle.setImageResource(R.drawable.infobulle);
+					setInfobulle(infobulleY); // Mise à jour de la position de
+				}
 												// l'infobulle.
 				int action = event.getAction();
 				if (action == MotionEvent.ACTION_UP
