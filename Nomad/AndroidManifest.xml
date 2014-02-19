@@ -32,19 +32,13 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="JobCard"
-<<<<<<< HEAD
-            android:label="@string/app_name">
-        </activity>
-        <activity android:name="Testlistview"></activity>
-    </application>
-
-</manifest>
-=======
+            android:name="com.eads.co.nomad.JobCard"
             android:label="@string/app_name" >
         </activity>
+        <activity android:name="Testlistview" >
+        </activity>
         <activity
-            android:name="Annexes"
+            android:name="com.eads.co.nomad.Annexes"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,4 +49,3 @@
     </application>
 
 </manifest>
->>>>>>> 288d8de117d13f6438e918adfda66a4d1e2556d3
