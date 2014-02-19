@@ -3,14 +3,20 @@ package com.eads.co.nomad;
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Point;
+import android.text.Layout;
+import android.text.Selection;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.Spannable;
 import android.text.method.LinkMovementMethod;
+import android.text.method.Touch;
 import android.text.style.ClickableSpan;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -43,6 +49,8 @@ public class Annexes extends Activity {
 				LayoutParams.WRAP_CONTENT));
 		annexLayout.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
 				LayoutParams.WRAP_CONTENT));
+		setInfobulle(getY(start_link)); // Mise à jour de la position de
+										// l'infobulle.
 	}
 
 	private void setAnnexeXAndX(int x) {
@@ -70,7 +78,6 @@ public class Annexes extends Activity {
 	private int getY(int offset) {
 
 		int line = textDocumentation.getLayout().getLineForOffset(offset);
-
 		// Position de la ligne contenant le caractère positionné à offset -
 		// valeur du scroll + épaisseur d'une ligne
 		return textDocumentation.getLayout().getLineTop(line)
@@ -97,10 +104,8 @@ public class Annexes extends Activity {
 		xmax = size.x - 40; // Padding de 20px à gauche et à droite.
 		xmin = xmax / 5;
 		x = xmax / 2;
-		Toast.makeText(getApplicationContext(), ""+xmax, Toast.LENGTH_LONG).show();
 
-
-		// Ajout du lien sur la doc texte + le scroll.
+		// Ajout du lien sur la documentation textuelle.
 		SpannableString textToShow = new SpannableString(
 				textDocumentation.getText());
 		textToShow.setSpan(new ClickableSpan() {
@@ -125,7 +130,47 @@ public class Annexes extends Activity {
 			}
 		}, start_link, end_link, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		textDocumentation.setText(textToShow);
-		textDocumentation.setMovementMethod(LinkMovementMethod.getInstance());
+
+		// Listener sur la documentation complète et sur les liens de la
+		// documentation.
+		// Ajoute le scrolling vertical.
+		class DocumentationMovementMethod extends LinkMovementMethod {
+			@Override
+			public boolean onTouchEvent(TextView widget, Spannable buffer,
+					MotionEvent event) {
+				setInfobulle(getY(start_link)); // Mise à jour de la position de
+												// l'infobulle.
+				int action = event.getAction();
+				if (action == MotionEvent.ACTION_UP
+						|| action == MotionEvent.ACTION_DOWN) {
+					int x = (int) event.getX();
+					int y = (int) event.getY();
+					x -= widget.getTotalPaddingLeft();
+					y -= widget.getTotalPaddingTop();
+					x += widget.getScrollX();
+					y += widget.getScrollY();
+					Layout layout = widget.getLayout();
+					int line = layout.getLineForVertical(y);
+					int off = layout.getOffsetForHorizontal(line, x);
+					ClickableSpan[] link = buffer.getSpans(off, off,
+							ClickableSpan.class);
+					if (link.length != 0) {
+						if (action == MotionEvent.ACTION_UP) {
+							link[0].onClick(widget);
+						} else if (action == MotionEvent.ACTION_DOWN) {
+							Selection.setSelection(buffer,
+									buffer.getSpanStart(link[0]),
+									buffer.getSpanEnd(link[0]));
+						}
+						return true;
+					} else {
+						Selection.removeSelection(buffer);
+					}
+				}
+				return Touch.onTouchEvent(widget, buffer, event);
+			}
+		}
+		textDocumentation.setMovementMethod(new DocumentationMovementMethod());
 
 		// Listener sur le layout entier.
 		layout.setOnTouchListener(new View.OnTouchListener() {
@@ -147,7 +192,6 @@ public class Annexes extends Activity {
 						break;
 					}
 					break;
-
 				case MotionEvent.ACTION_MOVE: // MOVE
 					switch (state) {
 					case NOT_DISPLAYED:
@@ -164,7 +208,6 @@ public class Annexes extends Activity {
 						break;
 					}
 					break;
-
 				case MotionEvent.ACTION_UP: // RELEASE
 					switch (state) {
 					case NOT_DISPLAYED:
@@ -185,7 +228,6 @@ public class Annexes extends Activity {
 
 		// Listener sur le bouton fermer.
 		closeAnnexButton.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				switch (state) {
@@ -209,7 +251,6 @@ public class Annexes extends Activity {
 
 		// Listener sur le bouton plein écran.
 		fullScreenAnnexButton.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				switch (state) {
@@ -232,29 +273,6 @@ public class Annexes extends Activity {
 				}
 			}
 		});
-
-		// Thread pour la mise à jour de la position de l'infobulle (50ms).
-		Thread t = new Thread() {
-
-			@Override
-			public void run() {
-				try {
-					while (!isInterrupted()) {
-						Thread.sleep(50);
-						runOnUiThread(new Runnable() {
-							@Override
-							public void run() {
-								setInfobulle(getY(start_link));
-							}
-						});
-					}
-				} catch (InterruptedException e) {
-				}
-			}
-		};
-
-		t.start();
-
 	}
 
 	@Override
