@@ -116,7 +116,7 @@ public class Annexes extends Activity {
 				case NOT_DISPLAYED:
 					setAnnexeXAndX(xmax / 2);
 					state = AnnexesState.DISPLAYED_FREE;
-					
+
 					// Timer pour la mise à jour de la position de l'infobulle.
 					Timer t = new Timer();
 					class SetInfobulleTask extends TimerTask {
@@ -131,7 +131,7 @@ public class Annexes extends Activity {
 						}
 					}
 					t.schedule(new SetInfobulleTask(), 100);
-					
+
 					break;
 				case DISPLAYED_FREE:
 					setAnnexeX(xmax + xseparator / 3);

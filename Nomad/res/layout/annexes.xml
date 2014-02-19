@@ -31,11 +31,10 @@
 
             <ImageView
                 android:id="@+id/infobulle"
+                android:scaleType="matrix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="matrix"
                 android:src="@drawable/infobulle" />
-
         </RelativeLayout>
 
         <LinearLayout
