@@ -83,7 +83,7 @@ public class Annexes extends Activity {
 		// valeur du scroll + épaisseur d'une ligne
 		return textDocumentation.getLayout().getLineTop(line)
 				- textDocumentation.getScrollY()
-				+ textDocumentation.getLineHeight();
+				+ textDocumentation.getLineHeight()/2;
 	}
 
 	@Override
