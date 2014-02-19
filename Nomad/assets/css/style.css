@@ -1,0 +1,9 @@
+body {
+	background-color: #fdf6e3; 
+	font-size: 22px;
+	color: black;
+}
+
+#warning{
+	color: #dc322f;
+}

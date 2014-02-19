@@ -1,0 +1,2098 @@
+<TASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="400" KEY="EN52142140080100" PGBLKNBR="04" REVDATE="20100201" SECTNBR="14" SEQ="801" SUBJNBR="21">
+  <EFFECT EFFRG="001999">
+  </EFFECT>
+  <TITLE>Installation of the Door-Locking Mechanism Door M5L/M5R</TITLE>
+  <WARNING>
+    <PARA>BEFORE YOU START WORK, YOU MUST PUT ON A SAFETY HARNESS AND ATTACH IT TO THE ACCESS PLATFORM. WITHOUT A SAFETY HARNESS, YOU CAN FALL. THIS CAN KILL YOU OR CAUSE YOU INJURY. </PARA>
+  </WARNING>
+  <ASSODATA>
+    <ZONELST>
+      <ZONE>835</ZONE>
+      <ZONE>845</ZONE>
+    </ZONELST>
+  </ASSODATA>
+  <TFMATR>
+    <PRETOPIC>
+      <TITLE>Reason for the Job</TITLE>
+      <PARA>Self explanatory</PARA>
+    </PRETOPIC>
+    <PRETOPIC>
+      <TITLE>Job Set-up Information</TITLE>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Fixtures, Tools, Test and Support Equipment</PARA>
+          <TABLE>
+            <TGROUP COLS="3">
+              <COLSPEC COLNAME="COL1" COLWIDTH="22*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="4*">
+                  <COLSPEC COLNAME="COL3" COLWIDTH="53*">
+                    <SPANSPEC NAMEEND="COL3" NAMEST="COL1" SPANNAME="WHOLE">
+                      <THEAD>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>REFERENCE</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>QTY</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>DESIGNATION</PARA>
+                          </ENTRY>
+                        </ROW>
+                      </THEAD>
+                      <TBODY>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>1</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <STDNAME>SCRAPER - NON METALLIC</STDNAME>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="3.60" MIN="0.20" UNIT="m.daN"><TORVALUE MAX="26.00" MIN="2.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>
+                              <TOOLNBR>98L52008592000</TOOLNBR>
+                            </PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>1</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>SLING-UNIVERSAL,DOORS</PARA>
+                          </ENTRY>
+                        </ROW>
+                      </TBODY>
+                    </SPANSPEC>
+                  </COLSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Consumable Materials</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>REFERENCE</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>DESIGNATION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>04004*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>COMMON GREASE</PARA>
+                          <PARA>SYNTH.ESTER BASED GREASE HIGH PRESSURE</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>05002*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>SPECIAL MATERIALS</PARA>
+                          <PARA>PUTTY, ZINC CHROMATE GENERAL PURPOSE</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>05013*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>SPECIAL MATERIALS</PARA>
+                          <PARA>RELEASE AGENT (OBSOLETE USE 05-013A)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>09018*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>SEALANTS</PARA>
+                          <PARA>NO LONGER AVAILABLE</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>11004*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>CLEANING AGENTS</PARA>
+                          <PARA>1.1.1TRICHLOROETHANE (METHYL CHLOROFORM)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>19010*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Work Zones and Access Panels</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>ZONE/ACCESS</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>ZONE DESCRIPTION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <ZONE>835</ZONE>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>MAIN DECK PASSENGER/CREW DOOR M5L, LH</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <ZONE>845</ZONE>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>MAIN DECK PASSENGER/CREW DOOR M5R, RH</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Expendable Parts</PARA>
+          <TABLE>
+            <TGROUP COLS="3">
+              <COLSPEC COLNAME="COL1" COLWIDTH="11*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="51*">
+                  <COLSPEC COLNAME="COL3" COLWIDTH="17*">
+                    <SPANSPEC NAMEEND="COL3" NAMEST="COL1" SPANNAME="WHOLE">
+                      <THEAD>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>FIG.ITEM</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>DESIGNATION</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>IPC-CSN</PARA>
+                          </ENTRY>
+                        </ROW>
+                      </THEAD>
+                      <TBODY>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>8</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52122113-220</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>28</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142102-100</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>37</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142102-280</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>43</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142102-280</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>65</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142102-280</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>100</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pins</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142104-350</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>100</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142104-360</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>14</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142105-110</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>1</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142106-240</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>20</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142106-240</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>40</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142106-240</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>1</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142107-180</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>15</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142107-180</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>50</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142107-180</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>38</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142107-420</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>9</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142107-420</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>49</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142108-620</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>6</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142109-130</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>25</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142109-500</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>33</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142109-500</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>50</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142109-500</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>6</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142110-130</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>25</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142110-380</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>27</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142110-380</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>33</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142110-380</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>50</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142110-380</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>74</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142110-380</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>51</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142111-040</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>61</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142111-040</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>66</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142111-600</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>27</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142112-140</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>2</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142114-060</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>18</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142114-330</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>40</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142114-460</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>8</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142115-460</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>8</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52142115-520</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                      </TBODY>
+                    </SPANSPEC>
+                  </COLSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Referenced Information</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>REFERENCE</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>DESIGNATION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN20280091280300">20-28-00-912-803-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Electrical Bonding of Components with Conductive Screws and Bolts and Bonding Straps</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180100">24-41-00-861-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft Electrical Circuits from the External Power Receptacles 2, 3, 1 and 4</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180101">24-41-00-861-801-A-01</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft  Electrical Circuits from the APU (APU Started with the APU Battery)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180102">24-41-00-861-801-A-02</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft  Electrical Circuits from the External Power Receptacles  2, 3 and 1</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180103">24-41-00-861-801-A-03</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft  Electrical Circuits from the APU (APU Started with the External Power Receptacles 1 and 3)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086280100">24-41-00-862-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>De-energize the Aircraft Electrical Circuits from the External Power Receptacles 4, 1, 3 and 2</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086280101">24-41-00-862-801-A-01</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>De-energize the Aircraft  Electrical Circuits from the APU</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086280102">24-41-00-862-801-A-02</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>De-energize the Aircraft  Electrical Circuits from the External Power Receptacles 1, 3 and 2</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN25235300080100">25-23-53-000-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Removal of the Main-Deck Door Linings</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN25235340080100">25-23-53-400-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Installation of the Main-Deck Door Linings</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN25624100080100">25-62-41-000-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Removal of the Door-Mounted Slide-Raft</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN25624140080100">25-62-41-400-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Installation of the Door-Mounted Slide-Raft</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN25800091080200">25-80-00-910-802-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Removal and Installation of the Insulation Material</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100001080100">52-10-00-010-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Open the Passenger/Crew Doors</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100072080100">52-10-00-720-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Functional Test of the Passenger/Crew Doors M1L/M1R, M2L/M2R, M4L/M4R, M5L/M5R</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100082080400">52-10-00-820-804-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Adjustment of the Passenger/Crew Doors M5L/M5R</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100086080100">52-10-00-860-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Special Precautions before Work on the Passenger/Crew Door</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100086080200">52-10-00-860-802-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Special Precautions after Work on the Passenger/Crew Door</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100094080100">52-10-00-940-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Installation/Removal of the Hoisting Sling</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52141240080100">52-14-12-400-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Installation of the Door Support Arm, Door Bumper, Door Stay Bracket, Lining Brackets, Guide Arms and the Guide Arm Hinge-Fitting Door M5L/M5R</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52142182080100">52-14-21-820-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Adjustment of the Door Locking Mechanism Door M5L/M5R</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52142282080100">52-14-22-820-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Adjustment of the Emergency Escape Slide Release Mechanism on Door M5L/M5R</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52711140080900">52-71-11-400-809-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Installation of the Proximity Sensors of the Passenger/Crew Door M5</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52711182080800">52-71-11-820-808-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Adjustment of the Proximity Sensors of the Passenger/Crew Door M5</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52142199101000001">Cover Mechanism</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52142199101100001">Lower and Upper Connection Link</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52142199101200001">Inner and Outer Door Operation Handle</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52142199101300001">Locked/Unlocked Indicator</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52142199101400001">Latch/Lift Shaft</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52142199101500001">Drive Shaft</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52142199101600001">Antilowering Mechanism</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52142199101700001">Torsion Bar</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52142199101800001">Brackets</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+      </LIST1>
+    </PRETOPIC>
+  </TFMATR>
+  <TOPIC>
+    <TITLE>Job Set-up</TITLE>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="860" KEY="EN52142186000200001" PGBLKNBR="04" REVDATE="20100201" SECTNBR="14" SEQ="002" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Aircraft Maintenance Configuration</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Make sure that the access platform is in position. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the aircraft electrical circuits are energized</PARA>
+              <PARA>
+                <REFBLOCK>24-41-00-861-801<REFINT REFID="EN24410086180100"><EFFECT EFFRG="001999"></EFFECT>24-41-00-861-801-A</REFINT><REFINT REFID="EN24410086180101"><EFFECT EFFRG="001999"></EFFECT>24-41-00-861-801-A-01</REFINT><REFINT REFID="EN24410086180102"><EFFECT EFFRG="001999"></EFFECT>24-41-00-861-801-A-02</REFINT><REFINT REFID="EN24410086180103"><EFFECT EFFRG="001999"></EFFECT>24-41-00-861-801-A-03</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the special precautions are done before you work on the door <REFBLOCK>52-10-00-860-801<REFINT REFID="EN52100086080100"><EFFECT EFFRG="001999"></EFFECT>52-10-00-860-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the passenger crew door is open <REFBLOCK>52-10-00-010-801<REFINT REFID="EN52100001080100"><EFFECT EFFRG="001999"></EFFECT>52-10-00-010-801-A</REFINT></REFBLOCK> and the sling <TED><TOOLNBR>98L52008592000</TOOLNBR><TOOLNAME>SLING-UNIVERSAL,DOORS</TOOLNAME></TED> is installed <REFBLOCK>52-10-00-940-801<REFINT REFID="EN52100094080100"><EFFECT EFFRG="001999"></EFFECT>52-10-00-940-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the slide raft is removed <REFBLOCK>25-62-41-000-801<REFINT REFID="EN25624100080100"><EFFECT EFFRG="001999"></EFFECT>25-62-41-000-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the door linings <REFBLOCK>25-23-53-000-801<REFINT REFID="EN25235300080100"><EFFECT EFFRG="001999"></EFFECT>25-23-53-000-801-A</REFINT></REFBLOCK> are removed. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the thermal insulation and sound insulation <REFBLOCK>25-80-00-910-802<REFINT REFID="EN25800091080200"><EFFECT EFFRG="001999"></EFFECT>25-80-00-910-802-A</REFINT></REFBLOCK> is removed. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+  <TOPIC>
+    <TITLE>Procedure</TITLE>
+    <WARNING>
+      <PARA>USE SOLVENTS/CLEANING AGENTS, SEALANTS AND OTHER SPECIAL MATERIALS ONLY WITH A GOOD FLOW OF AIR THROUGH THE WORK AREA. </PARA>
+      <PARA>THESE MATERIALS ARE POISONOUS AND FLAMMABLE AND SKIN IRRITANTS. </PARA>
+      <PARA>OBEY THE MANUFACTURERS INSTRUCTIONS. </PARA>
+      <PARA>PUT ON PROTECTIVE CLOTHING. </PARA>
+      <PARA>DO NOT GET THEM IN YOUR MOUTH. </PARA>
+      <PARA>DO NOT SMOKE. </PARA>
+      <PARA>DO NOT BREATHE THE GAS. </PARA>
+      <PARA>GET MEDICAL HELP IF YOUR SKIN OR EYES BECOME IRRITATED. </PARA>
+    </WARNING>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="210" KEY="EN52142121000100001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="001" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Preparation for Installation</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Clean the component interface and/or the adjacent area.</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Do a visual inspection of the component interface and/or the adjacent area.</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the parts retained from the removed component are clean and in the correct condition.</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the remaining sealant from the fittings, brackets, flanges and the structure. Use a <STDNAME>SCRAPER - NON METALLIC</STDNAME>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <WARNING>
+                <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 11-004. </PARA>
+                <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+              </WARNING>
+              <PARA>Clean the contact area of the fittings and the structure with <CON CONTYPE="AFRM"><CONNBR>11004*</CONNBR><CONNAME>CLEANING AGENTS</CONNAME></CON>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <WARNING>
+                <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 04-004. </PARA>
+                <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+              </WARNING>
+              <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>04004*</CONNBR><CONNAME>COMMON GREASE</CONNAME></CON> to all parts that move, but this does not include the PTFE bushes. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <WARNING>
+                <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 05-002. </PARA>
+                <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+              </WARNING>
+              <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>05002*</CONNBR><CONNAME>SPECIAL MATERIALS</CONNAME></CON> to the shafts of the bolts, but this does not include the bolts installed on the shock-mounts. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN52142142000100001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="001" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Installation of the Cover Mechanism </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52142199101000001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Cover Mechanism</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Install the levers (49, 53) and the rod (57) (Refer to detail F): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the bush (50) and the levers (49) in position and install the washers (51,48), the bolt (52) and the nut (47). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the other end of the levers (49) in position and install the washers (35), the bolts (55) and the nuts (56). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the lever (53) in position and install the washers (32, 33) as recorded during the removal procedure, Install the bolt (31), the washer (30) and the nut (29). Safety the nut (29) with the <EXPD EXPDTYPE="AFRM"><CSN>52142102-100</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>28</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rod (57) in position and install the washers (35), the bolts (54) and the nuts (36). Safety the nuts (36) with the <EXPD EXPDTYPE="AFRM"><CSN>52142102-280</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>37</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the lever assembly (40, 44) (Refer to detail C and E): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the lever (40) in position and install the washers (32, 33) as recorded during the removal procedure and install the bolt (31), the washer (30) and the nut (29). Safety the nut (29) with the <EXPD EXPDTYPE="AFRM"><CSN>52142102-100</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>28</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>put the rod (38) in position and install the washers (35), the bolts (34) and the nuts (36). Safety the nuts (36) with the <EXPD EXPDTYPE="AFRM"><CSN>52142102-280</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>37</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the lever (44) in position as recorded during the removal procedure and install the pin (39), the washers (41, 42) and the <EXPD EXPDTYPE="AFRM"><CSN>52142102-280</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>43</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the lever (44) together with the bush (46) in position on the bracket (22) and install the washers (35), the bolt (45) and the nut (36). Safety the nut (36) with the <EXPD EXPDTYPE="AFRM"><CSN>52142102-280</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>37</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the hinge arms (4, 25) and the cover assembly (1) (Refer to detail C and D): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the hinge arms (4, 25) in position and install the washers (5, 6), the bolts (2) and the nuts (7). Safety the nuts (7) with the <EXPD EXPDTYPE="AFRM"><CSN>52142115-460</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>8</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the bush (18), the washers (16) and the cover plate (1) in position and install the washers (11), the bolts (12) and the nuts (10). Safety the nuts (10) with the <EXPD EXPDTYPE="AFRM"><CSN>52142115-520</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>8</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washers (21) and the bolts (20). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the brackets (15, 19, 26) in position and install the washers (14) and the bolts (13). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN52142142000200001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="002" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Installation of the Lower and Upper Connection Link </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52142199101100001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Lower and Upper Connection Link</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Install the lower connection link (28) (Refer to detail D and E): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the brackets (31, 32) in position and install the screws (33). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the bush (34) in the depth recorded during the removal procedure. Install the fork fitting (35), the washer (36), and the nut (37). Safety the nut (37) with the <EXPD EXPDTYPE="AFRM"><CSN>52142107-420</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>38</ITEMNBR></EXPD>. Put the tabwasher (30) in position and safety the bush (34) with the bolt (29). Safety the bolt (29) with the tabwasher (30). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the connection link (28) and the washers (58, 24, 25, 26, 27) as recorded during the removal procedure in position and install the shaft (23), the washer (57), the tabwasher (56) and the bolt (55). Safety the bolt (55) with the tabwasher (56). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the bonding straps (40, 43) in position on the connection link (28) and install the washers (42), the bolt (41) and the nut (44). Put the bonding strap (40) in position on the structure and install the washers (18), the bolt (17) and the nut (39). Put the bonding strap (43) in position on the bracket (31) and install the washer (42) and the bolt (51). Do the electrical bonding <REFBLOCK>20-28-00-912-803<REFINT REFID="EN20280091280300"><EFFECT EFFRG="001999"></EFFECT>20-28-00-912-803-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rod (47) in position and install the washers (46, 48), the bolts (45) and the nuts (49). Safety the nuts (49) with the <EXPD EXPDTYPE="AFRM"><CSN>52142107-180</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>50</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the bracket in the area of lower connection link (Refer to paragraph K. detail Y). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the upper connection Link (8) (Refer to detail C and D): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Install the washer (12), the fork fitting (15), the washer (11), and the nut (10). Safety the nut (10) with the <EXPD EXPDTYPE="AFRM"><CSN>52142107-420</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>9</ITEMNBR></EXPD>. cotter pin (9). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the connection link (8) and the washers (4, 5) in position as recorded during the removal procedure and install the bolts (7), the washers (3) and the nuts (2). Safety the nuts (2) with the <EXPD EXPDTYPE="AFRM"><CSN>52142107-180</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>1</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the brackets (13, 14) and the bonding strap (16) in position and install the washer (20) and the screw (22). Put the bonding straps (16, 19) in position and install the washers (18, 20) and the bolts (17, 21). Do the electrical bonding <REFBLOCK>20-28-00-912-803<REFINT REFID="EN20280091280300"><EFFECT EFFRG="001999"></EFFECT>20-28-00-912-803-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the bracket in the area of the lower connection link (Refer to paragraph K. detail P). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the door support arm <REFBLOCK>52-14-12-400-801<REFINT REFID="EN52141240080100"><EFFECT EFFRG="001999"></EFFECT>52-14-12-400-801-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN52142142000300001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="003" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Installation of the Outer and the Inner Door-Operation Handle Mechanism </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52142199101200001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Inner and Outer Door Operation Handle</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Install the flap (110) on the outer door-operation handle (73). </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>On the flap (110), install the axle (106) and the locksprings (105). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the roller (108) and the washer (109) in position and install the axis (107), the washer (102) and the nut (101). Safety the nut (101) with the <EXPD EXPDTYPE="AFRM"><CSN>52142104-360</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>100</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Make sure that the upper nut (103) is in position as recorded during the removal procedure. Put the flap (110) in position and install the axis (104), the washers (102) and the nuts (101). Safety the nuts (101) with the <EXPD EXPDTYPE="AFRM"><CSN>52142104-350</CSN><EXPDNAME>cotter pins</EXPDNAME><ITEMNBR>100</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the lower nut (103). Safety the nuts (103) with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the outer door-operation handle (73) (Refer to detail E): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the flange (74). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 04-004. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>04004*</CONNBR><CONNAME>COMMON GREASE</CONNAME></CON> to the new O-ring (83) and install it. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the levers (71, 72) in position as recorded during the removal procedure and install the flange (74), the outer door-operation handle (73) and the shaft (78). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washers (76), the bolts (77) and the nuts (75). Install the washer (58), the tabwasher (57) and the bolt (56). Safety the bolt (56) with the tabwasher (57). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bearing flange (61). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the inner washers (59, 60) as recorded during the removal procedure in position and install the bearing flange (61), the washers (63), the bolts (64) and the nuts (62). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the outer washers (60, 59, 58), the tabwasher (57) and the bolt (56). Safety the bolt (56) with the tabwasher (57). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the levers (71, 72) in position as recorded during the removal procedure and install the tabwashers (36) and the bolts (37). Safety the bolts (37) with the tabwashers (36). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rod (68) in position and install the washers (67, 69), the bolt (70) and the nut (66). Safety the nut (66) with the <EXPD EXPDTYPE="AFRM"><CSN>52142102-280</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>65</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the cover plate (80) in position and install the washers (81) and the bolts (82) (Refer to detail B). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the stop (91) and the guide fitting (93). </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the guide fitting (93). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the guide fitting (93) and the washers (94, 95) in position and install the screws (98). If removed, install the stop plate (96) and the screws (97). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the stop (91), the screw (92) and the nut (90). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the shaft (44) of the inner door-operation handle (5) (Refer to detail D): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the levers (39, 38, 35) and the inner washers (33, 34) in position as recorded during the removal procedure and install the shaft (44). Install the tabwashers (36) and the bolts (37). Safety the bolts (37) with the tabwashers (36). Install the outer washers (34, 33, 32), the tabwasher (31) and the bolt (30). Safety the bolt (30) with the tabwasher (31). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the cover (85). Put the cover (85) in position and install the washers (63, 54), the bolts (64) and the nuts (51). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rod (29) in position and install the washers (27, 21), the bolts (28) and the nuts (25). Safety the nuts (25) with the <EXPD EXPDTYPE="AFRM"><CSN>52142106-240</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>20</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rod (22) in position and install the washers (23, 21), the bolt (24) and the nut (25). Safety the nuts (25) with the <EXPD EXPDTYPE="AFRM"><CSN>52142106-240</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>20</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>On the lever (39), install the roller (42), the pin (43), the washer (41) and the <EXPD EXPDTYPE="AFRM"><CSN>52142106-240</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>40</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the plate (48). Put the plate (48) and the stop fitting (49) in position and install the washers (50) and the bolts (46, 50). Install the washers (16, 47, 17, 50), the stop bolt (45) and the nut (19). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the washers (16, 17) as recorded during the removal procedure in position and install the stop bolt (15) and the nut (19). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the inner door-operation handle (5) (Refer to detail C): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Install the shaft (9), the bush (10), the handle grip (11), the washer (12) and the nut (13). Safety the nut (13) with the <EXPD EXPDTYPE="AFRM"><CSN>52142105-110</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>14</ITEMNBR></EXPD> and install the cap (79). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the inner door-operation handle (5) in position as recorded during the removal procedure and install the plate (3), the bolt (4), the washer (7) and the nut (8). Install the tabwasher (2) and the bolt (1). Safety the bolt (1) with the new tabwasher (2). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN52142142000400001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="004" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Installation of the Locked/Unlocked Indication </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52142199101300001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Locked/Unlocked Indicator</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Install the lever (27) and (53) (Refer to detail D, E and F): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (33). Put the bracket (33) in position and install the washers (11), the bolts (12, 31) and the nuts (10). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (42) and the shims (41). Install the bracket (42), the number of shims (41) as recorded during the removal procedure, the washers (40), the bolts (31) and the nuts (10). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the levers (53, 27) in position on the rod (25). Install the rod (25), the washers (35, 36), the bushes (37), the tabwashers (38) and the bolts (39). Install the washers (35, 36) as recorded during the removal procedure. Safety the bolts (39) with the tabwashers (38). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the clamp (45), the washers (47), the pin (48) and the <EXPD EXPDTYPE="AFRM"><CSN>52142108-620</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>49</ITEMNBR></EXPD>. Install the washers (44), the bolt (46) and the nut (43). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>On the levers (27, 53), install the pins (20), the washers (17) and the locksprings (16). Install the pins (18) and the screws (19). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the bolts (12), the washers (11) and the nuts (10). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the springs (13). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the lever (15) (Refer to detail C): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the washers (21, 22) as recorded during the removal procedure and the lever (15) in position and install the bolt (14), the washer (22) and the nut (24). Safety the nut (24) with the cotter pin (23) </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>On the lever (15), install the pin (20), the washers (17) and the locksprings (16). Install the pins (18) and the screws (19). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the bolts (12), the washers (11) and the nuts (10). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the springs (13). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the covers (6, 9) (Refer to detail (B): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (7). Install the bracket (7), the washers (3), the bolts (2) and the nuts (1). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the covers (6, 9) in position and install the washers (3), the bolts (5) and the nuts (8). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN52142142000500001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="005" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Installation of the Latch/lift Shaft </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52142199101400001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Latch/Lift Shaft</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Install the latch/lift shaft (84) (Refer to detail G and H): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (92). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>On the latch/lift shaft (84), put the bracket (83), the washers (85, 86, 87, 88) and the bracket (92) in position as recorded during the removal procedure. Install the latch/lift shaft (84), the washers (94), the bolts (96) and the nuts (93). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washers (85, 86, 87, 88) as recorded during the removal procedure and install the washer (89) and the nut (90). Safety the nut (90) with the cotter pin (91). TBD </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the tabwasher (40) and the bolt (39). Safety the bolt (39) with the tabwasher (40). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the lever (44) in position and install the washer (43), the plate (82) and the bolt (42). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the latch/lift shaft (38) (Refer to detail D and F): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (69). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>On the latch/lift shaft (38), put the bracket (41) in position as recorded during the removal procedure and install the lockspring (66), the washers (67, 68) as recorded during the removal procedure and the bracket (69). Install the latch/lift shaft (38), the washers (61, 64), the bolts (62, 63) and the nuts (60, 65). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install washers (68, 67) as recorded during the removal procedure and install the bush (70). Put the lever (71) in position as recorded during the removal procedure and install the tabwasher (72) and the bolt (73). Safety the bolt (73) with the tabwasher (72). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the tabwasher (40) and the bolt (39). Safety the bolt (39) with the tabwasher (40). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the lever (44) in position and install the washer (43), the plate (45) and the bolt (42). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the target brackets (23, 81) (Refer to detail D and G): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the target brackets (23, 81) in position and install the washers (22), the bolts (21) and the nuts (24). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the target levers (14, 80) and the washers (11, 12) in position as recorded during the removal procedure and install the bolts (13), the washers (15) and the nuts (16). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the nuts (17, 19), the bolts (18), the bushes (20) and the nuts (16). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the lever (4) (Refer to detail C): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Install the lever (4) as recorded during the removal procedure and install the washer (8), the tabwasher (9) and the bolt (10). Safety the bolt (10) with the tabwasher (9). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the bush (3), the roller (2), the bolt (1), the washer (5) and the nut (7). Safety the nut (7) with the <EXPD EXPDTYPE="AFRM"><CSN>52142109-130</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>6</ITEMNBR></EXPD> and <EXPD EXPDTYPE="AFRM"><CSN>52142110-130</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>6</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the rod (48) (Refer to detail E): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>On the rod (48), install the lug (49), the washer (47) and the nut (46). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rod (48) in position and install the washers (52, 56), the bolts (54, 55) and the nuts (51). Safety the nuts (51) with the <EXPD EXPDTYPE="AFRM"><CSN>52142109-500</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>50</ITEMNBR></EXPD> and <EXPD EXPDTYPE="AFRM"><CSN>52142110-380</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>50</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the rod (79) (Refer to detail F): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the rod (79) in position and install the washers (76, 77), the bolts (78) and the nuts (75). Safety the nuts (75) with the <EXPD EXPDTYPE="AFRM"><CSN>52142110-380</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>74</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <WARNING>
+                <PARA>BE VERY CAREFUL WHEN YOU REMOVE OR INSTALL THE SPRING. BECAUSE THERE IS REMAINING TENSION IN THE SPRING, IT CAN CAUSE YOU INJURY. </PARA>
+              </WARNING>
+              <PARA>Install the springs (31) (Refer to detail D): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 04-004. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>04004*</CONNBR><CONNAME>COMMON GREASE</CONNAME></CON> to the springs (31) and the inner surface of the spring body (30, 32). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Carefully put the springs (31) together with the spring body (30, 32) in position and install the washers (28, 27, 36, 35), the bolts (29, 37) and the nuts (26, 34). Safety the nuts (26, 34) with the <EXPD EXPDTYPE="AFRM"><CSN>52142110-380</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>25</ITEMNBR></EXPD>, <EXPD EXPDTYPE="AFRM"><CSN>52142110-380</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>33</ITEMNBR></EXPD><EXPD EXPDTYPE="AFRM"><CSN>52142109-500</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>25</ITEMNBR></EXPD> and <EXPD EXPDTYPE="AFRM"><CSN>52142109-500</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>33</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN52142142000600001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="006" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Installation of the Drive Shaft </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52142199101500001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Drive Shaft</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Install the drive shaft (44) (Refer to detail A, B, D, G and H): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the roller (13) in position and install the washers (12), the bolt (9), the nut (67) and the <EXPD EXPDTYPE="AFRM"><CSN>52142111-600</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>66</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the washers (41, 42) in position as recorded during the removal procedure and install the stop bolts (43) and the nuts (40). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the brackets (10, 38, 65). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the brackets (38, 65) in position on the drive shaft (44) and install the drive shaft (44), the washers (37, 46), the bolts (36, 64) and the nuts (39, 45). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the bracket (10) in position and install the washers (8), the bolts (7) and the nuts (11). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the latch/lift shaft as described in paragraph F.. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the shaft (33) (Refer to detail B and C): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (29). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>On the shaft (33), put the levers (22, 34) in position as recorded during the removal procedure and install the tabwashers (21) and the bolts (20). Safety the bolts (20) with the tabwashers (21). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the shaft (33) together with the bracket (29) in position and install the washers (30), the bolts (32) and the nuts (31). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the excenter (71) in position as recorded during the removal procedure and install the washers (69), the bolt (70) and the nut (68). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the rods (14, 28, 35) (Refer to detail C): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the rod (14) in position and install the washers (17, 18), the bolt (19), the nut (16) and the <EXPD EXPDTYPE="AFRM"><CSN>52142107-180</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>15</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rods (28, 35) in position and install the washers (24, 25), the bolts (23), the nuts (26) and the <EXPD EXPDTYPE="AFRM"><CSN>52142110-380</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>27</ITEMNBR></EXPD> and <EXPD EXPDTYPE="AFRM"><CSN>52142112-140</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>27</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the rod (6) (Refer to detail B): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the rod (6) in position and install the washers (4, 3), the bolts (5), the nuts (2) and the <EXPD EXPDTYPE="AFRM"><CSN>52142106-240</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>1</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <WARNING>
+                <PARA>BE VERY CAREFUL WHEN YOU REMOVE OR INSTALL THE SPRING. BECAUSE THERE IS REMAINING TENSION IN THE SPRING, IT CAN CAUSE YOU INJURY. </PARA>
+              </WARNING>
+              <PARA>Install the springs (55) (Refer to detail E and F): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Install the spring bracket (62), the washer (63) and the nut (39). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>04004*</CONNBR><CONNAME>COMMON GREASE</CONNAME></CON> to the springs (55), to the bushes (54, 56) and the spring guides (53, 57). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the spring guides (53) in position and install the stops (49), the washers (50), the nuts (52) and the <EXPD EXPDTYPE="AFRM"><CSN>52142111-040</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>51</ITEMNBR></EXPD>. Carefully install the bushes (54), the springs (55), the bushes (56), the spring guides (57), the washers (59, 37), the bolts (58), the nuts (60) and the <EXPD EXPDTYPE="AFRM"><CSN>52142111-040</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>61</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 04-004. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Install the washers (47, 46) as recorded during the removal procedure, the stop bolt (48) and the nut (45). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the lining brackets which you have removed for the removal procedure (Refer to paragraph K.). </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN52142142000700001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="007" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Installation of the Anti Lowering Mechanism </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52142199101600001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Antilowering Mechanism</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Install the bracket (21) (Refer to detail C): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>On the lever (12), put the washer (15) and the tabwasher (16) in position and install the stop bolt (17). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the lever (12) and the washers (13, 14) in position and install the washers (22, 20), the bolt (23) and the nut (19). Safety the nut (19) with the <EXPD EXPDTYPE="AFRM"><CSN>52142114-330</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>18</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (21). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the bracket (21) in position and install the washers (4, 26), the bolts (25, 27, 29) and the nuts (24, 28). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the shaft (8) (Refer to detail B and D): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bearing flange (31). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the shaft (8), the washers (30, 41) as recorded during the removal procedure and install the bearing flange (31). Install the washers (26), the bolts (25) and the nuts (28). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>On the lever (32), install the bush (37, 36), the roller (35), the bolt (34), the washer (38) and the nut (39). safety the nut (39) with the <EXPD EXPDTYPE="AFRM"><CSN>52142114-460</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>40</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the lever (32), the washer (33) and the nut (3). Safety the nut (3) with the <EXPD EXPDTYPE="AFRM"><CSN>52142114-060</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>2</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the lever (9) in position as recorded during the removal procedure and install the tabwasher (10) and the bolt (11). Safety the bolt (11) with the tabwasher (10). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rod (1) in position and install the washers (4, 5), the bolts (6) and the nuts (3). Safety the nuts (3) with the <EXPD EXPDTYPE="AFRM"><CSN>52142114-060</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>2</ITEMNBR></EXPD>. cotter pins (2). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE VERY CAREFUL WHEN YOU REMOVE OR INSTALL THE SPRING. BECAUSE THERE IS REMAINING TENSION IN THE SPRING, IT CAN CAUSE YOU INJURY. </PARA>
+                  </WARNING>
+                  <PARA>Install the spring (7). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN52142142000800001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="008" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Installation of the Torsion Bar </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52142199101700001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Torsion Bar</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Install the torsion bar (25) (Refer to detail D): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the flange (18), and the bearing flanges (20, 45). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the lever (22), the bearing flange (20) and the washers (21) in position as recorded during the removal procedure and install the pipe (19). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washers (5), the bolts (7) and the nuts (1). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the tabwasher (23) and the bolt (24). Safety the bolt (24) with the tabwasher (23). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the flange (18) in position and install the washers (5), the bolts (7) and the nuts (1). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the torsion bar (25). Make sure that the markings on the torsion bar (25), the lever (33) and the torsion pipe (19) is in line. Do the pre-adjustment of the torsion spring <REFBLOCK>52-14-21-820-801<REFINT REFID="EN52142182080100"><EFFECT EFFRG="001999"></EFFECT>52-14-21-820-801-A</REFINT></REFBLOCK>. Install the washers (30) and the locksprings (17, 29). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the bearing flange (45) in position and install the washers (5), the bolts (31, 44) and the nuts (1). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washer (32), the lever (33) and the lockspring (34). Make sure that the markings on the torsion bar (25), the lever (33) and the torsion pipe (19) are in line. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the support bearings (26) in position and install the cable ties (27, 28). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the screw (39) in position on the bearing flange (45) and install the nuts (40, 41), the washer (42) and the nut (43). Put the screw (39) in position on the lever (33) and install the washers (37, 36), the pin (38) and the cotter pin (35). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the rod (16) and the stop (6) (Refer to detail B and C): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the rod (16) in position and install the washers (13, 14), the bolts (15) and the nuts (12). Safety the nuts (12) with the cotter pins (11). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the stop (6) in position and install the washers (2), the bolts (7) and the nuts (1). <EXPD EXPDTYPE="AFRM"><CSN>52122113-220</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>8</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the stop bolt (4) in position as recorded during the removal procedure and install the washers (2, 5) and the nuts (1). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="420" KEY="EN52142142000900001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="009" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Installation of the Brackets </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52142199101800001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Brackets</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Put the brackets (1, 4, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 22, 24, 25 and 26) in position and install the washers (2) and the bolts (3) (Refer to detail A, B, D, E, F, G, H, K, L, M, N, Q, T and V). </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Torque the bolts (3) <TOR><TORVALUE MAX="0.48" MIN="0.37" UNIT="m.daN"><TORVALUE MAX="42.48" MIN="32.74" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put the brackets (5, 14, 23, 31 and 32) in position and install the washers (6) and the bolts (7) (Refer to detail C, J, R, W and X). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the brackets (21, 19) (Refer to detail P). </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 05-013. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the brackets (21, 19). Apply a layer of <CON CONTYPE="AFRM"><CONNBR>05013*</CONNBR><CONNAME>SPECIAL MATERIALS</CONNAME></CON> on the door structure in the contact area of the brackets (21, 19). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the brackets (21, 19) in position and install the screws (20). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the brackets (31, 33, 39) (Refer to detail U and Y). </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 05-013. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> on the mating surface of the bracket (28, 33). Apply a layer of <CON CONTYPE="AFRM"><CONNBR>05013*</CONNBR><CONNAME>SPECIAL MATERIALS</CONNAME></CON> on the door structure in the contact area of the bracket (28 33). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the bracket (28, 33) in position and install the washers (27, 34), the bolts (26, 35) and the nuts (29). Put the bracket (39) in position and install the screws (36). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put the bracket (37) in position and install the washers (6) and the bolts (38) (Refer to detail Z). </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52142182000100001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="001" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Adjustment Procedure </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Do the adjustment of the door locking mechanism <REFBLOCK>52-14-21-820-801<REFINT REFID="EN52142182080100"><EFFECT EFFRG="001999"></EFFECT>52-14-21-820-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Do the adjustment of the escape slide release mechanism <REFBLOCK>52-14-22-820-801<REFINT REFID="EN52142282080100"><EFFECT EFFRG="001999"></EFFECT>52-14-22-820-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Do the adjustment of the door <REFBLOCK>52-10-00-820-804<REFINT REFID="EN52100082080400"><EFFECT EFFRG="001999"></EFFECT>52-10-00-820-804-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the applicable sensors and/or targets <REFBLOCK>52-71-11-400-809<REFINT REFID="EN52711140080900"><EFFECT EFFRG="001999"></EFFECT>52-71-11-400-809-A</REFINT></REFBLOCK> and do the adjustment of the proximity sensors <REFBLOCK>52-71-11-820-808<REFINT REFID="EN52711182080800"><EFFECT EFFRG="001999"></EFFECT>52-71-11-820-808-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="720" KEY="EN52142172000100001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="001" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Functional Test </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Do the functional test of the passenger/crew door M5L/M5R <REFBLOCK>52-10-00-720-801<REFINT REFID="EN52100072080100"><EFFECT EFFRG="001999"></EFFECT>52-10-00-720-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+  <TOPIC>
+    <TITLE>Close-up</TITLE>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="410" KEY="EN52142141000100001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="001" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Close Access</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Make sure that the work area is clean and clear of tools and other items.</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the thermal insulation and sound isolation <REFBLOCK>25-80-00-910-802<REFINT REFID="EN25800091080200"><EFFECT EFFRG="001999"></EFFECT>25-80-00-910-802-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the door lining <REFBLOCK>25-23-53-400-801<REFINT REFID="EN25235340080100"><EFFECT EFFRG="001999"></EFFECT>25-23-53-400-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the slide raft <REFBLOCK>25-62-41-400-801<REFINT REFID="EN25624140080100"><EFFECT EFFRG="001999"></EFFECT>25-62-41-400-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="860" KEY="EN52142186000300001" PGBLKNBR="04" REVDATE="20080701" SECTNBR="14" SEQ="003" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Put the aircraft back to its initial configuration.</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Do the special precaution after work on the door <REFBLOCK>52-10-00-860-802<REFINT REFID="EN52100086080200"><EFFECT EFFRG="001999"></EFFECT>52-10-00-860-802-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the ground support and maintenance equipment, the special and standard tools and all other items.</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the ACCESS PLATFORM(S).</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>De-energize the aircraft electrical circuits</PARA>
+              <PARA>
+                <REFBLOCK>24-41-00-862-801<REFINT REFID="EN24410086280100"><EFFECT EFFRG="001999"></EFFECT>24-41-00-862-801-A</REFINT><REFINT REFID="EN24410086280101"><EFFECT EFFRG="001999"></EFFECT>24-41-00-862-801-A-01</REFINT><REFINT REFID="EN24410086280102"><EFFECT EFFRG="001999"></EFFECT>24-41-00-862-801-A-02</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+</TASK>

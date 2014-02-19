@@ -1,0 +1,1877 @@
+<TASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52132182080100" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="801" SUBJNBR="21">
+  <EFFECT EFFRG="001999">
+  </EFFECT>
+  <TITLE>Adjustment of the Door Locking Mechanism Door M4L/M4R</TITLE>
+  <WARNING>
+    <PARA>BEFORE YOU START WORK, YOU MUST PUT ON A SAFETY HARNESS AND ATTACH IT TO THE ACCESS PLATFORM. WITHOUT A SAFETY HARNESS, YOU CAN FALL. THIS CAN KILL YOU OR CAUSE YOU INJURY. </PARA>
+  </WARNING>
+  <WARNING>
+    <PARA>BE CAREFUL WHEN YOU USE SOLVENTS/CLEANING AGENTS, SEALANTS AND OTHER MATERIALS. </PARA>
+    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS AND THE LOCAL REGULATIONS. </PARA>
+    <PARA>MAKE SURE THAT THERE IS A GOOD FLOW OF AIR THROUGH THE WORK AREA. </PARA>
+    <PARA>DO NOT BREATHE THE FUMES. </PARA>
+    <PARA>DO NOT SMOKE. </PARA>
+    <PARA>DO NOT USE THESE MATERIALS NEAR A FLAME, SPARKS OR SOURCES OF HEAT. </PARA>
+    <PARA>USE PROTECTIVE CLOTHING, GOGGLES AND GLOVES. </PARA>
+    <PARA>IF YOU GET ONE OF THESE MATERIALS: </PARA>
+    <UNLIST>
+      <UNLITEM>
+        <PARA> ON YOUR SKIN OR IN YOUR EYES, FLUSH IT AWAY WITH A FLOW OF CLEAN WATER. </PARA>
+      </UNLITEM>
+      <UNLITEM>
+        <PARA> IN YOUR MOUTH, GET IMMEDIATE MEDICAL AID. </PARA>
+      </UNLITEM>
+    </UNLIST>
+    <PARA>IN GENERAL, THESE MATERIALS ARE FLAMMABLE, POISONOUS AND SKIN IRRITANTS. </PARA>
+  </WARNING>
+  <ASSODATA>
+    <ZONELST>
+      <ZONE>834</ZONE>
+      <ZONE>844</ZONE>
+    </ZONELST>
+  </ASSODATA>
+  <TFMATR>
+    <PRETOPIC>
+      <TITLE>Reason for the Job</TITLE>
+      <NOTE>
+        <PARA>Do this adjustment procedure only after maintenance when replacement of components or a malfunction of a door locking mechanism occurred. </PARA>
+      </NOTE>
+    </PRETOPIC>
+    <PRETOPIC>
+      <TITLE>Job Set-up Information</TITLE>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Fixtures, Tools, Test and Support Equipment</PARA>
+          <TABLE>
+            <TGROUP COLS="3">
+              <COLSPEC COLNAME="COL1" COLWIDTH="22*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="4*">
+                  <COLSPEC COLNAME="COL3" COLWIDTH="53*">
+                    <SPANSPEC NAMEEND="COL3" NAMEST="COL1" SPANNAME="WHOLE">
+                      <THEAD>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>REFERENCE</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>QTY</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>DESIGNATION</PARA>
+                          </ENTRY>
+                        </ROW>
+                      </THEAD>
+                      <TBODY>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>1</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <STDNAME>ACCESS PLATFORM 5M (16 FT)- ADJUSTABLE</STDNAME>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>AR</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <STDNAME>SAFETY CLIP - CIRCUIT BREAKER</STDNAME>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>1</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <STDNAME>SCRAPER - NON METALLIC</STDNAME>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>No specific</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="3.60" MIN="0.20" UNIT="m.daN"><TORVALUE MAX="26.00" MIN="2.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>
+                              <TOOLNBR>98L52108459000</TOOLNBR>
+                            </PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>2</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>FRAME-SUPPORT,BALLAST WEIGHT</PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>
+                              <TOOLNBR>98L52108517000</TOOLNBR>
+                            </PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>2</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>WEIGHT - BALANCE, MAIN DECK DOOR 4 AND 5</PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>
+                              <TOOLNBR>98L52108695000</TOOLNBR>
+                            </PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>1</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>TOOL SET-ADJUSTMENT,MAIN DECK DOOR 4</PARA>
+                          </ENTRY>
+                        </ROW>
+                      </TBODY>
+                    </SPANSPEC>
+                  </COLSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Consumable Materials</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>REFERENCE</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>DESIGNATION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>09013*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>SEALANTS</PARA>
+                          <PARA>SEALANT-BRUSH CONSIS TENCY (OBSOLETE)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>11026*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>CLEANING AGENTS</PARA>
+                          <PARA>SOLVENT GENERAL PURPOSE</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <CON CONTYPE="AFRM">
+                              <CONNBR>19010*</CONNBR>
+                            </CON>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Work Zones and Access Panels</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>ZONE/ACCESS</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>ZONE DESCRIPTION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <ZONE>834</ZONE>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>MAIN DECK PASSENGER/CREW DOOR M4L, LH</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <ZONE>844</ZONE>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>MAIN DECK PASSENGER/CREW DOOR M4R, RH</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Expendable Parts</PARA>
+          <TABLE>
+            <TGROUP COLS="3">
+              <COLSPEC COLNAME="COL1" COLWIDTH="11*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="51*">
+                  <COLSPEC COLNAME="COL3" COLWIDTH="17*">
+                    <SPANSPEC NAMEEND="COL3" NAMEST="COL1" SPANNAME="WHOLE">
+                      <THEAD>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>FIG.ITEM</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>DESIGNATION</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>IPC-CSN</PARA>
+                          </ENTRY>
+                        </ROW>
+                      </THEAD>
+                      <TBODY>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>5</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52132102-280</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>20</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52132106-230</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>27</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52132106-230</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>14</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52132107-180</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>2</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pins</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52132107-180</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                        <ROW>
+                          <ENTRY COLNAME="COL1">
+                            <PARA>2</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL2">
+                            <PARA>cotter pin</PARA>
+                          </ENTRY>
+                          <ENTRY COLNAME="COL3">
+                            <PARA>
+                              <EXPD EXPDTYPE="AFRM">
+                                <CSN>52132110-380</CSN>
+                              </EXPD>
+                            </PARA>
+                          </ENTRY>
+                        </ROW>
+                      </TBODY>
+                    </SPANSPEC>
+                  </COLSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+        <L1ITEM>
+          <PARA>Referenced Information</PARA>
+          <TABLE>
+            <TGROUP COLS="2">
+              <COLSPEC COLNAME="COL1" COLWIDTH="26*">
+                <COLSPEC COLNAME="COL2" COLWIDTH="53*">
+                  <SPANSPEC NAMEEND="COL2" NAMEST="COL1" SPANNAME="WHOLE">
+                    <THEAD>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>REFERENCE</PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>DESIGNATION</PARA>
+                        </ENTRY>
+                      </ROW>
+                    </THEAD>
+                    <TBODY>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN20280091280300">20-28-00-912-803-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Electrical Bonding of Components with Conductive Screws and Bolts and Bonding Straps</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180100">24-41-00-861-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft Electrical Circuits from the External Power Receptacles 2, 3, 1 and 4</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180101">24-41-00-861-801-A-01</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft  Electrical Circuits from the APU (APU Started with the APU Battery)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180102">24-41-00-861-801-A-02</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft  Electrical Circuits from the External Power Receptacles  2, 3 and 1</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086180103">24-41-00-861-801-A-03</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Energize the Aircraft  Electrical Circuits from the APU (APU Started with the External Power Receptacles 1 and 3)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086280100">24-41-00-862-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>De-energize the Aircraft Electrical Circuits from the External Power Receptacles 4, 1, 3 and 2</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086280101">24-41-00-862-801-A-01</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>De-energize the Aircraft  Electrical Circuits from the APU</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24410086280102">24-41-00-862-801-A-02</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>De-energize the Aircraft  Electrical Circuits from the External Power Receptacles 1, 3 and 2</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN24710086080100">24-71-00-860-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Get Access to the Power Distribution Control Management Pages and to the Mechanical Circuit Breakers</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN25235300080100">25-23-53-000-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Removal of the Main-Deck Door Linings</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN25235340080100">25-23-53-400-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Installation of the Main-Deck Door Linings</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN25624100080100">25-62-41-000-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Removal of the Door-Mounted Slide-Raft</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN25624140080100">25-62-41-400-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Installation of the Door-Mounted Slide-Raft</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN25800091080200">25-80-00-910-802-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Removal and Installation of the Insulation Material</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100001080100">52-10-00-010-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Open the Passenger/Crew Doors</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100041080100">52-10-00-410-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Close the Passenger/Crew Doors</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100072080100">52-10-00-720-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Functional Test of the Passenger/Crew Doors M1L/M1R, M2L/M2R, M4L/M4R, M5L/M5R</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100082080300">52-10-00-820-803-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Adjustment of the Passenger/Crew Doors M4L/M4R</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100086080100">52-10-00-860-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Special Precautions before Work on the Passenger/Crew Door</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52100086080200">52-10-00-860-802-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Special Precautions after Work on the Passenger/Crew Door</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52132100080100">52-13-21-000-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Removal of the Door Locking Mechanism Door M4L/M4R</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52132140080100">52-13-21-400-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Installation of the Door Locking Mechanism Door M4L/M4R</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52133200080100">52-13-32-000-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Removal of the Door Frame-Fittings (Door M4L/M4R)</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52711182080600">52-71-11-820-806-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Adjustment of the Proximity Sensors of the Passenger/Crew Door M4</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52715300080100">52-71-53-000-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Removal of the Flight Lock Actuator of the Main-Deck Passenger/Crew Doors</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY COLNAME="COL1">
+                          <PARA>
+                            <REFINT REFID="EN52715340080100">52-71-53-400-801-A</REFINT>
+                          </PARA>
+                        </ENTRY>
+                        <ENTRY COLNAME="COL2">
+                          <PARA>Installation of the Flight Lock Actuator of the Main-Deck Passenger/Crew Doors</PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52132199100200001">Adjustment of the Inner Door Operation Handle</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52132199100300001">Adjustment of the Outer Door Operation Handle</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52132199100400001">Adjustment of the Latch/Lift Shaft</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52132199100500001">Preadjustment of the Lower and Upper Connection Link</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52132199100600001">Adjustment of the Anti-Lowaring Mechanism</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52132199100700001">Adjustment of the Vertical Travel</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52132199100800001">Pre-Adjustment of the Torsion Spring</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52132199100900001">Adjustment of the Guide-Arm Cover Mechanism</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                      <ROW>
+                        <ENTRY SPANNAME="WHOLE">
+                          <PARA>
+                            <GRPHCREF REFID="EN52132199101900001">Adjustment of the Guide-Arm Cover</GRPHCREF>
+                          </PARA>
+                        </ENTRY>
+                      </ROW>
+                    </TBODY>
+                  </SPANSPEC>
+                </COLSPEC>
+              </COLSPEC>
+            </TGROUP>
+          </TABLE>
+        </L1ITEM>
+      </LIST1>
+    </PRETOPIC>
+  </TFMATR>
+  <TOPIC>
+    <TITLE>Job Set-up</TITLE>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="860" KEY="EN52132186000400001" PGBLKNBR="05" REVDATE="20080801" SECTNBR="13" SEQ="004" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Aircraft Maintenance Configuration</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Energize the aircraft electrical circuits</PARA>
+              <PARA>
+                <REFBLOCK>24-41-00-861-801<REFINT REFID="EN24410086180100"><EFFECT EFFRG="001999"></EFFECT>24-41-00-861-801-A</REFINT><REFINT REFID="EN24410086180101"><EFFECT EFFRG="001999"></EFFECT>24-41-00-861-801-A-01</REFINT><REFINT REFID="EN24410086180102"><EFFECT EFFRG="001999"></EFFECT>24-41-00-861-801-A-02</REFINT><REFINT REFID="EN24410086180103"><EFFECT EFFRG="001999"></EFFECT>24-41-00-861-801-A-03</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put an <STDNAME>ACCESS PLATFORM 5M (16 FT)- ADJUSTABLE</STDNAME> in position. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Open the passenger crew door <REFBLOCK>52-10-00-010-801<REFINT REFID="EN52100001080100"><EFFECT EFFRG="001999"></EFFECT>52-10-00-010-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Do the special precaution before you work on the door <REFBLOCK>52-10-00-860-801<REFINT REFID="EN52100086080100"><EFFECT EFFRG="001999"></EFFECT>52-10-00-860-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the door is in the correct installation position of the fuselage <REFBLOCK>52-10-00-820-803<REFINT REFID="EN52100082080300"><EFFECT EFFRG="001999"></EFFECT>52-10-00-820-803-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>On the OMS Home page, select Power Distribution Control or C/B Management</PARA>
+              <PARA>
+                <REFBLOCK>24-71-00-860-801<REFINT REFID="EN24710086080100"><EFFECT EFFRG="001999"></EFFECT>24-71-00-860-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="865" KEY="EN52132186500400001" PGBLKNBR="05" REVDATE="20081201" SECTNBR="13" SEQ="004" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Open, safety/lock and tag this(these) circuit breaker(s):</PARA>
+          <CBLST ACTION="open" CHKSUM="E275BA36">
+            <CBSUBLST>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">801-MJ-1</CB>
+                <CBNAME>LDC MD L CHAN A</CBNAME>
+                <PAN PANTYPE="elec">SEPDC1</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">801-MJ-2</CB>
+                <CBNAME>LDC MD L CHAN B</CBNAME>
+                <PAN PANTYPE="elec">SEPDC1</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">800-MJ-1</CB>
+                <CBNAME>LDC MD R CHAN A</CBNAME>
+                <PAN PANTYPE="elec">SEPDC2</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">800-MJ-2</CB>
+                <CBNAME>LDC MD R CHAN B</CBNAME>
+                <PAN PANTYPE="elec">SEPDC2</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="elmec">13-MJ</CB>
+                <CBNAME>LDC FAN MD L</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>1045</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="elmec">12-MJ</CB>
+                <CBNAME>LDC FAN MD R</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>1046</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+          </CBLST>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="010" KEY="EN52132101000200001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="002" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Get Access</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Remove the slide raft <REFBLOCK>25-62-41-000-801<REFINT REFID="EN25624100080100"><EFFECT EFFRG="001999"></EFFECT>25-62-41-000-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the door lining <REFBLOCK>25-23-53-000-801<REFINT REFID="EN25235300080100"><EFFECT EFFRG="001999"></EFFECT>25-23-53-000-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>If necessary, remove the thermal and acoustical insulation <REFBLOCK>25-80-00-910-802<REFINT REFID="EN25800091080200"><EFFECT EFFRG="001999"></EFFECT>25-80-00-910-802-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the support frame <TED><TOOLNBR>98L52108459000</TOOLNBR><TOOLNAME>FRAME-SUPPORT,BALLAST WEIGHT</TOOLNAME></TED></PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the ballast weight <TED><TOOLNBR>98L52108517000</TOOLNBR><TOOLNAME>WEIGHT - BALANCE, MAIN DECK DOOR 4 AND 5</TOOLNAME></TED>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>For the adjustment of the door locking mechanism use the tool set <TED><TOOLNBR>98L52108695000</TOOLNBR><TOOLNAME>TOOL SET-ADJUSTMENT,MAIN DECK DOOR 4</TOOLNAME></TED>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+  <TOPIC>
+    <TITLE>Procedure</TITLE>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52132182000200001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="002" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Adjustment of the Inner Door-Operation Handle </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52132199100200001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Adjustment of the Inner Door Operation Handle</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Close the door and make sure that the inner door-operation handle is in the fully lowered position. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the nut (27), the bolt (30), the washers (28, 29) and the target bracket (26). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put the adjustment gage (16) in position: </PARA>
+              <UNLIST BULLTYPE="BULLET">
+                <UNLITEM>
+                  <PARA>For the door M4L 98L52108695040 </PARA>
+                </UNLITEM>
+                <UNLITEM>
+                  <PARA>For the door M4R 98L52108695042. </PARA>
+                </UNLITEM>
+              </UNLIST>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>On the bracket (3) make sure that the lever (2) touches the stop bolt (10). If the lever (2) does not touch the stop bolt (10), adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Remove the tension from the torsion spring. To do this, do the procedure in paragraph C.(3)(a) and (b). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove and discard the cotter pin (20), the nut (21), the washers (22, 23) and the bolt (24) from the rod (17) and the lever (25). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Lower the door-operation handle (1) and remove the nut (15), the washer (14), the stop bolt (10) and the washers (11, 12, 13). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Add or remove the washers (11, 12, 13) until the lever (2) is in contact with the stop bolt (10). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washer (14) and the nut (15). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Lift the door-operation handle (1) and make sure that the roller of the lever (2) touches the stop bolt (9). If the roller of the lever (2) does not touch the stop bolt (9), adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Lower the inner door operation handle (1) and remove the nut (4), the washer (5), the stop bolt (9) and the washers (8, 5, 7). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Add or remove the washers (8, 5, 7) until the roller of the lever (2) is in contact with the stop bolt (9). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washer (5) and the nut (4). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Do the check of the overcenter position as described in paragraph H. (3) (a) thru (b). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the adjustment gage. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put the target bracket (26) in position and install the washers (28, 29), the bolt (30) and the nut (27). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <WARNING>
+                <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+              </WARNING>
+              <PARA>Put the rod (17) in position on the lever (25) and install the washers (22, 23), the bolt (24) and the nut (21). Make sure that you can install the bolt (24) easily. If you cannot install the bolt (24) easily, remove the lockwire (18), loosen the nut (19) and adjust the length of the rod (17). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Safety the nut (21) with new <EXPD EXPDTYPE="AFRM"><CSN>52132106-230</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>20</ITEMNBR></EXPD>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <WARNING>
+                <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+              </WARNING>
+              <PARA>Safety the nut (19) with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Adjust the target on the target bracket (26) <REFBLOCK>52-71-11-820-806<REFINT REFID="EN52711182080600"><EFFECT EFFRG="001999"></EFFECT>52-71-11-820-806-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52132182000300001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="003" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Adjustment of the Outer Door-Operation Handle </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52132199100300001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Adjustment of the Outer Door Operation Handle</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Make sure that the vertical clearance between the outer door operation handle (10) and the door fuselage skin is 1.5 mm (0.059 in.) to 2.5 mm (0.098 in.). If the vertical clearance is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Remove the bolt (1), the tabwasher (2) and the washers (3, 4, 5). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the nuts (7) the bolts (9), the washers (8), the bearing flange (6) and the washers (4, 5). To adjust the vertical clearance add or remove the washers (4, 5). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the remaining sealant from the bearing flange (6) and the structure. Use a <STDNAME>SCRAPER - NON METALLIC</STDNAME>: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 11-026. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Clean the contact area of the bearing flange (6) and the structure with <CON CONTYPE="AFRM"><CONNBR>11026*</CONNBR><CONNAME>CLEANING AGENTS</CONNAME></CON>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-013. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09013*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bearing flange (6). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put the bearing flange (6) in position and install the washers (8), the bolts (9) and the nuts (7). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the washers (4, 5), the washer (3), the new tab washer (2) and the bolt (1). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Safety the bolt (1) with the tab washer (2). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the offset between the outer door-operation handle (10) and the door skin is +0.75 mm (0.029 in.) to -0.75 mm (-0.029 in.). If the offset is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Loosen the screw (26) and adjust the offset with the stop (25). Tighten the screw (26). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>On the upper part of the outer door-operation handle (19), push and pull to make sure that the outer door-operation handle (10) does not shake. If the outer door-operation handle shakes, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Remove the cap (11). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+                  </WARNING>
+                  <PARA>Remove the lockwire (13) and loosen the nut (12, 14). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Turn the adjustment nut (12, 14) until the shake is removed. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Safety the nut (12, 14) with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (13). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Fully lift the outer door control handle and make sure that the clearance between the lock (15) and the roller (20) is between 0.2 mm (0.008 in.) and 0.5 mm (0.020 in.). If the clearance is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Remove the bolt (16) and the washers (17). Add or remove the washers (17) and install the bolt (16) until the clearance is correct. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Pull and push the outer door control handle (10) to check that the clearance between the stop fitting (24) and the roller (18) is between 0.3 mm (0.012 in.) and 0.5 mm (0.020 in.). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>If the clearance between the stop fitting (24) and the roller (18) is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Lift the outer door control handle to fully open. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the screws (23), the washers (22), the stop fitting (24) and the washers (21). To adjust the vertical clearance, add or remove the washers (21). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the old sealant from the stop fitting (24) and the structure. Use a <STDNAME>SCRAPER - NON METALLIC</STDNAME>: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 11-026. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Clean the mating surface of the stop fitting (24) and the structure with <CON CONTYPE="AFRM"><CONNBR>11026*</CONNBR><CONNAME>CLEANING AGENTS</CONNAME></CON>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-013. </PARA>
+                    <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
+                  </WARNING>
+                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09013*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the contact area of the stop fitting (24). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washers (21), the stop fitting (24), the washers (22) and the screws (23). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Lower the outer door-control handle and push the safety flap (19) against the stop (28). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the clearance between the safety flap (19) and the handle structure is a maximum of 16.5 mm (0.650 in.): </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>If the clearance is not correct, remove the screws (27), the stop (28) and the washers (29). To adjust the clearance, add or remove the washers (29). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washers (29), the stop (28) and the screws (27). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Lift and lower the outer door-control handle (10) and make sure that the safety flap (19) resets and is flush with the handle structure. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the cap (11). </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52132182000400001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="004" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Adjustment of the Drive Shaft and the Latch/Lift Shaft </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52132199100400001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Adjustment of the Latch/Lift Shaft</GRPHCREF>
+          </PARA>
+          <NOTE>
+            <PARA>The adjustment of one side of the drive shaft and the latch/lift shaft is described, the adjustment of the other side is the same. </PARA>
+          </NOTE>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Install the rigging pin (7) diameter 5.8 mm (0.228 in.) in the lever (3) and (4) of the drive shaft (2) and the latch/lift shaft (1). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the cotter pins (27), the nuts (26), the washers (24, 25), the bolts (23) and the rod (19). Discard the cotter pins (27). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the tension from the torsion spring: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+                  </WARNING>
+                  <PARA>Remove and discard the lockwire (30) from the nut (32). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Loosen the nut (32) and turn the nut (31) counterclockwise to decrease the pretension. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the cotter pins (27), the nuts (26), the washers (24, 25), the bolts (23) and the rod (41). Discard the cotter pins (27). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the cotter pin (27), the nut (26), the bolt (23), the washers (24, 25) and loosen the rod (47) from the drive shaft (2). Discard the cotter pin (27). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the clearance between the lever (3) and (5) is 0.9 mm (0.035 in.) to 1.7 mm (0.067 in.). If the clearance is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Remove the nut (11), the washer (10), the stop bolt (12) and the washers (9). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>To adjust the clearance, add or remove the washers (9). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washers (9), the stop bolt (12), the washer (10) and the nut (11). Make sure that the stop bolt (12) touches the stop (8). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the rigging pin (7). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the clearance between the lever (3) and the lever (5) is 1.5 mm (0.059 in.) to 1.9 mm (0.075 in.). If the clearance is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Remove the nut (16), the washer, (15), the stop bolt (13) and the washers (14). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>To adjust the clearance, add or remove the washers (14). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washers (14), the stop bolt (13), the washer (15) and the nut (16). Make sure that the stop bolt (13) touches the lever (3). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Check the overcenter position of the lever (5). To do this task, do these steps: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the adjustment gage (28) in position and install the rigging pin (50). </PARA>
+                  <UNLIST BULLTYPE="BULLET">
+                    <UNLITEM>
+                      <PARA>For the door M4L 98L52108695048 </PARA>
+                    </UNLITEM>
+                    <UNLITEM>
+                      <PARA>For the door M4R 98L52108695050. </PARA>
+                    </UNLITEM>
+                  </UNLIST>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Make sure that the adjustment gage (28) is in contact with the lever (5), then install the rigging pin (51). If you cannot install the rigging pin (51) easily, adjust the stops (8, 13) as described in paragraph C. (6) thru (8) (c). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+                  </WARNING>
+                  <PARA>Put the rod (47) in position on the drive shaft (2) and install the washers (24, 25), the bolt (23) and the nut (26). Safety the nut (26) with the new <EXPD EXPDTYPE="AFRM"><CSN>52132106-230</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>27</ITEMNBR></EXPD>. If necessary, remove the lockwire (49), loosen the nuts (48) and adjust the length of the rod (47): </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Tighten the nuts (48) and safety with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (49). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the adjustment gage (28). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rod (19) in position and make sure that you can install the bolts (23) easily. If you cannot install the bolts easily, remove the nut (21), the washer (20), and turn the lug (22) until the length of the rod is correct. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washer (20) and the nut (21). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rod (19) in position and install the washers (24, 25), the bolts (23), the nuts (26) and safety with the new <EXPD EXPDTYPE="AFRM"><CSN>52132106-230</CSN><EXPDNAME>cotter pins</EXPDNAME><ITEMNBR>27</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Check the overcenter position of the lever (38). To do this task, do these steps: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Loosen the rod (21) as described in paragraph F. (2) (d) thru (e). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the adjustment gage (45): </PARA>
+                  <UNLIST BULLTYPE="BULLET">
+                    <UNLITEM>
+                      <PARA>For the door M4L 98L52108695044 </PARA>
+                    </UNLITEM>
+                    <UNLITEM>
+                      <PARA>For the door M4R 98L52108695046. </PARA>
+                    </UNLITEM>
+                  </UNLIST>
+                  <PARA>Make sure that you can install the rigging pins (52, 53) of the adjustment gage (45) easily and the adjustment gage has contact to the shaft (43). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Make sure that the clearance 0.1 mm (0.0039 in.) to 0.4 mm (0.0157 in.) between the stop bolt (37) and the lever (38) is correct. If the clearance is not correct, remove the stop bolt (37), the washers (36) and add or remove the washers (36) until the clearance is correct. Install the washers (36) and the stop bolt (37). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the adjustment gage (45). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+                  </WARNING>
+                  <PARA>Put the rod (41) in position and make sure that you can install the bolts (23) easily. If you cannot install the bolts easily, remove the lockwire (40) loosen the nuts (39) and adjust the length of the rod (41) until you can install the bolts (23) easily. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washers (24, 25), the bolts (23), and the nuts (26). Safety the nuts (26) with the new <EXPD EXPDTYPE="AFRM"><CSN>52132106-230</CSN><EXPDNAME>cotter pins</EXPDNAME><ITEMNBR>20</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Make sure that the clearance 1.1 mm (0.043 in.) to 2.1 mm (0.083 in.) between the lever (44) and the lever (42) on the shaft (43) is correct. If the clearance is not correct, adjust the rod (41). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Tighten the nuts (39) and safety with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (40). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the rod (21) as described in paragraph F. (2) (h). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52132182000500001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="005" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Pre-adjustment of the Lower and Upper Connection Link </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52132199100500001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Preadjustment of the Lower and Upper Connection Link</GRPHCREF>
+          </PARA>
+          <NOTE>
+            <PARA>This pre-adjustment procedure is only necessary if you install a new lower or upper connection link or the clearance is not correct. </PARA>
+          </NOTE>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Remove the brackets for the rubber bellows from the door structure <REFBLOCK>52-13-21-000-801<REFINT REFID="EN52132100080100"><EFFECT EFFRG="001999"></EFFECT>52-13-21-000-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Close the door and make sure that there is a clearance of 0 mm (0.0000 in.) to 0.05 mm (0.0020 in.) between the door structure and the lower connection link (10). If the clearance is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Remove the bolt (31), the washer (30) and loosen the bonding straps (29, 28). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the tension of the torsion spring as described in para. C.(3). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the cotter pin (14), the nut (15), the washer (16), the bolt (17), the washer (19) and disconnect the rod (18) from the lower connection link (10). Discard the cotter pin (14). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Loosen the tabwasher (34), remove the bolt (35), the washer (33) and the tabwasher (34). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Carefully remove the axle (13), and the washers (11, 20, 21, 22), but do not remove the the connection link (10). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the connection link (10) on one side of the frame and measure the clearance between the frame and the connection link (10). To find the middle point, divide the measured clearance by two and then add 0.05 mm (0.0020 in.) to the result on each side. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Prepare two packs of washers (11, 20, 21, 22) of the calculated thickness. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the tool (32) between the frames and push the frames 0.1 mm (0.0039 in.) more. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the lower connection link (10) in position and install the packs of the washers (11, 20 , 21, 22). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the axle (13), the washer (33), the tabwasher (34) and the bolt (35). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the tool (32). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Safety the bolt (35) with the tabwasher (34). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rod (18) in position and install the the washer (19), the bolt (17), the washer (16) and the nut (15). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Safety the nut (15) with the new <EXPD EXPDTYPE="AFRM"><CSN>52132107-180</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>14</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the bonding straps (28, 29) in position and install the washer (30) and the bolt (31) <REFBLOCK>20-28-00-912-803<REFINT REFID="EN20280091280300"><EFFECT EFFRG="001999"></EFFECT>20-28-00-912-803-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the dimension between the lower connection link (10) and the beam 4 is 173.2 mm (6.819 in.) to 175.2 mm (6.898 in.). If the dimension is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+                  </WARNING>
+                  <PARA>Remove the lockwire (24) and loosen the nuts (23). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Turn the rod (18) to get the correct dimension. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Tighten the nuts (23) and safety with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (24). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that there is a clearance of 0 mm (0.0000 in.) to 0.05 mm (0.0020 in.) between the door structure and the upper connection link (1). If the clearance is not correct, do this adjustment procedure: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Remove the access cover <REFBLOCK>52-13-21-000-801<REFINT REFID="EN52132100080100"><EFFECT EFFRG="001999"></EFFECT>52-13-21-000-801-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the bolt (27), the washer (26) and the bonding strap (25). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the cotter pins (2), the nuts (3) and the washers (4). Discard the cotter pins (2). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Carefully remove the bolts (8), the washers (5, 6), the upper connection link (1) and if necessary the spacers (7). Do not remove the connection link (1) fully. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the connection link (1) on one side of the frame and measure the clearance between the frame and the connection link (1). To find the middle point, divide the measured clearance by two and then add 0.15 mm (0.0059 in.) to the result on each side. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Prepare two packs of washers (5, 6) of the calculated thickness. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the tool (32) between the frames and push the frames 0.3 mm (0.0118 in.) more. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the upper connection link (1) in position and install the washers (5, 6). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>If removed, install the spacers (7), the bolts (8), the washers (4) and the nuts (3). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the tool (32). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Safety the nuts (3) with the new <EXPD EXPDTYPE="AFRM"><CSN>52132107-180</CSN><EXPDNAME>cotter pins</EXPDNAME><ITEMNBR>2</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the bonding strap (25) in position and install the washer (28) and the bolt (25) <REFBLOCK>20-28-00-912-803<REFINT REFID="EN20280091280300"><EFFECT EFFRG="001999"></EFFECT>20-28-00-912-803-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the access cover and the brackets <REFBLOCK>52-13-21-400-801<REFINT REFID="EN52132140080100"><EFFECT EFFRG="001999"></EFFECT>52-13-21-400-801-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52132182000600001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="006" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Adjustment of the Anti-Lowering Mechanism </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52132199100600001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Adjustment of the Anti-Lowaring Mechanism</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Make sure that the dimension 94.1 mm (3.705 in.) to 95.1 mm (3.744 in.) is correct. If the dimension is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Loosen the nuts (8) and adjust the bracket (9) until the dimension is correct. Tighten the nuts (8). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the dimension 27.3 mm (1.075 in.) to 27.9 mm (1.098 in.) is correct. If the dimension is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+                  </WARNING>
+                  <PARA>Remove the lockwire (6), loosen the nuts (5) and adjust the rod (7) until the dimensions are correct. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Tighten the nuts (5) and safety with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (6). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Open the door to a position that is immediately before the guide rollers come out of the guide fittings. Make sure that the dimension between the roller (3) and the stop bolt (2) is 3 mm (0.118 in.) to 3.5 mm (0.138 in.) . If the dimension is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Close the door and remove the stop bolt (2) and the adjustment washers (4). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the stop bolt (2) with adjustment washers (4) of the correct thickness. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Fully open the door and check that the roller (3) touches the stop surface of the locking hook (1). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52132182000700001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="007" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Adjustment of the Vertical Travel </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52132199100700001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Adjustment of the Vertical Travel</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Measure the vertical travel: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Close the door from the outside. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>In the middle of the door measure the lower horizontal clearance. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Lift the door to the fully lifted position, but do not open it. Then measure the horizontal clearance again. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Calculate the difference between the lowered and lifted position of the door. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>The vertical travel must be 42.9 mm (1.689 in.) to 44.9 mm (1.768 in.). If the vertical travel is not correct adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Remove the screws (17, 19), the washers (18) and the brackets (16, 20). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the latch/lift fittings <REFBLOCK>52-13-32-000-801<REFINT REFID="EN52133200080100"><EFFECT EFFRG="001999"></EFFECT>52-13-32-000-801-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>On the lower guide fittings, release the weight of the door. To do this, open the door, insert distance pieces of hard plastic or equivalent material between the guide roller and the lowest point of the guide fitting. Lower the door to release the weight of the door. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove and discard the cotter pins (2), remove the nuts (3) and the washers (4). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Carefully move the inner door-operation handle up and down until you can remove the bolts (6) and the washers (5). Loosen the rods (1, 21). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the nut (11), the washer (12, 13) and the bolt (14). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Record the position of the excenter disk (15). Remove the excenter disk (15) and adjust as follows: </PARA>
+                  <UNLIST BULLTYPE="BULLET">
+                    <UNLITEM>
+                      <PARA>To increase the vertical travel, turn the excenter disk (15) outwards </PARA>
+                    </UNLITEM>
+                    <UNLITEM>
+                      <PARA>To decrease the vertical travel, turn the excenter disk (15) inwards. </PARA>
+                    </UNLITEM>
+                  </UNLIST>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the rods (1, 21) in position and install the washers (5) and the bolts (6). To do this, move the inner door operation handle carefully up and down until you can install the bolts (6) smoothly. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Do this procedure again until the vertical travel is correct. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the washers (4) and the nuts (3), safety the nuts (3) with the new <EXPD EXPDTYPE="AFRM"><CSN>52132107-180</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>2</ITEMNBR></EXPD>and <EXPD EXPDTYPE="AFRM"><CSN>52132110-380</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>2</ITEMNBR></EXPD>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the washer (13, 12) in position and install the bolt (14) and the nut (11). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Carefully lift the door and remove the distance pieces from the lower guide fittings. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Put the brackets (16, 20) in position and install the washers (18) and the screws (17, 19). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the latch/lift fittings <REFBLOCK>52-13-32-000-801<REFINT REFID="EN52133200080100"><EFFECT EFFRG="001999"></EFFECT>52-13-32-000-801-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Adjust the latch/lift fittings <REFBLOCK>52-10-00-820-803<REFINT REFID="EN52100082080300"><EFFECT EFFRG="001999"></EFFECT>52-10-00-820-803-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52132182000800001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="008" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Pre-adjustment of the Torsion Spring </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52132199100800001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Pre-Adjustment of the Torsion Spring</GRPHCREF>
+          </PARA>
+          <NOTE>
+            <PARA>This pre-adjustment procedure is only necessary if you install a new torsion spring (8). </PARA>
+          </NOTE>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Make sure that the torsion spring (8) is removed. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put the inner handle (9) to the fully open position and make sure that the roller (10) touches the stop (11). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the distance between beam 5 and the lever (7) is 95.1 mm (3.744 in.) to 96.1 mm (3.783 in.). If the distance is not correct adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+                  </WARNING>
+                  <PARA>Remove the lockwire (2), loosen the nuts (3) and adjust the length of the rod (1) until the dimension is correct. Tighten and safety the nuts (3) with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON>(2). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <WARNING>
+                <PARA>BE CAREFUL WHEN YOU DO WORK WITH THE LOCKSPRINGS. THEY ARE IN TENSION OR COMPRESSION, WHICH CAN BE DANGEROUS. </PARA>
+              </WARNING>
+              <PARA>Install the new torsion spring (8) and the locksprings (14). Make sure that the marks on the torsion spring (8), the lever (15) and the torsion pipe (16) is in line. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Put the support bearings (21, 22) in position and attach them with the cable ties (23, 24). Make sure that the clearance between the support bearings (21, 22) and the torsion pipe (25) is 1.5 mm (0.059 in.) to 2.5 mm (0.098 in.). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Adjust the tension of the torsion spring (8) as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Turn the nut (18) clockwise until the door stays in its lifted position. </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the lever (7) touches the stop bolt (4) and the pack of the washers (5) is minimum 12 mm (0.472 in.). If the lever does not touch the stop bolt (4) and the pack of washers does not have the minimum thickness, remove the nut (6) the washer (13) the stop bolt (4) and add or remove the washers (5). Install the washer (13) and the nut (6). Make sure that the roller (10) is in contact with the stop bolt (11). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <WARNING>
+                <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+              </WARNING>
+              <PARA>Tighten and safety the nut (19) with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (20). </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Close the door. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52132182000900001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="009" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Adjustment of the Guide-Arm Cover Mechanism </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52132199100900001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Adjustment of the Guide-Arm Cover Mechanism</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Open the door. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Make sure that the clearance is 0.3 mm (0.0118 in.) to 0.9 mm (0.0354 in.) between the roller (5) and the lever (4) is correct. If the clearance is not correct, adjust as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Remove the flight lock actuator <REFBLOCK>52-71-53-000-801<REFINT REFID="EN52715300080100"><EFFECT EFFRG="001999"></EFFECT>52-71-53-000-801-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <WARNING>
+                    <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+                  </WARNING>
+                  <PARA>Remove the lockwire (2) and loosen the nuts (3). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Adjust the length of the rod (1) until the clearance is correct. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Tighten the nuts (3) and safety with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (2). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Check the overcenter position of the lever (6). To do this, close the door and continue as follows: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>Put the adjustment gage (7) in position: </PARA>
+                  <UNLIST BULLTYPE="BULLET">
+                    <UNLITEM>
+                      <PARA>For the door M4L 98L52108695056 </PARA>
+                    </UNLITEM>
+                    <UNLITEM>
+                      <PARA>For the door M4R 98L52108695058. </PARA>
+                    </UNLITEM>
+                  </UNLIST>
+                  <PARA>Make sure that the clearance between the lever (6) and adjustment gage (7) is 2 mm (0.079 in.) to 3.5 mm (0.138 in.). If the clearance is not correct, adjust as described in paragraph A. (5) (a) thru (c). </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Remove the adjustment gage (7). </PARA>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the flight lock actuator <REFBLOCK>52-71-53-400-801<REFINT REFID="EN52715340080100"><EFFECT EFFRG="001999"></EFFECT>52-71-53-400-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="820" KEY="EN52132182001000001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="010" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Adjustment of the Guide Arm Cover </PARA>
+          <PARA>
+            <GRPHCREF REFID="EN52132199101900001" SHOWNOW="0">
+              <EFFECT EFFRG="001999">
+              </EFFECT>Adjustment of the Guide-Arm Cover</GRPHCREF>
+          </PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>If necessary, do the adjustment of the guide arm cover: </PARA>
+              <LIST3>
+                <L3ITEM>
+                  <PARA>If removed, install the thermal and acoustical insulation <REFBLOCK>25-80-00-910-802<REFINT REFID="EN25800091080200"><EFFECT EFFRG="001999"></EFFECT>25-80-00-910-802-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>Install the door lining <REFBLOCK>25-23-53-400-801<REFINT REFID="EN25235340080100"><EFFECT EFFRG="001999"></EFFECT>25-23-53-400-801-A</REFINT></REFBLOCK>. </PARA>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>If necessary, do the adjustment of the horizontal position: </PARA>
+                  <LIST4>
+                    <L4ITEM>
+                      <PARA>Remove the cotter pin (5) and the washers (4). </PARA>
+                    </L4ITEM>
+                    <L4ITEM>
+                      <PARA>Discard the cotter pin (5). </PARA>
+                    </L4ITEM>
+                    <L4ITEM>
+                      <PARA>Remove the pin (1) and carefully move the lever (3) until the guide arm cover is in the correct horizontal position. </PARA>
+                    </L4ITEM>
+                    <L4ITEM>
+                      <PARA>Insert the pin (1) through the applicable hole in the cover lever (2) and the lever (3). </PARA>
+                    </L4ITEM>
+                    <L4ITEM>
+                      <PARA>Install the washers (4) and the new <EXPD EXPDTYPE="AFRM"><CSN>52132102-280</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>5</ITEMNBR></EXPD>. </PARA>
+                    </L4ITEM>
+                  </LIST4>
+                </L3ITEM>
+                <L3ITEM>
+                  <PARA>If necessary, do the adjustment of the vertical position: </PARA>
+                  <LIST4>
+                    <L4ITEM>
+                      <WARNING>
+                        <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+                      </WARNING>
+                      <PARA>Cut, remove and discard the lockwire from the nuts (7). </PARA>
+                    </L4ITEM>
+                    <L4ITEM>
+                      <PARA>Release the locking devices (6) and loosen the nuts (7). </PARA>
+                    </L4ITEM>
+                    <L4ITEM>
+                      <PARA>Adjust the bolt (8) until the guide arm cover is in the correct vertical position. </PARA>
+                    </L4ITEM>
+                    <L4ITEM>
+                      <PARA>Tighten the nuts (7) and make sure that the vertical position is correct. </PARA>
+                    </L4ITEM>
+                    <L4ITEM>
+                      <PARA>TORQUE the nuts (7) <TOR><TORVALUE MAX="0.37" MIN="0.28" UNIT="m.daN"><TORVALUE MAX="32.74" MIN="24.78" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+                    </L4ITEM>
+                    <L4ITEM>
+                      <WARNING>
+                        <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
+                      </WARNING>
+                      <PARA>Safety the nuts (7) with the locking devices (6) and <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON>. </PARA>
+                    </L4ITEM>
+                  </LIST4>
+                </L3ITEM>
+              </LIST3>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="720" KEY="EN52132172000300001" PGBLKNBR="05" REVDATE="20080701" SECTNBR="13" SEQ="003" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Do the Functional Test of the Passenger/crew Door M4L/M4R <REFBLOCK>52-10-00-720-801<REFINT REFID="EN52100072080100"><EFFECT EFFRG="001999"></EFFECT>52-10-00-720-801-A</REFINT></REFBLOCK>. </PARA>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+  <TOPIC>
+    <TITLE>Close-up</TITLE>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="410" KEY="EN52132141000200001" PGBLKNBR="05" REVDATE="20100201" SECTNBR="13" SEQ="002" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Close Access</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Make sure that the work area is clean and clear of tools and other items.</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>If not installed, install the thermal and acoustical insulation <REFBLOCK>25-80-00-910-802<REFINT REFID="EN25800091080200"><EFFECT EFFRG="001999"></EFFECT>25-80-00-910-802-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>If not installed, install the door lining <REFBLOCK>25-23-53-400-801<REFINT REFID="EN25235340080100"><EFFECT EFFRG="001999"></EFFECT>25-23-53-400-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the ballast weight <TED><TOOLNBR>98L52108517000</TOOLNBR><TOOLNAME>WEIGHT - BALANCE, MAIN DECK DOOR 4 AND 5</TOOLNAME></TED> and the support frame <TED><TOOLNBR>98L52108459000</TOOLNBR><TOOLNAME>FRAME-SUPPORT,BALLAST WEIGHT</TOOLNAME></TED>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Install the slide raft <REFBLOCK>25-62-41-400-801<REFINT REFID="EN25624140080100"><EFFECT EFFRG="001999"></EFFECT>25-62-41-400-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>On the OMS Home page, select Power Distribution Control or C/B Management</PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="865" KEY="EN52132186500500001" PGBLKNBR="05" REVDATE="20081201" SECTNBR="13" SEQ="005" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Remove the tag(s) and/or the SAFETY CLIP-CIRCUIT BREAKER and close/unlock this(these) circuit breaker(s):</PARA>
+          <CBLST ACTION="close" CHKSUM="E275BA36">
+            <CBSUBLST>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">801-MJ-1</CB>
+                <CBNAME>LDC MD L CHAN A</CBNAME>
+                <PAN PANTYPE="elec">SEPDC1</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">801-MJ-2</CB>
+                <CBNAME>LDC MD L CHAN B</CBNAME>
+                <PAN PANTYPE="elec">SEPDC1</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">800-MJ-1</CB>
+                <CBNAME>LDC MD R CHAN A</CBNAME>
+                <PAN PANTYPE="elec">SEPDC2</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="eltro">800-MJ-2</CB>
+                <CBNAME>LDC MD R CHAN B</CBNAME>
+                <PAN PANTYPE="elec">SEPDC2</PAN>
+                <CBLOC>SSPC</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="elmec">13-MJ</CB>
+                <CBNAME>LDC FAN MD L</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>1045</CBLOC>
+              </CBDATA>
+              <CBDATA>
+                <EFFECT EFFRG="001999">
+                </EFFECT>
+                <CB CBTYPE="elmec">12-MJ</CB>
+                <CBNAME>LDC FAN MD R</CBNAME>
+                <PAN PANTYPE="elec">2500VU</PAN>
+                <CBLOC>1046</CBLOC>
+              </CBDATA>
+            </CBSUBLST>
+          </CBLST>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+    <SUBTASK CHAPNBR="52" CHG="U" CONFLTR="A" CONFNBR="00" FUNC="860" KEY="EN52132186000500001" PGBLKNBR="05" REVDATE="20080701" SECTNBR="13" SEQ="005" SUBJNBR="21">
+      <EFFECT EFFRG="001999">
+      </EFFECT>
+      <LIST1>
+        <L1ITEM>
+          <PARA>Put the aircraft back to its initial configuration.</PARA>
+          <LIST2>
+            <L2ITEM>
+              <PARA>Do the special precaution after work on the door <REFBLOCK>52-10-00-860-802<REFINT REFID="EN52100086080200"><EFFECT EFFRG="001999"></EFFECT>52-10-00-860-802-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the ground support and maintenance equipment, the special and standard tools and all other items.</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Close the passenger crew door <REFBLOCK>52-10-00-410-801<REFINT REFID="EN52100041080100"><EFFECT EFFRG="001999"></EFFECT>52-10-00-410-801-A</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>Remove the ACCESS PLATFORM(S).</PARA>
+            </L2ITEM>
+            <L2ITEM>
+              <PARA>De-energize the ground service network</PARA>
+              <PARA>
+                <REFBLOCK>24-41-00-862-801<REFINT REFID="EN24410086280100"><EFFECT EFFRG="001999"></EFFECT>24-41-00-862-801-A</REFINT><REFINT REFID="EN24410086280101"><EFFECT EFFRG="001999"></EFFECT>24-41-00-862-801-A-01</REFINT><REFINT REFID="EN24410086280102"><EFFECT EFFRG="001999"></EFFECT>24-41-00-862-801-A-02</REFINT></REFBLOCK>. </PARA>
+            </L2ITEM>
+          </LIST2>
+        </L1ITEM>
+      </LIST1>
+    </SUBTASK>
+  </TOPIC>
+</TASK>
