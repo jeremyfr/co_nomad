@@ -5,8 +5,6 @@ import java.util.TimerTask;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.graphics.Point;
-import android.graphics.Rect;
 import android.text.Layout;
 import android.text.Selection;
 import android.text.SpannableString;
@@ -16,23 +14,22 @@ import android.text.method.LinkMovementMethod;
 import android.text.method.Touch;
 import android.text.style.ClickableSpan;
 import android.util.Log;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Annexes extends Activity {
 
 	int x; // abscisse de la séparation entre la zone de texte et l'annexe.
 	static int xmax; // largeur maximale de la zone de texte ou de l'annexe.
-	static int ymax; // ordonné d'apparition de la flèche basse.
+	static int ymax; // ordonnée d'apparition de la flèche basse.
 	static int xmin; // largeur minimale de la zone de texte ou de l'annexe.
 	static int ymin; // ordonnée d'apparition de la flèche haute.
 	static int xseparator = 160; // largeur de la barre de séparation.
@@ -41,29 +38,14 @@ public class Annexes extends Activity {
 	static int start_link = 1204; // numéro du premier caractère du lien.
 	static int end_link = 1213; // numéro du dernier caractère du lien.
 
-	LinearLayout layout; // Layout des instructions
-	TextView textDocumentation; // Le texte de l'annexe
-	ImageView separator; // La barre verticale
-	ImageView infobulle; // l'image de l'infobulle
-	LinearLayout annexLayout; // Layout de l'annexe
-	Button closeAnnexButton, fullScreenAnnexButton; // Boutons d'options des
-													// annexes
-	AnnexesState state = AnnexesState.NOT_DISPLAYED; // Etat de l'annexe
-
-	// Hauteur de la bar de status.
-	public int getStatusBarHeight() {
-		Rect r = new Rect();
-		Window w = getWindow();
-		w.getDecorView().getWindowVisibleDisplayFrame(r);
-		return r.top;
-	}
-
-	// Hauteur de la barre de titre.
-	public int getTitleBarHeight() {
-		int viewTop = getWindow().findViewById(Window.ID_ANDROID_CONTENT)
-				.getTop();
-		return (viewTop - getStatusBarHeight());
-	}
+	LinearLayout layout; // layout global contenant documentation et annexes.
+	TextView textDocumentation; // documentation textuelle.
+	ImageView separator; // barre verticale.
+	ImageView infobulle; // image de l'infobulle.
+	LinearLayout annexLayout; // layout de l'annexe.
+	Button closeAnnexButton, fullScreenAnnexButton; // boutons d'options des
+													// annexes.
+	AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
 
 	// Affiche l'annexe.
 	private void setAnnexeX(int x) {
@@ -81,28 +63,28 @@ public class Annexes extends Activity {
 		this.x = x;
 	}
 
-	// Affiche le séparateur et l'infobulle
+	// Affiche le séparateur et l'infobulle.
 	private void displaySeparator() {
 		separator.setImageResource(R.drawable.vertical_line);
 		infobulle.setImageResource(R.drawable.infobulle);
 	}
 
-	// Cache le séparateur et l'infobulle
+	// Cache le séparateur et l'infobulle.
 	private void hideSeparator() {
 		separator.setImageResource(R.drawable.vertical_line_empty);
 		infobulle.setImageResource(R.drawable.vertical_line_empty);
 	}
 
-	// Place l'infobulle à l'ordonnée y
+	// Place l'infobulle à l'ordonnée y.
 	private void setInfobulle(int y) {
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 				infobulle.getLayoutParams());
 		if (y < ymin) {
 			infobulle.setImageResource(R.drawable.fleche_haut);
-			params.topMargin = ymin - yinfobulle / 3 + 30; // à changer
+			params.topMargin = ymin - yinfobulle / 3;
 		} else if (y > ymax) {
 			infobulle.setImageResource(R.drawable.fleche_bas);
-			params.topMargin = ymax - yinfobulle / 3 - 60; // à changer
+			params.topMargin = ymax - yinfobulle / 3;
 		} else {
 			infobulle.setImageResource(R.drawable.infobulle);
 			params.topMargin = y - yinfobulle / 3;
@@ -138,16 +120,19 @@ public class Annexes extends Activity {
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
 		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
 
-		// Récupération de la largeur et de la hauteur de l'écran.
-		Display display = getWindowManager().getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-		xmax = size.x - 40; // Padding de 20px à gauche et à droite.
-		ymax = size.y - 130; // Dépend de la hauteur de la barre de status, de
-								// la hauteur de la barre de titre, du padding
-								// de 20px...
+		// Récupération de la largeur et de la hauteur du layout.
+		Timer t = new Timer();
+		class SetMax extends TimerTask {
+			@Override
+			public void run() {
+				ymax = layout.getHeight() - 20; // Padding de 20px.
+				xmax = layout.getWidth() - 40; // Padding de 2*20px.
+			}
+		}
+		t.schedule(new SetMax(), 500);
+
 		xmin = xmax / 5;
-		ymin = 20; // Padding de 20px en haut.
+		ymin = 20;
 		x = xmax / 2;
 
 		// Ajout du lien sur la documentation textuelle.
