@@ -42,6 +42,8 @@ public class Annexes extends Activity {
 	TextView textDocumentation; // documentation textuelle.
 	ImageView separator; // barre verticale.
 	ImageView infobulle; // image de l'infobulle.
+	
+	
 	LinearLayout annexLayout; // layout de l'annexe.
 	Button closeAnnexButton, fullScreenAnnexButton; // boutons d'options des
 													// annexes.
@@ -52,7 +54,7 @@ public class Annexes extends Activity {
 		textDocumentation.setLayoutParams(new LayoutParams(x - xseparator / 3,
 				LayoutParams.WRAP_CONTENT));
 		annexLayout.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
-				LayoutParams.WRAP_CONTENT));
+				ymax));
 		setInfobulle(getY(start_link)); // Mise à jour de la position de
 										// l'infobulle.
 	}
@@ -116,6 +118,8 @@ public class Annexes extends Activity {
 		textDocumentation = (TextView) findViewById(R.id.textDocumentation);
 		separator = (ImageView) findViewById(R.id.separator);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
+		
+		
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
 		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
@@ -125,7 +129,7 @@ public class Annexes extends Activity {
 		class SetMax extends TimerTask {
 			@Override
 			public void run() {
-				ymax = layout.getHeight()- 40; // Padding de 20px.
+				ymax = layout.getHeight()- 40; // Padding de 40px.
 				xmax = layout.getWidth() - 40; // Padding de 2*20px.
 			}
 		}
