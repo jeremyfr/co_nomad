@@ -125,14 +125,14 @@ public class Annexes extends Activity {
 		class SetMax extends TimerTask {
 			@Override
 			public void run() {
-				ymax = layout.getHeight() - 20; // Padding de 20px.
+				ymax = layout.getHeight()- 40; // Padding de 20px.
 				xmax = layout.getWidth() - 40; // Padding de 2*20px.
 			}
 		}
 		t.schedule(new SetMax(), 500);
 
 		xmin = xmax / 5;
-		ymin = 20;
+		ymin = 0;
 		x = xmax / 2;
 
 		// Ajout du lien sur la documentation textuelle.
