@@ -24,6 +24,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -51,7 +52,7 @@ public class Annexes extends Activity {
 	
 	//Pour le multitouch
 	ImageView annexImg; //Image de l'annexe
-	
+	FrameLayout layoutImg;
 	
 	LinearLayout annexLayout; // layout de l'annexe.
 	Button closeAnnexButton, fullScreenAnnexButton; // boutons d'options des
@@ -131,12 +132,12 @@ public class Annexes extends Activity {
 		//Pour le multitouch
 		annexImg = (ImageView) findViewById(R.id.annexImage);
 		
-		
+		layoutImg = (FrameLayout) findViewById(R.id.layoutImage);
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
 		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
 
-		annexImg.setOnTouchListener(new PanAndZoomListener(annexLayout, annexImg, Anchor.TOPLEFT));
+		annexImg.setOnTouchListener(new PanAndZoomListener(layoutImg, annexImg, Anchor.TOPLEFT));
 		// Récupération de la largeur et de la hauteur du layout.
 		Timer t = new Timer();
 		class SetMax extends TimerTask {
@@ -148,7 +149,7 @@ public class Annexes extends Activity {
 		}
 		t.schedule(new SetMax(), 500);
 
-		xmin = xmax / 5;
+		xmin = xmax / 4;
 		ymin = 0;
 		x = xmax / 2;
 

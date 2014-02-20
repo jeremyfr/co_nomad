@@ -46,7 +46,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                >
 
                 <TextView
                     android:id="@+id/annexTitle"
@@ -63,15 +64,21 @@
                     android:gravity="right"
                     android:text="Close" />
             </RelativeLayout>
-
-            <ImageView
-                android:id="@+id/annexImage"
+			
+            <FrameLayout
+                android:id="@+id/layoutImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="90"
-                android:src="@drawable/ata"
-                android:scaleType="matrix" />
-
+             >   
+                <ImageView
+                	android:id="@+id/annexImage"
+	               	android:layout_width="match_parent"
+	               	android:layout_height="match_parent"
+                	android:src="@drawable/ata"
+                	android:scaleType="matrix" />
+            </FrameLayout>
+            
             <RelativeLayout
                 android:layout_weight="10"
                 android:layout_width="match_parent"

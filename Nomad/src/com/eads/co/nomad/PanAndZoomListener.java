@@ -49,7 +49,7 @@ public class PanAndZoomListener implements OnTouchListener {
   float oldDist = 1f;
   PanZoomCalculator panZoomCalculator;
 
-  public PanAndZoomListener(LinearLayout containter, View view, int anchor) {
+  public PanAndZoomListener(FrameLayout containter, View view, int anchor) {
     panZoomCalculator = new PanZoomCalculator(containter, view, anchor);
   }
 
