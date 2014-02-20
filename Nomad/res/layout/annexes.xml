@@ -70,7 +70,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="90"
                 android:src="@drawable/ata"
-                android:scaleType="center" />
+                android:scaleType="matrix" />
 
             <RelativeLayout
                 android:layout_weight="10"

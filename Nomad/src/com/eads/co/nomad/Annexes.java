@@ -3,6 +3,8 @@ package com.eads.co.nomad;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.eads.co.nomad.PanAndZoomListener.Anchor;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -49,10 +51,6 @@ public class Annexes extends Activity {
 	
 	//Pour le multitouch
 	ImageView annexImg; //Image de l'annexe
-	TouchState touchState; //etat du multitouch
-	Bitmap bitmap;
-	int bmpWidth, bmpHeight;
-	float dist0, distCurrent;
 	
 	
 	LinearLayout annexLayout; // layout de l'annexe.
@@ -132,21 +130,13 @@ public class Annexes extends Activity {
 		
 		//Pour le multitouch
 		annexImg = (ImageView) findViewById(R.id.annexImage);
-		bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ata);
-        bmpWidth = bitmap.getWidth();
-        bmpHeight = bitmap.getHeight();
-        
-        distCurrent = 1; //Dummy default distance
-        dist0 = 1;   //Dummy default distance
-        drawMatrix();
 		
-        annexImg.setOnTouchListener(TouchListener);
-        touchState = TouchState.IDLE;
 		
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
 		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
 
+		annexImg.setOnTouchListener(new PanAndZoomListener(annexLayout, annexImg, Anchor.TOPLEFT));
 		// Récupération de la largeur et de la hauteur du layout.
 		Timer t = new Timer();
 		class SetMax extends TimerTask {
@@ -350,67 +340,7 @@ public class Annexes extends Activity {
 		});
 	}
 
-	 private void drawMatrix(){
-	     float curScale = distCurrent/dist0;
-	     if (curScale < 0.1){
-	      curScale = 0.1f; 
-	     }
-	     
-	     Bitmap resizedBitmap;    
-	     int newHeight = (int) (bmpHeight * curScale);
-	     int newWidth = (int) (bmpWidth * curScale);
-	     resizedBitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, false);
-	     annexImg.setImageBitmap(resizedBitmap); 
-	 }
-	 
-	 OnTouchListener TouchListener = new OnTouchListener(){
 
-		 @Override
-		 public boolean onTouch(View view, MotionEvent event) {
-			 // TODO Auto-generated method stub
-	   
-			 float distx, disty;
-	   
-			 switch(event.getAction() & MotionEvent.ACTION_MASK){
-			 	case MotionEvent.ACTION_DOWN:
-			 		//A pressed gesture has started, the motion contains the initial starting location.
-			 		touchState = TouchState.TOUCH;
-			 		break;
-			 	case MotionEvent.ACTION_POINTER_DOWN:
-			 		//A non-primary pointer has gone down.
-			 		touchState = TouchState.PINCH;
-	    
-			 		//Get the distance when the second pointer touch
-			 		distx = event.getX(0) - event.getX(1);
-			 		disty = event.getY(0) - event.getY(1);
-			 		dist0 = FloatMath.sqrt(distx * distx + disty * disty);
-
-			 		break;
-			 	case MotionEvent.ACTION_MOVE:
-			 		//A change has happened during a press gesture (between ACTION_DOWN and ACTION_UP).
-			 		if(touchState == TouchState.PINCH){      
-			 			//Get the current distance
-			 			distx = event.getX(0) - event.getX(1);
-			 			disty = event.getY(0) - event.getY(1);
-			 			distCurrent = FloatMath.sqrt(distx * distx + disty * disty);
-
-			 			drawMatrix();
-			 		}
-	    
-			 		break;
-			 	case MotionEvent.ACTION_UP:
-			 		//A pressed gesture has finished. 
-			 		touchState = TouchState.IDLE;
-			 		break;
-			 	case MotionEvent.ACTION_POINTER_UP:
-			 		//A non-primary pointer has gone up.
-			 		touchState = TouchState.TOUCH;
-			 		break;
-			 }
-	   
-			 return true;
-		 }
-	 };
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
