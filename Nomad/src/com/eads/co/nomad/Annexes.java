@@ -6,6 +6,7 @@ import java.util.TimerTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.text.Layout;
 import android.text.Selection;
 import android.text.SpannableString;
@@ -19,6 +20,7 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,8 +32,9 @@ public class Annexes extends Activity {
 
 	int x; // abscisse de la séparation entre la zone de texte et l'annexe.
 	static int xmax; // largeur maximale de la zone de texte ou de l'annexe.
-	static int ymax;
+	static int ymax; // ordonné d'apparition de la flèche basse.
 	static int xmin; // largeur minimale de la zone de texte ou de l'annexe.
+	static int ymin; // ordonnée d'apparition de la flèche haute.
 	static int xseparator = 160; // largeur de la barre de séparation.
 	static int yinfobulle = 185; // hauteur de l'image infobulle.
 
@@ -39,14 +42,30 @@ public class Annexes extends Activity {
 	static int end_link = 1213; // numéro du dernier caractère du lien.
 
 	LinearLayout layout; // Layout des instructions
-	TextView textDocumentation; //Le texte de l'annexe
-	ImageView separator; //La barre verticale
+	TextView textDocumentation; // Le texte de l'annexe
+	ImageView separator; // La barre verticale
 	ImageView infobulle; // l'image de l'infobulle
 	LinearLayout annexLayout; // Layout de l'annexe
-	Button closeAnnexButton, fullScreenAnnexButton; //Boutons d'options des annexes
-	AnnexesState state = AnnexesState.NOT_DISPLAYED; //Etat de l'annexe
+	Button closeAnnexButton, fullScreenAnnexButton; // Boutons d'options des
+													// annexes
+	AnnexesState state = AnnexesState.NOT_DISPLAYED; // Etat de l'annexe
 
-	//Affiche l'annexe
+	// Hauteur de la bar de status.
+	public int getStatusBarHeight() {
+		Rect r = new Rect();
+		Window w = getWindow();
+		w.getDecorView().getWindowVisibleDisplayFrame(r);
+		return r.top;
+	}
+
+	// Hauteur de la barre de titre.
+	public int getTitleBarHeight() {
+		int viewTop = getWindow().findViewById(Window.ID_ANDROID_CONTENT)
+				.getTop();
+		return (viewTop - getStatusBarHeight());
+	}
+
+	// Affiche l'annexe.
 	private void setAnnexeX(int x) {
 		textDocumentation.setLayoutParams(new LayoutParams(x - xseparator / 3,
 				LayoutParams.WRAP_CONTENT));
@@ -55,28 +74,39 @@ public class Annexes extends Activity {
 		setInfobulle(getY(start_link)); // Mise à jour de la position de
 										// l'infobulle.
 	}
-	// Affiche l'annexe et met l'abscisse du séparateur
+
+	// Affiche l'annexe et met l'abscisse du séparateur.
 	private void setAnnexeXAndX(int x) {
 		setAnnexeX(x);
 		this.x = x;
 	}
-	//Affiche le séparateur et l'infobulle
+
+	// Affiche le séparateur et l'infobulle
 	private void displaySeparator() {
 		separator.setImageResource(R.drawable.vertical_line);
 		infobulle.setImageResource(R.drawable.infobulle);
 	}
-	
-	//Cache le séparateur et l'infobulle
+
+	// Cache le séparateur et l'infobulle
 	private void hideSeparator() {
 		separator.setImageResource(R.drawable.vertical_line_empty);
 		infobulle.setImageResource(R.drawable.vertical_line_empty);
 	}
-	
-	//Place l'infobulle à l'ordonnée y
+
+	// Place l'infobulle à l'ordonnée y
 	private void setInfobulle(int y) {
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 				infobulle.getLayoutParams());
-		params.topMargin = y - yinfobulle / 3;
+		if (y < ymin) {
+			infobulle.setImageResource(R.drawable.fleche_haut);
+			params.topMargin = ymin - yinfobulle / 3 + 30; // à changer
+		} else if (y > ymax) {
+			infobulle.setImageResource(R.drawable.fleche_bas);
+			params.topMargin = ymax - yinfobulle / 3 - 60; // à changer
+		} else {
+			infobulle.setImageResource(R.drawable.infobulle);
+			params.topMargin = y - yinfobulle / 3;
+		}
 		infobulle.setLayoutParams(params);
 	}
 
@@ -86,10 +116,14 @@ public class Annexes extends Activity {
 		int line = textDocumentation.getLayout().getLineForOffset(offset);
 		// Position de la ligne contenant le caractère positionné à offset -
 		// valeur du scroll + épaisseur d'une ligne
-		Log.i("Information sur la position du lien", "Position : " + (textDocumentation.getLayout().getLineTop(line) - textDocumentation.getScrollY()+ textDocumentation.getLineHeight()/2));
+		Log.i("Information sur la position du lien",
+				"Position : "
+						+ (textDocumentation.getLayout().getLineTop(line)
+								- textDocumentation.getScrollY() + textDocumentation
+								.getLineHeight() / 2));
 		return textDocumentation.getLayout().getLineTop(line)
 				- textDocumentation.getScrollY()
-				+ textDocumentation.getLineHeight()/2;
+				+ textDocumentation.getLineHeight() / 2;
 	}
 
 	@Override
@@ -104,13 +138,16 @@ public class Annexes extends Activity {
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
 		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
 
-		// Récupération de la largeur de l'écran.
+		// Récupération de la largeur et de la hauteur de l'écran.
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
 		xmax = size.x - 40; // Padding de 20px à gauche et à droite.
-		ymax = size.y;
-		xmin = xmax / 5; 
+		ymax = size.y - 130; // Dépend de la hauteur de la barre de status, de
+								// la hauteur de la barre de titre, du padding
+								// de 20px...
+		xmin = xmax / 5;
+		ymin = 20; // Padding de 20px en haut.
 		x = xmax / 2;
 
 		// Ajout du lien sur la documentation textuelle.
@@ -162,20 +199,10 @@ public class Annexes extends Activity {
 			@Override
 			public boolean onTouchEvent(TextView widget, Spannable buffer,
 					MotionEvent event) {
-				int infobulleY = getY(start_link);
-				if (infobulleY < 0){
-					infobulle.setImageResource(R.drawable.fleche_haut);
-					setInfobulle(0);
-				}
-				else if (infobulleY > ymax) {
-					infobulle.setImageResource(R.drawable.fleche_bas);
-					setInfobulle(ymax);
-				}
-				else {
-					infobulle.setImageResource(R.drawable.infobulle);
-					setInfobulle(infobulleY); // Mise à jour de la position de
-				}
+				setInfobulle(getY(start_link)); // Mise à jour de la position de
 												// l'infobulle.
+
+				// Recopie de LinkMovementMethod.
 				int action = event.getAction();
 				if (action == MotionEvent.ACTION_UP
 						|| action == MotionEvent.ACTION_DOWN) {
