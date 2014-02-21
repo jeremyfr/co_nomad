@@ -47,6 +47,7 @@ public class Annexes extends Activity {
 
 	LinearLayout layout; // layout global contenant documentation et annexes.
 	TextView textDocumentation; // documentation textuelle.
+	TextView titreAnnexe; //titre de l'annexe 
 	ImageView separator; // barre verticale.
 	ImageView infobulle; // image de l'infobulle.
 	
@@ -75,6 +76,9 @@ public class Annexes extends Activity {
 		this.x = x;
 	}
 
+	private void setTitleAnnexe(CharSequence text){
+		titreAnnexe.setText(text);
+	}
 	// Affiche le séparateur et l'infobulle.
 	private void displaySeparator() {
 		separator.setImageResource(R.drawable.vertical_line);
@@ -128,6 +132,7 @@ public class Annexes extends Activity {
 		textDocumentation = (TextView) findViewById(R.id.textDocumentation);
 		separator = (ImageView) findViewById(R.id.separator);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
+		titreAnnexe = (TextView) findViewById(R.id.annexTitle);
 		
 		//Pour le multitouch
 		annexImg = (ImageView) findViewById(R.id.annexImage);
@@ -154,7 +159,7 @@ public class Annexes extends Activity {
 		x = xmax / 2;
 
 		// Ajout du lien sur la documentation textuelle.
-		SpannableString textToShow = new SpannableString(
+		final SpannableString textToShow = new SpannableString(
 				textDocumentation.getText());
 		textToShow.setSpan(new ClickableSpan() {
 			@Override
@@ -162,6 +167,7 @@ public class Annexes extends Activity {
 				switch (state) {
 				case NOT_DISPLAYED:
 					setAnnexeXAndX(xmax / 2);
+					setTitleAnnexe(textToShow.subSequence(start_link, end_link));
 					state = AnnexesState.DISPLAYED_FREE;
 
 					// Timer pour la mise à jour de la position de l'infobulle.
