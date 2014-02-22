@@ -43,7 +43,8 @@ public class AMMAnnexes extends Activity {
 
 	private DataParsing parser;
 
-	int x; // abscisse de la séparation entre la zone de texte et l'annexe.
+	static int x; // abscisse de la séparation entre la zone de texte et
+					// l'annexe.
 	static int xmax; // largeur maximale de la zone de texte ou de l'annexe.
 	static int ymax; // ordonnée d'apparition de la flèche basse.
 	static int xmin; // largeur minimale de la zone de texte ou de l'annexe.
@@ -53,12 +54,12 @@ public class AMMAnnexes extends Activity {
 
 	LinearLayout layout; // layout global contenant documentation et annexes.
 
-	ScrollView scrollView; // scrollview contenant la documentation.
+	static ScrollView scrollView; // scrollview contenant la documentation.
 
 	ImageView separator; // barre verticale.
 	ImageView infobulle; // image de l'infobulle.
 
-	LinearLayout annexLayout; // layout de l'annexe.
+	static LinearLayout annexLayout; // layout de l'annexe.
 	TextView titreAnnexe; // titre de l'annexe
 	Button closeAnnexButton; // bouton femer.
 	Button fullScreenAnnexButton; // bouton plein écran.
@@ -67,10 +68,10 @@ public class AMMAnnexes extends Activity {
 	ImageView annexImg;
 	FrameLayout layoutImg;
 
-	AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
+	static AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
 
 	// Affiche l'annexe.
-	private void setAnnexeX(int x) {
+	private static void setAnnexeX(int x) {
 		scrollView.setLayoutParams(new LayoutParams(x - xseparator / 3,
 				LayoutParams.MATCH_PARENT));
 		annexLayout.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
@@ -79,9 +80,9 @@ public class AMMAnnexes extends Activity {
 	}
 
 	// Affiche l'annexe et met l'abscisse du séparateur.
-	private void setAnnexeXAndX(int x) {
+	private static void setAnnexeXAndX(int _x) {
 		setAnnexeX(x);
-		this.x = x;
+		x = _x;
 	}
 
 	// Affiche le séparateur et l'infobulle.
@@ -113,6 +114,23 @@ public class AMMAnnexes extends Activity {
 		infobulle.setLayoutParams(params);
 	}
 
+	public static void onAnnexeClic(int offset) {
+		switch (state) {
+		case NOT_DISPLAYED:
+			setAnnexeXAndX(xmax / 2);
+			state = AnnexesState.DISPLAYED_FREE;
+			break;
+		case DISPLAYED_FREE:
+			setAnnexeX(xmax + xseparator / 3);
+			state = AnnexesState.NOT_DISPLAYED;
+			break;
+		case DISPLAYED_PRESSED:
+			break;
+		case DISPLAYED_FULLSCREEN:
+			break;
+		}
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -121,10 +139,10 @@ public class AMMAnnexes extends Activity {
 		setContentView(R.layout.amm_annexes);
 
 		layout = (LinearLayout) findViewById(R.id.layout_amm);
-		
+
 		separator = (ImageView) findViewById(R.id.separator);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
-		
+
 		scrollView = (ScrollView) findViewById(R.id.scrollView);
 
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
@@ -135,9 +153,9 @@ public class AMMAnnexes extends Activity {
 		// Pour le multitouch
 		annexImg = (ImageView) findViewById(R.id.annexImage);
 		layoutImg = (FrameLayout) findViewById(R.id.layoutImage);
-		annexImg.setOnTouchListener(new PanAndZoomListener(layoutImg,
-		annexImg, Anchor.TOPLEFT));
-		
+		annexImg.setOnTouchListener(new PanAndZoomListener(layoutImg, annexImg,
+				Anchor.TOPLEFT));
+
 		// Récupération de la largeur et de la hauteur du layout.
 		Timer t = new Timer();
 		class SetMax extends TimerTask {
@@ -442,23 +460,6 @@ public class AMMAnnexes extends Activity {
 			expand(R.id.closeUp_layout, R.id.stateCloseUp);
 			expand(R.id.tools_layout, R.id.stateTools);
 			expand(R.id.pictures_layout, R.id.statePictures);
-
-			// Affichage / désaffichage de l'annexe => sur un lien.
-			switch (state) {
-			case NOT_DISPLAYED:
-				setAnnexeXAndX(xmax / 2);
-				state = AnnexesState.DISPLAYED_FREE;
-				break;
-			case DISPLAYED_FREE:
-				setAnnexeX(xmax + xseparator / 3);
-				state = AnnexesState.NOT_DISPLAYED;
-				break;
-			case DISPLAYED_PRESSED:
-				break;
-			case DISPLAYED_FULLSCREEN:
-				break;
-			}
-
 			return true;
 		case R.id.menu_collapseAll:
 			collapse(R.id.warnings_layout, R.id.stateWarning);
