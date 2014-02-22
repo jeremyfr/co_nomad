@@ -1,0 +1,408 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background1_light"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/layout_amm"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background1_light"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_margin"
+                tools:context=".MainActivity" >
+
+                <LinearLayout
+                    android:id="@+id/warnings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background1_light"
+                    android:clickable="true"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/background2_light"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/activity_margin" >
+
+                        <ImageView
+                            android:id="@+id/stateWarning"
+                            android:layout_width="30dp"
+                            android:layout_height="fill_parent"
+                            android:layout_marginRight="10dp"
+                            android:contentDescription="Block expanded"
+                            android:src="@drawable/expand" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:text="Warnings"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/warnings_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <WebView
+                            android:id="@+id/warnings_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/font_size_4" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/jobSetUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/background1_light"
+                    android:clickable="true"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/background2_light"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/activity_margin" >
+
+                        <ImageView
+                            android:id="@+id/stateJobSetUp"
+                            android:layout_width="30dp"
+                            android:layout_height="fill_parent"
+                            android:layout_marginRight="10dp"
+                            android:contentDescription="Block collapsed"
+                            android:src="@drawable/collapse" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:text="Job Set up"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/jobSetUp_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <WebView
+                            android:id="@+id/jobSetUp_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_4" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/procedure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/background1_light"
+                    android:clickable="true"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/background2_light"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/activity_margin" >
+
+                        <ImageView
+                            android:id="@+id/stateProcedure"
+                            android:layout_width="30dp"
+                            android:layout_height="fill_parent"
+                            android:layout_marginRight="10dp"
+                            android:contentDescription="Block collapsed"
+                            android:src="@drawable/collapse" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:text="Procedure"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/procedure_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <WebView
+                            android:id="@+id/procedure_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_4" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/closeUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/background1_light"
+                    android:clickable="true"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/background2_light"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/activity_margin" >
+
+                        <ImageView
+                            android:id="@+id/stateCloseUp"
+                            android:layout_width="30dp"
+                            android:layout_height="fill_parent"
+                            android:layout_marginRight="10dp"
+                            android:contentDescription="Block collapsed"
+                            android:src="@drawable/collapse" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:text="Close up"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/closeUp_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <WebView
+                            android:id="@+id/closeUp_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_4" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/background1_light"
+                    android:clickable="true"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/background2_light"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/activity_margin" >
+
+                        <ImageView
+                            android:id="@+id/stateTools"
+                            android:layout_width="30dp"
+                            android:layout_height="fill_parent"
+                            android:layout_marginRight="10dp"
+                            android:contentDescription="Block collapsed"
+                            android:src="@drawable/collapse" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:text="Tools"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tools_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <WebView
+                            android:id="@+id/tools_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_4" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pictures"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/background1_light"
+                    android:clickable="true"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/background2_light"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/activity_margin" >
+
+                        <ImageView
+                            android:id="@+id/statePictures"
+                            android:layout_width="30dp"
+                            android:layout_height="fill_parent"
+                            android:layout_marginRight="10dp"
+                            android:contentDescription="Block collapsed"
+                            android:src="@drawable/collapse" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:text="Pictures"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/pictures_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <WebView
+                            android:id="@+id/pictures_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@string/font"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_4" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/separator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/vertical_line" />
+
+            <ImageView
+                android:id="@+id/infobulle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="matrix"
+                android:src="@drawable/infobulle" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/annexLayout"
+            android:layout_width="0px"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/annexTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="TextView" />
+
+                <Button
+                    android:id="@+id/closeAnnexButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:text="Close" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/layoutImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="90" >
+
+                <ImageView
+                    android:id="@+id/annexImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="matrix"
+                    android:src="@drawable/ata" />
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10" >
+
+                <Button
+                    android:id="@+id/fullScreenAnnexButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="FullScreen" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

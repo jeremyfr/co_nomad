@@ -22,7 +22,7 @@ public class MenuApp extends Activity {
     }
     
     public void toAMM(View view){
-        Intent intent = new Intent(this, AMM.class);
+        Intent intent = new Intent(this, AMMAnnexes.class);
         intent.putExtra("task", "EN30115140080100");
         startActivity(intent);
     }
