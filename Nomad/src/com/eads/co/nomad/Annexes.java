@@ -1,14 +1,26 @@
 package com.eads.co.nomad;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import com.eads.co.nomad.PanAndZoomListener.Anchor;
 
+
+
+
+import android.R.color;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.text.Layout;
 import android.text.Selection;
 import android.text.SpannableString;
@@ -27,8 +39,12 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,11 +55,15 @@ public class Annexes extends Activity {
 	static int ymax; // ordonnée d'apparition de la flèche basse.
 	static int xmin; // largeur minimale de la zone de texte ou de l'annexe.
 	static int ymin; // ordonnée d'apparition de la flèche haute.
+	static int taille_listview; //taille de la listView
 	static int xseparator = 160; // largeur de la barre de séparation.
 	static int yinfobulle = 185; // hauteur de l'image infobulle.
 
 	static int start_link = 1204; // numéro du premier caractère du lien.
 	static int end_link = 1213; // numéro du dernier caractère du lien.
+	
+	static int start_link2 = 1272; // numéro du premier caractère du 2eme lien.
+	static int end_link2 = 1282; // numéro du dernier caractère du 2eme lien.
 
 	LinearLayout layout; // layout global contenant documentation et annexes.
 	TextView textDocumentation; // documentation textuelle.
@@ -51,12 +71,22 @@ public class Annexes extends Activity {
 	ImageView separator; // barre verticale.
 	ImageView infobulle; // image de l'infobulle.
 	
+	//Pour annexe multiple
+	ListView listview;
+	LinearLayout layoutDansAnnexe;
+	LinearLayout layoutList;
+	int nb_annexe;
+	
+	//Création de la ArrayList qui nous permettra de remplire la listView
+    ArrayList<HashMap<String, String>> listItem;
+    HashMap<String, String> map;
+	
 	//Pour le multitouch
 	ImageView annexImg; //Image de l'annexe
 	FrameLayout layoutImg;
 	
 	LinearLayout annexLayout; // layout de l'annexe.
-	Button closeAnnexButton, fullScreenAnnexButton; // boutons d'options des
+	Button closeAnnexButton, fullScreenAnnexButton, closeAllAnnexButton; // boutons d'options des
 													// annexes.
 	AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
 
@@ -66,6 +96,21 @@ public class Annexes extends Activity {
 				LayoutParams.WRAP_CONTENT));
 		annexLayout.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
 				ymax));
+		if (nb_annexe>1){
+			taille_listview = xmax/6;
+			layoutDansAnnexe.setLayoutParams(new LayoutParams(xmax - x - taille_listview - xseparator / 3,
+				ymax));
+			layoutList.setLayoutParams(new LayoutParams(taille_listview,
+				ymax));
+			closeAllAnnexButton.setVisibility(View.VISIBLE);
+		}
+		else {
+			taille_listview = 0;
+			layoutDansAnnexe.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
+					ymax));
+			layoutList.setLayoutParams(new LayoutParams(0,
+					ymax));
+		}
 		setInfobulle(getY(start_link)); // Mise à jour de la position de
 										// l'infobulle.
 	}
@@ -114,11 +159,6 @@ public class Annexes extends Activity {
 		int line = textDocumentation.getLayout().getLineForOffset(offset);
 		// Position de la ligne contenant le caractère positionné à offset -
 		// valeur du scroll + épaisseur d'une ligne
-		Log.i("Information sur la position du lien",
-				"Position : "
-						+ (textDocumentation.getLayout().getLineTop(line)
-								- textDocumentation.getScrollY() + textDocumentation
-								.getLineHeight() / 2));
 		return textDocumentation.getLayout().getLineTop(line)
 				- textDocumentation.getScrollY()
 				+ textDocumentation.getLineHeight() / 2;
@@ -137,10 +177,20 @@ public class Annexes extends Activity {
 		//Pour le multitouch
 		annexImg = (ImageView) findViewById(R.id.annexImage);
 		
+		//Pour annexe multiple
+		layoutDansAnnexe = (LinearLayout) findViewById(R.id.annexDansLayout);
+		layoutList = (LinearLayout) findViewById(R.id.annexList);
+		listview = (ListView)findViewById(R.id.listview);
+		listItem = new ArrayList<HashMap<String, String>>();
+		listview.setDivider(new ColorDrawable(Color.BLACK));
+		listview.setDividerHeight(5);
+		nb_annexe = 0;
+	
 		layoutImg = (FrameLayout) findViewById(R.id.layoutImage);
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
 		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
+		closeAllAnnexButton = (Button) findViewById(R.id.closeAllAnnexButton);
 
 		annexImg.setOnTouchListener(new PanAndZoomListener(layoutImg, annexImg, Anchor.TOPLEFT));
 		// Récupération de la largeur et de la hauteur du layout.
@@ -157,7 +207,21 @@ public class Annexes extends Activity {
 		xmin = xmax / 4;
 		ymin = 0;
 		x = xmax / 2;
+		taille_listview = 0;
 
+		listview.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+        	@SuppressWarnings("unchecked")
+         	public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+				HashMap<String, String> map = (HashMap<String, String>) listview.getItemAtPosition(position);
+				titreAnnexe.setText(map.get("titre"));
+				int resID = getResources().getIdentifier(map.get("img"), "drawable", "package.name");
+		        annexImg.setImageResource(resID);
+				
+        	}
+         });
+		
+		
 		// Ajout du lien sur la documentation textuelle.
 		final SpannableString textToShow = new SpannableString(
 				textDocumentation.getText());
@@ -166,10 +230,10 @@ public class Annexes extends Activity {
 			public void onClick(View v) {
 				switch (state) {
 				case NOT_DISPLAYED:
+					ajouteList(textToShow.subSequence(start_link, end_link).toString(), String.valueOf(R.drawable.ata));
 					setAnnexeXAndX(xmax / 2);
 					setTitleAnnexe(textToShow.subSequence(start_link, end_link));
 					state = AnnexesState.DISPLAYED_FREE;
-
 					// Timer pour la mise à jour de la position de l'infobulle.
 					Timer t = new Timer();
 					class SetInfobulleTask extends TimerTask {
@@ -187,18 +251,157 @@ public class Annexes extends Activity {
 
 					break;
 				case DISPLAYED_FREE:
-					setAnnexeX(xmax + xseparator / 3);
-					state = AnnexesState.NOT_DISPLAYED;
+					if (testeActuel(textToShow.subSequence(start_link, end_link).toString())){
+						setAnnexeX(xmax + xseparator / 3);
+						state = AnnexesState.NOT_DISPLAYED;
+					}
+					else {
+						if (!testeObjetDansListe(textToShow.subSequence(start_link, end_link).toString())){
+							ajouteList(textToShow.subSequence(start_link, end_link).toString(), String.valueOf(R.drawable.ata));
+						}
+						setAnnexeXAndX(xmax / 2);
+						setTitleAnnexe(textToShow.subSequence(start_link, end_link));
+						state = AnnexesState.DISPLAYED_FREE;
+						// Timer pour la mise à jour de la position de l'infobulle.
+						t = new Timer();
+						class SetInfobulleTask extends TimerTask {
+							@Override
+							public void run() {
+								runOnUiThread(new Runnable() {
+									@Override
+									public void run() {
+										setInfobulle(getY(start_link));
+									}
+								});
+							}
+						}
+						t.schedule(new SetInfobulleTask(), 100);		
+					}
 					break;
 				case DISPLAYED_PRESSED:
-					setAnnexeX(xmax + xseparator / 3);
-					state = AnnexesState.NOT_DISPLAYED;
+					if (testeActuel(textToShow.subSequence(start_link, end_link).toString())){
+						setAnnexeX(xmax + xseparator / 3);
+						state = AnnexesState.NOT_DISPLAYED;
+					}
+					else {
+						if (!testeObjetDansListe(textToShow.subSequence(start_link, end_link).toString())){
+							ajouteList(textToShow.subSequence(start_link, end_link).toString(), String.valueOf(R.drawable.ata));
+						}
+						setAnnexeXAndX(xmax / 2);
+						setTitleAnnexe(textToShow.subSequence(start_link, end_link));
+						state = AnnexesState.DISPLAYED_FREE;
+						// Timer pour la mise à jour de la position de l'infobulle.
+						t = new Timer();
+						class SetInfobulleTask extends TimerTask {
+							@Override
+							public void run() {
+								runOnUiThread(new Runnable() {
+									@Override
+									public void run() {
+										setInfobulle(getY(start_link));
+									}
+								});
+							}
+						}
+						t.schedule(new SetInfobulleTask(), 100);
+					}
 					break;
 				case DISPLAYED_FULLSCREEN:
 					break;
 				}
 			}
 		}, start_link, end_link, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		
+		textToShow.setSpan(new ClickableSpan() {
+			@Override
+			public void onClick(View v) {
+				switch (state) {
+				case NOT_DISPLAYED:
+					ajouteList(textToShow.subSequence(start_link2, end_link2).toString(), String.valueOf(R.drawable.ata));
+					setAnnexeXAndX(xmax / 2);
+					setTitleAnnexe(textToShow.subSequence(start_link2, end_link2));
+					state = AnnexesState.DISPLAYED_FREE;
+					// Timer pour la mise à jour de la position de l'infobulle.
+					Timer t = new Timer();
+					class SetInfobulleTask extends TimerTask {
+						@Override
+						public void run() {
+							runOnUiThread(new Runnable() {
+								@Override
+								public void run() {
+									setInfobulle(getY(start_link2));
+								}
+							});
+						}
+					}
+					t.schedule(new SetInfobulleTask(), 100);
+
+					break;
+				case DISPLAYED_FREE:
+					Log.w("Test dans Displayed_free","Resultat du test " + testeActuel(textToShow.subSequence(start_link2, end_link2).toString()));
+					if (testeActuel(textToShow.subSequence(start_link2, end_link2).toString())){
+						setAnnexeX(xmax + xseparator / 3);
+						state = AnnexesState.NOT_DISPLAYED;
+					}
+					else{
+						if (!testeObjetDansListe(textToShow.subSequence(start_link2, end_link2).toString())){
+							ajouteList(textToShow.subSequence(start_link2, end_link2).toString(), String.valueOf(R.drawable.ata));
+						}
+						setAnnexeXAndX(xmax / 2);
+						setTitleAnnexe(textToShow.subSequence(start_link2, end_link2));
+						state = AnnexesState.DISPLAYED_FREE;
+						// Timer pour la mise à jour de la position de l'infobulle.
+						t = new Timer();
+						class SetInfobulleTask extends TimerTask {
+							@Override
+							public void run() {
+								runOnUiThread(new Runnable() {
+									@Override
+									public void run() {
+										setInfobulle(getY(start_link2));
+									}
+								});
+							}
+						}
+						t.schedule(new SetInfobulleTask(), 100);
+						
+				
+					}
+					break;
+				case DISPLAYED_PRESSED:
+					if (testeActuel(textToShow.subSequence(start_link2, end_link2).toString())){
+						setAnnexeX(xmax + xseparator / 3);
+						state = AnnexesState.NOT_DISPLAYED;
+					}
+					else {
+						if (!testeObjetDansListe(textToShow.subSequence(start_link2, end_link2).toString())){
+							ajouteList(textToShow.subSequence(start_link2, end_link2).toString(), String.valueOf(R.drawable.ata));
+						}
+						setAnnexeXAndX(xmax / 2);
+						setTitleAnnexe(textToShow.subSequence(start_link2, end_link2));
+						state = AnnexesState.DISPLAYED_FREE;
+						// Timer pour la mise à jour de la position de l'infobulle.
+						t = new Timer();
+						class SetInfobulleTask extends TimerTask {
+							@Override
+							public void run() {
+								runOnUiThread(new Runnable() {
+									@Override
+									public void run() {
+										setInfobulle(getY(start_link2));
+									}
+								});
+							}
+						}
+						t.schedule(new SetInfobulleTask(), 100);
+					}
+					break;
+				case DISPLAYED_FULLSCREEN:
+					break;
+				}
+			}
+		}, start_link2, end_link2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		
 		textDocumentation.setText(textToShow);
 
 		// Listener sur la documentation complète et sur les liens de la
@@ -271,7 +474,7 @@ public class Annexes extends Activity {
 					case DISPLAYED_FREE:
 						break;
 					case DISPLAYED_PRESSED:
-						if (event.getX() >= xmin && event.getX() <= xmax - xmin) {
+						if (event.getX() >= xmin && event.getX() <= xmax - xmin - taille_listview) {
 							setAnnexeXAndX((int) event.getX());
 						}
 						state = AnnexesState.DISPLAYED_PRESSED;
@@ -306,20 +509,37 @@ public class Annexes extends Activity {
 				case NOT_DISPLAYED:
 					break;
 				case DISPLAYED_FREE:
-					setAnnexeX(xmax + xseparator / 3);
-					state = AnnexesState.NOT_DISPLAYED;
+					Log.w("Close", "Close de : " + titreAnnexe.getText().toString());
+					supprimeElt(titreAnnexe.getText().toString(),String.valueOf(annexImg.getDrawable()));
 					break;
 				case DISPLAYED_PRESSED:
 					break;
 				case DISPLAYED_FULLSCREEN:
-					setAnnexeX(xmax + xseparator / 3);
-					displaySeparator();
+					supprimeElt(titreAnnexe.getText().toString(),String.valueOf(annexImg.getDrawable()));
 					fullScreenAnnexButton.setText("FullScreen");
-					state = AnnexesState.NOT_DISPLAYED;
 					break;
 				}
 			}
 		});
+		
+		// Listener sur le bouton fermer.
+				closeAllAnnexButton.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						switch (state) {
+						case NOT_DISPLAYED:
+							break;
+						case DISPLAYED_FREE:
+							supprimeTout();
+							break;
+						case DISPLAYED_PRESSED:
+							break;
+						case DISPLAYED_FULLSCREEN:
+							supprimeTout();
+							break;
+						}
+					}
+				});
 
 		// Listener sur le bouton plein écran.
 		fullScreenAnnexButton.setOnClickListener(new View.OnClickListener() {
@@ -346,7 +566,83 @@ public class Annexes extends Activity {
 			}
 		});
 	}
-
+	
+	private void supprimeTout(){
+		listItem =  new ArrayList<HashMap<String, String>>();
+        nb_annexe=0;
+        setAnnexeX(xmax + xseparator / 3);
+		state = AnnexesState.NOT_DISPLAYED;
+		closeAllAnnexButton.setVisibility(View.INVISIBLE);
+	}
+	
+	
+	private void supprimeElt(String titre, String img){
+		if (listItem.size()!=1){
+			listItem.remove(trouveDansListe(titre)-1);
+			Log.w("SupprimeElt","Taille de listItem : " + listItem.size() );
+	        nb_annexe--;
+	        listview.invalidateViews();
+	        map = (HashMap<String, String>) listview.getItemAtPosition(0);
+	        titreAnnexe.setText(map.get("titre"));
+	        int resID = getResources().getIdentifier(img, "drawable", "package.name");
+	        annexImg.setImageResource(resID);
+	        if (listItem.size()==1){
+	        	closeAllAnnexButton.setVisibility(View.INVISIBLE);
+	        }
+	        setAnnexeXAndX(x);
+		}
+		else {
+			listItem.remove(trouveDansListe(titre)-1);
+			nb_annexe--;
+			setAnnexeX(xmax + xseparator / 3);
+			closeAllAnnexButton.setVisibility(View.INVISIBLE);
+			state = AnnexesState.NOT_DISPLAYED;
+		}
+	}
+	
+	private int trouveDansListe(String titre){
+		Iterator<HashMap<String,String>> iterateur=listItem.iterator();
+		int numero = 0;
+		boolean test = false;
+		while (!test && iterateur.hasNext())
+		{
+			HashMap<String, String> mapElt = iterateur.next();
+			test = (mapElt.get("titre").equals(titre));
+			numero++;
+		}
+		return numero;
+	}
+	
+	private boolean testeActuel(String titre){
+		return (titre.equals(titreAnnexe.getText().toString()));
+	}
+	
+	private boolean testeObjetDansListe(String titre){
+		Iterator<HashMap<String,String>> iterateur=listItem.iterator();
+		boolean test = false;
+		while (!test && iterateur.hasNext())
+		{
+			HashMap<String, String> mapElt = iterateur.next();
+			test = (mapElt.get("titre").equals(titre));
+		}
+		return test;
+	}
+	
+	private void ajouteList(String titre, String img) {
+		if (!testeObjetDansListe(titre)) {
+			map = new HashMap<String, String>();
+	        map.put("titre", titre);
+	        map.put("img", img);
+	        listItem.add(map);
+	        
+	        //Création d'un SimpleAdapter qui se chargera de mettre les items présent dans notre list (listItem) dans la vue affichage_annexes
+	        SimpleAdapter mSchedule = new SimpleAdapter (this.getBaseContext(), listItem, R.layout.affiche_annexes,
+	               new String[] {"img", "titre"}, new int[] {R.id.listImage, R.id.listTitreAnnexe});
+	        listview.setAdapter(mSchedule);
+	        // +1 annexe
+	        nb_annexe++;
+		}
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

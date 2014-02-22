@@ -42,56 +42,80 @@
             android:layout_width="0px"
             android:background="#3D70AA"
             android:layout_height="fill_parent"
-            android:orientation="vertical" >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <TextView
-                    android:id="@+id/annexTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="TextView" />
-
-                <Button
-                    android:id="@+id/closeAnnexButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:gravity="right"
-                    android:text="Close" />
-            </RelativeLayout>
-			
-            <FrameLayout
-                android:id="@+id/layoutImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="90"
-             >   
-                <ImageView
-                	android:id="@+id/annexImage"
-	               	android:layout_width="match_parent"
-	               	android:layout_height="match_parent"
-                	android:src="@drawable/ata"
-                	android:scaleType="matrix" />
-            </FrameLayout>
-            
-            <RelativeLayout
-                android:layout_weight="10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <Button
-                    android:id="@+id/fullScreenAnnexButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="FullScreen" />
-            </RelativeLayout>
-        </LinearLayout>
+            android:orientation="horizontal" >
+        
+	        <LinearLayout
+	            android:id="@+id/annexDansLayout"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:orientation="vertical" >
+	
+	            <RelativeLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                >
+	
+	                <TextView
+	                    android:id="@+id/annexTitle"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_centerInParent="true"
+	                    android:text="TextView" />
+	                <Button
+	                    android:id="@+id/closeAllAnnexButton"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:visibility="invisible"
+	                    android:text="Close All" />
+	                <Button
+	                    android:id="@+id/closeAnnexButton"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_alignParentRight="true"
+	                    android:text="Close" />
+	                
+	                
+	            </RelativeLayout>
+				
+	            <FrameLayout
+	                android:id="@+id/layoutImage"
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"
+	                android:layout_weight="90"
+	             >   
+	                <ImageView
+	                	android:id="@+id/annexImage"
+		               	android:layout_width="match_parent"
+		               	android:layout_height="match_parent"
+	                	android:src="@drawable/ata"
+	                	android:scaleType="matrix" />
+	            </FrameLayout>
+	            
+	            <RelativeLayout
+	                android:layout_weight="10"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content" >
+	
+	                <Button
+	                    android:id="@+id/fullScreenAnnexButton"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_alignParentRight="true"
+	                    android:text="FullScreen" />
+	            </RelativeLayout>
+	        </LinearLayout>
+	        <LinearLayout
+	            android:id="@+id/annexList"
+	            android:layout_width="0px"
+	            android:background="@drawable/linear_border"
+	            android:layout_height="fill_parent"
+	            android:orientation="vertical" >
+		        <ListView
+				    android:id= "@+id/listview"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content" >
+		        </ListView>
+		    </LinearLayout>
+	   </LinearLayout>
     </LinearLayout>
-
 </RelativeLayout>
