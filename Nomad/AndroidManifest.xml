@@ -32,7 +32,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.eads.co.nomad.AMMAnnexes"
+            android:name="AMMAnnexes"
             android:label="@string/app_name" >
         </activity>
         <activity android:name="JobCard" >

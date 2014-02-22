@@ -129,15 +129,231 @@ public class DataParsing {
 			}
 		}
 		jobSetUp += "</body>";
-		return jobSetUp;
+		return formatText(jobSetUp);
 	}
 
 	public String getProcedure() {
 		String procedure = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><body>";
-		// TODO Auto-generated method stub
-		procedure += "PROCEDURE";
+		
+		List<Element> listTopic = racine.getChildren("TOPIC");
+		List<Element> listSubTask;
+		List<Element> listList1;
+		List<Element> listL1Item;
+		List<Element> listPara;
+		List<Element> listList2;
+		List<Element> listL2Item;
+		List<Element> listPara2;
+		List<Element> listUnList;
+		List<Element> listUnLitem;
+		List<Element> listPara3;
+		List<Element> listWarning;
+		List<Element> listPara4;
+		List<Element> listCaution;
+		List<Element> listPara5;		
+		List<Element> listRef;
+		List<Element> listRefInt;
+		Iterator<Element> iteratorSubTask;
+		Iterator<Element> iteratorListList;
+		Iterator<Element> iteratorL1Item;
+		Iterator<Element> iteratorPara;
+		Iterator<Element> iteratorList2;
+		Iterator<Element> iteratorL2Item;
+		Iterator<Element> iteratorPara2;
+		Iterator<Element> iteratorUnList;
+		Iterator<Element> iteratorUnLitem;
+		Iterator<Element> iteratorPara3;
+		Iterator<Element> iteratorWarning;
+		Iterator<Element> iteratorPara4;
+		Iterator<Element> iteratorCaution;
+		Iterator<Element> iteratorPara5;
+		Iterator<Element> iteratorRef;
+		Iterator<Element> iteratorRefInt;
+		Iterator<Element> iteratorTopics = listTopic.iterator();
+		/* Topics */
+		while (iteratorTopics.hasNext()) {
+			Element topic = (Element) iteratorTopics.next();
+			/* Choix de la bonne partie */
+			if(topic.getChild("TITLE").getText().equals("Procedure")){
+				System.out.println("Procedure");
+				listSubTask = topic.getChildren("SUBTASK");
+				iteratorSubTask = listSubTask.iterator();
+				while (iteratorSubTask.hasNext()) {
+					Element subTask = (Element) iteratorSubTask.next();
+					procedure += "<p>";
+					procedure += "Task : <a href='"+subTask.getAttributeValue("KEY")+"'>"+subTask.getAttributeValue("KEY")+"</a><br/>";
+					
+					listList1 = subTask.getChildren("LIST1");
+					iteratorListList = listList1.iterator();
+					/* LIST1 */
+					while (iteratorListList.hasNext()) {
+						Element list1 = (Element) iteratorListList.next();
+						listL1Item = list1.getChildren("L1ITEM");
+						iteratorL1Item = listL1Item.iterator();
+						while (iteratorL1Item.hasNext()) {
+							Element l1Item = (Element) iteratorL1Item.next();
+							listPara = l1Item.getChildren("PARA");
+							
+							iteratorPara = listPara.iterator();
+							procedure += "<ul>";
+							while (iteratorPara.hasNext()) {
+								Element para = (Element) iteratorPara.next();
+								procedure += "<li>"+para.getText();
+								
+								listRef = para.getChildren("REFBLOCK");
+								iteratorRef = listRef.iterator();
+								while(iteratorRef.hasNext()){
+									Element refblock = iteratorRef.next();
+									listRefInt = refblock.getChildren("REFINT");
+									iteratorRefInt = listRefInt.iterator();
+								    while (iteratorRefInt.hasNext()) {
+										Element refInt = (Element) iteratorRefInt.next();
+										procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+									}
+									
+								}
+								
+								procedure += "</li>";
+							}
+							listList2 = l1Item.getChildren("LIST2");
+							iteratorList2 = listList2.iterator();
+							/*LIST2*/
+							while(iteratorList2.hasNext()){
+								Element list2 = (Element) iteratorList2.next();
+								listL2Item = list2.getChildren("L2ITEM");
+								iteratorL2Item = listL2Item.iterator();
+								while(iteratorL2Item.hasNext()){
+									Element l2Item = (Element) iteratorL2Item.next();
+									listPara2 = l2Item.getChildren("PARA");
+									
+									iteratorPara2 = listPara2.iterator();
+									procedure += "<ul>";
+									
+									while (iteratorPara2.hasNext()) {
+										Element para2 = (Element) iteratorPara2.next();
+										procedure += "<li>"+para2.getText();
+										
+										listRef = para2.getChildren("REFBLOCK");
+										iteratorRef = listRef.iterator();
+										while(iteratorRef.hasNext()){
+											Element refblock = iteratorRef.next();
+											listRefInt = refblock.getChildren("REFINT");
+											iteratorRefInt = listRefInt.iterator();
+										    while (iteratorRefInt.hasNext()) {
+												Element refInt = (Element) iteratorRefInt.next();
+												procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+											}
+											
+										}
+										
+										procedure += "</li></ul>";
+									}
+									
+									listUnList = l2Item.getChildren("UNLIST");
+									iteratorUnList = listUnList.iterator();
+									
+									while(iteratorUnList.hasNext()){
+										
+										Element unlist = iteratorUnList.next();
+										listUnLitem = unlist.getChildren("UNLITEM");
+										
+										iteratorUnLitem = listUnLitem.iterator();
+										while(iteratorUnLitem.hasNext()){
+											Element unlitem = iteratorUnLitem.next();
+											listPara3 = unlitem.getChildren("PARA");
+											iteratorPara3 = listPara3.iterator();
+											while (iteratorPara3.hasNext()) {
+												Element para3 = (Element) iteratorPara3.next();
+												procedure += "<ul><li>"+ para3.getText();
+												
+												listRef = para3.getChildren("REFBLOCK");
+												iteratorRef = listRef.iterator();
+												while(iteratorRef.hasNext()){
+													Element refblock = iteratorRef.next();
+													listRefInt = refblock.getChildren("REFINT");
+													iteratorRefInt = listRefInt.iterator();
+												    while (iteratorRefInt.hasNext()) {
+														Element refInt = (Element) iteratorRefInt.next();
+														procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+													}
+													
+												}
+												procedure += "</li></ul>";
+											}
+											
+										}
+										
+									}
+									
+									listWarning = l2Item.getChildren("WARNING");
+									iteratorWarning = listWarning.iterator();
+									
+									while(iteratorWarning.hasNext()){
+										Element warning = iteratorWarning.next();
+										listPara4 = warning.getChildren("PARA");
+										iteratorPara4 = listPara4.iterator();
+										while (iteratorPara4.hasNext()) {
+											Element para4 = (Element) iteratorPara4.next();
+											procedure += "<ul id=warning><li>"+para4.getText();;
+											
+											listRef = para4.getChildren("REFBLOCK");
+											iteratorRef = listRef.iterator();
+											while(iteratorRef.hasNext()){
+												Element refblock = iteratorRef.next();
+												listRefInt = refblock.getChildren("REFINT");
+												iteratorRefInt = listRefInt.iterator();
+											    while (iteratorRefInt.hasNext()) {
+													Element refInt = (Element) iteratorRefInt.next();
+													procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+												}
+												
+											}
+											procedure += "</li></ul>";
+										}
+									}
+									
+									listCaution = l2Item.getChildren("CAUTION");
+									iteratorCaution = listCaution.iterator();
+									
+									while(iteratorCaution.hasNext()){
+										Element caution = iteratorCaution.next();
+										listPara5 = caution.getChildren("PARA");
+										iteratorPara5 = listPara5.iterator();
+										while (iteratorPara5.hasNext()) {
+											Element para5 = (Element) iteratorPara5.next();
+											procedure += "<ul id=caution><li>"+para5.getText();;
+											
+											listRef = para5.getChildren("REFBLOCK");
+											iteratorRef = listRef.iterator();
+											while(iteratorRef.hasNext()){
+												Element refblock = iteratorRef.next();
+												listRefInt = refblock.getChildren("REFINT");
+												iteratorRefInt = listRefInt.iterator();
+											    while (iteratorRefInt.hasNext()) {
+													Element refInt = (Element) iteratorRefInt.next();
+													procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+												}
+												
+											}
+											procedure += "</li></ul>";
+										}
+									}
+									
+									procedure+="</ul>";
+								}
+								
+								
+							}
+							procedure +="</ul>";
+							
+						}
+					}
+					procedure += "</p>";
+				}
+				
+			}
+		}
 		procedure += "</body>";
-		return procedure;
+		return formatText(procedure);
 	}
 	
 	public String getCloseUp() {
@@ -148,10 +364,12 @@ public class DataParsing {
 		List<Element> listL1Item;
 		List<Element> listList2;
 		List<Element> listL2Item;
+		List<Element> listRefInt;
 		Iterator<Element> iteratorSubTask;
 		Iterator<Element> iteratorListList;
 		Iterator<Element> iteratorL1Item;
 		Iterator<Element> iteratorL2Item;
+		Iterator<Element> iteratorRefInt;
 
 		Iterator<Element> iteratorTopics = listTopic.iterator();
 		/* Topics */
@@ -190,8 +408,17 @@ public class DataParsing {
 								while (iteratorL2Item.hasNext()) {
 									Element l2Item = (Element) iteratorL2Item.next();
 									Element paraL2Item = l2Item.getChild("PARA");
-									System.out.println("PARA : "+paraL2Item.getText());
-									closeUp += "<li>"+paraL2Item.getText()+"</li>";
+									closeUp += "<li>"+paraL2Item.getText();
+									Element refblock = paraL2Item.getChild("REFBLOCK");
+									if(refblock!=null){
+										listRefInt = refblock.getChildren("REFINT");
+										iteratorRefInt = listRefInt.iterator();
+									    while (iteratorRefInt.hasNext()) {
+											Element refInt = (Element) iteratorRefInt.next();
+											closeUp += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+closeUp.length()+"'>"+refInt.getText()+"</a>";
+										}
+									}
+									closeUp += "</li>";
 								}
 								closeUp += "</ul>";
 							}
@@ -203,7 +430,7 @@ public class DataParsing {
 			}
 		}
 		closeUp += "</body>";
-		return closeUp;
+		return formatText(closeUp);
 	}
 	
 	public String getTools() {
@@ -255,7 +482,7 @@ public class DataParsing {
 			}
 		}
 		tools += "</body>";
-		return tools;
+		return formatText(tools+" 35.2cm  ");
 	}
 
 
@@ -265,5 +492,14 @@ public class DataParsing {
 		pictures += "PICTURES";
 		pictures += "</body>";
 		return pictures;
+	}
+	
+	private String formatText(String text){
+		// Numbers
+		text = text.replaceAll("([: ])(\\d+\\.\\d+)( |[a-zA-Z]+)", "<span id='number')>$2$3</span>");
+		text = text.replaceAll("([: ])(\\d+)( |[a-zA-Z]+)", "<span id='number')>$2$3</span>");
+		// ....
+		
+		return text;
 	}
 }

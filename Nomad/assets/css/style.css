@@ -7,3 +7,16 @@ body {
 #warning{
 	color: #dc322f;
 }
+
+#caution{
+	color: yellow;
+}
+
+
+a{
+    color: #268bd2;
+}
+
+#number{
+    color: #cb4b16;
+}

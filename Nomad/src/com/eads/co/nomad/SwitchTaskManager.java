@@ -23,6 +23,10 @@ public class SwitchTaskManager extends WebViewClient {
         /*      */
     	/* Lancer une methode */
     	Toast.makeText(context, url, Toast.LENGTH_SHORT).show();
+    	if(url.contains("?y="))
+    	{
+    		AMMAnnexes.onAnnexeClic(0);
+    	}
     	return true;
     }
 }
