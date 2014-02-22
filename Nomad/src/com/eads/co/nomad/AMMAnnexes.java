@@ -263,7 +263,6 @@ public class AMMAnnexes extends Activity {
 		try {
 			input = getApplicationContext().getAssets().open(ammPart + ".xml");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
