@@ -129,7 +129,7 @@ public class DataParsing {
 			}
 		}
 		jobSetUp += "</body>";
-		return jobSetUp;
+		return formatText(jobSetUp);
 	}
 
 	public String getProcedure() {
@@ -137,7 +137,7 @@ public class DataParsing {
 		// TODO Auto-generated method stub
 		procedure += "PROCEDURE";
 		procedure += "</body>";
-		return procedure;
+		return formatText(procedure);
 	}
 	
 	public String getCloseUp() {
@@ -148,10 +148,12 @@ public class DataParsing {
 		List<Element> listL1Item;
 		List<Element> listList2;
 		List<Element> listL2Item;
+		List<Element> listRefInt;
 		Iterator<Element> iteratorSubTask;
 		Iterator<Element> iteratorListList;
 		Iterator<Element> iteratorL1Item;
 		Iterator<Element> iteratorL2Item;
+		Iterator<Element> iteratorRefInt;
 
 		Iterator<Element> iteratorTopics = listTopic.iterator();
 		/* Topics */
@@ -190,8 +192,17 @@ public class DataParsing {
 								while (iteratorL2Item.hasNext()) {
 									Element l2Item = (Element) iteratorL2Item.next();
 									Element paraL2Item = l2Item.getChild("PARA");
-									System.out.println("PARA : "+paraL2Item.getText());
-									closeUp += "<li>"+paraL2Item.getText()+"</li>";
+									closeUp += "<li>"+paraL2Item.getText();
+									Element refblock = paraL2Item.getChild("REFBLOCK");
+									if(refblock!=null){
+										listRefInt = refblock.getChildren("REFINT");
+										iteratorRefInt = listRefInt.iterator();
+									    while (iteratorRefInt.hasNext()) {
+											Element refInt = (Element) iteratorRefInt.next();
+											closeUp += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+closeUp.length()+"'>"+refInt.getText()+"</a>";
+										}
+									}
+									closeUp += "</li>";
 								}
 								closeUp += "</ul>";
 							}
@@ -203,7 +214,7 @@ public class DataParsing {
 			}
 		}
 		closeUp += "</body>";
-		return closeUp;
+		return formatText(closeUp);
 	}
 	
 	public String getTools() {
@@ -255,7 +266,7 @@ public class DataParsing {
 			}
 		}
 		tools += "</body>";
-		return tools;
+		return formatText(tools+" 35.2cm  ");
 	}
 
 
@@ -265,5 +276,14 @@ public class DataParsing {
 		pictures += "PICTURES";
 		pictures += "</body>";
 		return pictures;
+	}
+	
+	private String formatText(String text){
+		// Numbers
+		text = text.replaceAll("([: ])(\\d+\\.\\d+)( |[a-zA-Z]+)", "<span id='number')>$2$3</span>");
+		text = text.replaceAll("([: ])(\\d+)( |[a-zA-Z]+)", "<span id='number')>$2$3</span>");
+		// ....
+		
+		return text;
 	}
 }
