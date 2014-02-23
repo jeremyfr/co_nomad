@@ -482,7 +482,7 @@ public class DataParsing {
 			}
 		}
 		tools += "</body>";
-		return formatText(tools+" 35.2cm  ");
+		return formatText(tools);
 	}
 
 
