@@ -96,7 +96,6 @@ public class DataParsing {
 			Element topic = (Element) iteratorTopics.next();
 			/* Choix de la bonne partie */
 			if(topic.getChild("TITLE").getText().equals("Job Set-up")){
-				System.out.println("JOB SET UP");
 				listSubTask = topic.getChildren("SUBTASK");
 				iteratorSubTask = listSubTask.iterator();
 				while (iteratorSubTask.hasNext()) {
@@ -174,7 +173,6 @@ public class DataParsing {
 			Element topic = (Element) iteratorTopics.next();
 			/* Choix de la bonne partie */
 			if(topic.getChild("TITLE").getText().equals("Procedure")){
-				System.out.println("Procedure");
 				listSubTask = topic.getChildren("SUBTASK");
 				iteratorSubTask = listSubTask.iterator();
 				while (iteratorSubTask.hasNext()) {
@@ -377,7 +375,6 @@ public class DataParsing {
 			Element topic = (Element) iteratorTopics.next();
 			/* Choix de la bonne partie */
 			if(topic.getChild("TITLE").getText().equals("Close-up")){
-				System.out.println("CLOSE UP");
 				listSubTask = topic.getChildren("SUBTASK");
 				iteratorSubTask = listSubTask.iterator();
 				while (iteratorSubTask.hasNext()) {
@@ -386,7 +383,6 @@ public class DataParsing {
 					closeUp += "Task : <a href='"+subTask.getAttributeValue("KEY")+"'>"+subTask.getAttributeValue("KEY")+"</a><br/>";
 					
 					listList1 = subTask.getChildren("LIST1");
-					System.out.println("LIST 1 : "+listList1.size());
 					iteratorListList = listList1.iterator();
 					/* LIST1 */
 					while (iteratorListList.hasNext()) {
@@ -398,7 +394,6 @@ public class DataParsing {
 							Element para = l1Item.getChild("PARA");
 							closeUp += para.getText()+"<br/>";
 							listList2 = l1Item.getChildren("LIST2");
-							System.out.println("LIST LIST2 : "+listList2.size());
 							iteratorL2Item = listList2.iterator();
 							while (iteratorL2Item.hasNext()) {
 								Element list2 = (Element) iteratorL2Item.next();
@@ -436,14 +431,16 @@ public class DataParsing {
 	public String getTools() {
 		String tools = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><body>";
 		List<Element> listPretopic = racine.getChild("TFMATR").getChildren("PRETOPIC");
-		List<Element> listSubTask;
 		List<Element> listList1;
 		List<Element> listL1Item;
 		List<Element> listPara;
+		List<Element> listRow;
+		List<Element> listEntry;
 		Iterator<Element> iteratorList1;
-		Iterator<Element> iteratorListList;
 		Iterator<Element> iteratorL1Item;
 		Iterator<Element> iteratorPara;
+		Iterator<Element> iteratorRow;
+		Iterator<Element> iteratorEntry;
 
 		Iterator<Element> iteratorTopics = listPretopic.iterator();
 		/* Topics */
@@ -451,7 +448,6 @@ public class DataParsing {
 			Element topic = (Element) iteratorTopics.next();
 			/* Choix de la bonne partie */
 			if(topic.getChild("TITLE").getText().equals("Job Set-up Information")){
-				System.out.println("JOB SET UP");
 				listList1 = topic.getChildren("LIST1");
 				iteratorList1 = listList1.iterator();
 				while (iteratorList1.hasNext()) {
@@ -470,19 +466,98 @@ public class DataParsing {
 						}
 						Element table = l1Item.getChild("TABLE");
 						tools += "<table>";
-						tools += "<row>";
-						tools += "<td>";
-						tools += "TODO";
-						tools += "</td>";
-						tools += "</row>";
+						Element tgGroup = table.getChild("TGROUP");
+						Element spanSpec = tgGroup.getChild("COLSPEC");
+						int nbCol = Integer.parseInt(tgGroup.getAttributeValue("COLS"));
+						while(1 < nbCol){
+							spanSpec = spanSpec.getChild("COLSPEC");
+							nbCol--;
+						}
+						spanSpec = spanSpec.getChild("SPANSPEC");
+						Element thead = spanSpec.getChild("THEAD");
+						Element row = thead.getChild("ROW");
+						listEntry = row.getChildren("ENTRY");
+						iteratorEntry = listEntry.iterator();
+						tools += "<tr>";
+						while (iteratorEntry.hasNext()) {
+							tools += "<th>";
+							Element entry = (Element) iteratorEntry.next();
+							Element para = entry.getChild("PARA");
+							if(para == null){
+								para = row.getChild("STDNAME");
+							}
+							tools += para.getText();
+							tools += "</th>";
+						}
+						tools += "</tr>";
+
+						Element tbody = spanSpec.getChild("TBODY");
+						listRow = tbody.getChildren("ROW");
+						iteratorRow = listRow.iterator();
+						while (iteratorRow.hasNext()) {
+							row = (Element) iteratorRow.next();
+							listEntry = row.getChildren("ENTRY");
+							iteratorEntry = listEntry.iterator();
+							tools += "<tr>";
+							while (iteratorEntry.hasNext()) {
+								tools += "<td>";
+								Element entry = (Element) iteratorEntry.next();
+								listPara = entry.getChildren("PARA");
+								iteratorPara = listPara.iterator();
+								while (iteratorPara.hasNext()) {
+									Element paraCurrent = (Element) iteratorPara.next();
+									Element para = paraCurrent;
+									para = para.getChild("CON");
+									if(para != null){
+										para = para.getChild("CONNBR");
+										tools += para.getText();
+									}else{
+										para = paraCurrent.getChild("STDNAME");
+										if(para != null){
+											tools += para.getText();
+										}else{
+											para = paraCurrent.getChild("ZONE");
+											if(para != null){
+												tools += para.getText();
+											}else{
+												para = paraCurrent.getChild("REFINT");
+												if(para != null){
+													tools += "<a href='"+para.getAttributeValue("REFID")+"?y="+tools.length()+"'>"+para.getText()+"</a><br>";
+												}else{
+													para = paraCurrent.getChild("GRPHCREF");
+													if(para != null){
+														tools += "<a href='"+para.getAttributeValue("REFID")+"?y="+tools.length()+"'>"+para.getText()+"</a><br>";
+													}else{
+														List<Element> listPan = paraCurrent.getChildren("PAN");
+														if(!listPan.isEmpty()){
+															Iterator<Element> iteratorPan = listPan.iterator();
+															while (iteratorPan.hasNext()) {
+																Element panCurrent = (Element) iteratorPan.next();
+																tools += panCurrent.getText();
+																if(iteratorPan.hasNext()){
+																	tools += ",&nbsp;";
+																}
+															}
+														}else{
+															tools += paraCurrent.getText();
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+								tools += "</td>";
+							}
+							tools += "</tr>";
+						}
 						tools += "</table>";
-						tools += "</p>";
 					}
 				}
 			}
 		}
 		tools += "</body>";
-		return formatText(tools);
+		return tools;
 	}
 
 
@@ -495,9 +570,9 @@ public class DataParsing {
 	}
 	
 	private String formatText(String text){
-		// Numbers
-		text = text.replaceAll("([: ])(\\d+\\.\\d+)( |[a-zA-Z]+)", "<span id='number')>$2$3</span>");
-		text = text.replaceAll("([: ])(\\d+)( |[a-zA-Z]+)", "<span id='number')>$2$3</span>");
+		// Mesures
+		text = text.replaceAll("(\\d+\\.\\d+) (mm|cm|in)", "<span id='number')>$1 $2</span>"); // double
+		text = text.replaceAll("(\\d+) (mm|cm|in)", "<span id='number')>$1 $2</span>");  // int
 		// ....
 		
 		return text;

@@ -1,22 +1,37 @@
 body {
 	background-color: #fdf6e3; 
 	font-size: 22px;
-	color: black;
+	color: #002b36;
 }
 
+/* Styles des ecritures*/
 #warning{
 	color: #dc322f;
 }
-
 #caution{
 	color: yellow;
 }
-
-
+#number{
+    color: #cb4b16;
+}
 a{
     color: #268bd2;
 }
 
-#number{
-    color: #cb4b16;
+/* Styles des tableaux */
+table{
+	border-collapse:collapse;
+}
+table,th, td{
+	padding: 2px;
+	border: 1px solid black;
+}
+table th{
+	font-weight:bold;
+	font-size: 22px;
+	color: #002b36;
+}
+table td{
+	font-size: 22px;
+	color: #002b36;
 }
