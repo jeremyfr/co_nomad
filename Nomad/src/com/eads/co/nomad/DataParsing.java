@@ -243,7 +243,7 @@ public class DataParsing {
 											
 										}
 										
-										procedure += "</li></ul>";
+										procedure += "</li>";
 									}
 									
 									listUnList = l2Item.getChildren("UNLIST");
@@ -281,7 +281,7 @@ public class DataParsing {
 										}
 										
 									}
-									
+									procedure +="</ul>";
 									listWarning = l2Item.getChildren("WARNING");
 									iteratorWarning = listWarning.iterator();
 									
