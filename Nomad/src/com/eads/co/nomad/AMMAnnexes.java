@@ -5,21 +5,14 @@ import java.io.InputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.jdom2.JDOMException;
-
-import com.eads.co.nomad.PanAndZoomListener.Anchor;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.OrientationEventListener;
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.webkit.WebView;
@@ -27,10 +20,12 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.eads.co.nomad.PanAndZoomListener.Anchor;
 
 /**
  * Class used to manage the display of the documentation.
@@ -309,7 +304,7 @@ public class AMMAnnexes extends Activity {
 		try {
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle());
-			SwitchTaskManager taskManager = new SwitchTaskManager(this, ammPart);
+			SwitchTaskManager taskManager = new SwitchTaskManager(this);
 
 			/* Warnings part */
 			LinearLayout warnings = (LinearLayout) findViewById(R.id.warnings);
