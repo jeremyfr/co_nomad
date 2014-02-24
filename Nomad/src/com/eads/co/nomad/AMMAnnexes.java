@@ -11,11 +11,13 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
 import android.view.animation.Animation;
@@ -131,6 +133,37 @@ public class AMMAnnexes extends Activity {
 		}
 	}
 
+	private void getWidthHeight()
+	{
+		// Récupération de la largeur et de la hauteur du layout.
+		Timer t = new Timer();
+		class SetMax extends TimerTask {
+			@Override
+			public void run() {
+				ymax = layout.getHeight();
+				xmax = layout.getWidth();
+				xmin = xmax / 4;
+				ymin = 0;
+				x = xmax / 2;
+			}
+		}
+		t.schedule(new SetMax(), 500);
+	}
+	
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		getWidthHeight();
+	}
+	
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		getWidthHeight();
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -157,18 +190,8 @@ public class AMMAnnexes extends Activity {
 				Anchor.TOPLEFT));
 
 		// Récupération de la largeur et de la hauteur du layout.
-		Timer t = new Timer();
-		class SetMax extends TimerTask {
-			@Override
-			public void run() {
-				ymax = layout.getHeight();
-				xmax = layout.getWidth();
-				xmin = xmax / 4;
-				ymin = 0;
-				x = xmax / 2;
-			}
-		}
-		t.schedule(new SetMax(), 500);
+		getWidthHeight();
+		
 
 		layout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
