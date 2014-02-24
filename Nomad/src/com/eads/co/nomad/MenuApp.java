@@ -27,8 +27,20 @@ public class MenuApp extends Activity {
         startActivity(intent);
     }
     
+    public void toIPC(View view){
+        
+    }
+    
     public void toJobCard(View view){
         Intent intent = new Intent(this, JobCard.class);
         startActivity(intent);
+    }
+    
+    public void toOptions(View view){
+        
+    }
+    
+    public void quit(View view){
+    	System.exit(0);
     }
 }

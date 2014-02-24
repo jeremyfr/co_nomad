@@ -2,33 +2,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_margin"
     android:background="@color/background1_light"
-    tools:context=".MainActivity">
+    android:padding="@dimen/activity_margin"
+    tools:context=".MainActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:id="@+id/gridView1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-    <Button
+        android:layout_marginTop="25dp">
+
+    <ImageButton
         android:id="@+id/amm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
+        android:background="@null"
+        android:contentDescription="AMM"
         android:onClick="toAMM"
-        android:text="AMM" />
+        android:src="@drawable/button_amm" />
 
-    <Button
-        android:id="@+id/job"
+    <ImageButton
+        android:id="@+id/ipc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/amm"
-        android:layout_alignRight="@+id/amm"
-        android:layout_below="@+id/amm"
-        android:layout_marginTop="30dp"
+        android:background="@null"
+        android:contentDescription="IPC"
+        android:onClick="toIPC"
+        android:src="@drawable/button_ipc" />
+
+    <ImageButton
+        android:id="@+id/jobCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="Job Card"
         android:onClick="toJobCard"
-        android:text="Job Card" />
+        android:src="@drawable/button_jobcard" />
+
+    <ImageButton
+        android:id="@+id/options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="Options"
+        android:onClick="toOptions"
+        android:src="@drawable/button_options" />
+
+    <ImageButton
+        android:id="@+id/quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:contentDescription="Quit"
+        android:onClick="quit"
+        android:src="@drawable/button_quit" />
+    </GridLayout>
 
 </RelativeLayout>
