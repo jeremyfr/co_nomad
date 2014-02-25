@@ -1,7 +1,11 @@
 package com.eads.co.nomad;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.jdom2.JDOMException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -29,16 +33,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class JobCard extends Activity{
-
+	DataParsing dp;
 	ArrayList<String> previousSteps;
 	ArrayList<Step> steps;
 	ListView listStep;
 	ListView listStepPrevious;
-	StepListAdapter2 stepAdapt;
+	StepListAdapter stepAdapt;
 	ArrayAdapter<String> stepAdaptPrevious;
 	
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle bundle = getIntent().getExtras();
+		String ammPart = "";
+		if (bundle != null) {
+			ammPart = (String) bundle.get("task");
+		}
+		InputStream input = null;
+		try {
+			input = getApplicationContext().getAssets().open(ammPart + ".xml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			dp = new DataParsing(input);
+		} catch (JDOMException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         Object mInf = LayoutInflater.from(getApplicationContext());
         getActionBar().setDisplayHomeAsUpEnabled(true);
 		this.setTitle("Job card n° XXXXXXXXX MSN:XXXX FSN:XX AIRCRAFT ID: X-XXXX 07-02-2014");
@@ -67,23 +91,23 @@ public class JobCard extends Activity{
 		previousButton.setTag(">");
 		
 		
-		//Remplir la liste de step, voir avec la doc comment on va se demerder, surement du parsage XML
+		//Remplir la liste de step
+		String proc = dp.getProcedure();
+		Step s;
 		steps = new ArrayList<Step>();
+		ArrayList<String> stepProc = dp.getStepsProcedure();
+		for (int i = 0; i < stepProc.size(); i++) {
+			s = new Step();
+			s.setTask(stepProc.get(i));
+			steps.add(s);
+		}
 		
-		Step s = new Step();
-		s.setTask("Test");
-		steps.add(s);
-		
-		Step s2 = new Step();
-		s2.setTask("Test 2");
-		steps.add(s2);
-		
-		stepAdapt = new StepListAdapter2(this);
+		stepAdapt = new StepListAdapter(this);
 		stepAdapt.setListItems(steps);
 		listStep = (ListView) findViewById(R.id.listStep);
 		listStep.setAdapter(stepAdapt);
 		LayoutParams lpc = listStep.getLayoutParams();
-		lpc.height = 200;
+		lpc.height = 110*steps.size();
 		listStep.setLayoutParams(lpc);
 		
 		previousSteps = new ArrayList<String>();		
@@ -91,7 +115,7 @@ public class JobCard extends Activity{
 		stepAdaptPrevious = new ArrayAdapter<String>(getApplicationContext(),R.layout.mytextview,previousSteps);
 		listStepPrevious.setAdapter(stepAdaptPrevious);
 		lpc = listStepPrevious.getLayoutParams();
-		lpc.height = 100;
+		lpc.height = 10;
 		listStepPrevious.setLayoutParams(lpc);
 
 		LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
@@ -306,7 +330,7 @@ public class JobCard extends Activity{
 		v.startAnimation(a);
 	}
 	
-	public class StepListAdapter2 extends BaseAdapter{
+	public class StepListAdapter extends BaseAdapter{
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
@@ -314,7 +338,7 @@ public class JobCard extends Activity{
 		private Context ct;
 		private int position;
 		
-		public StepListAdapter2(Context c) {
+		public StepListAdapter(Context c) {
 			mInf = LayoutInflater.from(c);
 			ct = c;
 		}
@@ -346,26 +370,30 @@ public class JobCard extends Activity{
 				h = new StepViewHolder();
 				h.mTask = (TextView) arg1.findViewById(R.id.task);
 				h.mButton = (Button) arg1.findViewById(R.id.Ok);
-				h.mButton.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View arg0) {
-						if(pos == 0){
-							LayoutParams lpc = listStep.getLayoutParams();
-							lpc.height -= 100;
-							listStep.setLayoutParams(lpc);
-							lpc = listStepPrevious.getLayoutParams();
-							lpc.height +=100;
-							listStepPrevious.setLayoutParams(lpc);
-							
-							Step toDel = steps.remove(pos);
-							stepAdapt.notifyDataSetChanged();
-							previousSteps.add(toDel.getTask());
-							stepAdaptPrevious.notifyDataSetChanged();
-							
+				if(pos ==0){
+					h.mButton.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View arg0) {
+							if(pos == 0){
+								LayoutParams lpc = listStep.getLayoutParams();
+								lpc.height -= 110;
+								listStep.setLayoutParams(lpc);
+								lpc = listStepPrevious.getLayoutParams();
+								lpc.height +=110;
+								listStepPrevious.setLayoutParams(lpc);
+								
+								Step toDel = steps.remove(pos);
+								stepAdapt.notifyDataSetChanged();
+								previousSteps.add(toDel.getTask());
+								stepAdaptPrevious.notifyDataSetChanged();
+								
+							}
 						}
-					}
-				});
+					});
+				}else{
+					h.mButton.setVisibility(View.INVISIBLE);
+				}
 				arg1.setTag(h);
 			}
 			else{

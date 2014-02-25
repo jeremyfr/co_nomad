@@ -33,6 +33,7 @@ public class MenuApp extends Activity {
     
     public void toJobCard(View view){
         Intent intent = new Intent(this, JobCard.class);
+        intent.putExtra("task", "EN30115140080100");
         startActivity(intent);
     }
     
