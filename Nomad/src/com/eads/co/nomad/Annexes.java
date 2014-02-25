@@ -9,10 +9,6 @@ import java.util.TimerTask;
 
 import com.eads.co.nomad.PanAndZoomListener.Anchor;
 
-
-
-
-
 import android.R.color;
 import android.os.Bundle;
 import android.app.Activity;
@@ -23,6 +19,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.DrawerLayout.DrawerListener;
 import android.text.Layout;
 import android.text.Selection;
 import android.text.SpannableString;
@@ -75,8 +73,8 @@ public class Annexes extends Activity {
 	
 	//Pour annexe multiple
 	ListView listview;
+	private DrawerLayout mDrawerLayout;
 	LinearLayout layoutDansAnnexe;
-	LinearLayout layoutList;
 	int nb_annexe;
 	
 	//Création de la ArrayList qui nous permettra de remplire la listView
@@ -94,23 +92,18 @@ public class Annexes extends Activity {
 
 	// Affiche l'annexe.
 	private void setAnnexeX(int x) {
+		mDrawerLayout.setDrawerLockMode(0);
 		textDocumentation.setLayoutParams(new LayoutParams(x - xseparator / 3,
 				LayoutParams.WRAP_CONTENT));
 		annexLayout.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
 				ymax));
 		if (nb_annexe>1){
-			taille_listview = xmax/6;
 			layoutDansAnnexe.setLayoutParams(new LayoutParams(xmax - x - taille_listview - xseparator / 3,
-				ymax));
-			layoutList.setLayoutParams(new LayoutParams(taille_listview,
 				ymax));
 			closeAllAnnexButton.setVisibility(View.VISIBLE);
 		}
 		else {
-			taille_listview = 0;
 			layoutDansAnnexe.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
-					ymax));
-			layoutList.setLayoutParams(new LayoutParams(0,
 					ymax));
 		}
 		setInfobulle(getY(start_link)); // Mise à jour de la position de
@@ -127,7 +120,8 @@ public class Annexes extends Activity {
 		int resID = getResources().getIdentifier(img, "drawable", "package.name");
         annexImg.setImageResource(resID);
 		titreAnnexe.setText(text);
-		
+		int position = trouveDansListe(titreAnnexe.getText().toString())-1;
+		listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
 	}
 	// Affiche le séparateur et l'infobulle.
 	private void displaySeparator() {
@@ -184,11 +178,12 @@ public class Annexes extends Activity {
 		
 		//Pour annexe multiple
 		layoutDansAnnexe = (LinearLayout) findViewById(R.id.annexDansLayout);
-		layoutList = (LinearLayout) findViewById(R.id.annexList);
 		listview = (ListView)findViewById(R.id.listview);
+		listview.setSelector(R.drawable.selector);
 		listItem = new ArrayList<HashMap<String, String>>();
-		listview.setDivider(new ColorDrawable(Color.BLACK));
-		listview.setDividerHeight(5);
+		//Remplissage des fonctions sur le navigation drawer
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout.setDrawerLockMode(1);
 		nb_annexe = 0;
 	
 		layoutImg = (FrameLayout) findViewById(R.id.layoutImage);
@@ -590,7 +585,7 @@ public class Annexes extends Activity {
 			listItem.remove(trouveDansListe(titre)-1);
 			Log.w("SupprimeElt","Taille de listItem : " + listItem.size() );
 	        nb_annexe--;
-	        //listview.invalidateViews();
+	        listview.invalidateViews();
 	        map = (HashMap<String, String>) listview.getItemAtPosition(0);
 	        titreAnnexe.setText(map.get("titre"));
 	        int resID = getResources().getIdentifier(map.get("img"), "drawable", "package.name");
@@ -598,12 +593,16 @@ public class Annexes extends Activity {
 	        if (listItem.size()==1){
 	        	closeAllAnnexButton.setVisibility(View.INVISIBLE);
 	        }
+	        int position = trouveDansListe(titreAnnexe.getText().toString())-1;
+			listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
 	        setAnnexeXAndX(x);
 		}
 		else {
 			listItem.remove(trouveDansListe(titre)-1);
+			listview.invalidateViews();
 			nb_annexe--;
 			setAnnexeX(xmax + xseparator / 3);
+			mDrawerLayout.setDrawerLockMode(1);
 			closeAllAnnexButton.setVisibility(View.INVISIBLE);
 			state = AnnexesState.NOT_DISPLAYED;
 		}
@@ -643,7 +642,6 @@ public class Annexes extends Activity {
 	        map.put("titre", titre);
 	        map.put("img", img);
 	        listItem.add(map);
-	        
 	        //Création d'un SimpleAdapter qui se chargera de mettre les items présent dans notre list (listItem) dans la vue affichage_annexes
 	        SimpleAdapter mSchedule = new SimpleAdapter (this.getBaseContext(), listItem, R.layout.affiche_annexes,
 	               new String[] {"img", "titre"}, new int[] {R.id.listImage, R.id.listTitreAnnexe});
