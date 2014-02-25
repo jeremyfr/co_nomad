@@ -12,6 +12,7 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
 
 
 
+
 import android.R.color;
 import android.os.Bundle;
 import android.app.Activity;
@@ -21,6 +22,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.Layout;
 import android.text.Selection;
 import android.text.SpannableString;
@@ -121,8 +123,11 @@ public class Annexes extends Activity {
 		this.x = x;
 	}
 
-	private void setTitleAnnexe(CharSequence text){
+	private void setTitleAnnexe(CharSequence text,String img){
+		int resID = getResources().getIdentifier(img, "drawable", "package.name");
+        annexImg.setImageResource(resID);
 		titreAnnexe.setText(text);
+		
 	}
 	// Affiche le séparateur et l'infobulle.
 	private void displaySeparator() {
@@ -232,7 +237,7 @@ public class Annexes extends Activity {
 				case NOT_DISPLAYED:
 					ajouteList(textToShow.subSequence(start_link, end_link).toString(), String.valueOf(R.drawable.ata));
 					setAnnexeXAndX(xmax / 2);
-					setTitleAnnexe(textToShow.subSequence(start_link, end_link));
+					setTitleAnnexe(textToShow.subSequence(start_link, end_link),String.valueOf(R.drawable.ata));
 					state = AnnexesState.DISPLAYED_FREE;
 					// Timer pour la mise à jour de la position de l'infobulle.
 					Timer t = new Timer();
@@ -253,6 +258,7 @@ public class Annexes extends Activity {
 				case DISPLAYED_FREE:
 					if (testeActuel(textToShow.subSequence(start_link, end_link).toString())){
 						setAnnexeX(xmax + xseparator / 3);
+						supprimeElt(textToShow.subSequence(start_link, end_link).toString(),String.valueOf(R.drawable.ata));
 						state = AnnexesState.NOT_DISPLAYED;
 					}
 					else {
@@ -260,7 +266,7 @@ public class Annexes extends Activity {
 							ajouteList(textToShow.subSequence(start_link, end_link).toString(), String.valueOf(R.drawable.ata));
 						}
 						setAnnexeXAndX(xmax / 2);
-						setTitleAnnexe(textToShow.subSequence(start_link, end_link));
+						setTitleAnnexe(textToShow.subSequence(start_link, end_link),String.valueOf(R.drawable.ata));
 						state = AnnexesState.DISPLAYED_FREE;
 						// Timer pour la mise à jour de la position de l'infobulle.
 						t = new Timer();
@@ -281,6 +287,7 @@ public class Annexes extends Activity {
 				case DISPLAYED_PRESSED:
 					if (testeActuel(textToShow.subSequence(start_link, end_link).toString())){
 						setAnnexeX(xmax + xseparator / 3);
+						supprimeElt(textToShow.subSequence(start_link, end_link).toString(),String.valueOf(R.drawable.ata));
 						state = AnnexesState.NOT_DISPLAYED;
 					}
 					else {
@@ -288,7 +295,7 @@ public class Annexes extends Activity {
 							ajouteList(textToShow.subSequence(start_link, end_link).toString(), String.valueOf(R.drawable.ata));
 						}
 						setAnnexeXAndX(xmax / 2);
-						setTitleAnnexe(textToShow.subSequence(start_link, end_link));
+						setTitleAnnexe(textToShow.subSequence(start_link, end_link),String.valueOf(R.drawable.ata));
 						state = AnnexesState.DISPLAYED_FREE;
 						// Timer pour la mise à jour de la position de l'infobulle.
 						t = new Timer();
@@ -317,9 +324,9 @@ public class Annexes extends Activity {
 			public void onClick(View v) {
 				switch (state) {
 				case NOT_DISPLAYED:
-					ajouteList(textToShow.subSequence(start_link2, end_link2).toString(), String.valueOf(R.drawable.ata));
+					ajouteList(textToShow.subSequence(start_link2, end_link2).toString(), String.valueOf(R.drawable.fleche_haut));
 					setAnnexeXAndX(xmax / 2);
-					setTitleAnnexe(textToShow.subSequence(start_link2, end_link2));
+					setTitleAnnexe(textToShow.subSequence(start_link2, end_link2),String.valueOf(R.drawable.fleche_haut));
 					state = AnnexesState.DISPLAYED_FREE;
 					// Timer pour la mise à jour de la position de l'infobulle.
 					Timer t = new Timer();
@@ -341,14 +348,15 @@ public class Annexes extends Activity {
 					Log.w("Test dans Displayed_free","Resultat du test " + testeActuel(textToShow.subSequence(start_link2, end_link2).toString()));
 					if (testeActuel(textToShow.subSequence(start_link2, end_link2).toString())){
 						setAnnexeX(xmax + xseparator / 3);
+						supprimeElt(textToShow.subSequence(start_link2, end_link2).toString(),String.valueOf(R.drawable.fleche_haut));
 						state = AnnexesState.NOT_DISPLAYED;
 					}
 					else{
 						if (!testeObjetDansListe(textToShow.subSequence(start_link2, end_link2).toString())){
-							ajouteList(textToShow.subSequence(start_link2, end_link2).toString(), String.valueOf(R.drawable.ata));
+							ajouteList(textToShow.subSequence(start_link2, end_link2).toString(), String.valueOf(R.drawable.fleche_haut));
 						}
 						setAnnexeXAndX(xmax / 2);
-						setTitleAnnexe(textToShow.subSequence(start_link2, end_link2));
+						setTitleAnnexe(textToShow.subSequence(start_link2, end_link2),String.valueOf(R.drawable.fleche_haut));
 						state = AnnexesState.DISPLAYED_FREE;
 						// Timer pour la mise à jour de la position de l'infobulle.
 						t = new Timer();
@@ -375,10 +383,10 @@ public class Annexes extends Activity {
 					}
 					else {
 						if (!testeObjetDansListe(textToShow.subSequence(start_link2, end_link2).toString())){
-							ajouteList(textToShow.subSequence(start_link2, end_link2).toString(), String.valueOf(R.drawable.ata));
+							ajouteList(textToShow.subSequence(start_link2, end_link2).toString(), String.valueOf(R.drawable.fleche_haut));
 						}
 						setAnnexeXAndX(xmax / 2);
-						setTitleAnnexe(textToShow.subSequence(start_link2, end_link2));
+						setTitleAnnexe(textToShow.subSequence(start_link2, end_link2),String.valueOf(R.drawable.fleche_haut));
 						state = AnnexesState.DISPLAYED_FREE;
 						// Timer pour la mise à jour de la position de l'infobulle.
 						t = new Timer();
@@ -578,13 +586,14 @@ public class Annexes extends Activity {
 	
 	private void supprimeElt(String titre, String img){
 		if (listItem.size()!=1){
+			Log.w("SupprimeElt","Indice de l'item : " + trouveDansListe(titre));
 			listItem.remove(trouveDansListe(titre)-1);
 			Log.w("SupprimeElt","Taille de listItem : " + listItem.size() );
 	        nb_annexe--;
-	        listview.invalidateViews();
+	        //listview.invalidateViews();
 	        map = (HashMap<String, String>) listview.getItemAtPosition(0);
 	        titreAnnexe.setText(map.get("titre"));
-	        int resID = getResources().getIdentifier(img, "drawable", "package.name");
+	        int resID = getResources().getIdentifier(map.get("img"), "drawable", "package.name");
 	        annexImg.setImageResource(resID);
 	        if (listItem.size()==1){
 	        	closeAllAnnexButton.setVisibility(View.INVISIBLE);
