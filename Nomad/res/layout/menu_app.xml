@@ -1,61 +1,75 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/background1_light"
     android:padding="@dimen/activity_margin"
     tools:context=".MainActivity" >
 
-    <GridLayout
-        android:id="@+id/gridView1"
+    <LinearLayout
+        android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp">
-
-    <ImageButton
-        android:id="@+id/amm"
-        android:layout_width="wrap_content"
+    	android:orientation="horizontal"
+    	android:layout_weight="1"
+        android:gravity="center">
+	    <ImageButton
+	        android:id="@+id/amm"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@null"
+	        android:contentDescription="AMM"
+	        android:onClick="toAMM"
+       		android:layout_weight="1"
+	        android:src="@drawable/button_amm" />
+	
+	    <ImageButton
+	        android:id="@+id/ipc"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@null"
+	        android:contentDescription="IPC"
+	        android:onClick="toIPC"
+        	android:layout_weight="1"
+	        android:src="@drawable/button_ipc" />
+	
+	    <ImageButton
+	        android:id="@+id/jobCard"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@null"
+	        android:contentDescription="Job Card"
+	        android:onClick="toJobCard"
+        	android:layout_weight="1"
+	        android:src="@drawable/button_jobcard" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@null"
-        android:contentDescription="AMM"
-        android:onClick="toAMM"
-        android:src="@drawable/button_amm" />
-
-    <ImageButton
-        android:id="@+id/ipc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:contentDescription="IPC"
-        android:onClick="toIPC"
-        android:src="@drawable/button_ipc" />
-
-    <ImageButton
-        android:id="@+id/jobCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:contentDescription="Job Card"
-        android:onClick="toJobCard"
-        android:src="@drawable/button_jobcard" />
-
-    <ImageButton
-        android:id="@+id/options"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:contentDescription="Options"
-        android:onClick="toOptions"
-        android:src="@drawable/button_options" />
-
-    <ImageButton
-        android:id="@+id/quit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:contentDescription="Quit"
-        android:onClick="quit"
-        android:src="@drawable/button_quit" />
-    </GridLayout>
-
-</RelativeLayout>
+        android:layout_weight="1"
+        android:gravity="center"
+    	android:orientation="horizontal">
+	    <ImageButton
+	        android:id="@+id/options"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@null"
+	        android:contentDescription="Options"
+	        android:onClick="toOptions"
+        	android:layout_weight="1"
+	        android:src="@drawable/button_options" />
+	
+	    <ImageButton
+	        android:id="@+id/quit"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@null"
+	        android:contentDescription="Quit"
+	        android:onClick="quit"
+        	android:layout_weight="1"
+	        android:src="@drawable/button_quit" />
+	</LinearLayout>
+</LinearLayout>

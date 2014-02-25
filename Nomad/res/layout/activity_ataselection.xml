@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="horizontal"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:background="@color/background1_light"
+android:fontFamily="@string/font"
+android:textColor="@color/text1_light"
+android:textSize="@dimen/font_size_2">
+
+	<LinearLayout
+	    android:layout_width="0dp"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical"
+	    android:layout_weight="0.34" >
+
+		<ListView
+		    android:id="@+id/listeATA"
+		    android:layout_width="match_parent"
+		    android:layout_height="fill_parent">
+	
+		</ListView>
+
+	</LinearLayout>
+	
+	<View
+    android:layout_width="1dp"
+    android:layout_height="fill_parent"
+    android:background="@android:color/darker_gray"/>
+	
+	<LinearLayout
+	    android:layout_width="0dp"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical"
+	    android:layout_weight="0.33" >
+		
+		<ListView
+		    android:id="@+id/sousListeATA"
+		    android:layout_width="match_parent"
+		    android:layout_height="fill_parent" >
+	
+		</ListView>
+	</LinearLayout>
+	
+	<View
+    android:layout_width="1dp"
+    android:layout_height="fill_parent"
+    android:background="@android:color/darker_gray"/>
+	
+	<LinearLayout
+	    android:layout_width="0dp"
+	    android:layout_height="fill_parent"
+	    android:orientation="vertical"
+	    android:layout_weight="0.33" >
+		
+		<ListView
+		    android:id="@+id/sousSousListeATA"
+		    android:layout_width="match_parent"
+		    android:layout_height="fill_parent" >
+	
+		</ListView>
+	</LinearLayout>
+	
+</LinearLayout>

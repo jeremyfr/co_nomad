@@ -1,0 +1,60 @@
+<TabHost
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+ 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+ 
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+ 
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+ 
+                <FrameLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+                    <ExpandableListView
+					    android:id="@+id/listeJobCards1"
+					    android:layout_width="match_parent"
+					    android:layout_height="fill_parent" 
+					    android:layout_margin="20dp">
+					</ExpandableListView>
+               </FrameLayout>
+ 
+                <FrameLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+                	<ExpandableListView
+					    android:id="@+id/listeJobCards2"
+					    android:layout_width="match_parent"
+					    android:layout_height="fill_parent" 
+					    android:layout_margin="20dp">
+					</ExpandableListView>
+				</FrameLayout>
+                
+                <FrameLayout
+                    android:id="@+id/tab3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+                	<ExpandableListView
+					    android:id="@+id/listeJobCards3"
+					    android:layout_width="match_parent"
+					    android:layout_height="fill_parent" 
+					    android:layout_margin="20dp">
+					</ExpandableListView>
+				</FrameLayout>
+ 
+            </FrameLayout>
+    </LinearLayout>
+</TabHost>
