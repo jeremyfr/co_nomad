@@ -258,7 +258,7 @@ public class Annexes extends Activity {
 				case DISPLAYED_FREE:
 					if (testeActuel(textToShow.subSequence(start_link, end_link).toString())){
 						setAnnexeX(xmax + xseparator / 3);
-						supprimeElt(textToShow.subSequence(start_link, end_link).toString(),String.valueOf(R.drawable.ata));
+						supprimeElt(textToShow.subSequence(start_link, end_link).toString());
 						state = AnnexesState.NOT_DISPLAYED;
 					}
 					else {
@@ -287,7 +287,7 @@ public class Annexes extends Activity {
 				case DISPLAYED_PRESSED:
 					if (testeActuel(textToShow.subSequence(start_link, end_link).toString())){
 						setAnnexeX(xmax + xseparator / 3);
-						supprimeElt(textToShow.subSequence(start_link, end_link).toString(),String.valueOf(R.drawable.ata));
+						supprimeElt(textToShow.subSequence(start_link, end_link).toString());
 						state = AnnexesState.NOT_DISPLAYED;
 					}
 					else {
@@ -348,7 +348,7 @@ public class Annexes extends Activity {
 					Log.w("Test dans Displayed_free","Resultat du test " + testeActuel(textToShow.subSequence(start_link2, end_link2).toString()));
 					if (testeActuel(textToShow.subSequence(start_link2, end_link2).toString())){
 						setAnnexeX(xmax + xseparator / 3);
-						supprimeElt(textToShow.subSequence(start_link2, end_link2).toString(),String.valueOf(R.drawable.fleche_haut));
+						supprimeElt(textToShow.subSequence(start_link2, end_link2).toString());
 						state = AnnexesState.NOT_DISPLAYED;
 					}
 					else{
@@ -518,12 +518,12 @@ public class Annexes extends Activity {
 					break;
 				case DISPLAYED_FREE:
 					Log.w("Close", "Close de : " + titreAnnexe.getText().toString());
-					supprimeElt(titreAnnexe.getText().toString(),String.valueOf(annexImg.getDrawable()));
+					supprimeElt(titreAnnexe.getText().toString());
 					break;
 				case DISPLAYED_PRESSED:
 					break;
 				case DISPLAYED_FULLSCREEN:
-					supprimeElt(titreAnnexe.getText().toString(),String.valueOf(annexImg.getDrawable()));
+					supprimeElt(titreAnnexe.getText().toString());
 					fullScreenAnnexButton.setText("FullScreen");
 					break;
 				}
@@ -584,7 +584,7 @@ public class Annexes extends Activity {
 	}
 	
 	
-	private void supprimeElt(String titre, String img){
+	private void supprimeElt(String titre){
 		if (listItem.size()!=1){
 			Log.w("SupprimeElt","Indice de l'item : " + trouveDansListe(titre));
 			listItem.remove(trouveDansListe(titre)-1);
