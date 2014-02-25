@@ -1,4 +1,4 @@
-package com.devleader.tab_fragment_tutorial;
+package com.eads.co.nomad;
 
 import java.util.UUID;
 

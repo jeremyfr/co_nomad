@@ -2,6 +2,7 @@ package com.eads.co.nomad;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -16,11 +17,15 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -305,6 +310,10 @@ public class AMMAnnexes extends Activity {
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle());
 			SwitchTaskManager taskManager = new SwitchTaskManager(this);
+			HashMap<String, String> h = ((History)this.getApplication()).getHistory();
+			for(int i = 0 ; i < 20 ; i++){
+				h.put(ammPart, parser.getTitle());
+			}
 
 			/* Warnings part */
 			LinearLayout warnings = (LinearLayout) findViewById(R.id.warnings);
@@ -368,8 +377,26 @@ public class AMMAnnexes extends Activity {
 		} catch (Exception e) {
 			ammPart = ammPart.substring(ammPart.lastIndexOf('/') + 1);
 			this.setTitle("Procedure " + ammPart + " introuvable");
+			HashMap<String, String> h = ((History)this.getApplication()).getHistory();
+			h.put(ammPart, ammPart+" - Unknown task");
 			e.printStackTrace();
 		}
+		
+		/* Gestion du sider gauche (historique) */
+		ListView historique = (ListView) findViewById(R.id.left_drawer);
+		historique.setAdapter(new ArrayAdapter<String>(this, R.layout.historic_row, ((History)this.getApplication()).getTitles()));
+		historique.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				onHistoricItemClick(position);
+			}
+		});
+	}
+	
+	private void onHistoricItemClick(int position){
+		Intent i = new Intent(this,AMMAnnexes.class);
+		i.putExtra("task",  ((History)this.getApplication()).getKeyAt(position));
+		this.startActivity(i);
 	}
 
 	private View.OnClickListener manageWarnings = new View.OnClickListener() {

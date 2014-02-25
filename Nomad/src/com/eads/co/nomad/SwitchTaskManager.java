@@ -19,8 +19,8 @@ public class SwitchTaskManager extends WebViewClient {
 		/* Ouverture d'une annexe */
 		if (url.contains("?y=")) {
 			AMMAnnexes.onAnnexeClic(0);
-		/* Changement de tache */
-		}else{
+			/* Changement de tache */
+		} else {
 			Intent i = new Intent(context, AMMAnnexes.class);
 			i.putExtra("task", url);
 			context.startActivity(i);
