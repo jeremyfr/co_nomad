@@ -55,13 +55,13 @@ public class AMMAnnexes extends Activity {
 	static int xseparator = 160; // largeur de la barre de séparation.
 	static int yinfobulle = 185; // hauteur de l'image infobulle.
 
-	
 	LinearLayout layout; // layout global contenant documentation et annexes.
 
-	static ScrollView scrollView; // scrollview contenant la documentation.
-	
-	static WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV, picturesWV;
+	static OurScrollView scrollView; // scrollview contenant la documentation.
 
+	static public WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV,
+			picturesWV;
+	
 	ImageView separator; // barre verticale.
 	static ImageView infobulle; // image de l'infobulle.
 
@@ -105,29 +105,34 @@ public class AMMAnnexes extends Activity {
 
 	// Place l'infobulle à l'ordonnée y.
 	public static void setInfobulle(int y) {
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-				infobulle.getLayoutParams());
-		if (y < ymin) {
-			infobulle.setImageResource(R.drawable.fleche_haut);
-			params.topMargin = ymin - yinfobulle / 3;
-		} else if (y > ymax) {
-			infobulle.setImageResource(R.drawable.fleche_bas);
-			params.topMargin = ymax - yinfobulle / 3;
-		} else {
-			infobulle.setImageResource(R.drawable.infobulle);
-			params.topMargin = y - yinfobulle / 3;
+		if (state == AnnexesState.DISPLAYED_FREE
+				|| state == AnnexesState.DISPLAYED_PRESSED) {
+			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+					infobulle.getLayoutParams());
+			if (y < ymin) {
+				infobulle.setImageResource(R.drawable.fleche_haut);
+				params.topMargin = ymin - yinfobulle / 3;
+			} else if (y > ymax) {
+				infobulle.setImageResource(R.drawable.fleche_bas);
+				params.topMargin = ymax - yinfobulle / 3;
+			} else {
+				infobulle.setImageResource(R.drawable.infobulle);
+				params.topMargin = y - yinfobulle / 3;
+			}
+			infobulle.setLayoutParams(params);
 		}
-		infobulle.setLayoutParams(params);
 	}
 
-	public static void onAnnexeClic(int offset) {
+	public static void onAnnexeClic(WebView webView, String annexe) {
 		switch (state) {
 		case NOT_DISPLAYED:
 			setAnnexeXAndX(xmax / 2);
+			scrollView.setAnnexe(webView, annexe);
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
 			setAnnexeX(xmax + xseparator / 3);
+			scrollView.setAnnexe(webView, annexe);
 			state = AnnexesState.NOT_DISPLAYED;
 			break;
 		case DISPLAYED_PRESSED:
@@ -137,8 +142,7 @@ public class AMMAnnexes extends Activity {
 		}
 	}
 
-	private void getWidthHeight()
-	{
+	private void getWidthHeight() {
 		// Récupération de la largeur et de la hauteur du layout.
 		Timer t = new Timer();
 		class SetMax extends TimerTask {
@@ -153,21 +157,19 @@ public class AMMAnnexes extends Activity {
 		}
 		t.schedule(new SetMax(), 500);
 	}
-	
-	
+
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		getWidthHeight();
 	}
-	
+
 	@Override
-	public void onResume()
-	{
+	public void onResume() {
 		super.onResume();
 		getWidthHeight();
 	}
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -176,11 +178,11 @@ public class AMMAnnexes extends Activity {
 		setContentView(R.layout.amm_annexes);
 
 		layout = (LinearLayout) findViewById(R.id.layout_amm);
-		
+
 		separator = (ImageView) findViewById(R.id.separator);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
 
-		scrollView = (ScrollView) findViewById(R.id.scrollView);
+		scrollView = (OurScrollView) findViewById(R.id.scrollView);
 
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		titreAnnexe = (TextView) findViewById(R.id.annexTitle);
@@ -195,8 +197,7 @@ public class AMMAnnexes extends Activity {
 
 		// Récupération de la largeur et de la hauteur du layout.
 		getWidthHeight();
-		
-		
+
 		layout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -315,8 +316,9 @@ public class AMMAnnexes extends Activity {
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle());
 			SwitchTaskManager taskManager = new SwitchTaskManager(this);
-			HashMap<String, String> h = ((History)this.getApplication()).getHistory();
-			for(int i = 0 ; i < 20 ; i++){
+			HashMap<String, String> h = ((History) this.getApplication())
+					.getHistory();
+			for (int i = 0; i < 20; i++) {
 				h.put(ammPart, parser.getTitle());
 			}
 
@@ -330,7 +332,8 @@ public class AMMAnnexes extends Activity {
 					parser.getWarnings(), "text/html", "UTF-8", null);
 			warningWV.setWebViewClient(taskManager);
 			warningWV.getSettings().setJavaScriptEnabled(true);
-			warningWV.addJavascriptInterface(new JavaScriptInterface(this), "MyAndroid");
+			warningWV.addJavascriptInterface(new JavaScriptInterface(this),
+					"MyAndroid");
 
 			/* Job Setup part */
 			LinearLayout jobSetUp = (LinearLayout) findViewById(R.id.jobSetUp);
@@ -385,26 +388,30 @@ public class AMMAnnexes extends Activity {
 		} catch (Exception e) {
 			ammPart = ammPart.substring(ammPart.lastIndexOf('/') + 1);
 			this.setTitle("Procedure " + ammPart + " introuvable");
-			HashMap<String, String> h = ((History)this.getApplication()).getHistory();
-			h.put(ammPart, ammPart+" - Unknown task");
+			HashMap<String, String> h = ((History) this.getApplication())
+					.getHistory();
+			h.put(ammPart, ammPart + " - Unknown task");
 			e.printStackTrace();
 		}
-		
+
 		/* Gestion du sider gauche (historique) */
 		ListView historique = (ListView) findViewById(R.id.left_drawer);
 		historique.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		historique.setAdapter(new ArrayAdapter<String>(this, R.layout.historic_row, ((History)this.getApplication()).getTitles()));
+		historique.setAdapter(new ArrayAdapter<String>(this,
+				R.layout.historic_row, ((History) this.getApplication())
+						.getTitles()));
 		historique.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
 				onHistoricItemClick(position);
 			}
 		});
 	}
-	
-	private void onHistoricItemClick(int position){
-		Intent i = new Intent(this,AMMAnnexes.class);
-		i.putExtra("task",  ((History)this.getApplication()).getKeyAt(position));
+
+	private void onHistoricItemClick(int position) {
+		Intent i = new Intent(this, AMMAnnexes.class);
+		i.putExtra("task", ((History) this.getApplication()).getKeyAt(position));
 		this.startActivity(i);
 	}
 
@@ -525,6 +532,8 @@ public class AMMAnnexes extends Activity {
 			collapse(R.id.closeUp_layout, R.id.stateCloseUp);
 			collapse(R.id.tools_layout, R.id.stateTools);
 			collapse(R.id.pictures_layout, R.id.statePictures);
+			setAnnexeXAndX(xmax / 2);
+			state = AnnexesState.DISPLAYED_FREE;
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

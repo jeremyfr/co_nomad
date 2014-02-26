@@ -86,7 +86,7 @@ public class DataParsing {
 	}
 	
 	public String getJobSetUp() {
-		String jobSetUp = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><body>";
+		String jobSetUp = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -134,12 +134,12 @@ public class DataParsing {
 				
 			}
 		}
-		jobSetUp += "</body>";
+		jobSetUp += "</body></html>";
 		return formatText(jobSetUp);
 	}
 
 	public String getProcedure() {
-		String procedure = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><body>";
+		String procedure = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
 		
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
@@ -212,8 +212,8 @@ public class DataParsing {
 									iteratorRefInt = listRefInt.iterator();
 								    while (iteratorRefInt.hasNext()) {
 										Element refInt = (Element) iteratorRefInt.next();
-										procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
-										stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+										procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+										stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 									}
 									
 								}
@@ -362,12 +362,12 @@ public class DataParsing {
 				
 			}
 		}
-		procedure += "</body>";
+		procedure += "</body></html>";
 		return formatText(procedure);
 	}
 	
 	public String getCloseUp() {
-		String closeUp = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><body>";
+		String closeUp = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -436,12 +436,12 @@ public class DataParsing {
 				
 			}
 		}
-		closeUp += "</body>";
+		closeUp += "</body></html>";
 		return formatText(closeUp);
 	}
 	
 	public String getTools() {
-		String tools = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><body>";
+		String tools = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
 		List<Element> listPretopic = racine.getChild("TFMATR").getChildren("PRETOPIC");
 		List<Element> listList1;
 		List<Element> listL1Item;
@@ -568,16 +568,16 @@ public class DataParsing {
 				}
 			}
 		}
-		tools += "</body>";
+		tools += "</body></html>";
 		return tools;
 	}
 
 
 	public String getPictures() {
-		String pictures = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><body>";
+		String pictures = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
 		// TODO Auto-generated method stub
 		pictures += "PICTURES";
-		pictures += "</body>";
+		pictures += "</body></html>";
 		return pictures;
 	}
 	

@@ -19,7 +19,7 @@ public class SwitchTaskManager extends WebViewClient {
 		Toast.makeText(context, url, Toast.LENGTH_SHORT).show();
 		/* Ouverture d'une annexe */
 		if (url.contains("?y=")) {
-			AMMAnnexes.onAnnexeClic(0);
+			AMMAnnexes.onAnnexeClic((WebView) view, url.split("?y=")[1]);
 			/* Changement de tache */
 		} else {
 			Intent i = new Intent(context, AMMAnnexes.class);

@@ -11,7 +11,8 @@ public class JavaScriptInterface {
     //add other interface methods to be called from JavaScript
     @android.webkit.JavascriptInterface
     public void receiveValueFromJs(String str) {
-    	AMMAnnexes.setInfobulle(Integer.parseInt(str));
     	Log.i("Javascript", str);
+    	/* Mettre à jour l'infobulle
+    	AMMAnnexes.setInfobulle(Integer.parseInt(str));*/
     }
 }
