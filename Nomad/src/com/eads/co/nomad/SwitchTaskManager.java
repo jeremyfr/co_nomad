@@ -10,9 +10,11 @@ import android.widget.Toast;
 
 public class SwitchTaskManager extends WebViewClient {
 	private Context context;
+	private AMMAnnexes activity;
 
-	public SwitchTaskManager(Context context) {
+	public SwitchTaskManager(Context context, AMMAnnexes activity) {
 		this.context = context;
+		this.activity = activity;
 	}
 
 	@Override
@@ -21,7 +23,7 @@ public class SwitchTaskManager extends WebViewClient {
 		/* Ouverture d'une annexe */
 		if (url.contains("?y=")) {
 			String[] split = url.split("y=");
-			AMMAnnexes.onAnnexeClic(view, "test");
+			activity.onAnnexeClic(view, "test");
 			/* Changement de tache */
 		} else {
 			Intent i = new Intent(context, AMMAnnexes.class);

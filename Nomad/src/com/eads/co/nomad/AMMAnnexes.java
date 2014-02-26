@@ -47,44 +47,43 @@ public class AMMAnnexes extends Activity {
 
 	private DataParsing parser;
 
-	static int x; // abscisse de la séparation entre la zone de texte et
+	private int x; // abscisse de la séparation entre la zone de texte et
 					// l'annexe.
-	static int xmax; // largeur maximale de la zone de texte ou de l'annexe.
-	static int ymax; // ordonnée d'apparition de la flèche basse.
-	static int xmin; // largeur minimale de la zone de texte ou de l'annexe.
-	static int ymin; // ordonnée d'apparition de la flèche haute.
-	static int xseparator = 160; // largeur de la barre de séparation.
-	static int yinfobulle = 185; // hauteur de l'image infobulle.
+	private static int xmax; // largeur maximale de la zone de texte ou de l'annexe.
+	private static int ymax; // ordonnée d'apparition de la flèche basse.
+	private static int xmin; // largeur minimale de la zone de texte ou de l'annexe.
+	private static int ymin; // ordonnée d'apparition de la flèche haute.
+	private static int xseparator = 160; // largeur de la barre de séparation.
+	private static int yinfobulle = 185; // hauteur de l'image infobulle.
 
-	LinearLayout layout; // layout global contenant documentation et annexes.
+	private LinearLayout layout; // layout global contenant documentation et annexes.
 
-	static OurScrollView scrollView; // scrollview contenant la documentation.
+	private OurScrollView scrollView; // scrollview contenant la documentation.
 
-	static public WebView warningWV, jobSetUpWV, procedureWV, closeUpWV,
+	private WebView warningWV, jobSetUpWV, procedureWV, closeUpWV,
 			toolsWV, picturesWV;
 
-	static LinearLayout warnings, jobSetUp, procedure, closeUp, tools,
+	private LinearLayout warnings, jobSetUp, procedure, closeUp, tools,
 			pictures;
 
-	static WebView clickedWB; // WebView contenant le lien de l'annexe cliqué.
+	private WebView clickedWB; // WebView contenant le lien de l'annexe cliqué.
 
-	ImageView separator; // barre verticale.
-	static ImageView infobulle; // image de l'infobulle.
+	private ImageView separator; // barre verticale.
+	private ImageView infobulle; // image de l'infobulle.
 
-	static LinearLayout annexLayout; // layout de l'annexe.
-	TextView titreAnnexe; // titre de l'annexe
-	Button closeAnnexButton; // bouton femer.
-	Button fullScreenAnnexButton; // bouton plein écran.
+	private LinearLayout annexLayout; // layout de l'annexe.
+	private TextView titreAnnexe; // titre de l'annexe
+	private Button closeAnnexButton; // bouton femer.
+	private Button fullScreenAnnexButton; // bouton plein écran.
 
 	// Pour le multitouch
-	ImageView annexImg;
-	FrameLayout layoutImg;
+	private ImageView annexImg;
+	private FrameLayout layoutImg;
 
-	public static AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de
-																	// l'annexe.
+	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
 
 	// Affiche l'annexe.
-	private static void setAnnexeX(int x) {
+	private void setAnnexeX(int x) {
 		scrollView.setLayoutParams(new LayoutParams(x - xseparator / 3,
 				LayoutParams.MATCH_PARENT));
 		annexLayout.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
@@ -93,7 +92,7 @@ public class AMMAnnexes extends Activity {
 	}
 
 	// Affiche l'annexe et met l'abscisse du séparateur.
-	private static void setAnnexeXAndX(int _x) {
+	private void setAnnexeXAndX(int _x) {
 		setAnnexeX(x);
 		x = _x;
 	}
@@ -111,7 +110,7 @@ public class AMMAnnexes extends Activity {
 	}
 
 	// Place l'infobulle à l'ordonnée y.
-	public static void setInfobulle(int y) {
+	public void setInfobulle(int y) {
 
 		if (clickedWB.equals(warningWV)) {
 			if (false) // Si Warnings est fermé.
@@ -123,7 +122,7 @@ public class AMMAnnexes extends Activity {
 				int y_absolue = 30 + 30 * 0 + warnings.getHeight()
 						- clickedWB.getHeight() + y;
 				int y_relative = scrollView.getScrollY() - y_absolue;
-				// displayInfobulle(y_relative);
+				displayInfobulle(y_relative);
 			}
 		}
 
@@ -137,7 +136,7 @@ public class AMMAnnexes extends Activity {
 				int y_absolue = 30 + 30 * 1 + warnings.getHeight()
 						+ jobSetUp.getHeight() - clickedWB.getHeight() + y;
 				int y_relative = scrollView.getScrollY() - y_absolue;
-				// displayInfobulle(y_relative);
+				displayInfobulle(y_relative);
 			}
 		}
 
@@ -157,7 +156,7 @@ public class AMMAnnexes extends Activity {
 				Log.i("Display", "Position de la phrase test sur l'écran = "
 						+ y_relative);
 				Log.i("Display", "scroll = " + scrollView.getScrollY());
-				// displayInfobulle(y_relative);
+				displayInfobulle(y_relative);
 			}
 		}
 
@@ -172,7 +171,7 @@ public class AMMAnnexes extends Activity {
 						+ jobSetUp.getHeight() + procedure.getHeight()
 						+ closeUp.getHeight() - clickedWB.getHeight() + y;
 				int y_relative = scrollView.getScrollY() - y_absolue;
-				// displayInfobulle(y_relative);
+				displayInfobulle(y_relative);
 			}
 		}
 
@@ -188,7 +187,7 @@ public class AMMAnnexes extends Activity {
 						+ closeUp.getHeight() + tools.getHeight()
 						- clickedWB.getHeight() + y;
 				int y_relative = scrollView.getScrollY() - y_absolue;
-				// displayInfobulle(y_relative);
+				displayInfobulle(y_relative);
 			}
 		}
 
@@ -204,13 +203,13 @@ public class AMMAnnexes extends Activity {
 						+ closeUp.getHeight() + tools.getHeight()
 						+ pictures.getHeight() - clickedWB.getHeight() + y;
 				int y_relative = scrollView.getScrollY() - y_absolue;
-				// displayInfobulle(y_relative);
+				displayInfobulle(y_relative);
 			}
 		}
 	}
 
-	private static void displayInfobulle(int y) {
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+	private void displayInfobulle(int y) {
+		/*RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 				infobulle.getLayoutParams());
 		if (y < ymin) {
 			infobulle.setImageResource(R.drawable.fleche_haut);
@@ -222,10 +221,10 @@ public class AMMAnnexes extends Activity {
 			infobulle.setImageResource(R.drawable.infobulle);
 			params.topMargin = y - yinfobulle / 3;
 		}
-		infobulle.setLayoutParams(params);
+		infobulle.setLayoutParams(params);*/
 	}
 
-	public static void onAnnexeClic(WebView webView, String annexe) {
+	public void onAnnexeClic(WebView webView, String annexe) {
 		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
 		switch (state) {
 		case NOT_DISPLAYED:
@@ -286,6 +285,7 @@ public class AMMAnnexes extends Activity {
 		infobulle = (ImageView) findViewById(R.id.infobulle);
 
 		scrollView = (OurScrollView) findViewById(R.id.scrollView);
+		scrollView.setActivity(this);
 
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		titreAnnexe = (TextView) findViewById(R.id.annexTitle);
@@ -418,7 +418,7 @@ public class AMMAnnexes extends Activity {
 		try {
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle());
-			SwitchTaskManager taskManager = new SwitchTaskManager(this);
+			SwitchTaskManager taskManager = new SwitchTaskManager(this, this);
 			HashMap<String, String> h = ((History) this.getApplication())
 					.getHistory();
 			for (int i = 0; i < 20; i++) {
@@ -435,7 +435,7 @@ public class AMMAnnexes extends Activity {
 					parser.getWarnings(), "text/html", "UTF-8", null);
 			warningWV.setWebViewClient(taskManager);
 			warningWV.getSettings().setJavaScriptEnabled(true);
-			warningWV.addJavascriptInterface(new JavaScriptInterface(),
+			warningWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 
 			/* Job Setup part */
@@ -449,7 +449,7 @@ public class AMMAnnexes extends Activity {
 					parser.getJobSetUp(), "text/html", "UTF-8", null);
 			jobSetUpWV.setWebViewClient(taskManager);
 			jobSetUpWV.getSettings().setJavaScriptEnabled(true);
-			jobSetUpWV.addJavascriptInterface(new JavaScriptInterface(),
+			jobSetUpWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 			/* Procedure part */
 			procedure = (LinearLayout) findViewById(R.id.procedure);
@@ -462,7 +462,7 @@ public class AMMAnnexes extends Activity {
 					parser.getProcedure(), "text/html", "UTF-8", null);
 			procedureWV.setWebViewClient(taskManager);
 			procedureWV.getSettings().setJavaScriptEnabled(true);
-			procedureWV.addJavascriptInterface(new JavaScriptInterface(),
+			procedureWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 			/* Close Up part */
 			closeUp = (LinearLayout) findViewById(R.id.closeUp);
@@ -475,7 +475,7 @@ public class AMMAnnexes extends Activity {
 					parser.getCloseUp(), "text/html", "UTF-8", null);
 			closeUpWV.setWebViewClient(taskManager);
 			closeUpWV.getSettings().setJavaScriptEnabled(true);
-			closeUpWV.addJavascriptInterface(new JavaScriptInterface(),
+			closeUpWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 			/* Tools part */
 			tools = (LinearLayout) findViewById(R.id.tools);
@@ -488,7 +488,7 @@ public class AMMAnnexes extends Activity {
 					parser.getTools(), "text/html", "UTF-8", null);
 			toolsWV.setWebViewClient(taskManager);
 			toolsWV.getSettings().setJavaScriptEnabled(true);
-			toolsWV.addJavascriptInterface(new JavaScriptInterface(),
+			toolsWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 			/* Pictures part */
 			pictures = (LinearLayout) findViewById(R.id.pictures);
@@ -501,7 +501,7 @@ public class AMMAnnexes extends Activity {
 					parser.getPictures(), "text/html", "UTF-8", null);
 			picturesWV.setWebViewClient(taskManager);
 			picturesWV.getSettings().setJavaScriptEnabled(true);
-			picturesWV.addJavascriptInterface(new JavaScriptInterface(),
+			picturesWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 		} catch (Exception e) {
 			ammPart = ammPart.substring(ammPart.lastIndexOf('/') + 1);

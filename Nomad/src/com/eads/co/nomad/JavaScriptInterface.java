@@ -6,8 +6,14 @@ import android.util.Log;
 
 public class JavaScriptInterface {
 
+	private AMMAnnexes activity;
+	
+	public JavaScriptInterface(AMMAnnexes activity)
+	{
+		this.activity = activity;
+	}
     
     @android.webkit.JavascriptInterface public void receiveValueFromJs(String str) {
-    	AMMAnnexes.setInfobulle((int)Double.parseDouble(str));
+    	activity.setInfobulle((int)Double.parseDouble(str));
     }
 }
