@@ -49,19 +49,22 @@ public class AMMAnnexes extends Activity {
 
 	private int x; // abscisse de la séparation entre la zone de texte et
 					// l'annexe.
-	private static int xmax; // largeur maximale de la zone de texte ou de l'annexe.
+	private static int xmax; // largeur maximale de la zone de texte ou de
+								// l'annexe.
 	private static int ymax; // ordonnée d'apparition de la flèche basse.
-	private static int xmin; // largeur minimale de la zone de texte ou de l'annexe.
+	private static int xmin; // largeur minimale de la zone de texte ou de
+								// l'annexe.
 	private static int ymin; // ordonnée d'apparition de la flèche haute.
 	private static int xseparator = 160; // largeur de la barre de séparation.
 	private static int yinfobulle = 185; // hauteur de l'image infobulle.
 
-	private LinearLayout layout; // layout global contenant documentation et annexes.
+	private LinearLayout layout; // layout global contenant documentation et
+									// annexes.
 
 	private OurScrollView scrollView; // scrollview contenant la documentation.
 
-	private WebView warningWV, jobSetUpWV, procedureWV, closeUpWV,
-			toolsWV, picturesWV;
+	private WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV,
+			picturesWV;
 
 	private LinearLayout warnings, jobSetUp, procedure, closeUp, tools,
 			pictures;
@@ -121,7 +124,7 @@ public class AMMAnnexes extends Activity {
 				infobulle.setVisibility(View.VISIBLE);
 				int y_absolue = 30 + 30 * 0 + warnings.getHeight()
 						- clickedWB.getHeight() + y;
-				int y_relative = scrollView.getScrollY() - y_absolue;
+				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
 				displayInfobulle(y_relative);
 			}
 		}
@@ -135,7 +138,7 @@ public class AMMAnnexes extends Activity {
 				infobulle.setVisibility(View.VISIBLE);
 				int y_absolue = 30 + 30 * 1 + warnings.getHeight()
 						+ jobSetUp.getHeight() - clickedWB.getHeight() + y;
-				int y_relative = scrollView.getScrollY() - y_absolue;
+				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
 				displayInfobulle(y_relative);
 			}
 		}
@@ -152,7 +155,7 @@ public class AMMAnnexes extends Activity {
 				int y_absolue = 30 + 30 * 2 + warnings.getHeight()
 						+ jobSetUp.getHeight() + procedure.getHeight()
 						- clickedWB.getHeight() + y;
-				int y_relative = scrollView.getScrollY() - y_absolue;
+				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
 				Log.i("Display", "Position de la phrase test sur l'écran = "
 						+ y_relative);
 				Log.i("Display", "scroll = " + scrollView.getScrollY());
@@ -170,7 +173,7 @@ public class AMMAnnexes extends Activity {
 				int y_absolue = 30 + 30 * 3 + warnings.getHeight()
 						+ jobSetUp.getHeight() + procedure.getHeight()
 						+ closeUp.getHeight() - clickedWB.getHeight() + y;
-				int y_relative = scrollView.getScrollY() - y_absolue;
+				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
 				displayInfobulle(y_relative);
 			}
 		}
@@ -186,7 +189,7 @@ public class AMMAnnexes extends Activity {
 						+ jobSetUp.getHeight() + procedure.getHeight()
 						+ closeUp.getHeight() + tools.getHeight()
 						- clickedWB.getHeight() + y;
-				int y_relative = scrollView.getScrollY() - y_absolue;
+				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
 				displayInfobulle(y_relative);
 			}
 		}
@@ -202,26 +205,31 @@ public class AMMAnnexes extends Activity {
 						+ jobSetUp.getHeight() + procedure.getHeight()
 						+ closeUp.getHeight() + tools.getHeight()
 						+ pictures.getHeight() - clickedWB.getHeight() + y;
-				int y_relative = scrollView.getScrollY() - y_absolue;
+				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
 				displayInfobulle(y_relative);
 			}
 		}
 	}
 
-	private void displayInfobulle(int y) {
-		/*RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-				infobulle.getLayoutParams());
-		if (y < ymin) {
-			infobulle.setImageResource(R.drawable.fleche_haut);
-			params.topMargin = ymin - yinfobulle / 3;
-		} else if (y > ymax) {
-			infobulle.setImageResource(R.drawable.fleche_bas);
-			params.topMargin = ymax - yinfobulle / 3;
-		} else {
-			infobulle.setImageResource(R.drawable.infobulle);
-			params.topMargin = y - yinfobulle / 3;
-		}
-		infobulle.setLayoutParams(params);*/
+	private void displayInfobulle(final int y) {
+		runOnUiThread(new Runnable() {
+		     @Override
+		     public void run() {
+		 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+						infobulle.getLayoutParams());
+				if (y < ymin) {
+					infobulle.setImageResource(R.drawable.fleche_haut);
+					params.topMargin = ymin - yinfobulle / 3;
+				} else if (y > ymax) {
+					infobulle.setImageResource(R.drawable.fleche_bas);
+					params.topMargin = ymax - yinfobulle / 3;
+				} else {
+					infobulle.setImageResource(R.drawable.infobulle);
+					params.topMargin = y - yinfobulle / 3;
+				}
+				infobulle.setLayoutParams(params);
+		    }
+		});
 	}
 
 	public void onAnnexeClic(WebView webView, String annexe) {

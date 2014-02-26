@@ -42,7 +42,7 @@ public class DataParsing {
 	}
 
 	public String getWarnings() {
-		String warnings = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String warnings = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		List<Element> listWarnings = racine.getChildren("WARNING");
 		List<Element> listItems;
 		List<Element> listList;
@@ -85,7 +85,7 @@ public class DataParsing {
 	}
 	
 	public String getJobSetUp() {
-		String jobSetUp = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String jobSetUp = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -138,7 +138,7 @@ public class DataParsing {
 	}
 
 	public String getProcedure() {
-		String procedure = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.33*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
+		String procedure = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -366,7 +366,7 @@ public class DataParsing {
 	}
 	
 	public String getCloseUp() {
-		String closeUp = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String closeUp = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -440,7 +440,7 @@ public class DataParsing {
 	}
 	
 	public String getTools() {
-		String tools = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String tools = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		List<Element> listPretopic = racine.getChild("TFMATR").getChildren("PRETOPIC");
 		List<Element> listList1;
 		List<Element> listL1Item;
@@ -573,7 +573,7 @@ public class DataParsing {
 
 
 	public String getPictures() {
-		String pictures = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String pictures = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		// TODO Auto-generated method stub
 		pictures += "PICTURES";
 		pictures += "</body></html>";
