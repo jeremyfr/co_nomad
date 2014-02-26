@@ -18,7 +18,7 @@ public class OurScrollView extends ScrollView {
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt) 
 	{
-	    AMMAnnexes.warningWV.loadUrl("javascript:getPosition('test')");
+	    //AMMAnnexes.warningWV.loadUrl("javascript:getPosition('test')");
 	    super.onScrollChanged(l, t, oldl, oldt);
 	}
 
