@@ -62,9 +62,10 @@ public class AMMAnnexes extends Activity {
 
 	static public WebView warningWV, jobSetUpWV, procedureWV, closeUpWV,
 			toolsWV, picturesWV;
-	
-	static LinearLayout warnings, jobSetUp, procedure, closeUp, tools, pictures;
-	
+
+	static LinearLayout warnings, jobSetUp, procedure, closeUp, tools,
+			pictures;
+
 	static WebView clickedWB; // WebView contenant le lien de l'annexe cliqué.
 
 	ImageView separator; // barre verticale.
@@ -80,7 +81,7 @@ public class AMMAnnexes extends Activity {
 	FrameLayout layoutImg;
 
 	public static AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de
-																   // l'annexe.
+																	// l'annexe.
 
 	// Affiche l'annexe.
 	private static void setAnnexeX(int x) {
@@ -111,30 +112,104 @@ public class AMMAnnexes extends Activity {
 
 	// Place l'infobulle à l'ordonnée y.
 	public static void setInfobulle(int y) {
-		
-		if(clickedWB.equals(procedureWV))
-		{
-			Log.i("OK", "OK");
-			if(false) // Si Procedure est fermé.
+
+		if (clickedWB.equals(warningWV)) {
+			if (false) // Si Warnings est fermé.
 			{
 				infobulle.setVisibility(View.INVISIBLE);
-			}
-			else // Si procedure est ouvert.
+			} else // Si Warnings est ouvert.
 			{
 				infobulle.setVisibility(View.VISIBLE);
-				Log.i("Display", "y = "+y);
-				Log.i("Display", "scroll = "+scrollView.getScrollY());
-				int y_absolue =  320 + y;
-				int y_relative = y_absolue-scrollView.getScrollY();
-				Log.i("Display", "Position de la phrase test sur l'écran = "+y_relative);
-				Log.i("Display", "scroll = "+scrollView.getScrollY());
-				//displayInfobulle(y_relative);
+				int y_absolue = 30 + 30 * 0 + warnings.getHeight()
+						- clickedWB.getHeight() + y;
+				int y_relative = scrollView.getScrollY() - y_absolue;
+				// displayInfobulle(y_relative);
+			}
+		}
+
+		if (clickedWB.equals(jobSetUpWV)) {
+			if (false) // Si Job Set up est fermé.
+			{
+				infobulle.setVisibility(View.INVISIBLE);
+			} else // Si Job Set up est ouvert.
+			{
+				infobulle.setVisibility(View.VISIBLE);
+				int y_absolue = 30 + 30 * 1 + warnings.getHeight()
+						+ jobSetUp.getHeight() - clickedWB.getHeight() + y;
+				int y_relative = scrollView.getScrollY() - y_absolue;
+				// displayInfobulle(y_relative);
+			}
+		}
+
+		if (clickedWB.equals(procedureWV)) {
+			if (false) // Si Procedure est fermé.
+			{
+				infobulle.setVisibility(View.INVISIBLE);
+			} else // Si Procedure est ouvert.
+			{
+				infobulle.setVisibility(View.VISIBLE);
+				Log.i("Display", "y = " + y);
+				Log.i("Display", "scroll = " + scrollView.getScrollY());
+				int y_absolue = 30 + 30 * 2 + warnings.getHeight()
+						+ jobSetUp.getHeight() + procedure.getHeight()
+						- clickedWB.getHeight() + y;
+				int y_relative = scrollView.getScrollY() - y_absolue;
+				Log.i("Display", "Position de la phrase test sur l'écran = "
+						+ y_relative);
+				Log.i("Display", "scroll = " + scrollView.getScrollY());
+				// displayInfobulle(y_relative);
+			}
+		}
+
+		if (clickedWB.equals(closeUpWV)) {
+			if (false) // Si Close up est fermé.
+			{
+				infobulle.setVisibility(View.INVISIBLE);
+			} else // Si Close up est ouvert.
+			{
+				infobulle.setVisibility(View.VISIBLE);
+				int y_absolue = 30 + 30 * 3 + warnings.getHeight()
+						+ jobSetUp.getHeight() + procedure.getHeight()
+						+ closeUp.getHeight() - clickedWB.getHeight() + y;
+				int y_relative = scrollView.getScrollY() - y_absolue;
+				// displayInfobulle(y_relative);
+			}
+		}
+
+		if (clickedWB.equals(toolsWV)) {
+			if (false) // Si Close up est fermé.
+			{
+				infobulle.setVisibility(View.INVISIBLE);
+			} else // Si Close up est ouvert.
+			{
+				infobulle.setVisibility(View.VISIBLE);
+				int y_absolue = 30 + 30 * 4 + warnings.getHeight()
+						+ jobSetUp.getHeight() + procedure.getHeight()
+						+ closeUp.getHeight() + tools.getHeight()
+						- clickedWB.getHeight() + y;
+				int y_relative = scrollView.getScrollY() - y_absolue;
+				// displayInfobulle(y_relative);
+			}
+		}
+
+		if (clickedWB.equals(picturesWV)) {
+			if (false) // Si Close up est fermé.
+			{
+				infobulle.setVisibility(View.INVISIBLE);
+			} else // Si Close up est ouvert.
+			{
+				infobulle.setVisibility(View.VISIBLE);
+				int y_absolue = 30 + 30 * 5 + warnings.getHeight()
+						+ jobSetUp.getHeight() + procedure.getHeight()
+						+ closeUp.getHeight() + tools.getHeight()
+						+ pictures.getHeight() - clickedWB.getHeight() + y;
+				int y_relative = scrollView.getScrollY() - y_absolue;
+				// displayInfobulle(y_relative);
 			}
 		}
 	}
-	
-	private static void displayInfobulle(int y)
-	{
+
+	private static void displayInfobulle(int y) {
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 				infobulle.getLayoutParams());
 		if (y < ymin) {

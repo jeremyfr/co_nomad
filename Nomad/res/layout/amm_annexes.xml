@@ -89,7 +89,7 @@
                     android:id="@+id/jobSetUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30px"
                     android:background="@color/background1_light"
                     android:clickable="true"
                     android:orientation="vertical" >
@@ -140,7 +140,7 @@
                     android:id="@+id/procedure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30px"
                     android:background="@color/background1_light"
                     android:clickable="true"
                     android:orientation="vertical" >
@@ -191,7 +191,7 @@
                     android:id="@+id/closeUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30px"
                     android:background="@color/background1_light"
                     android:clickable="true"
                     android:orientation="vertical" >
@@ -242,7 +242,7 @@
                     android:id="@+id/tools"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30px"
                     android:background="@color/background1_light"
                     android:clickable="true"
                     android:orientation="vertical" >
@@ -293,7 +293,7 @@
                     android:id="@+id/pictures"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30px"
                     android:background="@color/background1_light"
                     android:clickable="true"
                     android:orientation="vertical" >
