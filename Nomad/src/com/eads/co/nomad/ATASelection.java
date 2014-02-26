@@ -1,9 +1,11 @@
 package com.eads.co.nomad;
 
 import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.Menu;
 import android.view.View;
@@ -19,6 +21,7 @@ public class ATASelection extends Activity {
 	private ArrayList<ATA> listATA;
 	private ListView listeATAView;
 	private ListView sousListeATAView;
+	private ListView sousSousListeATA;
 	private int ataSelected = -1;
 	private int lastSubATASelected = -1;
 
@@ -40,6 +43,7 @@ public class ATASelection extends Activity {
 		listeATAView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listeStrings));
 		
 		sousListeATAView = (ListView)findViewById(R.id.sousListeATA);
+		sousSousListeATA = (ListView)findViewById(R.id.sousSousListeATA);
 		
 		// Listeners 
 		listeATAView.setOnItemClickListener(new OnItemClickListener() {
@@ -69,7 +73,6 @@ public class ATASelection extends Activity {
 
 	    		sousListeATA.setAdapter(new ArrayAdapter<String>(instance, android.R.layout.simple_list_item_1,sousListeStrings));
 	    		// remove previous sublist
-	    		ListView sousSousListeATA = (ListView)findViewById(R.id.sousSousListeATA);
 	    		sousListeStrings = new String[0];
 	    		sousSousListeATA.setAdapter(new ArrayAdapter<String>(instance, android.R.layout.simple_list_item_1,sousListeStrings));
 	        }
@@ -90,8 +93,6 @@ public class ATASelection extends Activity {
 		        	sousListeATAView.getChildAt(lastSubATASelected).setBackgroundColor(color);
 	        	}
 	        	lastSubATASelected = position;
-	        	
-	        	ListView sousSousListeATA = (ListView)findViewById(R.id.sousSousListeATA);
 
 	            ArrayList<ATALevel3> listSubSubATA = subATA.getListATALevel3();
 	    		String[] sousListeStrings = new String[listSubSubATA.size()];
@@ -101,6 +102,20 @@ public class ATASelection extends Activity {
 
 	    		sousSousListeATA.setAdapter(new ArrayAdapter<String>(instance, android.R.layout.simple_list_item_1,sousListeStrings));
 
+	        }
+	      });
+		
+		sousSousListeATA.setOnItemClickListener(new OnItemClickListener() {
+	        public void onItemClick(AdapterView<?> parent, View view,
+	            int position, long id) {
+	          Intent intent = new Intent(ATASelection.this, AMMAnnexes.class);
+	          ATA ata = listATA.get(ataSelected);
+	          ATALevel2 subAta = ata.getListATALevel2().get(lastSubATASelected);
+	          if (ata.getDescription() == "30 - ICE AND RAIN PROTECTION"){
+	        	  intent.putExtra("task", "EN30115140080100");
+	          }
+	          else intent.putExtra("task", "EN52132140080100");
+	          startActivity(intent);
 	        }
 	      });
 	}

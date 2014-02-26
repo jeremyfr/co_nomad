@@ -14,19 +14,25 @@ public class MenuApp extends Activity {
         setContentView(R.layout.menu_app);
     }
     
-    public void toAMM(View view){
-        Intent intent = new Intent(this, AMMAnnexes.class);
-        intent.putExtra("task", "EN30115140080100");
-        startActivity(intent);
-    }
+    // OLD
+//    public void toAMM(View view){
+//        Intent intent = new Intent(this, AMMAnnexes.class);
+//        intent.putExtra("task", "EN30115140080100");
+//        startActivity(intent);
+//    }
+    
+	public void toAMM(View view){
+		Intent intent = new Intent(this, ATASelection.class);
+		startActivity(intent);
+	}
+    
     
     public void toIPC(View view){
         
     }
     
     public void toJobCard(View view){
-        Intent intent = new Intent(this, JobCard.class);
-        intent.putExtra("task", "EN30115140080100");
+        Intent intent = new Intent(this, MainActivityJobCards.class);
         startActivity(intent);
     }
     

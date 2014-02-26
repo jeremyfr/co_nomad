@@ -31,8 +31,16 @@
             android:label="@string/amm" >
         </activity>
         <activity
+            android:name="ATASelection"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name="AMMAnnexes"
-            android:label="@string/amm" >
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="MainActivityJobCards"
+            android:label="@string/app_name" >
         </activity>
         <activity 
             android:name="JobCard"
