@@ -384,6 +384,7 @@ public class AMMAnnexes extends Activity {
 		
 		/* Gestion du sider gauche (historique) */
 		ListView historique = (ListView) findViewById(R.id.left_drawer);
+		historique.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		historique.setAdapter(new ArrayAdapter<String>(this, R.layout.historic_row, ((History)this.getApplication()).getTitles()));
 		historique.setOnItemClickListener(new OnItemClickListener() {
 			@Override
