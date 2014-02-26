@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -77,7 +78,7 @@ public class AMMAnnexes extends Activity {
 	FrameLayout layoutImg;
 
 	public static AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de
-																	// l'annexe.
+																   // l'annexe.
 
 	// Affiche l'annexe.
 	private static void setAnnexeX(int x) {
@@ -108,6 +109,7 @@ public class AMMAnnexes extends Activity {
 
 	// Place l'infobulle à l'ordonnée y.
 	public static void setInfobulle(int y) {
+		Log.i("SetInfobulle", ""+y);
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 				infobulle.getLayoutParams());
 		if (y < ymin) {
@@ -125,6 +127,7 @@ public class AMMAnnexes extends Activity {
 	}
 
 	public static void onAnnexeClic(WebView webView, String annexe) {
+		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
 		switch (state) {
 		case NOT_DISPLAYED:
 			setAnnexeXAndX(xmax / 2);
@@ -134,8 +137,6 @@ public class AMMAnnexes extends Activity {
 			break;
 		case DISPLAYED_FREE:
 			setAnnexeX(xmax + xseparator / 3);
-			scrollView.setAnnexe(webView, annexe);
-			clickedWB = webView;
 			state = AnnexesState.NOT_DISPLAYED;
 			break;
 		case DISPLAYED_PRESSED:
@@ -335,7 +336,7 @@ public class AMMAnnexes extends Activity {
 					parser.getWarnings(), "text/html", "UTF-8", null);
 			warningWV.setWebViewClient(taskManager);
 			warningWV.getSettings().setJavaScriptEnabled(true);
-			warningWV.addJavascriptInterface(new JavaScriptInterface(this, warningWV),
+			warningWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 
 			/* Job Setup part */
@@ -349,7 +350,7 @@ public class AMMAnnexes extends Activity {
 					parser.getJobSetUp(), "text/html", "UTF-8", null);
 			jobSetUpWV.setWebViewClient(taskManager);
 			jobSetUpWV.getSettings().setJavaScriptEnabled(true);
-			jobSetUpWV.addJavascriptInterface(new JavaScriptInterface(this, jobSetUpWV),
+			jobSetUpWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 			/* Procedure part */
 			LinearLayout procedure = (LinearLayout) findViewById(R.id.procedure);
@@ -362,7 +363,7 @@ public class AMMAnnexes extends Activity {
 					parser.getProcedure(), "text/html", "UTF-8", null);
 			procedureWV.setWebViewClient(taskManager);
 			procedureWV.getSettings().setJavaScriptEnabled(true);
-			procedureWV.addJavascriptInterface(new JavaScriptInterface(this, procedureWV),
+			procedureWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 			/* Close Up part */
 			LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
@@ -375,7 +376,7 @@ public class AMMAnnexes extends Activity {
 					parser.getCloseUp(), "text/html", "UTF-8", null);
 			closeUpWV.setWebViewClient(taskManager);
 			closeUpWV.getSettings().setJavaScriptEnabled(true);
-			closeUpWV.addJavascriptInterface(new JavaScriptInterface(this, closeUpWV),
+			closeUpWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 			/* Tools part */
 			LinearLayout tools = (LinearLayout) findViewById(R.id.tools);
@@ -388,7 +389,7 @@ public class AMMAnnexes extends Activity {
 					parser.getTools(), "text/html", "UTF-8", null);
 			toolsWV.setWebViewClient(taskManager);
 			toolsWV.getSettings().setJavaScriptEnabled(true);
-			toolsWV.addJavascriptInterface(new JavaScriptInterface(this, toolsWV),
+			toolsWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 			/* Pictures part */
 			LinearLayout pictures = (LinearLayout) findViewById(R.id.pictures);
@@ -401,7 +402,7 @@ public class AMMAnnexes extends Activity {
 					parser.getPictures(), "text/html", "UTF-8", null);
 			picturesWV.setWebViewClient(taskManager);
 			picturesWV.getSettings().setJavaScriptEnabled(true);
-			picturesWV.addJavascriptInterface(new JavaScriptInterface(this, picturesWV),
+			picturesWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
 		} catch (Exception e) {
 			ammPart = ammPart.substring(ammPart.lastIndexOf('/') + 1);

@@ -6,17 +6,14 @@ import android.webkit.WebView;
 
 public class JavaScriptInterface {
     Context mContext;
-    WebView webView;
-    JavaScriptInterface(Context c, WebView webView) {
+    JavaScriptInterface(Context c) {
         mContext = c;
-        this.webView = webView;
     }
     
     //add other interface methods to be called from JavaScript
-    @android.webkit.JavascriptInterface
     public void receiveValueFromJs(String str) {
     	Log.i("Javascript", str);
-    	/* Mettre à jour l'infobulle
-    	AMMAnnexes.setInfobulle(Integer.parseInt(str));*/
+    	/* Mettre à jour l'infobulle */
+    	AMMAnnexes.setInfobulle(Integer.parseInt(str));
     }
 }

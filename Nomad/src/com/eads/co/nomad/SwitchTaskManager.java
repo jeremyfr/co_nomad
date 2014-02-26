@@ -2,6 +2,7 @@ package com.eads.co.nomad;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.webkit.JsResult;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -18,8 +19,9 @@ public class SwitchTaskManager extends WebViewClient {
 	public boolean shouldOverrideUrlLoading(WebView view, String url) {
 		Toast.makeText(context, url, Toast.LENGTH_SHORT).show();
 		/* Ouverture d'une annexe */
-		if (url.contains("?id=")) {
-			AMMAnnexes.onAnnexeClic((WebView) view, url.split("?id=")[1]);
+		if (url.contains("?y=")) {
+			String[] split = url.split("y=");
+			AMMAnnexes.onAnnexeClic((WebView) view, split[1]);
 			/* Changement de tache */
 		} else {
 			Intent i = new Intent(context, AMMAnnexes.class);
