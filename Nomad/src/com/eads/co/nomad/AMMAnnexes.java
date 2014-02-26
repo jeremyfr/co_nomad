@@ -42,7 +42,7 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
  * @author Benjamin Louradour
  * @author Guillaume Saas
  */
-@SuppressLint("JavascriptInterface")
+
 public class AMMAnnexes extends Activity {
 
 	private DataParsing parser;
@@ -62,6 +62,8 @@ public class AMMAnnexes extends Activity {
 
 	static public WebView warningWV, jobSetUpWV, procedureWV, closeUpWV,
 			toolsWV, picturesWV;
+	
+	static LinearLayout warnings, jobSetUp, procedure, closeUp, tools, pictures;
 	
 	static WebView clickedWB; // WebView contenant le lien de l'annexe cliqué.
 
@@ -109,7 +111,29 @@ public class AMMAnnexes extends Activity {
 
 	// Place l'infobulle à l'ordonnée y.
 	public static void setInfobulle(int y) {
-		Log.i("SetInfobulle", ""+y);
+		
+		if(clickedWB.equals(procedureWV))
+		{
+			Log.i("OK", "OK");
+			if(false) // Si Procedure est fermé.
+			{
+				infobulle.setVisibility(View.INVISIBLE);
+			}
+			else // Si procedure est ouvert.
+			{
+				infobulle.setVisibility(View.VISIBLE);
+				Log.i("Display", "y = "+y);
+				int y_absolue =  320 + y;
+				Log.i("Display", "y absolue = "+y_absolue);
+				int y_relative = y_absolue-scrollView.getScrollY();
+				Log.i("Display", "scroll = "+scrollView.getScrollY());
+				//displayInfobulle(y_relative);
+			}
+		}
+	}
+	
+	private static void displayInfobulle(int y)
+	{
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 				infobulle.getLayoutParams());
 		if (y < ymin) {
@@ -123,7 +147,6 @@ public class AMMAnnexes extends Activity {
 			params.topMargin = y - yinfobulle / 3;
 		}
 		infobulle.setLayoutParams(params);
-
 	}
 
 	public static void onAnnexeClic(WebView webView, String annexe) {
@@ -327,7 +350,7 @@ public class AMMAnnexes extends Activity {
 			}
 
 			/* Warnings part */
-			LinearLayout warnings = (LinearLayout) findViewById(R.id.warnings);
+			warnings = (LinearLayout) findViewById(R.id.warnings);
 			warnings.setOnClickListener(manageWarnings);
 			((ImageView) findViewById(R.id.stateWarning))
 					.setTag(R.drawable.expand);
@@ -336,11 +359,11 @@ public class AMMAnnexes extends Activity {
 					parser.getWarnings(), "text/html", "UTF-8", null);
 			warningWV.setWebViewClient(taskManager);
 			warningWV.getSettings().setJavaScriptEnabled(true);
-			warningWV.addJavascriptInterface(new JavaScriptInterface(this),
+			warningWV.addJavascriptInterface(new JavaScriptInterface(),
 					"MyAndroid");
 
 			/* Job Setup part */
-			LinearLayout jobSetUp = (LinearLayout) findViewById(R.id.jobSetUp);
+			jobSetUp = (LinearLayout) findViewById(R.id.jobSetUp);
 			jobSetUp.setOnClickListener(manageJobSetUp);
 			collapse((LinearLayout) findViewById(R.id.jobSetUp_layout));
 			((ImageView) findViewById(R.id.stateJobSetUp))
@@ -350,10 +373,10 @@ public class AMMAnnexes extends Activity {
 					parser.getJobSetUp(), "text/html", "UTF-8", null);
 			jobSetUpWV.setWebViewClient(taskManager);
 			jobSetUpWV.getSettings().setJavaScriptEnabled(true);
-			jobSetUpWV.addJavascriptInterface(new JavaScriptInterface(this),
+			jobSetUpWV.addJavascriptInterface(new JavaScriptInterface(),
 					"MyAndroid");
 			/* Procedure part */
-			LinearLayout procedure = (LinearLayout) findViewById(R.id.procedure);
+			procedure = (LinearLayout) findViewById(R.id.procedure);
 			procedure.setOnClickListener(manageProcedure);
 			collapse((LinearLayout) findViewById(R.id.procedure_layout));
 			((ImageView) findViewById(R.id.stateProcedure))
@@ -363,10 +386,10 @@ public class AMMAnnexes extends Activity {
 					parser.getProcedure(), "text/html", "UTF-8", null);
 			procedureWV.setWebViewClient(taskManager);
 			procedureWV.getSettings().setJavaScriptEnabled(true);
-			procedureWV.addJavascriptInterface(new JavaScriptInterface(this),
+			procedureWV.addJavascriptInterface(new JavaScriptInterface(),
 					"MyAndroid");
 			/* Close Up part */
-			LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
+			closeUp = (LinearLayout) findViewById(R.id.closeUp);
 			closeUp.setOnClickListener(manageCloseUp);
 			collapse((LinearLayout) findViewById(R.id.closeUp_layout));
 			((ImageView) findViewById(R.id.stateCloseUp))
@@ -376,10 +399,10 @@ public class AMMAnnexes extends Activity {
 					parser.getCloseUp(), "text/html", "UTF-8", null);
 			closeUpWV.setWebViewClient(taskManager);
 			closeUpWV.getSettings().setJavaScriptEnabled(true);
-			closeUpWV.addJavascriptInterface(new JavaScriptInterface(this),
+			closeUpWV.addJavascriptInterface(new JavaScriptInterface(),
 					"MyAndroid");
 			/* Tools part */
-			LinearLayout tools = (LinearLayout) findViewById(R.id.tools);
+			tools = (LinearLayout) findViewById(R.id.tools);
 			tools.setOnClickListener(manageTools);
 			collapse((LinearLayout) findViewById(R.id.tools_layout));
 			((ImageView) findViewById(R.id.stateTools))
@@ -389,10 +412,10 @@ public class AMMAnnexes extends Activity {
 					parser.getTools(), "text/html", "UTF-8", null);
 			toolsWV.setWebViewClient(taskManager);
 			toolsWV.getSettings().setJavaScriptEnabled(true);
-			toolsWV.addJavascriptInterface(new JavaScriptInterface(this),
+			toolsWV.addJavascriptInterface(new JavaScriptInterface(),
 					"MyAndroid");
 			/* Pictures part */
-			LinearLayout pictures = (LinearLayout) findViewById(R.id.pictures);
+			pictures = (LinearLayout) findViewById(R.id.pictures);
 			pictures.setOnClickListener(managePictures);
 			collapse((LinearLayout) findViewById(R.id.pictures_layout));
 			((ImageView) findViewById(R.id.statePictures))
@@ -402,7 +425,7 @@ public class AMMAnnexes extends Activity {
 					parser.getPictures(), "text/html", "UTF-8", null);
 			picturesWV.setWebViewClient(taskManager);
 			picturesWV.getSettings().setJavaScriptEnabled(true);
-			picturesWV.addJavascriptInterface(new JavaScriptInterface(this),
+			picturesWV.addJavascriptInterface(new JavaScriptInterface(),
 					"MyAndroid");
 		} catch (Exception e) {
 			ammPart = ammPart.substring(ammPart.lastIndexOf('/') + 1);

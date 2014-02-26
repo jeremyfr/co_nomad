@@ -80,7 +80,6 @@ public class DataParsing {
 			}
 			warnings += "<br/>";
 		}
-		warnings += "<div id='test'><p>Ligne de test pour l'infobulle.</p></div>";
 		warnings += "</body></html>";
 		return warnings;
 	}
@@ -139,7 +138,7 @@ public class DataParsing {
 	}
 
 	public String getProcedure() {
-		String procedure = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String procedure = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
@@ -362,6 +361,7 @@ public class DataParsing {
 				
 			}
 		}
+		procedure += "<div id='test'><p>Ligne de test pour l'infobulle.</p></div>";
 		procedure += "</body></html>";
 		return formatText(procedure);
 	}

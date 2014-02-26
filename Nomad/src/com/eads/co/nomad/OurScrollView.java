@@ -27,10 +27,10 @@ public class OurScrollView extends ScrollView {
 		case NOT_DISPLAYED:
 			break;
 		case DISPLAYED_FREE:
-		    webView.loadUrl("javascript:getPosition('"+annexe+"')");
+			webView.loadUrl("javascript:getPosition('"+annexe+"')");
 			break;
 		case DISPLAYED_PRESSED:
-		    webView.loadUrl("javascript:getPosition('"+annexe+"')");
+			webView.loadUrl("javascript:getPosition('"+annexe+"')");
 			break;
 		case DISPLAYED_FULLSCREEN:
 			break;
@@ -40,6 +40,7 @@ public class OurScrollView extends ScrollView {
 	
 	public void setAnnexe(WebView webView, String annexe)
 	{
+		Log.i("OurScrollView", "Set webView ok");
 		this.annexe = annexe;
 		this.webView = webView;
 	}

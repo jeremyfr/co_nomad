@@ -21,7 +21,7 @@ public class SwitchTaskManager extends WebViewClient {
 		/* Ouverture d'une annexe */
 		if (url.contains("?y=")) {
 			String[] split = url.split("y=");
-			AMMAnnexes.onAnnexeClic((WebView) view, split[1]);
+			AMMAnnexes.onAnnexeClic(view, "test");
 			/* Changement de tache */
 		} else {
 			Intent i = new Intent(context, AMMAnnexes.class);
