@@ -18,8 +18,8 @@ public class SwitchTaskManager extends WebViewClient {
 	public boolean shouldOverrideUrlLoading(WebView view, String url) {
 		Toast.makeText(context, url, Toast.LENGTH_SHORT).show();
 		/* Ouverture d'une annexe */
-		if (url.contains("?y=")) {
-			AMMAnnexes.onAnnexeClic((WebView) view, url.split("?y=")[1]);
+		if (url.contains("?id=")) {
+			AMMAnnexes.onAnnexeClic((WebView) view, url.split("?id=")[1]);
 			/* Changement de tache */
 		} else {
 			Intent i = new Intent(context, AMMAnnexes.class);

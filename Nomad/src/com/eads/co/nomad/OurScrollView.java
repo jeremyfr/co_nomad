@@ -22,7 +22,18 @@ public class OurScrollView extends ScrollView {
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt) 
 	{
-	    webView.loadUrl("javascript:getPosition('"+annexe+"')");
+		switch (AMMAnnexes.state) {
+		case NOT_DISPLAYED:
+			break;
+		case DISPLAYED_FREE:
+		    webView.loadUrl("javascript:getPosition('"+annexe+"')");
+			break;
+		case DISPLAYED_PRESSED:
+		    webView.loadUrl("javascript:getPosition('"+annexe+"')");
+			break;
+		case DISPLAYED_FULLSCREEN:
+			break;
+		}
 	    super.onScrollChanged(l, t, oldl, oldt);
 	}
 	

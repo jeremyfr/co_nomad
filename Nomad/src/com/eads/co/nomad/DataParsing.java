@@ -212,8 +212,8 @@ public class DataParsing {
 									iteratorRefInt = listRefInt.iterator();
 								    while (iteratorRefInt.hasNext()) {
 										Element refInt = (Element) iteratorRefInt.next();
-										procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
-										stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+										procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+										stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 									}
 									
 								}

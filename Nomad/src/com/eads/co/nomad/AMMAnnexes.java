@@ -59,9 +59,11 @@ public class AMMAnnexes extends Activity {
 
 	static OurScrollView scrollView; // scrollview contenant la documentation.
 
-	static public WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV,
-			picturesWV;
+	static public WebView warningWV, jobSetUpWV, procedureWV, closeUpWV,
+			toolsWV, picturesWV;
 	
+	static WebView clickedWB; // WebView contenant le lien de l'annexe cliqué.
+
 	ImageView separator; // barre verticale.
 	static ImageView infobulle; // image de l'infobulle.
 
@@ -74,7 +76,8 @@ public class AMMAnnexes extends Activity {
 	ImageView annexImg;
 	FrameLayout layoutImg;
 
-	static AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
+	public static AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de
+																	// l'annexe.
 
 	// Affiche l'annexe.
 	private static void setAnnexeX(int x) {
@@ -105,22 +108,20 @@ public class AMMAnnexes extends Activity {
 
 	// Place l'infobulle à l'ordonnée y.
 	public static void setInfobulle(int y) {
-		if (state == AnnexesState.DISPLAYED_FREE
-				|| state == AnnexesState.DISPLAYED_PRESSED) {
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-					infobulle.getLayoutParams());
-			if (y < ymin) {
-				infobulle.setImageResource(R.drawable.fleche_haut);
-				params.topMargin = ymin - yinfobulle / 3;
-			} else if (y > ymax) {
-				infobulle.setImageResource(R.drawable.fleche_bas);
-				params.topMargin = ymax - yinfobulle / 3;
-			} else {
-				infobulle.setImageResource(R.drawable.infobulle);
-				params.topMargin = y - yinfobulle / 3;
-			}
-			infobulle.setLayoutParams(params);
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+				infobulle.getLayoutParams());
+		if (y < ymin) {
+			infobulle.setImageResource(R.drawable.fleche_haut);
+			params.topMargin = ymin - yinfobulle / 3;
+		} else if (y > ymax) {
+			infobulle.setImageResource(R.drawable.fleche_bas);
+			params.topMargin = ymax - yinfobulle / 3;
+		} else {
+			infobulle.setImageResource(R.drawable.infobulle);
+			params.topMargin = y - yinfobulle / 3;
 		}
+		infobulle.setLayoutParams(params);
+
 	}
 
 	public static void onAnnexeClic(WebView webView, String annexe) {
@@ -128,11 +129,13 @@ public class AMMAnnexes extends Activity {
 		case NOT_DISPLAYED:
 			setAnnexeXAndX(xmax / 2);
 			scrollView.setAnnexe(webView, annexe);
+			clickedWB = webView;
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
 			setAnnexeX(xmax + xseparator / 3);
 			scrollView.setAnnexe(webView, annexe);
+			clickedWB = webView;
 			state = AnnexesState.NOT_DISPLAYED;
 			break;
 		case DISPLAYED_PRESSED:
@@ -201,7 +204,6 @@ public class AMMAnnexes extends Activity {
 		layout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				warningWV.loadUrl("javascript:getPosition('test')");
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN: // PRESS
 					switch (state) {
@@ -228,6 +230,7 @@ public class AMMAnnexes extends Activity {
 						if (event.getX() >= xmin && event.getX() <= xmax - xmin) {
 							setAnnexeXAndX((int) event.getX());
 						}
+						clickedWB.loadUrl("javascript:getPosition('test')");
 						state = AnnexesState.DISPLAYED_PRESSED;
 						break;
 					case DISPLAYED_FULLSCREEN:
@@ -332,7 +335,7 @@ public class AMMAnnexes extends Activity {
 					parser.getWarnings(), "text/html", "UTF-8", null);
 			warningWV.setWebViewClient(taskManager);
 			warningWV.getSettings().setJavaScriptEnabled(true);
-			warningWV.addJavascriptInterface(new JavaScriptInterface(this),
+			warningWV.addJavascriptInterface(new JavaScriptInterface(this, warningWV),
 					"MyAndroid");
 
 			/* Job Setup part */
@@ -345,6 +348,9 @@ public class AMMAnnexes extends Activity {
 			jobSetUpWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getJobSetUp(), "text/html", "UTF-8", null);
 			jobSetUpWV.setWebViewClient(taskManager);
+			jobSetUpWV.getSettings().setJavaScriptEnabled(true);
+			jobSetUpWV.addJavascriptInterface(new JavaScriptInterface(this, jobSetUpWV),
+					"MyAndroid");
 			/* Procedure part */
 			LinearLayout procedure = (LinearLayout) findViewById(R.id.procedure);
 			procedure.setOnClickListener(manageProcedure);
@@ -355,6 +361,9 @@ public class AMMAnnexes extends Activity {
 			procedureWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getProcedure(), "text/html", "UTF-8", null);
 			procedureWV.setWebViewClient(taskManager);
+			procedureWV.getSettings().setJavaScriptEnabled(true);
+			procedureWV.addJavascriptInterface(new JavaScriptInterface(this, procedureWV),
+					"MyAndroid");
 			/* Close Up part */
 			LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
 			closeUp.setOnClickListener(manageCloseUp);
@@ -365,6 +374,9 @@ public class AMMAnnexes extends Activity {
 			closeUpWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getCloseUp(), "text/html", "UTF-8", null);
 			closeUpWV.setWebViewClient(taskManager);
+			closeUpWV.getSettings().setJavaScriptEnabled(true);
+			closeUpWV.addJavascriptInterface(new JavaScriptInterface(this, closeUpWV),
+					"MyAndroid");
 			/* Tools part */
 			LinearLayout tools = (LinearLayout) findViewById(R.id.tools);
 			tools.setOnClickListener(manageTools);
@@ -375,6 +387,9 @@ public class AMMAnnexes extends Activity {
 			toolsWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getTools(), "text/html", "UTF-8", null);
 			toolsWV.setWebViewClient(taskManager);
+			toolsWV.getSettings().setJavaScriptEnabled(true);
+			toolsWV.addJavascriptInterface(new JavaScriptInterface(this, toolsWV),
+					"MyAndroid");
 			/* Pictures part */
 			LinearLayout pictures = (LinearLayout) findViewById(R.id.pictures);
 			pictures.setOnClickListener(managePictures);
@@ -385,6 +400,9 @@ public class AMMAnnexes extends Activity {
 			picturesWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getPictures(), "text/html", "UTF-8", null);
 			picturesWV.setWebViewClient(taskManager);
+			picturesWV.getSettings().setJavaScriptEnabled(true);
+			picturesWV.addJavascriptInterface(new JavaScriptInterface(this, picturesWV),
+					"MyAndroid");
 		} catch (Exception e) {
 			ammPart = ammPart.substring(ammPart.lastIndexOf('/') + 1);
 			this.setTitle("Procedure " + ammPart + " introuvable");
@@ -532,8 +550,6 @@ public class AMMAnnexes extends Activity {
 			collapse(R.id.closeUp_layout, R.id.stateCloseUp);
 			collapse(R.id.tools_layout, R.id.stateTools);
 			collapse(R.id.pictures_layout, R.id.statePictures);
-			setAnnexeXAndX(xmax / 2);
-			state = AnnexesState.DISPLAYED_FREE;
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
