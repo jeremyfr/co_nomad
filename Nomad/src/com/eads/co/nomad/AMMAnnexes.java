@@ -123,9 +123,10 @@ public class AMMAnnexes extends Activity {
 			{
 				infobulle.setVisibility(View.VISIBLE);
 				Log.i("Display", "y = "+y);
+				Log.i("Display", "scroll = "+scrollView.getScrollY());
 				int y_absolue =  320 + y;
-				Log.i("Display", "y absolue = "+y_absolue);
 				int y_relative = y_absolue-scrollView.getScrollY();
+				Log.i("Display", "Position de la phrase test sur l'écran = "+y_relative);
 				Log.i("Display", "scroll = "+scrollView.getScrollY());
 				//displayInfobulle(y_relative);
 			}

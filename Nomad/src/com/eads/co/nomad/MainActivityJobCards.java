@@ -160,11 +160,11 @@ public class MainActivityJobCards extends FragmentActivity {
 		JobCardAdapter adapter3 = new JobCardAdapter(this, jobCardsTab3);
 		
 		listeJobCards3.setAdapter((ExpandableListAdapter) adapter3);
-	}
+	}/*
 	public void openJobCard(View view){
         Intent intent = new Intent(this, JobCard.class);
         intent.putExtra("task", "EN30115140080100");
         startActivity(intent);
-	}
+	}*/
 
 }
