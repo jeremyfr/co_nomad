@@ -22,6 +22,7 @@
     
     <Button android:id="@+id/openButton" 
         android:text="OPEN"
+		android:onClick="openJobCard"
         android:layout_width="0dp"
         android:layout_weight="20"
         android:layout_height="wrap_content"/>
