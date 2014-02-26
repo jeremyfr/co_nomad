@@ -2,6 +2,7 @@ package com.eads.co.nomad;
 
 import android.content.Context;
 import android.content.Intent;
+import android.webkit.JsResult;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;

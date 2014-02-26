@@ -42,7 +42,7 @@ public class DataParsing {
 	}
 
 	public String getWarnings() {
-		String warnings = "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><body>";
+		String warnings = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
 		List<Element> listWarnings = racine.getChildren("WARNING");
 		List<Element> listItems;
 		List<Element> listList;
@@ -80,7 +80,8 @@ public class DataParsing {
 			}
 			warnings += "<br/>";
 		}
-		warnings += "</body>";
+		warnings += "<div id='test'><p>Ligne de test pour l'infobulle.</p></div>";
+		warnings += "</body></html>";
 		return warnings;
 	}
 	

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -29,7 +30,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
 import com.eads.co.nomad.PanAndZoomListener.Anchor;
 
 /**
@@ -41,6 +41,7 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
  * @author Benjamin Louradour
  * @author Guillaume Saas
  */
+@SuppressLint("JavascriptInterface")
 public class AMMAnnexes extends Activity {
 
 	private DataParsing parser;
@@ -54,12 +55,15 @@ public class AMMAnnexes extends Activity {
 	static int xseparator = 160; // largeur de la barre de séparation.
 	static int yinfobulle = 185; // hauteur de l'image infobulle.
 
+	
 	LinearLayout layout; // layout global contenant documentation et annexes.
 
 	static ScrollView scrollView; // scrollview contenant la documentation.
+	
+	static WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV, picturesWV;
 
 	ImageView separator; // barre verticale.
-	ImageView infobulle; // image de l'infobulle.
+	static ImageView infobulle; // image de l'infobulle.
 
 	static LinearLayout annexLayout; // layout de l'annexe.
 	TextView titreAnnexe; // titre de l'annexe
@@ -100,7 +104,7 @@ public class AMMAnnexes extends Activity {
 	}
 
 	// Place l'infobulle à l'ordonnée y.
-	private void setInfobulle(int y) {
+	public static void setInfobulle(int y) {
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 				infobulle.getLayoutParams());
 		if (y < ymin) {
@@ -172,7 +176,7 @@ public class AMMAnnexes extends Activity {
 		setContentView(R.layout.amm_annexes);
 
 		layout = (LinearLayout) findViewById(R.id.layout_amm);
-
+		
 		separator = (ImageView) findViewById(R.id.separator);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
 
@@ -192,10 +196,11 @@ public class AMMAnnexes extends Activity {
 		// Récupération de la largeur et de la hauteur du layout.
 		getWidthHeight();
 		
-
+		
 		layout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
+				warningWV.loadUrl("javascript:getPosition('test')");
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN: // PRESS
 					switch (state) {
@@ -320,17 +325,20 @@ public class AMMAnnexes extends Activity {
 			warnings.setOnClickListener(manageWarnings);
 			((ImageView) findViewById(R.id.stateWarning))
 					.setTag(R.drawable.expand);
-			WebView warningWV = ((WebView) findViewById(R.id.warnings_text));
+			warningWV = ((WebView) findViewById(R.id.warnings_text));
 			warningWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getWarnings(), "text/html", "UTF-8", null);
 			warningWV.setWebViewClient(taskManager);
+			warningWV.getSettings().setJavaScriptEnabled(true);
+			warningWV.addJavascriptInterface(new JavaScriptInterface(this), "MyAndroid");
+
 			/* Job Setup part */
 			LinearLayout jobSetUp = (LinearLayout) findViewById(R.id.jobSetUp);
 			jobSetUp.setOnClickListener(manageJobSetUp);
 			collapse((LinearLayout) findViewById(R.id.jobSetUp_layout));
 			((ImageView) findViewById(R.id.stateJobSetUp))
 					.setTag(R.drawable.collapse);
-			WebView jobSetUpWV = ((WebView) findViewById(R.id.jobSetUp_text));
+			jobSetUpWV = ((WebView) findViewById(R.id.jobSetUp_text));
 			jobSetUpWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getJobSetUp(), "text/html", "UTF-8", null);
 			jobSetUpWV.setWebViewClient(taskManager);
@@ -340,7 +348,7 @@ public class AMMAnnexes extends Activity {
 			collapse((LinearLayout) findViewById(R.id.procedure_layout));
 			((ImageView) findViewById(R.id.stateProcedure))
 					.setTag(R.drawable.collapse);
-			WebView procedureWV = ((WebView) findViewById(R.id.procedure_text));
+			procedureWV = ((WebView) findViewById(R.id.procedure_text));
 			procedureWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getProcedure(), "text/html", "UTF-8", null);
 			procedureWV.setWebViewClient(taskManager);
@@ -350,7 +358,7 @@ public class AMMAnnexes extends Activity {
 			collapse((LinearLayout) findViewById(R.id.closeUp_layout));
 			((ImageView) findViewById(R.id.stateCloseUp))
 					.setTag(R.drawable.collapse);
-			WebView closeUpWV = ((WebView) findViewById(R.id.closeUp_text));
+			closeUpWV = ((WebView) findViewById(R.id.closeUp_text));
 			closeUpWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getCloseUp(), "text/html", "UTF-8", null);
 			closeUpWV.setWebViewClient(taskManager);
@@ -360,7 +368,7 @@ public class AMMAnnexes extends Activity {
 			collapse((LinearLayout) findViewById(R.id.tools_layout));
 			((ImageView) findViewById(R.id.stateTools))
 					.setTag(R.drawable.collapse);
-			WebView toolsWV = ((WebView) findViewById(R.id.tools_text));
+			toolsWV = ((WebView) findViewById(R.id.tools_text));
 			toolsWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getTools(), "text/html", "UTF-8", null);
 			toolsWV.setWebViewClient(taskManager);
@@ -370,7 +378,7 @@ public class AMMAnnexes extends Activity {
 			collapse((LinearLayout) findViewById(R.id.pictures_layout));
 			((ImageView) findViewById(R.id.statePictures))
 					.setTag(R.drawable.collapse);
-			WebView picturesWV = ((WebView) findViewById(R.id.pictures_text));
+			picturesWV = ((WebView) findViewById(R.id.pictures_text));
 			picturesWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getPictures(), "text/html", "UTF-8", null);
 			picturesWV.setWebViewClient(taskManager);
