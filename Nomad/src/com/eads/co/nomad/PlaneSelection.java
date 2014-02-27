@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -29,6 +30,8 @@ public class PlaneSelection extends Activity{
 	ArrayList<String> listeAvions;
 	ArrayList<String> listeFSN; 
 	ArrayList<String> listeMSN; 
+	Button search;
+	
 	HashMap<String,ArrayList<String>> listeAvionFSN;
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +40,12 @@ public class PlaneSelection extends Activity{
         listeAvions = new ArrayList<String>();
         listeAvions.add("A380");
         
-        listeAvionFSN = new HashMap<String, ArrayList<String>>();
+        //listeAvionFSN = new HashMap<String, ArrayList<String>>();
         listeFSN = new ArrayList<String>();
+        listeFSN.add("");
         listeFSN.add("1");
         listeMSN = new ArrayList<String>();
+        listeMSN.add("");
         listeMSN.add("1");
         listeMSN.add("2");
         listeAvionFSN.put("A380", listeFSN);
@@ -51,6 +56,19 @@ public class PlaneSelection extends Activity{
         msn = (Spinner) findViewById(R.id.spinnerMSN);
         spAdapt = new ArrayAdapter<String>(this, 0);
         msn.setAdapter(spAdapt);
+        
+        search = (Button) findViewById(R.id.buttonsearch);
+        search.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				//mettre en place un if pour voir si l'id existe
+				Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
+				startActivity(intent);
+				
+			}
+		});
+        
         
         fsn = (Spinner) findViewById(R.id.spinnerFSN);
         //spAdapt = new ArrayAdapter<String>(this, 0);
@@ -76,13 +94,47 @@ public class PlaneSelection extends Activity{
 
 				fsn.setAdapter(spAdapt);
 				
+				fsn.setVisibility(View.VISIBLE);
+				fsn.setSelection(0);
+				fsn.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+					@Override
+					public void onItemSelected(AdapterView<?> arg0, View arg1,
+							int arg2, long arg3) {
+						if(arg2 != 0){
+							Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
+							startActivity(intent);
+						}
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
 				
-				
+				msn.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+					@Override
+					public void onItemSelected(AdapterView<?> arg0, View arg1,
+							int arg2, long arg3) {
+						if(arg2 != 0){
+							Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
+							startActivity(intent);
+						}
+					}
+
+					@Override
+					public void onNothingSelected(AdapterView<?> arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
 				
 				
 				spAdapt = new ArrayAdapter<String>(PlaneSelection.this, android.R.layout.simple_list_item_1, listeMSN);
 				msn.setAdapter(spAdapt);
-				fsn.setVisibility(View.VISIBLE);
 				msn.setVisibility(View.VISIBLE);
 				textmsn.setVisibility(View.VISIBLE);
 				textfsn.setVisibility(View.VISIBLE);
