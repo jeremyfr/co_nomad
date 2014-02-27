@@ -209,14 +209,14 @@ public class ATASelection extends Activity {
 		 *  
 		 */
 		ArrayList<ATALevel3> chaptersATA30AirIntakes = new ArrayList<ATALevel3>();
-		chaptersATA30.add(chap1);
-		chaptersATA30.add(chap2);
-		chaptersATA30.add(chap3);
-		chaptersATA30.add(chap4);
+		chaptersATA30AirIntakes.add(chap1);
+		chaptersATA30AirIntakes.add(chap2);
+		chaptersATA30AirIntakes.add(chap3);
+		chaptersATA30AirIntakes.add(chap4);
 		
 		ArrayList<ATALevel3> chaptersATA30Airfoil = new ArrayList<ATALevel3>();
-		chaptersATA30.add(chap5);
-		chaptersATA30.add(chap6);
+		chaptersATA30Airfoil.add(chap5);
+		chaptersATA30Airfoil.add(chap6);
 		
 		ArrayList<ATALevel3> chaptersATA36 = new ArrayList<ATALevel3>();
 		chaptersATA36.add(chap7);
