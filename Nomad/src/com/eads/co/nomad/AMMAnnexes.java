@@ -237,13 +237,16 @@ public class AMMAnnexes extends Activity {
 		switch (state) {
 		case NOT_DISPLAYED:
 			setAnnexeXAndX(xmax / 2);
+			// Set Image View à faire.
+			titreAnnexe.setText(annexe);
 			scrollView.setAnnexe(webView, annexe);
 			clickedWB = webView;
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
-			setAnnexeX(xmax + xseparator / 3);
-			state = AnnexesState.NOT_DISPLAYED;
+			// Set Image View à faire.
+			titreAnnexe.setText(annexe);
+			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_PRESSED:
 			break;
