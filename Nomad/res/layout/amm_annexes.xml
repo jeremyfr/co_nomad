@@ -348,7 +348,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/vertical_line" />
-"
 
             <ImageView
                 android:id="@+id/infobulle"
@@ -373,19 +372,26 @@
 		                    android:layout_width="wrap_content"
 		                    android:layout_height="wrap_content"
 		                    android:layout_centerInParent="true"
-		                    android:text="TextView" />
+		                    android:text="TextView" 
+		                    android:textColor="@color/text1_light"
+                    	android:textSize="@dimen/font_size_2"/>
 		                <Button
 		                    android:id="@+id/closeAllAnnexButton"
 		                    android:layout_width="wrap_content"
 		                    android:layout_height="wrap_content"
 		                    android:visibility="invisible"
 		                    android:text="Close All" />
-		                <Button
+		                <ImageButton
 		                    android:id="@+id/closeAnnexButton"
 		                    android:layout_width="wrap_content"
 		                    android:layout_height="wrap_content"
 		                    android:layout_alignParentRight="true"
-		                    android:text="Close" />
+		                    android:text="Close"
+		                    android:background="@null"
+	        		android:src="@drawable/btn_close" />
+
+            
+
             </RelativeLayout>
 
             <FrameLayout
@@ -406,13 +412,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="10" >
-
-                <Button
+                <ImageButton
                     android:id="@+id/fullScreenAnnexButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="FullScreen" />
+	        		android:background="@null"
+	        		android:src="@drawable/btn_fullscreen"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

@@ -28,6 +28,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
@@ -83,9 +84,10 @@ public class AMMAnnexes extends Activity {
 
 	private LinearLayout annexLayout; // layout de l'annexe.
 	private TextView titreAnnexe; // titre de l'annexe
-	private Button closeAnnexButton; // bouton femer.
-	private Button fullScreenAnnexButton; // bouton plein écran.
+	private ImageButton closeAnnexButton; // bouton femer.
+	private ImageButton fullScreenAnnexButton; // bouton plein écran.
 	private Button closeAllAnnexButton; //bouton ferme toutes les annexes
+
 
 	//Pour les annexes multiples
 	private DrawerLayout mDrawerLayout;
@@ -304,8 +306,8 @@ public class AMMAnnexes extends Activity {
 
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		titreAnnexe = (TextView) findViewById(R.id.annexTitle);
-		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
-		fullScreenAnnexButton = (Button) findViewById(R.id.fullScreenAnnexButton);
+		closeAnnexButton = (ImageButton) findViewById(R.id.closeAnnexButton);
+		fullScreenAnnexButton = (ImageButton) findViewById(R.id.fullScreenAnnexButton);
 
 		// Pour le multitouch
 		annexImg = (ImageView) findViewById(R.id.annexImage);
@@ -415,7 +417,6 @@ public class AMMAnnexes extends Activity {
 					setAnnexeX(xmax + xseparator / 3);
 					supprimeElt(titreAnnexe.getText().toString());
 					displaySeparator();
-					fullScreenAnnexButton.setText("FullScreen");
 					state = AnnexesState.NOT_DISPLAYED;
 					break;
 				}
@@ -449,7 +450,6 @@ public class AMMAnnexes extends Activity {
 					break;
 				case DISPLAYED_FREE:
 					setAnnexeX(xseparator / 3);
-					fullScreenAnnexButton.setText("Window");
 					hideSeparator();
 					state = AnnexesState.DISPLAYED_FULLSCREEN;
 					break;
@@ -458,7 +458,6 @@ public class AMMAnnexes extends Activity {
 				case DISPLAYED_FULLSCREEN:
 					setAnnexeX(x);
 					displaySeparator();
-					fullScreenAnnexButton.setText("FullScreen");
 					state = AnnexesState.DISPLAYED_FREE;
 					break;
 				}
