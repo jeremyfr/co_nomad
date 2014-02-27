@@ -2,7 +2,9 @@ package com.eads.co.nomad;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -11,7 +13,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -26,11 +30,13 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SimpleAdapter;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
 import com.eads.co.nomad.PanAndZoomListener.Anchor;
 
 /**
@@ -79,7 +85,17 @@ public class AMMAnnexes extends Activity {
 	private TextView titreAnnexe; // titre de l'annexe
 	private Button closeAnnexButton; // bouton femer.
 	private Button fullScreenAnnexButton; // bouton plein écran.
+	private Button closeAllAnnexButton; //bouton ferme toutes les annexes
 
+	//Pour les annexes multiples
+	private DrawerLayout mDrawerLayout;
+	private ListView listview;
+	private int nb_annexe;
+	//Création de la ArrayList qui nous permettra de remplire la listView
+    ArrayList<HashMap<String, Object>> listItem;
+    HashMap<String, Object> map;
+    
+    
 	// Pour le multitouch
 	private ImageView annexImg;
 	private FrameLayout layoutImg;
@@ -88,6 +104,7 @@ public class AMMAnnexes extends Activity {
 
 	// Affiche l'annexe.
 	private void setAnnexeX(int x) {
+		mDrawerLayout.setDrawerLockMode(0,Gravity.END);
 		scrollView.setLayoutParams(new LayoutParams(x - xseparator / 3,
 				LayoutParams.MATCH_PARENT));
 		annexLayout.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
@@ -100,7 +117,14 @@ public class AMMAnnexes extends Activity {
 		setAnnexeX(x);
 		x = _x;
 	}
-
+	//Affiche le titre de l'annexe et met l'image de l'annexe
+	private void setTitleAndImgAnnexe(CharSequence text,String img){
+		int resID = getResources().getIdentifier(img, "drawable", "package.name");
+        annexImg.setImageResource(resID);
+		titreAnnexe.setText(text);
+		int position = trouveDansListe(titreAnnexe.getText().toString())-1;
+		listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
+	}
 	// Affiche le séparateur et l'infobulle.
 	private void displaySeparator() {
 		separator.setImageResource(R.drawable.vertical_line);
@@ -196,22 +220,37 @@ public class AMMAnnexes extends Activity {
 		switch (state) {
 		case NOT_DISPLAYED:
 			setAnnexeXAndX(xmax / 2);
-			// Set Image View à faire.
-			titreAnnexe.setText(annexe);
 			scrollView.setAnnexe(webView, annexe);
 			this.annexe = annexe;
 			clickedWB = webView;
 			clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
+			//Image à mettre
+			ajouteList(annexe,String.valueOf(R.drawable.ata),clickedWB);
+			
+			//Image à mettre 
+			setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata));
+			
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
-			// Set Image View à faire.
-			titreAnnexe.setText(annexe);
-			scrollView.setAnnexe(webView, annexe);
-			this.annexe = annexe;
-			clickedWB = webView;
-			clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-			state = AnnexesState.DISPLAYED_FREE;
+			if (testeActuel(annexe,webView)){
+				setAnnexeX(xmax + xseparator / 3);
+				supprimeElt(annexe);
+				state = AnnexesState.NOT_DISPLAYED;
+			}
+			else {
+				setAnnexeXAndX(xmax / 2);		
+				scrollView.setAnnexe(webView, annexe);
+				this.annexe = annexe;
+				clickedWB = webView;
+				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
+					//Image a mettre
+				ajouteList(annexe,String.valueOf(R.drawable.ata),clickedWB);
+				//Image a mettre
+				setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata));
+				
+				state = AnnexesState.DISPLAYED_FREE;		
+			}
 			break;
 		case DISPLAYED_PRESSED:
 			break;
@@ -273,9 +312,35 @@ public class AMMAnnexes extends Activity {
 		layoutImg = (FrameLayout) findViewById(R.id.layoutImage);
 		annexImg.setOnTouchListener(new PanAndZoomListener(layoutImg, annexImg,
 				Anchor.TOPLEFT));
+		
+		//Pour les annexes multiples
+		listview = (ListView)findViewById(R.id.listview);
+		listview.setSelector(R.drawable.selector);
+		listItem = new ArrayList<HashMap<String, Object>>();
+		//Remplissage des fonctions sur le navigation drawer
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout.setDrawerLockMode(1, Gravity.END);
+		nb_annexe = 0;
+		
+		closeAllAnnexButton = (Button) findViewById(R.id.closeAllAnnexButton);
 
 		// Récupération de la largeur et de la hauteur du layout.
 		getWidthHeight();
+		
+		listview.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+        	@SuppressWarnings("unchecked")
+         	public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+				HashMap<String, Object> map = (HashMap<String, Object>) listview.getItemAtPosition(position);
+				annexe = (String)map.get("titre");
+				titreAnnexe.setText(annexe);
+				int resID = getResources().getIdentifier((String)map.get("img"), "drawable", "package.name");
+		        annexImg.setImageResource(resID); 
+		        clickedWB = (WebView) map.get("webview");
+				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
+				
+        	}
+         });
 
 		layout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
@@ -341,12 +406,14 @@ public class AMMAnnexes extends Activity {
 					break;
 				case DISPLAYED_FREE:
 					setAnnexeX(xmax + xseparator / 3);
+					supprimeElt(titreAnnexe.getText().toString());
 					state = AnnexesState.NOT_DISPLAYED;
 					break;
 				case DISPLAYED_PRESSED:
 					break;
 				case DISPLAYED_FULLSCREEN:
 					setAnnexeX(xmax + xseparator / 3);
+					supprimeElt(titreAnnexe.getText().toString());
 					displaySeparator();
 					fullScreenAnnexButton.setText("FullScreen");
 					state = AnnexesState.NOT_DISPLAYED;
@@ -354,7 +421,25 @@ public class AMMAnnexes extends Activity {
 				}
 			}
 		});
-
+		
+		// Listener sur le bouton fermer.
+		closeAllAnnexButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				switch (state) {
+				case NOT_DISPLAYED:
+					break;
+				case DISPLAYED_FREE:
+					supprimeTout();
+					break;
+				case DISPLAYED_PRESSED:
+					break;
+				case DISPLAYED_FULLSCREEN:
+					supprimeTout();
+					break;
+				}
+			}
+		});
 		// Listener sur le bouton plein écran.
 		fullScreenAnnexButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -538,7 +623,92 @@ public class AMMAnnexes extends Activity {
 
 		t.start();
 	}
-
+	//Fonction pour supprimer tout les éléments de la liste 
+	private void supprimeTout(){
+		listItem =  new ArrayList<HashMap<String, Object>>();
+        nb_annexe=0;
+        setAnnexeX(xmax + xseparator / 3);
+		state = AnnexesState.NOT_DISPLAYED;
+		closeAllAnnexButton.setVisibility(View.INVISIBLE);
+	}
+	//Fonction qui supprime un élément de la listview et agit en conséquence suivant la présence d'autres annexes
+	private void supprimeElt(String titre){
+		if (listItem.size()!=1){
+			Log.w("SupprimeElt","Indice de l'item : " + trouveDansListe(titre));
+			listItem.remove(trouveDansListe(titre)-1);
+			Log.w("SupprimeElt","Taille de listItem : " + listItem.size() );
+	        nb_annexe--;
+	        listview.invalidateViews();
+	        map = (HashMap<String, Object>) listview.getItemAtPosition(0);
+	        titreAnnexe.setText((String)map.get("titre"));
+	        int resID = getResources().getIdentifier((String)map.get("img"), "drawable", "package.name");
+	        annexImg.setImageResource(resID);
+	        if (listItem.size()==1){
+	        	closeAllAnnexButton.setVisibility(View.INVISIBLE);
+	        }
+	        int position = trouveDansListe(titreAnnexe.getText().toString())-1;
+			listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
+	        setAnnexeXAndX(x);
+		}
+		else {
+			listItem.remove(trouveDansListe(titre)-1);
+			listview.invalidateViews();
+			nb_annexe--;
+			setAnnexeX(xmax + xseparator / 3);
+			mDrawerLayout.setDrawerLockMode(1,Gravity.END);
+			closeAllAnnexButton.setVisibility(View.INVISIBLE);
+			state = AnnexesState.NOT_DISPLAYED;
+		}
+	}
+	//Fonction pour trouver l'indice de l'élément titre
+	private int trouveDansListe(String titre){
+		Iterator<HashMap<String,Object>> iterateur=listItem.iterator();
+		int numero = 0;
+		boolean test = false;
+		while (!test && iterateur.hasNext())
+		{
+			HashMap<String, Object> mapElt = iterateur.next();
+			test = (mapElt.get("titre").equals(titre));
+			numero++;
+		}
+		return numero;
+	}
+	// Teste si l'objet de titre titre est l'annexe affichée actuellement
+	private boolean testeActuel(String titre,WebView wb){
+		return (titre.equals(titreAnnexe.getText().toString()) && clickedWB == wb);
+	}
+	// Teste si l'objet de titre titre est dans la listview
+	private boolean testeObjetDansListe(String titre){
+		Iterator<HashMap<String,Object>> iterateur=listItem.iterator();
+		boolean test = false;
+		while (!test && iterateur.hasNext())
+		{
+			HashMap<String, Object> mapElt = iterateur.next();
+			test = (mapElt.get("titre").equals(titre));
+		}
+		return test;
+	}
+	//Ajoute l'élément titre avec son imag img à la listview
+	private void ajouteList(String titre, String img, WebView wb) {
+		if (!testeObjetDansListe(titre)) {
+			map = new HashMap<String, Object>();
+	        map.put("titre", titre);
+	        map.put("img", img);
+	        map.put("webview", wb);
+	        listItem.add(map);
+	        //Création d'un SimpleAdapter qui se chargera de mettre les items présent dans notre list (listItem) dans la vue affichage_annexes
+	        SimpleAdapter mSchedule = new SimpleAdapter (this.getBaseContext(), listItem, R.layout.affiche_annexes,
+	               new String[] {"img", "titre"}, new int[] {R.id.listImage, R.id.listTitreAnnexe});
+	        listview.setAdapter(mSchedule);
+	        // +1 annexe
+	        nb_annexe++;
+	        if (nb_annexe > 1){
+				closeAllAnnexButton.setVisibility(View.VISIBLE);
+			}
+		}
+	}
+	
+	
 	private void onHistoricItemClick(int position) {
 		Intent i = new Intent(this, AMMAnnexes.class);
 		i.putExtra("task", ((History) this.getApplication()).getKeyAt(position));
