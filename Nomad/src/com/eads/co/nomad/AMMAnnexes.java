@@ -661,6 +661,8 @@ public class AMMAnnexes extends Activity {
 			setAnnexeX(xmax + xseparator / 3);
 			mDrawerLayout.setDrawerLockMode(1,Gravity.END);
 			closeAllAnnexButton.setVisibility(View.INVISIBLE);
+			displaySeparator();
+			fullScreenAnnexButton.setImageResource(R.drawable.btn_fullscreen);
 			state = AnnexesState.NOT_DISPLAYED;
 		}
 	}
