@@ -119,11 +119,11 @@ public class AMMAnnexes extends Activity {
 		x = _x;
 	}
 	//Affiche le titre de l'annexe et met l'image de l'annexe
-	private void setTitleAndImgAnnexe(CharSequence text,String img){
+	private void setTitleAndImgAnnexe(CharSequence text,String img, WebView wb){
 		int resID = getResources().getIdentifier(img, "drawable", "package.name");
         annexImg.setImageResource(resID);
 		titreAnnexe.setText(text);
-		int position = trouveDansListe(titreAnnexe.getText().toString())-1;
+		int position = trouveDansListe(titreAnnexe.getText().toString(),wb)-1;
 		listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
 	}
 	
@@ -229,14 +229,14 @@ public class AMMAnnexes extends Activity {
 			// Image a changer
 			ajouteList(annexe,String.valueOf(R.drawable.ata),clickedWB);
 			// Image a changer
-			setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata));
+			setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata),clickedWB);
 			
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
 			if (testeActuel(annexe,webView)){
 				setAnnexeX(xmax + xseparator / 3);
-				supprimeElt(annexe);
+				supprimeElt(annexe,webView);
 				state = AnnexesState.NOT_DISPLAYED;
 			}
 			else {
@@ -248,7 +248,7 @@ public class AMMAnnexes extends Activity {
 				// Image a changer
 				ajouteList(annexe,String.valueOf(R.drawable.ata),clickedWB);
 				// Image a changer
-				setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata));
+				setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata),clickedWB);
 				
 				state = AnnexesState.DISPLAYED_FREE;		
 			}
@@ -334,6 +334,7 @@ public class AMMAnnexes extends Activity {
          	public void onItemClick(AdapterView<?> a, View v, int position, long id) {
 				HashMap<String, Object> map = (HashMap<String, Object>) listview.getItemAtPosition(position);
 				annexe = (String)map.get("titre");
+				Log.e("AnnexeListener", "Nom de l'annexe cliquée" + annexe);
 				titreAnnexe.setText(annexe);
 				int resID = getResources().getIdentifier((String)map.get("img"), "drawable", "package.name");
 		        annexImg.setImageResource(resID); 
@@ -408,14 +409,14 @@ public class AMMAnnexes extends Activity {
 					break;
 				case DISPLAYED_FREE:
 					setAnnexeX(xmax + xseparator / 3);
-					supprimeElt(titreAnnexe.getText().toString());
+					supprimeElt(titreAnnexe.getText().toString(),clickedWB);
 					state = AnnexesState.NOT_DISPLAYED;
 					break;
 				case DISPLAYED_PRESSED:
 					break;
 				case DISPLAYED_FULLSCREEN:
 					setAnnexeX(xmax + xseparator / 3);
-					supprimeElt(titreAnnexe.getText().toString());
+					supprimeElt(titreAnnexe.getText().toString(),clickedWB);
 					displaySeparator();
 					state = AnnexesState.NOT_DISPLAYED;
 					break;
@@ -637,26 +638,24 @@ public class AMMAnnexes extends Activity {
 		closeAllAnnexButton.setVisibility(View.INVISIBLE);
 	}
 	//Fonction qui supprime un �l�ment de la listview et agit en cons�quence suivant la pr�sence d'autres annexes
-	private void supprimeElt(String titre){
+	private void supprimeElt(String titre,WebView wb){
 		if (listItem.size()!=1){
-			Log.w("SupprimeElt","Indice de l'item : " + trouveDansListe(titre));
-			listItem.remove(trouveDansListe(titre)-1);
+			Log.e("SupprimeElt","Indice de l'item : " + trouveDansListe(titre,wb));
+			int indice = trouveDansListe(titre,wb);
+			listItem.remove(indice-1);
 			Log.w("SupprimeElt","Taille de listItem : " + listItem.size() );
 	        nb_annexe--;
 	        listview.invalidateViews();
-	        map = (HashMap<String, Object>) listview.getItemAtPosition(0);
-	        titreAnnexe.setText((String)map.get("titre"));
-	        int resID = getResources().getIdentifier((String)map.get("img"), "drawable", "package.name");
-	        annexImg.setImageResource(resID);
 	        if (listItem.size()==1){
 	        	closeAllAnnexButton.setVisibility(View.INVISIBLE);
 	        }
-	        int position = trouveDansListe(titreAnnexe.getText().toString())-1;
+	        int position = 0;
 			listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
 	        setAnnexeXAndX(x);
 		}
 		else {
-			listItem.remove(trouveDansListe(titre)-1);
+			Log.e("SupprimeElt","Indice de l'item : " + trouveDansListe(titre,wb));
+			listItem.remove(trouveDansListe(titre,wb)-1);
 			listview.invalidateViews();
 			nb_annexe--;
 			setAnnexeX(xmax + xseparator / 3);
@@ -666,14 +665,14 @@ public class AMMAnnexes extends Activity {
 		}
 	}
 	//Fonction pour trouver l'indice de l'�l�ment titre
-	private int trouveDansListe(String titre){
+	private int trouveDansListe(String titre, WebView wb){
 		Iterator<HashMap<String,Object>> iterateur=listItem.iterator();
 		int numero = 0;
 		boolean test = false;
 		while (!test && iterateur.hasNext())
 		{
 			HashMap<String, Object> mapElt = iterateur.next();
-			test = (mapElt.get("titre").equals(titre));
+			test = (mapElt.get("titre").equals(titre) && mapElt.get("webview").equals(wb));
 			numero++;
 		}
 		return numero;
