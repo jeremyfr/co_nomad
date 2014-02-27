@@ -70,6 +70,7 @@ public class AMMAnnexes extends Activity {
 			pictures;
 
 	private WebView clickedWB; // WebView contenant le lien de l'annexe cliqué.
+	private String annexe; // Nom de l'annexe.
 
 	private ImageView separator; // barre verticale.
 	private ImageView infobulle; // image de l'infobulle.
@@ -189,6 +190,7 @@ public class AMMAnnexes extends Activity {
 			}
 		});
 	}
+
 	public void onAnnexeClic(WebView webView, String annexe) {
 		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
 		switch (state) {
@@ -197,16 +199,18 @@ public class AMMAnnexes extends Activity {
 			// Set Image View à faire.
 			titreAnnexe.setText(annexe);
 			scrollView.setAnnexe(webView, annexe);
+			this.annexe = annexe;
 			clickedWB = webView;
-			clickedWB.loadUrl("javascript:getPosition('"+annexe+"')");
+			clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
 			// Set Image View à faire.
 			titreAnnexe.setText(annexe);
 			scrollView.setAnnexe(webView, annexe);
+			this.annexe = annexe;
 			clickedWB = webView;
-			clickedWB.loadUrl("javascript:getPosition('"+annexe+"')");
+			clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_PRESSED:
@@ -302,7 +306,8 @@ public class AMMAnnexes extends Activity {
 						if (event.getX() >= xmin && event.getX() <= xmax - xmin) {
 							setAnnexeXAndX((int) event.getX());
 						}
-						clickedWB.loadUrl("javascript:getPosition('test')");
+						clickedWB.loadUrl("javascript:getPosition('" + annexe
+								+ "')");
 						state = AnnexesState.DISPLAYED_PRESSED;
 						break;
 					case DISPLAYED_FULLSCREEN:
@@ -393,7 +398,7 @@ public class AMMAnnexes extends Activity {
 			SwitchTaskManager taskManager = new SwitchTaskManager(this, this);
 			HashMap<String, String> h = ((History) this.getApplication())
 					.getHistory();
-		    h.put(ammPart, parser.getTitle());
+			h.put(ammPart, parser.getTitle());
 
 			/* Warnings part */
 			warnings = (LinearLayout) findViewById(R.id.warnings);
@@ -495,6 +500,43 @@ public class AMMAnnexes extends Activity {
 				onHistoricItemClick(position);
 			}
 		});
+
+		Thread t = new Thread() {
+
+			@Override
+			public void run() {
+				try {
+					while (!isInterrupted()) {
+						Thread.sleep(50);
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								switch (state) {
+								case NOT_DISPLAYED:
+									break;
+								case DISPLAYED_FREE:
+									clickedWB
+											.loadUrl("javascript:getPosition('"
+													+ annexe + "')");
+									break;
+								case DISPLAYED_PRESSED:
+									clickedWB
+											.loadUrl("javascript:getPosition('"
+													+ annexe + "')");
+									break;
+								case DISPLAYED_FULLSCREEN:
+									break;
+								}
+
+							}
+						});
+					}
+				} catch (InterruptedException e) {
+				}
+			}
+		};
+
+		t.start();
 	}
 
 	private void onHistoricItemClick(int position) {
@@ -680,9 +722,10 @@ public class AMMAnnexes extends Activity {
 				.getDisplayMetrics().density));
 		v.startAnimation(a);
 	}
-	
-	private boolean isCollapsed(int icon){
-		return Integer.parseInt(((ImageView) findViewById(icon)).getTag().toString()) == R.drawable.collapse;
+
+	private boolean isCollapsed(int icon) {
+		return Integer.parseInt(((ImageView) findViewById(icon)).getTag()
+				.toString()) == R.drawable.collapse;
 	}
 
 	@Override
