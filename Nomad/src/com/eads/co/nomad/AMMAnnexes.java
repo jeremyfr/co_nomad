@@ -112,36 +112,8 @@ public class AMMAnnexes extends Activity {
 		infobulle.setImageResource(R.drawable.vertical_line_empty);
 	}
 
-	private void setInfobulle(boolean state, int y, int pos) {
-		if (state) {
-			int y_absolue = -210 + 30 * pos + warnings.getHeight()
-					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
-					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
-					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
-					+ (pos >= 4 ? 1 : 0) * tools.getHeight()
-					+ (pos >= 5 ? 1 : 0) * pictures.getHeight()
-					- clickedWB.getHeight() + y;
-			int y_relative = y_absolue - scrollView.getScrollY();
-			displayInfobulle(y_relative);
-		} else {
-			int y_absolue = (int) (30 * (1 + pos)
-					+ ((pos >= 0 ? 0.5 : 0) + (pos >= 1 ? 0.5 : 0))
-					* warnings.getHeight()
-					+ ((pos >= 1 ? 0.5 : 0) + (pos >= 2 ? 0.5 : 0))
-					* jobSetUp.getHeight()
-					+ ((pos >= 2 ? 0.5 : 0) + (pos >= 3 ? 0.5 : 0))
-					* procedure.getHeight()
-					+ ((pos >= 3 ? 0.5 : 0) + (pos >= 4 ? 0.5 : 0))
-					* closeUp.getHeight()
-					+ ((pos >= 4 ? 0.5 : 0) + (pos >= 5 ? 0.5 : 0))
-					* tools.getHeight() + (pos >= 5 ? 0.5 : 0)
-					* pictures.getHeight());
-			int y_relative = y_absolue - scrollView.getScrollY();
-			displayInfobulle(y_relative);
-		}
-	}
-
-	// Place l'infobulle à l'ordonnée y.
+	// Place l'infobulle selon l'ordonnée y relative à la WebView contenant le
+	// lien vers l'annexe.
 	public void setInfobulle(int y) {
 
 		if (clickedWB.equals(warningWV)) {
@@ -169,6 +141,34 @@ public class AMMAnnexes extends Activity {
 		}
 	}
 
+	private void setInfobulle(boolean state, int y, int pos) {
+		int y_absolue, y_relative;
+		if (state) {
+			y_absolue = -210 + 30 * pos + warnings.getHeight()
+					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
+					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
+					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
+					+ (pos >= 4 ? 1 : 0) * tools.getHeight()
+					+ (pos >= 5 ? 1 : 0) * pictures.getHeight()
+					- clickedWB.getHeight() + y;
+		} else {
+			y_absolue = (int) (30 * (1 + pos)
+					+ ((pos >= 0 ? 0.5 : 0) + (pos >= 1 ? 0.5 : 0))
+					* warnings.getHeight()
+					+ ((pos >= 1 ? 0.5 : 0) + (pos >= 2 ? 0.5 : 0))
+					* jobSetUp.getHeight()
+					+ ((pos >= 2 ? 0.5 : 0) + (pos >= 3 ? 0.5 : 0))
+					* procedure.getHeight()
+					+ ((pos >= 3 ? 0.5 : 0) + (pos >= 4 ? 0.5 : 0))
+					* closeUp.getHeight()
+					+ ((pos >= 4 ? 0.5 : 0) + (pos >= 5 ? 0.5 : 0))
+					* tools.getHeight() + (pos >= 5 ? 0.5 : 0)
+					* pictures.getHeight());
+		}
+		y_relative = y_absolue - scrollView.getScrollY();
+		displayInfobulle(y_relative);
+	}
+
 	private void displayInfobulle(final int y) {
 		runOnUiThread(new Runnable() {
 			@Override
@@ -189,7 +189,6 @@ public class AMMAnnexes extends Activity {
 			}
 		});
 	}
-
 	public void onAnnexeClic(WebView webView, String annexe) {
 		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
 		switch (state) {
@@ -199,11 +198,15 @@ public class AMMAnnexes extends Activity {
 			titreAnnexe.setText(annexe);
 			scrollView.setAnnexe(webView, annexe);
 			clickedWB = webView;
+			clickedWB.loadUrl("javascript:getPosition('"+annexe+"')");
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
 			// Set Image View à faire.
 			titreAnnexe.setText(annexe);
+			scrollView.setAnnexe(webView, annexe);
+			clickedWB = webView;
+			clickedWB.loadUrl("javascript:getPosition('"+annexe+"')");
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_PRESSED:
