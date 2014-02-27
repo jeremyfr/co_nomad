@@ -482,11 +482,9 @@ public class AMMAnnexes extends Activity {
 		try {
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle());
-<<<<<<< HEAD
-			SwitchTaskManager taskManager = new SwitchTaskManager(this,"amm");
-=======
-			SwitchTaskManager taskManager = new SwitchTaskManager(this, this);
->>>>>>> fec4b5a7f67a92e2bd1cdea2f683f4338836ff10
+
+			SwitchTaskManager taskManager = new SwitchTaskManager(this, this,"amm");
+
 			HashMap<String, String> h = ((History) this.getApplication())
 					.getHistory();
 			h.put(ammPart, parser.getTitle());

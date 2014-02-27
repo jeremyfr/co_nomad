@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
-<<<<<<< HEAD
-=======
 import android.view.MenuItem;
->>>>>>> fec4b5a7f67a92e2bd1cdea2f683f4338836ff10
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
