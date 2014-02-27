@@ -48,7 +48,7 @@ public class PlaneSelection extends Activity{
         listeMSN.add("");
         listeMSN.add("1");
         listeMSN.add("2");
-        listeAvionFSN.put("A380", listeFSN);
+        //listeAvionFSN.put("A380", listeFSN);
         titre = (TextView) findViewById(R.id.titlePlane);
         titre.setText("Plane selection");
         id = (TextView) findViewById(R.id.aircraftid);
