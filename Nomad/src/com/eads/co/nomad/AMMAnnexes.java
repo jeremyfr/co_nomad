@@ -114,7 +114,7 @@ public class AMMAnnexes extends Activity {
 
 	private void setInfobulle(boolean state, int y, int pos) {
 		if (state) {
-			int y_absolue = 70 + 30 * pos + warnings.getHeight()
+			int y_absolue = -210 + 30 * pos + warnings.getHeight()
 					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
 					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
 					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
