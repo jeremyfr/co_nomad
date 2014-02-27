@@ -325,8 +325,8 @@ public class AMMAnnexes extends Activity {
 		nb_annexe = 0;
 		
 		closeAllAnnexButton = (Button) findViewById(R.id.closeAllAnnexButton);
-
-		// R�cup�ration de la largeur et de la hauteur du layout.
+		
+		//Récupération de la largeur et de la hauteur du layout
 		getWidthHeight();
 		
 		listview.setOnItemClickListener(new OnItemClickListener() {
@@ -424,7 +424,7 @@ public class AMMAnnexes extends Activity {
 			}
 		});
 		
-		// Listener sur le bouton fermer.
+		// Listener sur le bouton fermer all.
 		closeAllAnnexButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -453,6 +453,7 @@ public class AMMAnnexes extends Activity {
 				case DISPLAYED_FREE:
 					setAnnexeX(xseparator / 3);
 					hideSeparator();
+					fullScreenAnnexButton.setImageResource(R.drawable.btn_offscreen);
 					state = AnnexesState.DISPLAYED_FULLSCREEN;
 					break;
 				case DISPLAYED_PRESSED:
@@ -460,6 +461,7 @@ public class AMMAnnexes extends Activity {
 				case DISPLAYED_FULLSCREEN:
 					setAnnexeX(x);
 					displaySeparator();
+					fullScreenAnnexButton.setImageResource(R.drawable.btn_fullscreen);
 					state = AnnexesState.DISPLAYED_FREE;
 					break;
 				}
