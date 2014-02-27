@@ -85,18 +85,17 @@ public class AMMAnnexes extends Activity {
 	private LinearLayout annexLayout; // layout de l'annexe.
 	private TextView titreAnnexe; // titre de l'annexe
 	private ImageButton closeAnnexButton; // bouton femer.
-	private ImageButton fullScreenAnnexButton; // bouton plein �cran.
+	private ImageButton fullScreenAnnexButton; // bouton plein ecran.
 	private Button closeAllAnnexButton; //bouton ferme toutes les annexes
-
 
 	//Pour les annexes multiples
 	private DrawerLayout mDrawerLayout;
 	private ListView listview;
 	private int nb_annexe;
-	//Cr�ation de la ArrayList qui nous permettra de remplire la listView
+
+	//Creation de la ArrayList qui nous permettra de remplire la listView
     ArrayList<HashMap<String, Object>> listItem;
     HashMap<String, Object> map;
-    
     
 	// Pour le multitouch
 	private ImageView annexImg;
@@ -127,7 +126,8 @@ public class AMMAnnexes extends Activity {
 		int position = trouveDansListe(titreAnnexe.getText().toString())-1;
 		listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
 	}
-	// Affiche le s�parateur et l'infobulle.
+	
+	// Affiche le separateur et l'infobulle.
 	private void displaySeparator() {
 		separator.setImageResource(R.drawable.vertical_line);
 		infobulle.setImageResource(R.drawable.infobulle);
@@ -226,10 +226,10 @@ public class AMMAnnexes extends Activity {
 			this.annexe = annexe;
 			clickedWB = webView;
 			clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-			//Image � mettre
+			//Image a mettre
 			ajouteList(annexe,String.valueOf(R.drawable.ata),clickedWB);
 			
-			//Image � mettre 
+			//Image a mettre 
 			setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata));
 			
 			state = AnnexesState.DISPLAYED_FREE;
@@ -442,7 +442,8 @@ public class AMMAnnexes extends Activity {
 				}
 			}
 		});
-		// Listener sur le bouton plein �cran.
+
+		// Listener sur le bouton plein ecran
 		fullScreenAnnexButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -623,6 +624,7 @@ public class AMMAnnexes extends Activity {
 
 		t.start();
 	}
+	
 	//Fonction pour supprimer tout les �l�ments de la liste 
 	private void supprimeTout(){
 		listItem =  new ArrayList<HashMap<String, Object>>();
@@ -688,7 +690,7 @@ public class AMMAnnexes extends Activity {
 		}
 		return test;
 	}
-	//Ajoute l'�l�ment titre avec son imag img � la listview
+	//Ajoute l'element titre avec sont image a la listview
 	private void ajouteList(String titre, String img, WebView wb) {
 		if (!testeObjetDansListe(titre, wb)) {
 			map = new HashMap<String, Object>();
