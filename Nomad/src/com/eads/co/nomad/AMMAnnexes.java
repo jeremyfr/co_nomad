@@ -408,17 +408,12 @@ public class AMMAnnexes extends Activity {
 				case NOT_DISPLAYED:
 					break;
 				case DISPLAYED_FREE:
-					setAnnexeX(xmax + xseparator / 3);
 					supprimeElt(titreAnnexe.getText().toString(),clickedWB);
-					state = AnnexesState.NOT_DISPLAYED;
 					break;
 				case DISPLAYED_PRESSED:
 					break;
 				case DISPLAYED_FULLSCREEN:
-					setAnnexeX(xmax + xseparator / 3);
 					supprimeElt(titreAnnexe.getText().toString(),clickedWB);
-					displaySeparator();
-					state = AnnexesState.NOT_DISPLAYED;
 					break;
 				}
 			}
@@ -597,10 +592,11 @@ public class AMMAnnexes extends Activity {
 			public void run() {
 				try {
 					while (!isInterrupted()) {
-						Thread.sleep(50);
+						Thread.sleep(300);
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
+								Log.i("Etat", state.toString());
 								switch (state) {
 								case NOT_DISPLAYED:
 									break;
@@ -629,7 +625,7 @@ public class AMMAnnexes extends Activity {
 		t.start();
 	}
 	
-	//Fonction pour supprimer tout les �l�ments de la liste 
+	//Fonction pour supprimer tout les éléments de la liste 
 	private void supprimeTout(){
 		listItem =  new ArrayList<HashMap<String, Object>>();
         nb_annexe=0;
@@ -637,7 +633,7 @@ public class AMMAnnexes extends Activity {
 		state = AnnexesState.NOT_DISPLAYED;
 		closeAllAnnexButton.setVisibility(View.INVISIBLE);
 	}
-	//Fonction qui supprime un �l�ment de la listview et agit en cons�quence suivant la pr�sence d'autres annexes
+	//Fonction qui supprime un élément de la listview et agit en conséquence suivant la prèsence d'autres annexes
 	private void supprimeElt(String titre,WebView wb){
 		if (listItem.size()!=1){
 			Log.e("SupprimeElt","Indice de l'item : " + trouveDansListe(titre,wb));
@@ -651,7 +647,7 @@ public class AMMAnnexes extends Activity {
 	        }
 	        int position = 0;
 			listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
-	        setAnnexeXAndX(x);
+	        //setAnnexeXAndX(x);
 		}
 		else {
 			Log.e("SupprimeElt","Indice de l'item : " + trouveDansListe(titre,wb));
@@ -664,7 +660,7 @@ public class AMMAnnexes extends Activity {
 			state = AnnexesState.NOT_DISPLAYED;
 		}
 	}
-	//Fonction pour trouver l'indice de l'�l�ment titre
+	//Fonction pour trouver l'indice de l'élément titre.
 	private int trouveDansListe(String titre, WebView wb){
 		Iterator<HashMap<String,Object>> iterateur=listItem.iterator();
 		int numero = 0;
@@ -677,7 +673,7 @@ public class AMMAnnexes extends Activity {
 		}
 		return numero;
 	}
-	// Teste si l'objet de titre titre est l'annexe affich�e actuellement
+	// Teste si l'objet de titre titre est l'annexe affichée actuellement
 	private boolean testeActuel(String titre,WebView wb){
 		return (titre.equals(titreAnnexe.getText().toString()) && clickedWB == wb);
 	}
@@ -692,7 +688,7 @@ public class AMMAnnexes extends Activity {
 		}
 		return test;
 	}
-	//Ajoute l'element titre avec sont image a la listview
+	//Ajoute l'élément titre avec sont image a la listview
 	private void ajouteList(String titre, String img, WebView wb) {
 		if (!testeObjetDansListe(titre, wb)) {
 			map = new HashMap<String, Object>();
@@ -700,7 +696,7 @@ public class AMMAnnexes extends Activity {
 	        map.put("img", img);
 	        map.put("webview", wb);
 	        listItem.add(map);
-	        //Cr�ation d'un SimpleAdapter qui se chargera de mettre les items pr�sent dans notre list (listItem) dans la vue affichage_annexes
+	        //Création d'un SimpleAdapter qui se chargera de mettre les items pr�sent dans notre list (listItem) dans la vue affichage_annexes
 	        SimpleAdapter mSchedule = new SimpleAdapter (this.getBaseContext(), listItem, R.layout.affiche_annexes,
 	               new String[] {"img", "titre"}, new int[] {R.id.listImage, R.id.listTitreAnnexe});
 	        listview.setAdapter(mSchedule);
