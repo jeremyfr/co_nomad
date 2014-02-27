@@ -1,24 +1,25 @@
+/* General */
 body {
 	background-color: #fdf6e3; 
 	font-size: 22px;
 	color: #002b36;
 }
 
-/* Styles des ecritures*/
+/* Writings style */
 #warning{
-	color: #dc322f;
+	color: #dc322f; /* Red */
 }
 #caution{
-	color: yellow;
+	color: #b58900; /* Yellow*/
 }
 #number{
-    color: #cb4b16;
+    color: #cb4b16; /* Orange */
 }
 a{
-    color: #268bd2;
+    color: #268bd2; /* Blue */
 }
 
-/* Styles des tableaux */
+/* Table style */
 table{
 	border-collapse:collapse;
 }
@@ -34,4 +35,64 @@ table th{
 table td{
 	font-size: 22px;
 	color: #002b36;
+}
+
+/* Switches style (Open/Close) */
+.onoffswitch {
+    position: relative;
+	width: 200px;
+	margin:10px;
+	margin-left:20px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 50px;
+}
+
+.onoffswitch-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 2.2s ease-in 0s; -webkit-transition: margin 2.2s ease-in 0s;
+    -o-transition: margin 2.2s ease-in 0s; transition: margin 2.2s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    float: left; width: 50%; height: 40px; padding: 0; line-height: 40px;
+    font-size: 22px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: "OPEN";
+    padding-left: 50px;
+    background-color: #268BD2; color: #FDF6E3;
+}
+
+.onoffswitch-inner:after {
+    content: "CLOSE";
+    padding-right: 50px;
+    background-color: #93A1A1; color: #FDF6E3;
+    text-align: right;
+}
+
+.onoffswitch-switch {
+    width: 50px; margin: -5px;
+    background: #FDF6E3;
+    border: 2px solid #999999; border-radius: 50px;
+    position: absolute; top: 0; bottom: 0; right: 156px;
+    -moz-transition: all 2.2s ease-in 0s; -webkit-transition: all 2.2s ease-in 0s;
+    -o-transition: all 2.2s ease-in 0s; transition: all 2.2s ease-in 0s; 
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
 }

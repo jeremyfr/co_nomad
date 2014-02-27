@@ -118,12 +118,57 @@ public class DataParsing {
 						iteratorL1Item = listL1Item.iterator();
 						while (iteratorL1Item.hasNext()) {
 							Element l1Item = (Element) iteratorL1Item.next();
+							jobSetUp += "<ul>";
 							listPara = l1Item.getChildren("PARA");
 							iteratorPara = listPara.iterator();
-							jobSetUp += "<ul>";
 							while (iteratorPara.hasNext()) {
 								Element para = (Element) iteratorPara.next();
-								jobSetUp += "<li>"+para.getText()+"</li>";
+								List<Element> listRef = para.getChildren("REFBLOCK");
+								if(!listRef.isEmpty()){
+									Iterator<Element> iteratorRef = listRef.iterator();
+									while(iteratorRef.hasNext()){
+										Element refblock = iteratorRef.next();
+										List<Element> listRefInt = refblock.getChildren("REFINT");
+										Iterator<Element> iteratorRefInt = listRefInt.iterator();
+									    while (iteratorRefInt.hasNext()) {
+											Element refInt = (Element) iteratorRefInt.next();
+											jobSetUp += "<li><a href='"+refInt.getAttributeValue("REFID")+"?y="+jobSetUp.length()+"'>"+refInt.getText()+"</a></li>";
+											stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+jobSetUp.length()+"'>"+refInt.getText()+"</a><br>");
+										}
+									}
+								}else{
+									jobSetUp += "<li>"+para.getText()+"</li>";
+								}
+							}
+							
+							List<Element> listCblst = l1Item.getChildren("CBLST");
+							Iterator<Element> iteratorCblst = listCblst.iterator();
+							while (iteratorCblst.hasNext()) {
+								Element cblst = (Element) iteratorCblst.next();
+								List<Element> listCbsublst = cblst.getChildren("CBSUBLST");
+								Iterator<Element> iteratorCbsublst = listCbsublst.iterator();
+								while (iteratorCbsublst.hasNext()) {
+									Element cbsublst = iteratorCbsublst.next();
+									List<Element> listCbdata = cbsublst.getChildren("CBDATA");
+									Iterator<Element> iteratorCbdata = listCbdata.iterator();
+									jobSetUp += "<ul>";
+									int nbCbdata = 1;
+									while(iteratorCbdata.hasNext()){
+										Element cbdata = iteratorCbdata.next();
+										jobSetUp += "<li>";
+										jobSetUp += cbdata.getChildText("CBNAME");
+										jobSetUp += "<div class='onoffswitch'>";
+										jobSetUp += "<input type='checkbox' name='onoffswitch"+nbCbdata+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+"' checked>";
+										jobSetUp += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+"'>";
+										jobSetUp += "<div class='onoffswitch-inner'></div>";
+										jobSetUp += "<div class='onoffswitch-switch'></div>";
+										jobSetUp += "</label>";
+										jobSetUp += "</div>";
+										jobSetUp += "</li>";
+										nbCbdata++;
+									}
+									jobSetUp += "</ul>";
+								}
 							}
 							jobSetUp += "</ul>";
 						}
@@ -215,8 +260,37 @@ public class DataParsing {
 									}
 									
 								}
-								
 								procedure += "</li>";
+								
+								List<Element> listCblst = l1Item.getChildren("CBLST");
+								Iterator<Element> iteratorCblst = listCblst.iterator();
+								while (iteratorCblst.hasNext()) {
+									Element cblst = (Element) iteratorCblst.next();
+									List<Element> listCbsublst = cblst.getChildren("CBSUBLST");
+									Iterator<Element> iteratorCbsublst = listCbsublst.iterator();
+									while (iteratorCbsublst.hasNext()) {
+										Element cbsublst = iteratorCbsublst.next();
+										List<Element> listCbdata = cbsublst.getChildren("CBDATA");
+										Iterator<Element> iteratorCbdata = listCbdata.iterator();
+										procedure += "<ul>";
+										int nbCbdata = 1;
+										while(iteratorCbdata.hasNext()){
+											Element cbdata = iteratorCbdata.next();
+											procedure += "<li>";
+											procedure += cbdata.getChildText("CBNAME");
+											procedure += "<div class='onoffswitch'>";
+											procedure += "<input type='checkbox' name='onoffswitch"+nbCbdata+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+"' checked>";
+											procedure += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+"'>";
+											procedure += "<div class='onoffswitch-inner'></div>";
+											procedure += "<div class='onoffswitch-switch'></div>";
+											procedure += "</label>";
+											procedure += "</div>";
+											procedure += "</li>";
+											nbCbdata++;
+										}
+										procedure += "</ul>";
+									}
+								}
 							}
 							listList2 = l1Item.getChildren("LIST2");
 							iteratorList2 = listList2.iterator();
@@ -400,10 +474,41 @@ public class DataParsing {
 						Element list1 = (Element) iteratorListList.next();
 						listL1Item = list1.getChildren("L1ITEM");
 						iteratorL1Item = listL1Item.iterator();
+						closeUp += "<ul>";
 						while (iteratorL1Item.hasNext()) {
 							Element l1Item = (Element) iteratorL1Item.next();
 							Element para = l1Item.getChild("PARA");
-							closeUp += para.getText()+"<br/>";
+							closeUp += "<li>"+para.getText()+"</li>";
+							List<Element> listCblst = l1Item.getChildren("CBLST");
+							Iterator<Element> iteratorCblst = listCblst.iterator();
+							while (iteratorCblst.hasNext()) {
+								Element cblst = (Element) iteratorCblst.next();
+								List<Element> listCbsublst = cblst.getChildren("CBSUBLST");
+								Iterator<Element> iteratorCbsublst = listCbsublst.iterator();
+								while (iteratorCbsublst.hasNext()) {
+									Element cbsublst = iteratorCbsublst.next();
+									List<Element> listCbdata = cbsublst.getChildren("CBDATA");
+									Iterator<Element> iteratorCbdata = listCbdata.iterator();
+									closeUp += "<ul>";
+									int nbCbdata = 1;
+									while(iteratorCbdata.hasNext()){
+										Element cbdata = iteratorCbdata.next();
+										closeUp += "<li>";
+										closeUp += cbdata.getChildText("CBNAME");
+										closeUp += "<div class='onoffswitch'>";
+										closeUp += "<input type='checkbox' name='onoffswitch"+nbCbdata+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+"' checked>";
+										closeUp += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+"'>";
+										closeUp += "<div class='onoffswitch-inner'></div>";
+										closeUp += "<div class='onoffswitch-switch'></div>";
+										closeUp += "</label>";
+										closeUp += "</div>";
+										closeUp += "</li>";
+										nbCbdata++;
+									}
+									closeUp += "</ul>";
+								}
+							}
+							
 							listList2 = l1Item.getChildren("LIST2");
 							iteratorL2Item = listList2.iterator();
 							while (iteratorL2Item.hasNext()) {
@@ -429,6 +534,7 @@ public class DataParsing {
 								closeUp += "</ul>";
 							}
 						}
+						closeUp += "</ul>";
 					}
 					closeUp += "</p>";
 				}
