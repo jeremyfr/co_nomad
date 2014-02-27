@@ -112,79 +112,60 @@ public class AMMAnnexes extends Activity {
 		infobulle.setImageResource(R.drawable.vertical_line_empty);
 	}
 
-	private void setInfobulle(int y, int pos) {
-		infobulle.setVisibility(View.VISIBLE);
-		int y_absolue = 70 + 30 * pos + warnings.getHeight()
-				+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
-				+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
-				+ (pos >= 3 ? 1 : 0) * closeUp.getHeight() + (pos >= 4 ? 1 : 0)
-				* tools.getHeight() + (pos >= 5 ? 1 : 0) * pictures.getHeight()
-				- clickedWB.getHeight() + y;
-		int y_relative = y_absolue - scrollView.getScrollY();
-		displayInfobulle(y_relative);
+	private void setInfobulle(boolean state, int y, int pos) {
+		if (state) {
+			int y_absolue = 70 + 30 * pos + warnings.getHeight()
+					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
+					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
+					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
+					+ (pos >= 4 ? 1 : 0) * tools.getHeight()
+					+ (pos >= 5 ? 1 : 0) * pictures.getHeight()
+					- clickedWB.getHeight() + y;
+			int y_relative = y_absolue - scrollView.getScrollY();
+			displayInfobulle(y_relative);
+		} else {
+			int y_absolue = (int) (30 * (1 + pos)
+					+ ((pos >= 0 ? 0.5 : 0) + (pos >= 1 ? 0.5 : 0))
+					* warnings.getHeight()
+					+ ((pos >= 1 ? 0.5 : 0) + (pos >= 2 ? 0.5 : 0))
+					* jobSetUp.getHeight()
+					+ ((pos >= 2 ? 0.5 : 0) + (pos >= 3 ? 0.5 : 0))
+					* procedure.getHeight()
+					+ ((pos >= 3 ? 0.5 : 0) + (pos >= 4 ? 0.5 : 0))
+					* closeUp.getHeight()
+					+ ((pos >= 4 ? 0.5 : 0) + (pos >= 5 ? 0.5 : 0))
+					* tools.getHeight() + (pos >= 5 ? 0.5 : 0)
+					* pictures.getHeight());
+			int y_relative = y_absolue - scrollView.getScrollY();
+			displayInfobulle(y_relative);
+		}
 	}
 
 	// Place l'infobulle à l'ordonnée y.
 	public void setInfobulle(int y) {
 
 		if (clickedWB.equals(warningWV)) {
-			if (false) // Si Warnings est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Warnings est ouvert.
-			{
-				setInfobulle(y, 0);
-			}
+			setInfobulle(true, y, 0);
 		}
 
 		if (clickedWB.equals(jobSetUpWV)) {
-			if (false) // Si Job Set up est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Job Set up est ouvert.
-			{
-				setInfobulle(y, 1);
-			}
+			setInfobulle(true, y, 1);
 		}
 
 		if (clickedWB.equals(procedureWV)) {
-			if (false) // Si Procedure est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Procedure est ouvert.
-			{
-				setInfobulle(y, 2);
-			}
+			setInfobulle(true, y, 2);
 		}
 
 		if (clickedWB.equals(closeUpWV)) {
-			if (false) // Si Close up est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Close up est ouvert.
-			{
-				setInfobulle(y, 3);
-			}
+			setInfobulle(true, y, 3);
 		}
 
 		if (clickedWB.equals(toolsWV)) {
-			if (false) // Si Close up est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Close up est ouvert.
-			{
-				setInfobulle(y, 4);
-			}
+			setInfobulle(true, y, 4);
 		}
 
 		if (clickedWB.equals(picturesWV)) {
-			if (false) // Si Close up est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Close up est ouvert.
-			{
-				setInfobulle(y, 5);
-			}
+			setInfobulle(true, y, 5);
 		}
 	}
 
