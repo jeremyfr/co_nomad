@@ -340,6 +340,7 @@ public class AMMAnnexes extends Activity {
 		        annexImg.setImageResource(resID); 
 		        clickedWB = (WebView) map.get("webview");
 				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
+				scrollView.setAnnexe(clickedWB, annexe);
 				
         	}
          });
