@@ -141,7 +141,7 @@
                             <PARA>No specific</PARA>
                           </ENTRY>
                           <ENTRY COLNAME="COL3">
-                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="3.60" MIN="0.20" UNIT="m.daN"><TORVALUE MAX="26.00" MIN="2.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                            <PARA>Torque wrench: range [0.20 , 3.60]m.daN / [2.00, 26.00]lbf.ft</PARA>
                           </ENTRY>
                         </ROW>
                       </TBODY>
@@ -243,8 +243,7 @@
                       </ROW>
                       <ROW>
                         <ENTRY COLNAME="COL1">
-                          <PARA>
-                            <PAN PANTYPE="accpan">522NB</PAN>, <PAN PANTYPE="accpan">522QB</PAN>, <PAN PANTYPE="accpan">622NB</PAN>, <PAN PANTYPE="accpan">622QB</PAN></PARA>
+                          <PARA>522NB, 522QB, 622NB, 622QB</PARA>
                         </ENTRY>
                       </ROW>
                     </TBODY>
@@ -447,7 +446,7 @@
               <PARA>Align the flanges of the control valve (1) and the telescopic box assembly (3), then install the clamp (2). </PARA>
             </L2ITEM>
             <L2ITEM>
-              <PARA>Make sure the clamp (2) is in the correct position, then torque the clamp nut <TOR><TORVALUE MAX="0.5" MIN="0.4" UNIT="m.daN"><TORVALUE MAX="44.25" MIN="35.40" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+              <PARA>Make sure the clamp (2) is in the correct position, then torque the clamp nut [0.4 , 0.5]m.daN / [35.40, 44.25]lbf.in.</PARA>
             </L2ITEM>
             <L2ITEM>
               <PARA>Extend the flanged sleeve (9) until it touches the flange of the control valve (1). </PARA>
@@ -459,7 +458,7 @@
               <PARA>Align the flanges of the flanged sleeve (9) and the control valve (1), then install the clamp (10). </PARA>
             </L2ITEM>
             <L2ITEM>
-              <PARA>Make sure the clamp (10) is in the correct position, then torque the clamp nut <TOR><TORVALUE MAX="0.5" MIN="0.4" UNIT="m.daN"><TORVALUE MAX="44.25" MIN="35.40" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+              <PARA>Make sure the clamp (10) is in the correct position, then torque the clamp nut [0.4 , 0.5]m.daN / [35.40, 44.25]lbf.in. </PARA>
             </L2ITEM>
             <L2ITEM>
               <WARNING>
@@ -469,7 +468,7 @@
               <CAUTION>
                 <PARA>YOU MUST MAKE SURE THAT THE ELECTRICAL CONNECTORS AND RECEPTACLES ARE CLEAN BEFORE YOU CONNECT THEM. CONTAMINATION ON THE ELECTRICAL CONNECTORS CAN CAUSE DAMAGE TO THE EQUIPMENT. </PARA>
               </CAUTION>
-              <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>08048*</CONNBR><CONNAME>BONDING AND ADHESIVE COMPOUNDS</CONNAME></CON> to the threads of the electrical receptacles on the control valve (1). Connect the electrical connectors (5, 6 and 11) to the electrical receptacles on the control valve. </PARA>
+              <PARA>Apply BONDING AND ADHESIVE COMPOUNDS (08048*) to the threads of the electrical receptacles on the control valve (1). Connect the electrical connectors (5, 6 and 11) to the electrical receptacles on the control valve. </PARA>
             </L2ITEM>
           </LIST2>
         </L1ITEM>
@@ -548,10 +547,10 @@
           <PARA>Complete the Installation </PARA>
           <LIST2>
             <L2ITEM>
-              <PARA>Make sure that the nuts on the clamps (2 and 10) are torqued <TOR><TORVALUE MAX="0.5" MIN="0.4" UNIT="m.daN"><TORVALUE MAX="44.25" MIN="35.40" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+              <PARA>Make sure that the nuts on the clamps (2 and 10) are torqued [0.4 , 0.5]m.daN / [35.40, 44.25]lbf.in. </PARA>
             </L2ITEM>
             <L2ITEM>
-              <PARA>Use red <CON CONTYPE="AFRM"><CONNBR>07020*</CONNBR><CONNAME>PAINTS FOR DETAIL (INTERNAL AND EXTERN AL)</CONNAME></CON> to make a 2 mm (0.0787 in.) x 8 mm (0.3149 in.) witness mark across the clamp nuts and their related clamps (2 and 10). </PARA>
+              <PARA>Use red PAINTS FOR DETAIL (INTERNAL AND EXTERN AL) (07020*) to make a 2 mm (0.0787 in.) x 8 mm (0.3149 in.) witness mark across the clamp nuts and their related clamps (2 and 10). </PARA>
             </L2ITEM>
           </LIST2>
         </L1ITEM>
@@ -571,7 +570,7 @@
               <PARA>Make sure that the work area is clean and clear of tools and other items.</PARA>
             </L2ITEM>
             <L2ITEM>
-              <PARA>Install the access panel <PAN PANTYPE="accpan">522NB</PAN> ( <PAN PANTYPE="accpan">622NB</PAN>) or <PAN PANTYPE="accpan">522QB</PAN> ( <PAN PANTYPE="accpan">622QB</PAN>), as applicable <REFBLOCK>57-42-37-400-801<REFINT REFID="EN57423740080100"><EFFECT EFFRG="001999"></EFFECT>57-42-37-400-801-A</REFINT></REFBLOCK>. </PARA>
+              <PARA>Install the access panel 522NB ( 622NB) or 522QB ( 622QB), as applicable <REFBLOCK>57-42-37-400-801<REFINT REFID="EN57423740080100"><EFFECT EFFRG="001999"></EFFECT>57-42-37-400-801-A</REFINT></REFBLOCK>. </PARA>
             </L2ITEM>
           </LIST2>
         </L1ITEM>

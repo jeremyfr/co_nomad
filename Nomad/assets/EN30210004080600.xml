@@ -121,7 +121,7 @@
                             <PARA>No specific</PARA>
                           </ENTRY>
                           <ENTRY COLNAME="COL3">
-                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="3.60" MIN="0.20" UNIT="m.daN"><TORVALUE MAX="26.00" MIN="2.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                            <PARA>Torque wrench: range [0.20 , 3.60]m.daN / [2.00, 26.00]lbf.ft</PARA>
                           </ENTRY>
                         </ROW>
                         <ROW>
@@ -575,7 +575,7 @@
               </NOTE>
             </L2ITEM>
             <L2ITEM>
-              <PARA>Install the lock pin through the indicator plate and into the lock boss. TORQUE the lock pin <TOR><TORVALUE MAX="0.51" MIN="0.45" UNIT="m.daN"><TORVALUE MAX="45.13" MIN="39.82" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+              <PARA>Install the lock pin through the indicator plate and into the lock boss. TORQUE the lock pin [0.51 , 0.45]m.daN / [39.82, 45.13]lbf.in. </PARA>
             </L2ITEM>
             <L2ITEM>
               <PARA>The pressure regulating valve is now isolated in the closed position. </PARA>

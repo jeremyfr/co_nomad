@@ -15,18 +15,15 @@
     android:layout_height="fill_parent"
     android:background="@color/background1_light"
     android:orientation="horizontal" >
-
     <LinearLayout
         android:id="@+id/layout_amm"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal" >
-
         <com.eads.co.nomad.OurScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,7 +31,6 @@
                 android:orientation="vertical"
                 android:padding="@dimen/activity_margin"
                 tools:context=".MainActivity" >
-
                 <LinearLayout
                     android:id="@+id/warnings"
                     android:layout_width="match_parent"
@@ -89,7 +85,7 @@
                     android:id="@+id/jobSetUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30px"
                     android:background="@color/background1_light"
                     android:clickable="true"
                     android:orientation="vertical" >
@@ -140,7 +136,7 @@
                     android:id="@+id/procedure"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30px"
                     android:background="@color/background1_light"
                     android:clickable="true"
                     android:orientation="vertical" >
@@ -191,7 +187,7 @@
                     android:id="@+id/closeUp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30px"
                     android:background="@color/background1_light"
                     android:clickable="true"
                     android:orientation="vertical" >
@@ -242,7 +238,7 @@
                     android:id="@+id/tools"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30px"
                     android:background="@color/background1_light"
                     android:clickable="true"
                     android:orientation="vertical" >
@@ -293,7 +289,7 @@
                     android:id="@+id/pictures"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30px"
                     android:background="@color/background1_light"
                     android:clickable="true"
                     android:orientation="vertical" >
@@ -342,6 +338,7 @@
             </LinearLayout>
         </com.eads.co.nomad.OurScrollView>
 
+        <!-- Info bulle -->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent" >
@@ -351,7 +348,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/vertical_line" />
-"
 
             <ImageView
                 android:id="@+id/infobulle"
@@ -372,19 +368,30 @@
                 android:layout_height="wrap_content" >
 
                 <TextView
-                    android:id="@+id/annexTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="TextView" />
+		                    android:id="@+id/annexTitle"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="wrap_content"
+		                    android:layout_centerInParent="true"
+		                    android:text="TextView" 
+		                    android:textColor="@color/text1_light"
+                    	android:textSize="@dimen/font_size_2"/>
+		                <Button
+		                    android:id="@+id/closeAllAnnexButton"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="wrap_content"
+		                    android:visibility="invisible"
+		                    android:text="Close All" />
+		                <ImageButton
+		                    android:id="@+id/closeAnnexButton"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="wrap_content"
+		                    android:layout_alignParentRight="true"
+		                    android:text="Close"
+		                    android:background="@null"
+	        		android:src="@drawable/btn_close" />
 
-                <Button
-                    android:id="@+id/closeAnnexButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:gravity="right"
-                    android:text="Close" />
+            
+
             </RelativeLayout>
 
             <FrameLayout
@@ -405,13 +412,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="10" >
-
-                <Button
+                <ImageButton
                     android:id="@+id/fullScreenAnnexButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="FullScreen" />
+	        		android:background="@null"
+	        		android:src="@drawable/btn_fullscreen"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
@@ -426,4 +433,18 @@
     android:divider="@color/text1_dark"
     android:dividerHeight="2dp"
     android:background="@color/background1_dark"/>
+
+<ListView
+					    android:id= "@+id/listview"
+		            android:layout_width="250dp"
+		            android:background="@drawable/linear_border"
+		            android:layout_height="fill_parent"
+		            android:orientation="vertical"
+		            android:layout_gravity="end"
+        			android:choiceMode="singleChoice"
+       				android:divider="#000000"
+       				android:dividerHeight="5dp"
+        		 >
+			  
+			        </ListView>
 </android.support.v4.widget.DrawerLayout>

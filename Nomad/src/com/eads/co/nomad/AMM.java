@@ -52,14 +52,18 @@ public class AMM extends Activity {
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle());
 			setContentView(R.layout.amm);
+<<<<<<< HEAD
 			SwitchTaskManager taskManager = new SwitchTaskManager(this,"amm");
+=======
+			//SwitchTaskManager taskManager = new SwitchTaskManager(this);
+>>>>>>> fec4b5a7f67a92e2bd1cdea2f683f4338836ff10
 			/* Warnings part */
 			LinearLayout warnings = (LinearLayout) findViewById(R.id.warnings);
 			warnings.setOnClickListener(manageWarnings);
 			((ImageView) findViewById(R.id.stateWarning)).setTag(R.drawable.expand);
 			WebView warningWV = ((WebView) findViewById(R.id.warnings_text));
 			warningWV.loadDataWithBaseURL("file:///android_asset/", parser.getWarnings(), "text/html", "UTF-8", null);
-			warningWV.setWebViewClient(taskManager);
+			//warningWV.setWebViewClient(taskManager);
 			/* Job Setup part */
 			LinearLayout jobSetUp = (LinearLayout) findViewById(R.id.jobSetUp);
 			jobSetUp.setOnClickListener(manageJobSetUp);
@@ -67,7 +71,7 @@ public class AMM extends Activity {
 			((ImageView) findViewById(R.id.stateJobSetUp)).setTag(R.drawable.collapse);
 			WebView jobSetUpWV = ((WebView) findViewById(R.id.jobSetUp_text));
 			jobSetUpWV.loadDataWithBaseURL("file:///android_asset/", parser.getJobSetUp(), "text/html", "UTF-8", null);
-			jobSetUpWV.setWebViewClient(taskManager);
+			//jobSetUpWV.setWebViewClient(taskManager);
 			/* Procedure part */
 			LinearLayout procedure = (LinearLayout) findViewById(R.id.procedure);
 			procedure.setOnClickListener(manageProcedure);
@@ -75,7 +79,7 @@ public class AMM extends Activity {
 			((ImageView) findViewById(R.id.stateProcedure)).setTag(R.drawable.collapse);
 			WebView procedureWV = ((WebView) findViewById(R.id.procedure_text));
 			procedureWV.loadDataWithBaseURL("file:///android_asset/", parser.getProcedure(), "text/html", "UTF-8", null);
-			procedureWV.setWebViewClient(taskManager);
+			//procedureWV.setWebViewClient(taskManager);
 			/* Close Up part */
 			LinearLayout closeUp = (LinearLayout) findViewById(R.id.closeUp);
 			closeUp.setOnClickListener(manageCloseUp);
@@ -83,7 +87,7 @@ public class AMM extends Activity {
 			((ImageView) findViewById(R.id.stateCloseUp)).setTag(R.drawable.collapse);
 			WebView closeUpWV = ((WebView) findViewById(R.id.closeUp_text));
 			closeUpWV.loadDataWithBaseURL("file:///android_asset/", parser.getCloseUp(), "text/html", "UTF-8", null);
-			closeUpWV.setWebViewClient(taskManager);
+			//closeUpWV.setWebViewClient(taskManager);
 			/* Tools part */
 			LinearLayout tools = (LinearLayout) findViewById(R.id.tools);
 			tools.setOnClickListener(manageTools);
@@ -91,7 +95,7 @@ public class AMM extends Activity {
 			((ImageView) findViewById(R.id.stateTools)).setTag(R.drawable.collapse);
 			WebView toolsWV = ((WebView) findViewById(R.id.tools_text));
 			toolsWV.loadDataWithBaseURL("file:///android_asset/", parser.getTools(), "text/html", "UTF-8", null);
-			toolsWV.setWebViewClient(taskManager);
+			//toolsWV.setWebViewClient(taskManager);
 			/* Pictures part */
 			LinearLayout pictures = (LinearLayout) findViewById(R.id.pictures);
 			pictures.setOnClickListener(managePictures);
@@ -99,7 +103,7 @@ public class AMM extends Activity {
 			((ImageView) findViewById(R.id.statePictures)).setTag(R.drawable.collapse);
 			WebView picturesWV = ((WebView) findViewById(R.id.pictures_text));
 			picturesWV.loadDataWithBaseURL("file:///android_asset/", parser.getPictures(), "text/html", "UTF-8", null);
-			picturesWV.setWebViewClient(taskManager);
+			//picturesWV.setWebViewClient(taskManager);
 		} catch (Exception e) {
 			this.setTitle("Procedure "+ammPart+" introuvable");
 			e.printStackTrace();

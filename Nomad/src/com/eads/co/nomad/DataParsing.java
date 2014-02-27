@@ -42,7 +42,7 @@ public class DataParsing {
 	}
 
 	public String getWarnings() {
-		String warnings = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String warnings = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		List<Element> listWarnings = racine.getChildren("WARNING");
 		List<Element> listItems;
 		List<Element> listList;
@@ -80,13 +80,12 @@ public class DataParsing {
 			}
 			warnings += "<br/>";
 		}
-		warnings += "<div id='test'><p>Ligne de test pour l'infobulle.</p></div>";
 		warnings += "</body></html>";
 		return warnings;
 	}
 	
 	public String getJobSetUp() {
-		String jobSetUp = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String jobSetUp = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -119,12 +118,57 @@ public class DataParsing {
 						iteratorL1Item = listL1Item.iterator();
 						while (iteratorL1Item.hasNext()) {
 							Element l1Item = (Element) iteratorL1Item.next();
+							jobSetUp += "<ul>";
 							listPara = l1Item.getChildren("PARA");
 							iteratorPara = listPara.iterator();
-							jobSetUp += "<ul>";
 							while (iteratorPara.hasNext()) {
 								Element para = (Element) iteratorPara.next();
-								jobSetUp += "<li>"+para.getText()+"</li>";
+								List<Element> listRef = para.getChildren("REFBLOCK");
+								if(!listRef.isEmpty()){
+									Iterator<Element> iteratorRef = listRef.iterator();
+									while(iteratorRef.hasNext()){
+										Element refblock = iteratorRef.next();
+										List<Element> listRefInt = refblock.getChildren("REFINT");
+										Iterator<Element> iteratorRefInt = listRefInt.iterator();
+									    while (iteratorRefInt.hasNext()) {
+											Element refInt = (Element) iteratorRefInt.next();
+											jobSetUp += "<li><span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span></li>";
+											stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+jobSetUp.length()+"'>"+refInt.getText()+"</a><br>");
+										}
+									}
+								}else{
+									jobSetUp += "<li>"+para.getText()+"</li>";
+								}
+							}
+							
+							List<Element> listCblst = l1Item.getChildren("CBLST");
+							Iterator<Element> iteratorCblst = listCblst.iterator();
+							while (iteratorCblst.hasNext()) {
+								Element cblst = (Element) iteratorCblst.next();
+								List<Element> listCbsublst = cblst.getChildren("CBSUBLST");
+								Iterator<Element> iteratorCbsublst = listCbsublst.iterator();
+								while (iteratorCbsublst.hasNext()) {
+									Element cbsublst = iteratorCbsublst.next();
+									List<Element> listCbdata = cbsublst.getChildren("CBDATA");
+									Iterator<Element> iteratorCbdata = listCbdata.iterator();
+									jobSetUp += "<ul>";
+									int nbCbdata = 1;
+									while(iteratorCbdata.hasNext()){
+										Element cbdata = iteratorCbdata.next();
+										jobSetUp += "<li>";
+										jobSetUp += cbdata.getChildText("CBNAME");
+										jobSetUp += "<div class='onoffswitch'>";
+										jobSetUp += "<input type='checkbox' name='onoffswitch"+nbCbdata+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+"' checked>";
+										jobSetUp += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+"'>";
+										jobSetUp += "<div class='onoffswitch-inner'></div>";
+										jobSetUp += "<div class='onoffswitch-switch'></div>";
+										jobSetUp += "</label>";
+										jobSetUp += "</div>";
+										jobSetUp += "</li>";
+										nbCbdata++;
+									}
+									jobSetUp += "</ul>";
+								}
 							}
 							jobSetUp += "</ul>";
 						}
@@ -139,8 +183,7 @@ public class DataParsing {
 	}
 
 	public String getProcedure() {
-		String procedure = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
-		
+		String procedure = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -212,13 +255,42 @@ public class DataParsing {
 									iteratorRefInt = listRefInt.iterator();
 								    while (iteratorRefInt.hasNext()) {
 										Element refInt = (Element) iteratorRefInt.next();
-										procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+										procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
 										stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 									}
 									
 								}
-								
 								procedure += "</li>";
+								
+								List<Element> listCblst = l1Item.getChildren("CBLST");
+								Iterator<Element> iteratorCblst = listCblst.iterator();
+								while (iteratorCblst.hasNext()) {
+									Element cblst = (Element) iteratorCblst.next();
+									List<Element> listCbsublst = cblst.getChildren("CBSUBLST");
+									Iterator<Element> iteratorCbsublst = listCbsublst.iterator();
+									while (iteratorCbsublst.hasNext()) {
+										Element cbsublst = iteratorCbsublst.next();
+										List<Element> listCbdata = cbsublst.getChildren("CBDATA");
+										Iterator<Element> iteratorCbdata = listCbdata.iterator();
+										procedure += "<ul>";
+										int nbCbdata = 1;
+										while(iteratorCbdata.hasNext()){
+											Element cbdata = iteratorCbdata.next();
+											procedure += "<li>";
+											procedure += cbdata.getChildText("CBNAME");
+											procedure += "<div class='onoffswitch'>";
+											procedure += "<input type='checkbox' name='onoffswitch"+nbCbdata+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+"' checked>";
+											procedure += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+"'>";
+											procedure += "<div class='onoffswitch-inner'></div>";
+											procedure += "<div class='onoffswitch-switch'></div>";
+											procedure += "</label>";
+											procedure += "</div>";
+											procedure += "</li>";
+											nbCbdata++;
+										}
+										procedure += "</ul>";
+									}
+								}
 							}
 							listList2 = l1Item.getChildren("LIST2");
 							iteratorList2 = listList2.iterator();
@@ -246,7 +318,7 @@ public class DataParsing {
 											iteratorRefInt = listRefInt.iterator();
 										    while (iteratorRefInt.hasNext()) {
 												Element refInt = (Element) iteratorRefInt.next();
-												procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+												procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
 												stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 											}
 											
@@ -280,7 +352,7 @@ public class DataParsing {
 													iteratorRefInt = listRefInt.iterator();
 												    while (iteratorRefInt.hasNext()) {
 														Element refInt = (Element) iteratorRefInt.next();
-														procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+														procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
 														stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 													}
 													
@@ -311,7 +383,7 @@ public class DataParsing {
 												iteratorRefInt = listRefInt.iterator();
 											    while (iteratorRefInt.hasNext()) {
 													Element refInt = (Element) iteratorRefInt.next();
-													procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+													procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
 													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 												}
 												
@@ -339,7 +411,7 @@ public class DataParsing {
 												iteratorRefInt = listRefInt.iterator();
 											    while (iteratorRefInt.hasNext()) {
 													Element refInt = (Element) iteratorRefInt.next();
-													procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+													procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
 													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 												}
 												
@@ -367,7 +439,7 @@ public class DataParsing {
 	}
 	
 	public String getCloseUp() {
-		String closeUp = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String closeUp = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -401,10 +473,41 @@ public class DataParsing {
 						Element list1 = (Element) iteratorListList.next();
 						listL1Item = list1.getChildren("L1ITEM");
 						iteratorL1Item = listL1Item.iterator();
+						closeUp += "<ul>";
 						while (iteratorL1Item.hasNext()) {
 							Element l1Item = (Element) iteratorL1Item.next();
 							Element para = l1Item.getChild("PARA");
-							closeUp += para.getText()+"<br/>";
+							closeUp += "<li>"+para.getText()+"</li>";
+							List<Element> listCblst = l1Item.getChildren("CBLST");
+							Iterator<Element> iteratorCblst = listCblst.iterator();
+							while (iteratorCblst.hasNext()) {
+								Element cblst = (Element) iteratorCblst.next();
+								List<Element> listCbsublst = cblst.getChildren("CBSUBLST");
+								Iterator<Element> iteratorCbsublst = listCbsublst.iterator();
+								while (iteratorCbsublst.hasNext()) {
+									Element cbsublst = iteratorCbsublst.next();
+									List<Element> listCbdata = cbsublst.getChildren("CBDATA");
+									Iterator<Element> iteratorCbdata = listCbdata.iterator();
+									closeUp += "<ul>";
+									int nbCbdata = 1;
+									while(iteratorCbdata.hasNext()){
+										Element cbdata = iteratorCbdata.next();
+										closeUp += "<li>";
+										closeUp += cbdata.getChildText("CBNAME");
+										closeUp += "<div class='onoffswitch'>";
+										closeUp += "<input type='checkbox' name='onoffswitch"+nbCbdata+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+"' checked>";
+										closeUp += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+"'>";
+										closeUp += "<div class='onoffswitch-inner'></div>";
+										closeUp += "<div class='onoffswitch-switch'></div>";
+										closeUp += "</label>";
+										closeUp += "</div>";
+										closeUp += "</li>";
+										nbCbdata++;
+									}
+									closeUp += "</ul>";
+								}
+							}
+							
 							listList2 = l1Item.getChildren("LIST2");
 							iteratorL2Item = listList2.iterator();
 							while (iteratorL2Item.hasNext()) {
@@ -422,7 +525,7 @@ public class DataParsing {
 										iteratorRefInt = listRefInt.iterator();
 									    while (iteratorRefInt.hasNext()) {
 											Element refInt = (Element) iteratorRefInt.next();
-											closeUp += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+closeUp.length()+"'>"+refInt.getText()+"</a>";
+											closeUp += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span>";
 										}
 									}
 									closeUp += "</li>";
@@ -430,6 +533,7 @@ public class DataParsing {
 								closeUp += "</ul>";
 							}
 						}
+						closeUp += "</ul>";
 					}
 					closeUp += "</p>";
 				}
@@ -441,7 +545,7 @@ public class DataParsing {
 	}
 	
 	public String getTools() {
-		String tools = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String tools = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		List<Element> listPretopic = racine.getChild("TFMATR").getChildren("PRETOPIC");
 		List<Element> listList1;
 		List<Element> listL1Item;
@@ -534,11 +638,11 @@ public class DataParsing {
 											}else{
 												para = paraCurrent.getChild("REFINT");
 												if(para != null){
-													tools += "<a href='"+para.getAttributeValue("REFID")+"?y="+tools.length()+"'>"+para.getText()+"</a><br>";
+													tools += "<span id='"+para.getText()+"'><a href="+para.getAttributeValue("REFID")+"?id="+para.getText()+">"+para.getText()+"</a></span>";
 												}else{
 													para = paraCurrent.getChild("GRPHCREF");
 													if(para != null){
-														tools += "<a href='"+para.getAttributeValue("REFID")+"?y="+tools.length()+"'>"+para.getText()+"</a><br>";
+														tools += "</td><td><span id='"+para.getText()+"'><a href="+para.getAttributeValue("REFID")+"?id="+para.getText()+">"+para.getText()+"</a></span>";
 													}else{
 														List<Element> listPan = paraCurrent.getChildren("PAN");
 														if(!listPan.isEmpty()){
@@ -574,7 +678,7 @@ public class DataParsing {
 
 
 	public String getPictures() {
-		String pictures = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var top = 0;var e = document.getElementById(element);while (e.offsetParent != undefined && e.offsetParent != null){top += e.offsetTop + (e.clientTop != null ? e.clientTop : 0);e = e.offsetParent;}MyAndroid.receiveValueFromJs(top);}</script></head><body>";
+		String pictures = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 1.3308*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		// TODO Auto-generated method stub
 		pictures += "PICTURES";
 		pictures += "</body></html>";

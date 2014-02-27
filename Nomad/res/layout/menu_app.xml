@@ -61,7 +61,7 @@
 	        android:onClick="toOptions"
         	android:layout_weight="1"
 	        android:src="@drawable/button_options" />
-	
+
 	    <ImageButton
 	        android:id="@+id/quit"
 	        android:layout_width="wrap_content"

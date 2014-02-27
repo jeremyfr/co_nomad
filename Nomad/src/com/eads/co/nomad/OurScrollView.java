@@ -8,8 +8,9 @@ import android.widget.ScrollView;
 
 public class OurScrollView extends ScrollView {
 
-	String annexe; // Nom de l'annexe affichée (id du HTML).
-	WebView webView;
+	private AMMAnnexes activity;
+	private String annexe; // Nom de l'annexe affichée (id du HTML).
+	private WebView webView;
 	
 	public OurScrollView(Context context) {
 		super(context);
@@ -23,14 +24,14 @@ public class OurScrollView extends ScrollView {
 	@Override
 	protected void onScrollChanged(int l, int t, int oldl, int oldt) 
 	{
-		switch (AMMAnnexes.state) {
+		switch (activity.state) {
 		case NOT_DISPLAYED:
 			break;
 		case DISPLAYED_FREE:
-		    webView.loadUrl("javascript:getPosition('"+annexe+"')");
+			webView.loadUrl("javascript:getPosition('"+annexe+"')");
 			break;
 		case DISPLAYED_PRESSED:
-		    webView.loadUrl("javascript:getPosition('"+annexe+"')");
+			webView.loadUrl("javascript:getPosition('"+annexe+"')");
 			break;
 		case DISPLAYED_FULLSCREEN:
 			break;
@@ -38,8 +39,14 @@ public class OurScrollView extends ScrollView {
 	    super.onScrollChanged(l, t, oldl, oldt);
 	}
 	
+	public void setActivity(AMMAnnexes activity)
+	{
+		this.activity = activity;
+	}
+	
 	public void setAnnexe(WebView webView, String annexe)
 	{
+		Log.i("OurScrollView", "Set webView ok");
 		this.annexe = annexe;
 		this.webView = webView;
 	}

@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+<<<<<<< HEAD
+=======
+import android.view.MenuItem;
+>>>>>>> fec4b5a7f67a92e2bd1cdea2f683f4338836ff10
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
@@ -20,17 +24,10 @@ public class MainActivityJobCards extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		setContentView(R.layout.activity_main_jobcard);
 		
 		jobCardsDisplay();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		
-		return true;
 	}
 
 	private void jobCardsDisplay() {
@@ -41,10 +38,6 @@ public class MainActivityJobCards extends FragmentActivity {
 		JobCardDetails jDetails = new JobCardDetails(j, "Date : 06/12/2014\nRef. : EN30115140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
-//		jDetails = new JobCardDetails(j, "Required execution time : 50 min");
-//		jobCardDetails.add(jDetails);
-//		jDetails = new JobCardDetails(j, "Required operators : 2");
-//		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
 		jobCards.add(j);
 		
@@ -163,11 +156,25 @@ public class MainActivityJobCards extends FragmentActivity {
 		
 		listeJobCards3.setAdapter((ExpandableListAdapter) adapter3);
 	}
+	
 	public void openJobCard(View view){
         //Intent intent = new Intent(this, JobCard.class);
 		Intent intent = new Intent(this, JobCard.class);
         intent.putExtra("task", "EN30115140080100");
         startActivity(intent);
+	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item){       
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				Intent intent = new Intent(this, MainActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 
 }
