@@ -677,19 +677,19 @@ public class AMMAnnexes extends Activity {
 		return (titre.equals(titreAnnexe.getText().toString()) && clickedWB == wb);
 	}
 	// Teste si l'objet de titre titre est dans la listview
-	private boolean testeObjetDansListe(String titre){
+	private boolean testeObjetDansListe(String titre, WebView wb){
 		Iterator<HashMap<String,Object>> iterateur=listItem.iterator();
 		boolean test = false;
 		while (!test && iterateur.hasNext())
 		{
 			HashMap<String, Object> mapElt = iterateur.next();
-			test = (mapElt.get("titre").equals(titre));
+			test = (mapElt.get("titre").equals(titre) && mapElt.get("webview").equals(wb));
 		}
 		return test;
 	}
 	//Ajoute l'élément titre avec son imag img à la listview
 	private void ajouteList(String titre, String img, WebView wb) {
-		if (!testeObjetDansListe(titre)) {
+		if (!testeObjetDansListe(titre, wb)) {
 			map = new HashMap<String, Object>();
 	        map.put("titre", titre);
 	        map.put("img", img);
