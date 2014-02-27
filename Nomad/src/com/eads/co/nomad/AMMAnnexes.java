@@ -222,7 +222,6 @@ public class AMMAnnexes extends Activity {
 		switch (state) {
 		case NOT_DISPLAYED:
 			setAnnexeXAndX(xmax / 2);
-			annexe += "a";
 			scrollView.setAnnexe(webView, annexe);
 			this.annexe = annexe;
 			clickedWB = webView;
