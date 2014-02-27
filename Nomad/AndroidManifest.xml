@@ -55,6 +55,15 @@
             android:name="com.eads.co.nomad.JobCard"
             android:label="@string/jobCard" >
         </activity>
+		<activity 
+            android:name="Research"
+            android:label="@string/app_name" >
+            <intent-filter>
+            	<action android:name="android.intent.action.SEARCH" />
+        	</intent-filter>
+        	<meta-data android:name="android.app.searchable"
+                   android:resource="@xml/searchable"/>
+        </activity>
         <activity
             android:name="com.eads.co.nomad.Annexes"
             android:label="@string/app_name" >

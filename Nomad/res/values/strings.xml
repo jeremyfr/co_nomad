@@ -12,6 +12,7 @@
     <string name="app_name">Nomad</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="search">Search</string>
 	<string name="tab_title_1">A380  -  Id F-HPJB  \nMSN 40  -  FSN 35</string>
     <string name="tab_title_2">A320  -  Id F-GFKU  \nMSN 226  -  FSN 353</string>
     <string name="tab_title_3">A380  -  Id F-GHBQ  \nMSN 69  -  FSN 28</string>
