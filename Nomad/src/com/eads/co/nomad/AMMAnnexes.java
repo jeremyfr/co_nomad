@@ -337,10 +337,12 @@ public class AMMAnnexes extends Activity {
 				Log.e("AnnexeListener", "Nom de l'annexe cliquée" + annexe);
 				titreAnnexe.setText(annexe);
 				int resID = getResources().getIdentifier((String)map.get("img"), "drawable", "package.name");
-		        annexImg.setImageResource(resID); 
+		        annexImg.setImageResource(resID);
 		        clickedWB = (WebView) map.get("webview");
-				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-				scrollView.setAnnexe(clickedWB, annexe);
+		        if (state != AnnexesState.DISPLAYED_FULLSCREEN){
+		        	clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
+		        	scrollView.setAnnexe(clickedWB, annexe);
+		        }
 				
         	}
          });
@@ -457,6 +459,8 @@ public class AMMAnnexes extends Activity {
 					setAnnexeX(x);
 					displaySeparator();
 					fullScreenAnnexButton.setImageResource(R.drawable.btn_fullscreen);
+					clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
+		        	scrollView.setAnnexe(clickedWB, annexe);
 					state = AnnexesState.DISPLAYED_FREE;
 					break;
 				}
