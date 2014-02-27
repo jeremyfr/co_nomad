@@ -64,5 +64,6 @@
             </intent-filter>
         </activity>
         <activity android:name="JobCard2"></activity>
+        <activity android:name="PlaneSelection"></activity>
     </application>
 </manifest>
