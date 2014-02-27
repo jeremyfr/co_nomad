@@ -118,6 +118,18 @@ public class ATASelection extends Activity {
 	          ATA ata = listATA.get(ataSelected);
 	          ATALevel2 subAta = ata.getListATALevel2().get(lastSubATASelected);
 	          if (ata.getDescription() == "30 - ICE AND RAIN PROTECTION"){
+				if (subAta.getDescription() == "- 10 - Airfoil"){
+	        	  switch(position){
+	        	  case 0:
+	        		  intent.putExtra("task", "EN30115140080100");
+	        		  break;
+	        	  case 1:
+	        		  intent.putExtra("task", "EN30115140080200");
+	        		  break;
+	        	  }
+				  startActivity(intent); 
+				}
+				else if (subAta.getDescription() == "- 20 - Air Intakes"){
 	        	  switch(position){
 	        	  case 0:
 	        		  intent.putExtra("task", "EN30210004080100");
@@ -125,23 +137,18 @@ public class ATASelection extends Activity {
 	        	  case 1:
 	        		  intent.putExtra("task", "EN30210004080400");
 	        		  break;
-	        	  case 2:
+				  case 2:
 	        		  intent.putExtra("task", "EN30210004080600");
 	        		  break;
-	        	  case 3:
+				  case 3:
 	        		  intent.putExtra("task", "EN30210004080700");
 	        		  break;
-	        	  case 4:
-	        		  intent.putExtra("task", "EN30115140080100");
-	        		  break;
-	        	  case 5:
-	        		  intent.putExtra("task", "EN30115140080200");
-	        		  break;
 	        	  }
-	        	  startActivity(intent);
-	        	  
+				  startActivity(intent); 
+				}
 	          }
 	          else if (ata.getDescription() == "52 - DOORS"){
+			    if (subAta.getDescription() == "- 10 - Passenger/Crew"){
 	        	  switch(position){
 	        	  case 0:
 	        		  intent.putExtra("task", "EN52132140080100");
@@ -153,7 +160,8 @@ public class ATASelection extends Activity {
 	        		  intent.putExtra("task", "EN52142140080100");
 	        		  break;
 	        	  }
-	        	  startActivity(intent);
+				  startActivity(intent); 
+				}
 	          }
 	        }
 	      });
@@ -200,13 +208,15 @@ public class ATASelection extends Activity {
 		 *  Level 2 (sub ATA)
 		 *  
 		 */
-		ArrayList<ATALevel3> chaptersATA30 = new ArrayList<ATALevel3>();
-		chaptersATA30.add(chap1);
-		chaptersATA30.add(chap2);
-		chaptersATA30.add(chap3);
-		chaptersATA30.add(chap4);
-		chaptersATA30.add(chap5);
-		chaptersATA30.add(chap6);
+		ArrayList<ATALevel3> chaptersATA30AirIntakes = new ArrayList<ATALevel3>();
+		chaptersATA30AirIntakes.add(chap1);
+		chaptersATA30AirIntakes.add(chap2);
+		chaptersATA30AirIntakes.add(chap3);
+		chaptersATA30AirIntakes.add(chap4);
+		
+		ArrayList<ATALevel3> chaptersATA30Airfoil = new ArrayList<ATALevel3>();
+		chaptersATA30Airfoil.add(chap5);
+		chaptersATA30Airfoil.add(chap6);
 		
 		ArrayList<ATALevel3> chaptersATA36 = new ArrayList<ATALevel3>();
 		chaptersATA36.add(chap7);
@@ -219,17 +229,19 @@ public class ATASelection extends Activity {
 		chaptersATA52.add(chap12);
 		chaptersATA52.add(chap13);
 		
+		ArrayList<ATALevel3> empty = new ArrayList<ATALevel3>();
+		
 		// ata 30
 		ArrayList<ATALevel3> listATALevel3 = new ArrayList<ATALevel3>();
-		ATALevel2 ata5General = new ATALevel2("- 00 - General", chaptersATA30);
-		ATALevel2 ata5Airfol = new ATALevel2("- 10 - Airfoil", chaptersATA30);
-		ATALevel2 ata5AirIntakes = new ATALevel2("- 20 - Air Intakes", chaptersATA30);
-		ATALevel2 ata5PitotAndStatic = new ATALevel2("- 30 - Pitot and static", chaptersATA30);
-		ATALevel2 ata5Windows = new ATALevel2("- 40 - Windows, Windshields and Doors", chaptersATA30);
-		ATALevel2 ata5Antennas = new ATALevel2("- 50 - Antennas", chaptersATA30);
-		ATALevel2 ata5Propellers = new ATALevel2("- 60 - Propellers/Rotors", chaptersATA30);
-		ATALevel2 ata5WaterLine = new ATALevel2("- 70 - Water Lines", chaptersATA30);
-		ATALevel2 ata5Detection = new ATALevel2("- 80 - Detection", chaptersATA30);
+		ATALevel2 ata5General = new ATALevel2("- 00 - General", empty);
+		ATALevel2 ata5Airfol = new ATALevel2("- 10 - Airfoil", chaptersATA30Airfoil);
+		ATALevel2 ata5AirIntakes = new ATALevel2("- 20 - Air Intakes", chaptersATA30AirIntakes);
+		ATALevel2 ata5PitotAndStatic = new ATALevel2("- 30 - Pitot and static", empty);
+		ATALevel2 ata5Windows = new ATALevel2("- 40 - Windows, Windshields and Doors", empty);
+		ATALevel2 ata5Antennas = new ATALevel2("- 50 - Antennas", empty);
+		ATALevel2 ata5Propellers = new ATALevel2("- 60 - Propellers/Rotors", empty);
+		ATALevel2 ata5WaterLine = new ATALevel2("- 70 - Water Lines", empty);
+		ATALevel2 ata5Detection = new ATALevel2("- 80 - Detection", empty);
 		
 		// ata 6
 		ATALevel2 ata36General = new ATALevel2("- 00 - General", chaptersATA36);
@@ -237,15 +249,15 @@ public class ATASelection extends Activity {
 		ATALevel2 ata36Indicating = new ATALevel2("- 20 - Indicating", chaptersATA36);
 		
 		// ata 52
-		ATALevel2 ata52General = new ATALevel2("- 00 - General", chaptersATA52);
+		ATALevel2 ata52General = new ATALevel2("- 00 - General", empty);
 		ATALevel2 ata52Passenger = new ATALevel2("- 10 - Passenger/Crew", chaptersATA52);
-		ATALevel2 ata52EmergencyExit = new ATALevel2("- 20 - Emergency Exit", chaptersATA52);
-		ATALevel2 ata52Cargo = new ATALevel2("- 30 - Cargo", chaptersATA52);
-		ATALevel2 ata52Service = new ATALevel2("- 40 - Service and Miscellaneous", chaptersATA52);
-		ATALevel2 ata52FixedInterior = new ATALevel2("- 50 - Fixed Interior", chaptersATA52);
-		ATALevel2 ata52EntranceStairs = new ATALevel2("- 60 - Entrance Stairs", chaptersATA52);
-		ATALevel2 ata52Monitoring = new ATALevel2("- 70 - Monitoring and Operation", chaptersATA52);
-		ATALevel2 ata52LandingGear = new ATALevel2("- 80 - Landing Gear", chaptersATA52);
+		ATALevel2 ata52EmergencyExit = new ATALevel2("- 20 - Emergency Exit", empty);
+		ATALevel2 ata52Cargo = new ATALevel2("- 30 - Cargo", empty);
+		ATALevel2 ata52Service = new ATALevel2("- 40 - Service and Miscellaneous", empty);
+		ATALevel2 ata52FixedInterior = new ATALevel2("- 50 - Fixed Interior", empty);
+		ATALevel2 ata52EntranceStairs = new ATALevel2("- 60 - Entrance Stairs", empty);
+		ATALevel2 ata52Monitoring = new ATALevel2("- 70 - Monitoring and Operation", empty);
+		ATALevel2 ata52LandingGear = new ATALevel2("- 80 - Landing Gear", empty);
 		
 		/*
 		 *  Level 1 (ATA)
