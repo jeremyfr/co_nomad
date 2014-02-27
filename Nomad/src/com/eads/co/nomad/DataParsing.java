@@ -434,7 +434,6 @@ public class DataParsing {
 				
 			}
 		}
-		procedure += "<span id='test'><p>Ligne test pour l'infobulle...</p></span>";
 		procedure += "</body></html>";
 		return formatText(procedure);
 	}

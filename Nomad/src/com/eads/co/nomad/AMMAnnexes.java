@@ -117,27 +117,27 @@ public class AMMAnnexes extends Activity {
 	public void setInfobulle(int y) {
 
 		if (clickedWB.equals(warningWV)) {
-			setInfobulle(true, y, 0);
+			setInfobulle(!isCollapsed(R.id.stateWarning), y, 0);
 		}
 
 		if (clickedWB.equals(jobSetUpWV)) {
-			setInfobulle(true, y, 1);
+			setInfobulle(!isCollapsed(R.id.stateJobSetUp), y, 1);
 		}
 
 		if (clickedWB.equals(procedureWV)) {
-			setInfobulle(true, y, 2);
+			setInfobulle(!isCollapsed(R.id.stateProcedure), y, 2);
 		}
 
 		if (clickedWB.equals(closeUpWV)) {
-			setInfobulle(true, y, 3);
+			setInfobulle(!isCollapsed(R.id.stateCloseUp), y, 3);
 		}
 
 		if (clickedWB.equals(toolsWV)) {
-			setInfobulle(true, y, 4);
+			setInfobulle(!isCollapsed(R.id.stateTools), y, 4);
 		}
 
 		if (clickedWB.equals(picturesWV)) {
-			setInfobulle(true, y, 5);
+			setInfobulle(!isCollapsed(R.id.statePictures), y, 5);
 		}
 	}
 
