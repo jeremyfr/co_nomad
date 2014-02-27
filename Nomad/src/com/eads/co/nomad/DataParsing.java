@@ -203,7 +203,7 @@ public class DataParsing {
 							while (iteratorPara.hasNext()) {
 								Element para = (Element) iteratorPara.next();
 								procedure += "<li>"+para.getText();
-								stepsProcedure.add(para.getText());
+								stepsProcedure.add("<ul><li>"+para.getText()+"</li></ul>");
 								listRef = para.getChildren("REFBLOCK");
 								iteratorRef = listRef.iterator();
 								while(iteratorRef.hasNext()){
@@ -237,7 +237,7 @@ public class DataParsing {
 									while (iteratorPara2.hasNext()) {
 										Element para2 = (Element) iteratorPara2.next();
 										procedure += "<li>"+para2.getText();
-										stepsProcedure.add(para2.getText());
+										stepsProcedure.add("<ul><ul><li>"+para2.getText()+"</li></ul></ul>");
 										listRef = para2.getChildren("REFBLOCK");
 										iteratorRef = listRef.iterator();
 										while(iteratorRef.hasNext()){
@@ -271,7 +271,7 @@ public class DataParsing {
 											while (iteratorPara3.hasNext()) {
 												Element para3 = (Element) iteratorPara3.next();
 												procedure += "<ul><li>"+ para3.getText();
-												stepsProcedure.add(para3.getText());
+												stepsProcedure.add("<ul><ul><ul><li>"+para3.getText()+"</li></ul></ul></ul>");
 												listRef = para3.getChildren("REFBLOCK");
 												iteratorRef = listRef.iterator();
 												while(iteratorRef.hasNext()){

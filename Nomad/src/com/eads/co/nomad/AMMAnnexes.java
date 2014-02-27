@@ -131,6 +131,7 @@ public class AMMAnnexes extends Activity {
 		switch (state) {
 		case NOT_DISPLAYED:
 			setAnnexeXAndX(xmax / 2);
+			annexe += "a";
 			scrollView.setAnnexe(webView, annexe);
 			clickedWB = webView;
 			state = AnnexesState.DISPLAYED_FREE;
@@ -319,7 +320,7 @@ public class AMMAnnexes extends Activity {
 		try {
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle());
-			SwitchTaskManager taskManager = new SwitchTaskManager(this);
+			SwitchTaskManager taskManager = new SwitchTaskManager(this,"amm");
 			HashMap<String, String> h = ((History) this.getApplication())
 					.getHistory();
 			for (int i = 0; i < 20; i++) {

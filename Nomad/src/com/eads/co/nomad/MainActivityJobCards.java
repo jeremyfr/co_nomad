@@ -2,9 +2,11 @@ package com.eads.co.nomad;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -162,7 +164,8 @@ public class MainActivityJobCards extends FragmentActivity {
 		listeJobCards3.setAdapter((ExpandableListAdapter) adapter3);
 	}
 	public void openJobCard(View view){
-        Intent intent = new Intent(this, JobCard.class);
+        //Intent intent = new Intent(this, JobCard.class);
+		Intent intent = new Intent(this, JobCard.class);
         intent.putExtra("task", "EN30115140080100");
         startActivity(intent);
 	}

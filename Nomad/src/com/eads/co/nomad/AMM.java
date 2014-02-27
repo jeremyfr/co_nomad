@@ -52,7 +52,7 @@ public class AMM extends Activity {
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle());
 			setContentView(R.layout.amm);
-			SwitchTaskManager taskManager = new SwitchTaskManager(this);
+			SwitchTaskManager taskManager = new SwitchTaskManager(this,"amm");
 			/* Warnings part */
 			LinearLayout warnings = (LinearLayout) findViewById(R.id.warnings);
 			warnings.setOnClickListener(manageWarnings);
