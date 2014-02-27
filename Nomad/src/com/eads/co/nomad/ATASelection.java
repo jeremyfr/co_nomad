@@ -7,12 +7,17 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -28,6 +33,7 @@ public class ATASelection extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		setContentView(R.layout.activity_ataselection);
 		
 		instance = this;
@@ -112,12 +118,59 @@ public class ATASelection extends Activity {
 	          ATA ata = listATA.get(ataSelected);
 	          ATALevel2 subAta = ata.getListATALevel2().get(lastSubATASelected);
 	          if (ata.getDescription() == "30 - ICE AND RAIN PROTECTION"){
-	        	  intent.putExtra("task", "EN30115140080100");
+	        	  switch(position){
+	        	  case 0:
+	        		  intent.putExtra("task", "EN30210004080100");
+	        		  break;
+	        	  case 1:
+	        		  intent.putExtra("task", "EN30210004080400");
+	        		  break;
+	        	  case 2:
+	        		  intent.putExtra("task", "EN30210004080600");
+	        		  break;
+	        	  case 3:
+	        		  intent.putExtra("task", "EN30210004080700");
+	        		  break;
+	        	  case 4:
+	        		  intent.putExtra("task", "EN30115140080100");
+	        		  break;
+	        	  case 5:
+	        		  intent.putExtra("task", "EN30115140080200");
+	        		  break;
+	        	  }
+	        	  startActivity(intent);
+	        	  
 	          }
-	          else intent.putExtra("task", "EN52132140080100");
-	          startActivity(intent);
+	          else if (ata.getDescription() == "52 - DOORS"){
+	        	  switch(position){
+	        	  case 0:
+	        		  intent.putExtra("task", "EN52132140080100");
+	        		  break;
+	        	  case 1:
+	        		  intent.putExtra("task", "EN52132182080100");
+	        		  break;
+	        	  case 2:
+	        		  intent.putExtra("task", "EN52142140080100");
+	        		  break;
+	        	  }
+	        	  startActivity(intent);
+	          }
 	        }
 	      });
+		// Search field
+		EditText editText = (EditText) findViewById(R.id.search);
+		editText.setOnEditorActionListener(new OnEditorActionListener() {
+			@Override
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				boolean handled = false;
+		        if (actionId == EditorInfo.IME_ACTION_SEND) {
+		        	Intent intent = new Intent(ATASelection.this, Research.class);
+		            startActivity(intent);
+		            handled = true;
+		        }
+		        return handled;
+			}
+		});
 	}
 	
 	public void getATAList(){
@@ -127,85 +180,72 @@ public class ATASelection extends Activity {
 		 *  Level 3 (sub sub ATA)
 		 */
 		// ata 5
-		ATALevel3 chap1 = new ATALevel3("section 1");
-		ATALevel3 chap2 = new ATALevel3("section 2");
-		ATALevel3 chap3 = new ATALevel3("section 3");
-		ATALevel3 chap4 = new ATALevel3("section 4");
-		ATALevel3 chap5 = new ATALevel3("section 5");
-		ATALevel3 chap6 = new ATALevel3("section 6");
-		ATALevel3 chap7 = new ATALevel3("section 7");
-		ATALevel3 chap8 = new ATALevel3("section 8");
-		ATALevel3 chap9 = new ATALevel3("section 9");
-		ATALevel3 chap10 = new ATALevel3("section 10");
-//		ATALevel3 ata5General1 = new ATALevel3("chapter one");
-//		ATALevel3 ata5General2 = new ATALevel3("chapter two");
-//		ATALevel3 ata5General3 = new ATALevel3("chapter three");
-//		ATALevel3 ata5TimeLimits1 = new ATALevel3("chapter 1");
-//		ATALevel3 ata5TimeLimits2 = new ATALevel3("chapter 2");
-//		ATALevel3 ata5ScheduledMaintenance1 = new ATALevel3("chapter #1");
-//		ATALevel3 ata5ScheduledMaintenance2 = new ATALevel3("chapter #2");
-//		ATALevel3 ata5UnScheduledMaintenance1 = new ATALevel3("chapter number 1");
-//		ATALevel3 ata5UnScheduledMaintenance2 = new ATALevel3("chapter number 2");
-//		ATALevel3 ata5UnScheduledMaintenance3 = new ATALevel3("chapter number 3");
-//		
-//		// ata 6
-//		ATALevel3 ata6General1 = new ATALevel3("chapter 1.");
-//		ATALevel3 ata6General2 = new ATALevel3("chapter 2.");
-//		ATALevel3 ata6General3 = new ATALevel3("chapter 3.");
-//		
-//		// ata 7
-//		ATALevel3 ata7General1 = new ATALevel3("chapter #one");
-//		ATALevel3 ata7General2 = new ATALevel3("chapter #two");
-//		ATALevel3 ata7General3 = new ATALevel3("chapter #three");
-//		ATALevel3 ata7General4 = new ATALevel3("chapter #four");
-//		ATALevel3 ata7Jacking1 = new ATALevel3("chapter 1)");
-//		ATALevel3 ata7Jacking2 = new ATALevel3("chapter 2)");
-//		ATALevel3 ata7Shoring1 = new ATALevel3("chapter #1)");
-//		ATALevel3 ata7Shoring2 = new ATALevel3("chapter #2)");
+		ATALevel3 chap1 = new ATALevel3("00-801 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Open Position");
+		ATALevel3 chap2 = new ATALevel3("00-804 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Open position");
+		ATALevel3 chap3 = new ATALevel3("00-806 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Closed Position");
+		ATALevel3 chap4 = new ATALevel3("00-807 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Closed position");
+		ATALevel3 chap5 = new ATALevel3("51-801 - Installation of the Wing Anti-ice Control-valve");
+		ATALevel3 chap6 = new ATALevel3("51-802 - Installation of the Wing Anti-ice Control-valve-filter");
+		
+		ATALevel3 chap7 = new ATALevel3("section 1");
+		ATALevel3 chap8 = new ATALevel3("section 2");
+		ATALevel3 chap9 = new ATALevel3("section 3");
+		ATALevel3 chap10 = new ATALevel3("section 4");
+		
+		ATALevel3 chap11 = new ATALevel3("21-801 - Installation of the Door Locking Mechanism Door M4L/M4R");
+		ATALevel3 chap12 = new ATALevel3("21-801 - Adjustment of the Door Locking Mechanism Door M4L/M4R");
+		ATALevel3 chap13 = new ATALevel3("21-801 - Installation of the Door-Locking Mechanism Door M5L/M5R");
 		
 		/*
 		 *  Level 2 (sub ATA)
 		 *  
 		 */
-		ArrayList<ATALevel3> chapters = new ArrayList<ATALevel3>();
-		chapters.add(chap1);
-		chapters.add(chap2);
-		chapters.add(chap3);
-		chapters.add(chap4);
-		chapters.add(chap5);
-		chapters.add(chap6);
-		chapters.add(chap7);
-		chapters.add(chap8);
-		chapters.add(chap9);
-		chapters.add(chap10);
+		ArrayList<ATALevel3> chaptersATA30 = new ArrayList<ATALevel3>();
+		chaptersATA30.add(chap1);
+		chaptersATA30.add(chap2);
+		chaptersATA30.add(chap3);
+		chaptersATA30.add(chap4);
+		chaptersATA30.add(chap5);
+		chaptersATA30.add(chap6);
+		
+		ArrayList<ATALevel3> chaptersATA36 = new ArrayList<ATALevel3>();
+		chaptersATA36.add(chap7);
+		chaptersATA36.add(chap8);
+		chaptersATA36.add(chap9);
+		chaptersATA36.add(chap10);
+		
+		ArrayList<ATALevel3> chaptersATA52 = new ArrayList<ATALevel3>();
+		chaptersATA52.add(chap11);
+		chaptersATA52.add(chap12);
+		chaptersATA52.add(chap13);
 		
 		// ata 30
 		ArrayList<ATALevel3> listATALevel3 = new ArrayList<ATALevel3>();
-		ATALevel2 ata5General = new ATALevel2("- 00 - General", chapters);
-		ATALevel2 ata5Airfol = new ATALevel2("- 10 - Airfoil", chapters);
-		ATALevel2 ata5AirIntakes = new ATALevel2("- 20 - Air Intakes", chapters);
-		ATALevel2 ata5PitotAndStatic = new ATALevel2("- 30 - Pitot and static", chapters);
-		ATALevel2 ata5Windows = new ATALevel2("- 40 - Windows, Windshields and Doors", chapters);
-		ATALevel2 ata5Antennas = new ATALevel2("- 50 - Antennas", chapters);
-		ATALevel2 ata5Propellers = new ATALevel2("- 60 - Propellers/Rotors", chapters);
-		ATALevel2 ata5WaterLine = new ATALevel2("- 70 - Water Lines", chapters);
-		ATALevel2 ata5Detection = new ATALevel2("- 80 - Detection", chapters);
+		ATALevel2 ata5General = new ATALevel2("- 00 - General", chaptersATA30);
+		ATALevel2 ata5Airfol = new ATALevel2("- 10 - Airfoil", chaptersATA30);
+		ATALevel2 ata5AirIntakes = new ATALevel2("- 20 - Air Intakes", chaptersATA30);
+		ATALevel2 ata5PitotAndStatic = new ATALevel2("- 30 - Pitot and static", chaptersATA30);
+		ATALevel2 ata5Windows = new ATALevel2("- 40 - Windows, Windshields and Doors", chaptersATA30);
+		ATALevel2 ata5Antennas = new ATALevel2("- 50 - Antennas", chaptersATA30);
+		ATALevel2 ata5Propellers = new ATALevel2("- 60 - Propellers/Rotors", chaptersATA30);
+		ATALevel2 ata5WaterLine = new ATALevel2("- 70 - Water Lines", chaptersATA30);
+		ATALevel2 ata5Detection = new ATALevel2("- 80 - Detection", chaptersATA30);
 		
 		// ata 6
-		ATALevel2 ata36General = new ATALevel2("- 00 - General", chapters);
-		ATALevel2 ata36Distribution = new ATALevel2("- 10 - Distribution", chapters);
-		ATALevel2 ata36Indicating = new ATALevel2("- 20 - Indicating", chapters);
+		ATALevel2 ata36General = new ATALevel2("- 00 - General", chaptersATA36);
+		ATALevel2 ata36Distribution = new ATALevel2("- 10 - Distribution", chaptersATA36);
+		ATALevel2 ata36Indicating = new ATALevel2("- 20 - Indicating", chaptersATA36);
 		
 		// ata 52
-		ATALevel2 ata52General = new ATALevel2("- 00 - General", chapters);
-		ATALevel2 ata52Passenger = new ATALevel2("- 10 - Passenger/Crew", chapters);
-		ATALevel2 ata52EmergencyExit = new ATALevel2("- 20 - Emergency Exit", chapters);
-		ATALevel2 ata52Cargo = new ATALevel2("- 30 - Cargo", chapters);
-		ATALevel2 ata52Service = new ATALevel2("- 40 - Service and Miscellaneous", chapters);
-		ATALevel2 ata52FixedInterior = new ATALevel2("- 50 - Fixed Interior", chapters);
-		ATALevel2 ata52EntranceStairs = new ATALevel2("- 60 - Entrance Stairs", chapters);
-		ATALevel2 ata52Monitoring = new ATALevel2("- 70 - Monitoring and Operation", chapters);
-		ATALevel2 ata52LandingGear = new ATALevel2("- 80 - Landing Gear", chapters);
+		ATALevel2 ata52General = new ATALevel2("- 00 - General", chaptersATA52);
+		ATALevel2 ata52Passenger = new ATALevel2("- 10 - Passenger/Crew", chaptersATA52);
+		ATALevel2 ata52EmergencyExit = new ATALevel2("- 20 - Emergency Exit", chaptersATA52);
+		ATALevel2 ata52Cargo = new ATALevel2("- 30 - Cargo", chaptersATA52);
+		ATALevel2 ata52Service = new ATALevel2("- 40 - Service and Miscellaneous", chaptersATA52);
+		ATALevel2 ata52FixedInterior = new ATALevel2("- 50 - Fixed Interior", chaptersATA52);
+		ATALevel2 ata52EntranceStairs = new ATALevel2("- 60 - Entrance Stairs", chaptersATA52);
+		ATALevel2 ata52Monitoring = new ATALevel2("- 70 - Monitoring and Operation", chaptersATA52);
+		ATALevel2 ata52LandingGear = new ATALevel2("- 80 - Landing Gear", chaptersATA52);
 		
 		/*
 		 *  Level 1 (ATA)
@@ -248,11 +288,17 @@ public class ATASelection extends Activity {
 		listATA.add(ata36);
 		listATA.add(ata52);
 	}
-
+	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.ataselection, menu);
-		return true;
+    public boolean onOptionsItemSelected(MenuItem item){       
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				Intent intent = new Intent(this, MainActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 }
