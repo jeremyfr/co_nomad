@@ -112,110 +112,68 @@ public class AMMAnnexes extends Activity {
 		infobulle.setImageResource(R.drawable.vertical_line_empty);
 	}
 
+	private void setInfobulle(boolean state, int y, int pos) {
+		if (state) {
+			int y_absolue = -210 + 30 * pos + warnings.getHeight()
+					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
+					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
+					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
+					+ (pos >= 4 ? 1 : 0) * tools.getHeight()
+					+ (pos >= 5 ? 1 : 0) * pictures.getHeight()
+					- clickedWB.getHeight() + y;
+			int y_relative = y_absolue - scrollView.getScrollY();
+			displayInfobulle(y_relative);
+		} else {
+			int y_absolue = (int) (30 * (1 + pos)
+					+ ((pos >= 0 ? 0.5 : 0) + (pos >= 1 ? 0.5 : 0))
+					* warnings.getHeight()
+					+ ((pos >= 1 ? 0.5 : 0) + (pos >= 2 ? 0.5 : 0))
+					* jobSetUp.getHeight()
+					+ ((pos >= 2 ? 0.5 : 0) + (pos >= 3 ? 0.5 : 0))
+					* procedure.getHeight()
+					+ ((pos >= 3 ? 0.5 : 0) + (pos >= 4 ? 0.5 : 0))
+					* closeUp.getHeight()
+					+ ((pos >= 4 ? 0.5 : 0) + (pos >= 5 ? 0.5 : 0))
+					* tools.getHeight() + (pos >= 5 ? 0.5 : 0)
+					* pictures.getHeight());
+			int y_relative = y_absolue - scrollView.getScrollY();
+			displayInfobulle(y_relative);
+		}
+	}
+
 	// Place l'infobulle à l'ordonnée y.
 	public void setInfobulle(int y) {
 
 		if (clickedWB.equals(warningWV)) {
-			if (false) // Si Warnings est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Warnings est ouvert.
-			{
-				infobulle.setVisibility(View.VISIBLE);
-				int y_absolue = 30 + 30 * 0 + warnings.getHeight()
-						- clickedWB.getHeight() + y;
-				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
-				displayInfobulle(y_relative);
-			}
+			setInfobulle(true, y, 0);
 		}
 
 		if (clickedWB.equals(jobSetUpWV)) {
-			if (false) // Si Job Set up est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Job Set up est ouvert.
-			{
-				infobulle.setVisibility(View.VISIBLE);
-				int y_absolue = 30 + 30 * 1 + warnings.getHeight()
-						+ jobSetUp.getHeight() - clickedWB.getHeight() + y;
-				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
-				displayInfobulle(y_relative);
-			}
+			setInfobulle(true, y, 1);
 		}
 
 		if (clickedWB.equals(procedureWV)) {
-			if (false) // Si Procedure est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Procedure est ouvert.
-			{
-				infobulle.setVisibility(View.VISIBLE);
-				Log.i("Display", "y = " + y);
-				Log.i("Display", "scroll = " + scrollView.getScrollY());
-				int y_absolue = 30 + 30 * 2 + warnings.getHeight()
-						+ jobSetUp.getHeight() + procedure.getHeight()
-						- clickedWB.getHeight() + y;
-				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
-				Log.i("Display", "Position de la phrase test sur l'écran = "
-						+ y_relative);
-				Log.i("Display", "scroll = " + scrollView.getScrollY());
-				displayInfobulle(y_relative);
-			}
+			setInfobulle(true, y, 2);
 		}
 
 		if (clickedWB.equals(closeUpWV)) {
-			if (false) // Si Close up est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Close up est ouvert.
-			{
-				infobulle.setVisibility(View.VISIBLE);
-				int y_absolue = 30 + 30 * 3 + warnings.getHeight()
-						+ jobSetUp.getHeight() + procedure.getHeight()
-						+ closeUp.getHeight() - clickedWB.getHeight() + y;
-				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
-				displayInfobulle(y_relative);
-			}
+			setInfobulle(true, y, 3);
 		}
 
 		if (clickedWB.equals(toolsWV)) {
-			if (false) // Si Close up est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Close up est ouvert.
-			{
-				infobulle.setVisibility(View.VISIBLE);
-				int y_absolue = 30 + 30 * 4 + warnings.getHeight()
-						+ jobSetUp.getHeight() + procedure.getHeight()
-						+ closeUp.getHeight() + tools.getHeight()
-						- clickedWB.getHeight() + y;
-				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
-				displayInfobulle(y_relative);
-			}
+			setInfobulle(true, y, 4);
 		}
 
 		if (clickedWB.equals(picturesWV)) {
-			if (false) // Si Close up est fermé.
-			{
-				infobulle.setVisibility(View.INVISIBLE);
-			} else // Si Close up est ouvert.
-			{
-				infobulle.setVisibility(View.VISIBLE);
-				int y_absolue = 30 + 30 * 5 + warnings.getHeight()
-						+ jobSetUp.getHeight() + procedure.getHeight()
-						+ closeUp.getHeight() + tools.getHeight()
-						+ pictures.getHeight() - clickedWB.getHeight() + y;
-				int y_relative = y_absolue - scrollView.getScrollY() + 40; // 40 à modifier selon la Nexus 10.
-				displayInfobulle(y_relative);
-			}
+			setInfobulle(true, y, 5);
 		}
 	}
 
 	private void displayInfobulle(final int y) {
 		runOnUiThread(new Runnable() {
-		     @Override
-		     public void run() {
-		 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+			@Override
+			public void run() {
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 						infobulle.getLayoutParams());
 				if (y < ymin) {
 					infobulle.setImageResource(R.drawable.fleche_haut);
@@ -228,7 +186,7 @@ public class AMMAnnexes extends Activity {
 					params.topMargin = y - yinfobulle / 3;
 				}
 				infobulle.setLayoutParams(params);
-		    }
+			}
 		});
 	}
 
@@ -237,13 +195,16 @@ public class AMMAnnexes extends Activity {
 		switch (state) {
 		case NOT_DISPLAYED:
 			setAnnexeXAndX(xmax / 2);
+			// Set Image View à faire.
+			titreAnnexe.setText(annexe);
 			scrollView.setAnnexe(webView, annexe);
 			clickedWB = webView;
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
-			setAnnexeX(xmax + xseparator / 3);
-			state = AnnexesState.NOT_DISPLAYED;
+			// Set Image View à faire.
+			titreAnnexe.setText(annexe);
+			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_PRESSED:
 			break;
