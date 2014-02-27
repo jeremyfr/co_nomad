@@ -187,7 +187,7 @@
                             <PARA>No specific</PARA>
                           </ENTRY>
                           <ENTRY COLNAME="COL3">
-                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="3.60" MIN="0.20" UNIT="m.daN"><TORVALUE MAX="26.00" MIN="2.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                            <PARA>Torque wrench: range [0.20 , 3.60]m.daN / [2.00, 26.00]lbf.ft</PARA>
                           </ENTRY>
                         </ROW>
                         <ROW>
@@ -195,7 +195,7 @@
                             <PARA>No specific</PARA>
                           </ENTRY>
                           <ENTRY COLNAME="COL3">
-                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="20.00" MIN="2.00" UNIT="m.daN"><TORVALUE MAX="150.00" MIN="15.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                            <PARA>Torque wrench: range [2.00 , 20.00]m.daN / [15.00, 150.00]lbf.ft.</PARA>
                           </ENTRY>
                         </ROW>
                         <ROW>
@@ -672,7 +672,7 @@
               </LIST3>
             </L2ITEM>
             <L2ITEM>
-              <PARA>On the HP and LP ground connectors, at the access doors <PAN PANTYPE="accdoor">193BB</PAN>, <PAN PANTYPE="accdoor">191JB</PAN>, <PAN PANTYPE="accdoor">191GB</PAN>, <PAN PANTYPE="accdoor">192HB</PAN>and <PAN PANTYPE="accdoor">192KB</PAN>: </PARA>
+              <PARA>On the HP and LP ground connectors, at the access doors 193BB, 191JB, 191GB, 192HB and 192KB : </PARA>
               <UNLIST BULLTYPE="BULLET">
                 <UNLITEM>
                   <PARA>Put a <STDNAME>WARNING NOTICE</STDNAME> in position to tell persons not to supply the ground air source. </PARA>
@@ -771,7 +771,7 @@
               </NOTE>
             </L2ITEM>
             <L2ITEM>
-              <PARA>Install the lock pin through the indicator plate and into the lock boss. TORQUE the lock pin <TOR><TORVALUE MAX="0.51" MIN="0.45" UNIT="m.daN"><TORVALUE MAX="45.13" MIN="39.82" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+              <PARA>Install the lock pin through the indicator plate and into the lock boss. TORQUE the lock pin [0.45 , 0.51]m.daN / [39.82 , 45.13]lbf.in.</PARA>
             </L2ITEM>
             <L2ITEM>
               <PARA>The pressure regulating valve is now isolated in the open position. </PARA>
@@ -804,7 +804,7 @@
               <PARA>Use a <STDNAME>WRENCH 1.8 IN - STANDARD</STDNAME> to turn the manual lockout (2) in a counter-clockwise direction until it is in the locked-open position. </PARA>
             </L2ITEM>
             <L2ITEM>
-              <PARA>TORQUE the manual lockout nut (1) <TOR><TORVALUE MAX="10.17" MIN="8.81" UNIT="m.daN"><TORVALUE MAX="75.00" MIN="64.97" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR><REFBLOCK>70-51-00-910-801<REFINT REFID="EN70510091080100"><EFFECT EFFRG="201400"></EFFECT>70-51-00-910-801-A</REFINT></REFBLOCK>. </PARA>
+              <PARA>TORQUE the manual lockout nut (1) [8.81 , 10.17]m.daN / [64.97, 75.00]lbf.ft.</PARA>
             </L2ITEM>
           </LIST2>
         </L1ITEM>

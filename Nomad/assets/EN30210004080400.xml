@@ -140,7 +140,7 @@
                             <PARA>No specific</PARA>
                           </ENTRY>
                           <ENTRY COLNAME="COL3">
-                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="3.60" MIN="0.20" UNIT="m.daN"><TORVALUE MAX="26.00" MIN="2.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                            <PARA>Torque wrench: range [0.20 , 3.60]m.daN / [2.00, 26.00]lbf.ft</PARA>
                           </ENTRY>
                         </ROW>
                         <ROW>
@@ -513,23 +513,19 @@
               <LIST3>
                 <L3ITEM>
                   <PARA>FOR <EIN TYPE="EXACT">4000-EM-1</EIN> (ENGINE-1)</PARA>
-                  <PARA>
-                    <PAN PANTYPE="accdoor">415AL</PAN>. </PARA>
+                  <PARA>415AL.</PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>FOR <EIN TYPE="EXACT">4000-EM-2</EIN> (ENGINE-2)</PARA>
-                  <PARA>
-                    <PAN PANTYPE="accdoor">425AL</PAN>. </PARA>
+                  <PARA>425AL.</PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>FOR <EIN TYPE="EXACT">4000-EM-3</EIN> (ENGINE-3)</PARA>
-                  <PARA>
-                    <PAN PANTYPE="accdoor">435AL</PAN>. </PARA>
+                  <PARA>435AL.</PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>FOR <EIN TYPE="EXACT">4000-EM-4</EIN> (ENGINE-4)</PARA>
-                  <PARA>
-                    <PAN PANTYPE="accdoor">445AL</PAN>. </PARA>
+                  <PARA>445AL.</PARA>
                 </L3ITEM>
               </LIST3>
             </L2ITEM>
@@ -573,23 +569,19 @@
           <LIST2>
             <L2ITEM>
               <PARA>FOR <EIN TYPE="EXACT">4000-EM-1</EIN> (ENGINE-1)</PARA>
-              <PARA>
-                <PAN PANTYPE="accdoor">417AL</PAN>. </PARA>
+              <PARA>417AL.</PARA>
             </L2ITEM>
             <L2ITEM>
               <PARA>FOR <EIN TYPE="EXACT">4000-EM-2</EIN> (ENGINE-2)</PARA>
-              <PARA>
-                <PAN PANTYPE="accdoor">427AL</PAN>. </PARA>
+              <PARA>427AL.</PARA>
             </L2ITEM>
             <L2ITEM>
               <PARA>FOR <EIN TYPE="EXACT">4000-EM-3</EIN> (ENGINE-3)</PARA>
-              <PARA>
-                <PAN PANTYPE="accdoor">437AL</PAN>. </PARA>
+              <PARA>437AL.</PARA>
             </L2ITEM>
             <L2ITEM>
               <PARA>FOR <EIN TYPE="EXACT">4000-EM-4</EIN> (ENGINE-4)</PARA>
-              <PARA>
-                <PAN PANTYPE="accdoor">447AL</PAN>. </PARA>
+              <PARA>447AL.</PARA>
             </L2ITEM>
           </LIST2>
         </L1ITEM>
@@ -640,7 +632,7 @@
               </NOTE>
             </L2ITEM>
             <L2ITEM>
-              <PARA>Torque the deactivation bolts (1) <TOR><TORVALUE MAX="0.42" MIN="0.38" UNIT="m.daN"><TORVALUE MAX="37.17" MIN="33.63" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+              <PARA>Torque the deactivation bolts (1) [0.38 , 0.42]m.daN / [33.63, 37.17]lbf.in.</PARA>
               <NOTE>
                 <PARA>The valve is now locked in the OPEN position </PARA>
               </NOTE>

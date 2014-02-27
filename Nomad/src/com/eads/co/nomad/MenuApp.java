@@ -1,10 +1,10 @@
 package com.eads.co.nomad;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MenuApp extends Activity {
 
@@ -14,30 +14,22 @@ public class MenuApp extends Activity {
         setContentView(R.layout.menu_app);
     }
     
-    // OLD
-//    public void toAMM(View view){
-//        Intent intent = new Intent(this, AMMAnnexes.class);
-//        intent.putExtra("task", "EN30115140080100");
-//        startActivity(intent);
-//    }
-    
 	public void toAMM(View view){
 		Intent intent = new Intent(this, ATASelection.class);
 		startActivity(intent);
 	}
-    
-    
+	
     public void toIPC(View view){
-        
+    	Toast.makeText(this, "Non implémenté", Toast.LENGTH_LONG).show();
     }
     
     public void toJobCard(View view){
         Intent intent = new Intent(this, MainActivityJobCards.class);
         startActivity(intent);
     }
-    
+
     public void toOptions(View view){
-        
+    	Toast.makeText(this, "Non implémenté", Toast.LENGTH_LONG).show();
     }
     
     public void quit(View view){

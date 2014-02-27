@@ -68,13 +68,13 @@
             android:orientation="horizontal"
             android:layout_marginTop="25dp"
             android:layout_gravity="center_horizontal">
-	        <Button
-	            android:id="@+id/connexion"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:onClick="toMenu"
-	            android:text="Connexion"
-	            android:textSize="@dimen/font_size_2" />
+	        <ImageButton
+                    android:id="@+id/connexion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+	            	android:onClick="toMenu"
+	        		android:background="@null"
+	        		android:src="@drawable/button_connexion"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

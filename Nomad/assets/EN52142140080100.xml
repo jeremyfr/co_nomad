@@ -59,7 +59,7 @@
                             <PARA>No specific</PARA>
                           </ENTRY>
                           <ENTRY COLNAME="COL3">
-                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="3.60" MIN="0.20" UNIT="m.daN"><TORVALUE MAX="26.00" MIN="2.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                            <PARA>Torque wrench: range [0.20 , 3.60]m.daN / [2.00, 26.00]lbf.ft</PARA>
                           </ENTRY>
                         </ROW>
                         <ROW>
@@ -1204,21 +1204,21 @@
                 <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 11-004. </PARA>
                 <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
               </WARNING>
-              <PARA>Clean the contact area of the fittings and the structure with <CON CONTYPE="AFRM"><CONNBR>11004*</CONNBR><CONNAME>CLEANING AGENTS</CONNAME></CON>. </PARA>
+              <PARA>Clean the contact area of the fittings and the structure with CLEANING AGENTS (11004*). </PARA>
             </L2ITEM>
             <L2ITEM>
               <WARNING>
                 <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 04-004. </PARA>
                 <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
               </WARNING>
-              <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>04004*</CONNBR><CONNAME>COMMON GREASE</CONNAME></CON> to all parts that move, but this does not include the PTFE bushes. </PARA>
+              <PARA>Apply COMMON GREASE (04004*) to all parts that move, but this does not include the PTFE bushes. </PARA>
             </L2ITEM>
             <L2ITEM>
               <WARNING>
                 <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 05-002. </PARA>
                 <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
               </WARNING>
-              <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>05002*</CONNBR><CONNAME>SPECIAL MATERIALS</CONNAME></CON> to the shafts of the bolts, but this does not include the bolts installed on the shock-mounts. </PARA>
+              <PARA>Apply SPECIAL MATERIALS (05002*) to the shafts of the bolts, but this does not include the bolts installed on the shock-mounts. </PARA>
             </L2ITEM>
           </LIST2>
         </L1ITEM>
@@ -1375,7 +1375,7 @@
                   <PARA>Make sure that the upper nut (103) is in position as recorded during the removal procedure. Put the flap (110) in position and install the axis (104), the washers (102) and the nuts (101). Safety the nuts (101) with the <EXPD EXPDTYPE="AFRM"><CSN>52142104-350</CSN><EXPDNAME>cotter pins</EXPDNAME><ITEMNBR>100</ITEMNBR></EXPD>. </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Install the lower nut (103). Safety the nuts (103) with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON>. </PARA>
+                  <PARA>Install the lower nut (103). Safety the nuts (103) with LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*). </PARA>
                 </L3ITEM>
               </LIST3>
             </L2ITEM>
@@ -1387,14 +1387,14 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the flange (74). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the flange (74). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <WARNING>
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 04-004. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>04004*</CONNBR><CONNAME>COMMON GREASE</CONNAME></CON> to the new O-ring (83) and install it. </PARA>
+                  <PARA>Apply COMMON GREASE (04004*) to the new O-ring (83) and install it. </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the levers (71, 72) in position as recorded during the removal procedure and install the flange (74), the outer door-operation handle (73) and the shaft (78). </PARA>
@@ -1403,7 +1403,7 @@
                   <PARA>Install the washers (76), the bolts (77) and the nuts (75). Install the washer (58), the tabwasher (57) and the bolt (56). Safety the bolt (56) with the tabwasher (57). </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bearing flange (61). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the bearing flange (61). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the inner washers (59, 60) as recorded during the removal procedure in position and install the bearing flange (61), the washers (63), the bolts (64) and the nuts (62). </PARA>
@@ -1430,7 +1430,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the guide fitting (93). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the guide fitting (93). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the guide fitting (93) and the washers (94, 95) in position and install the screws (98). If removed, install the stop plate (96) and the screws (97). </PARA>
@@ -1447,7 +1447,7 @@
                   <PARA>Put the levers (39, 38, 35) and the inner washers (33, 34) in position as recorded during the removal procedure and install the shaft (44). Install the tabwashers (36) and the bolts (37). Safety the bolts (37) with the tabwashers (36). Install the outer washers (34, 33, 32), the tabwasher (31) and the bolt (30). Safety the bolt (30) with the tabwasher (31). </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the cover (85). Put the cover (85) in position and install the washers (63, 54), the bolts (64) and the nuts (51). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the cover (85). Put the cover (85) in position and install the washers (63, 54), the bolts (64) and the nuts (51). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the rod (29) in position and install the washers (27, 21), the bolts (28) and the nuts (25). Safety the nuts (25) with the <EXPD EXPDTYPE="AFRM"><CSN>52142106-240</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>20</ITEMNBR></EXPD>. </PARA>
@@ -1463,7 +1463,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the plate (48). Put the plate (48) and the stop fitting (49) in position and install the washers (50) and the bolts (46, 50). Install the washers (16, 47, 17, 50), the stop bolt (45) and the nut (19). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the plate (48). Put the plate (48) and the stop fitting (49) in position and install the washers (50) and the bolts (46, 50). Install the washers (16, 47, 17, 50), the stop bolt (45) and the nut (19). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the washers (16, 17) as recorded during the removal procedure in position and install the stop bolt (15) and the nut (19). </PARA>
@@ -1505,10 +1505,10 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (33). Put the bracket (33) in position and install the washers (11), the bolts (12, 31) and the nuts (10). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the bracket (33). Put the bracket (33) in position and install the washers (11), the bolts (12, 31) and the nuts (10). </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (42) and the shims (41). Install the bracket (42), the number of shims (41) as recorded during the removal procedure, the washers (40), the bolts (31) and the nuts (10). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the bracket (42) and the shims (41). Install the bracket (42), the number of shims (41) as recorded during the removal procedure, the washers (40), the bolts (31) and the nuts (10). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the levers (53, 27) in position on the rod (25). Install the rod (25), the washers (35, 36), the bushes (37), the tabwashers (38) and the bolts (39). Install the washers (35, 36) as recorded during the removal procedure. Safety the bolts (39) with the tabwashers (38). </PARA>
@@ -1552,7 +1552,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (7). Install the bracket (7), the washers (3), the bolts (2) and the nuts (1). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the bracket (7). Install the bracket (7), the washers (3), the bolts (2) and the nuts (1). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the covers (6, 9) in position and install the washers (3), the bolts (5) and the nuts (8). </PARA>
@@ -1583,7 +1583,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (92). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the bracket (92). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>On the latch/lift shaft (84), put the bracket (83), the washers (85, 86, 87, 88) and the bracket (92) in position as recorded during the removal procedure. Install the latch/lift shaft (84), the washers (94), the bolts (96) and the nuts (93). </PARA>
@@ -1607,7 +1607,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (69). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the bracket (69). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>On the latch/lift shaft (38), put the bracket (41) in position as recorded during the removal procedure and install the lockspring (66), the washers (67, 68) as recorded during the removal procedure and the bracket (69). Install the latch/lift shaft (38), the washers (61, 64), the bolts (62, 63) and the nuts (60, 65). </PARA>
@@ -1678,7 +1678,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 04-004. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>04004*</CONNBR><CONNAME>COMMON GREASE</CONNAME></CON> to the springs (31) and the inner surface of the spring body (30, 32). </PARA>
+                  <PARA>Apply COMMON GREASE (04004*) to the springs (31) and the inner surface of the spring body (30, 32). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Carefully put the springs (31) together with the spring body (30, 32) in position and install the washers (28, 27, 36, 35), the bolts (29, 37) and the nuts (26, 34). Safety the nuts (26, 34) with the <EXPD EXPDTYPE="AFRM"><CSN>52142110-380</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>25</ITEMNBR></EXPD>, <EXPD EXPDTYPE="AFRM"><CSN>52142110-380</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>33</ITEMNBR></EXPD><EXPD EXPDTYPE="AFRM"><CSN>52142109-500</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>25</ITEMNBR></EXPD> and <EXPD EXPDTYPE="AFRM"><CSN>52142109-500</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>33</ITEMNBR></EXPD>. </PARA>
@@ -1715,7 +1715,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the brackets (10, 38, 65). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the brackets (10, 38, 65). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the brackets (38, 65) in position on the drive shaft (44) and install the drive shaft (44), the washers (37, 46), the bolts (36, 64) and the nuts (39, 45). </PARA>
@@ -1736,7 +1736,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (29). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the bracket (29). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>On the shaft (33), put the levers (22, 34) in position as recorded during the removal procedure and install the tabwashers (21) and the bolts (20). Safety the bolts (20) with the tabwashers (21). </PARA>
@@ -1778,7 +1778,7 @@
                   <PARA>Install the spring bracket (62), the washer (63) and the nut (39). </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Apply <CON CONTYPE="AFRM"><CONNBR>04004*</CONNBR><CONNAME>COMMON GREASE</CONNAME></CON> to the springs (55), to the bushes (54, 56) and the spring guides (53, 57). </PARA>
+                  <PARA>Apply COMMON GREASE (04004*) to the springs (55), to the bushes (54, 56) and the spring guides (53, 57). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the spring guides (53) in position and install the stops (49), the washers (50), the nuts (52) and the <EXPD EXPDTYPE="AFRM"><CSN>52142111-040</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>51</ITEMNBR></EXPD>. Carefully install the bushes (54), the springs (55), the bushes (56), the spring guides (57), the washers (59, 37), the bolts (58), the nuts (60) and the <EXPD EXPDTYPE="AFRM"><CSN>52142111-040</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>61</ITEMNBR></EXPD>. </PARA>
@@ -1825,7 +1825,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bracket (21). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the bracket (21). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the bracket (21) in position and install the washers (4, 26), the bolts (25, 27, 29) and the nuts (24, 28). </PARA>
@@ -1840,7 +1840,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bearing flange (31). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the bearing flange (31). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Install the shaft (8), the washers (30, 41) as recorded during the removal procedure and install the bearing flange (31). Install the washers (26), the bolts (25) and the nuts (28). </PARA>
@@ -1889,7 +1889,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-018. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the flange (18), and the bearing flanges (20, 45). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the flange (18), and the bearing flanges (20, 45). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the lever (22), the bearing flange (20) and the washers (21) in position as recorded during the removal procedure and install the pipe (19). </PARA>
@@ -1954,7 +1954,7 @@
               <PARA>Put the brackets (1, 4, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 22, 24, 25 and 26) in position and install the washers (2) and the bolts (3) (Refer to detail A, B, D, E, F, G, H, K, L, M, N, Q, T and V). </PARA>
               <LIST3>
                 <L3ITEM>
-                  <PARA>Torque the bolts (3) <TOR><TORVALUE MAX="0.48" MIN="0.37" UNIT="m.daN"><TORVALUE MAX="42.48" MIN="32.74" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+                  <PARA>Torque the bolts (3) [0.37 , 0.48]m.daN / [32.74 , 42.48]lbf.in. </PARA>
                 </L3ITEM>
               </LIST3>
             </L2ITEM>
@@ -1973,7 +1973,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 05-013. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the brackets (21, 19). Apply a layer of <CON CONTYPE="AFRM"><CONNBR>05013*</CONNBR><CONNAME>SPECIAL MATERIALS</CONNAME></CON> on the door structure in the contact area of the brackets (21, 19). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) to the mating surface of the brackets (21, 19). Apply a layer of SPECIAL MATERIALS (05013*) on the door structure in the contact area of the brackets (21, 19). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the brackets (21, 19) in position and install the screws (20). </PARA>
@@ -1992,7 +1992,7 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 05-013. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09018*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> on the mating surface of the bracket (28, 33). Apply a layer of <CON CONTYPE="AFRM"><CONNBR>05013*</CONNBR><CONNAME>SPECIAL MATERIALS</CONNAME></CON> on the door structure in the contact area of the bracket (28 33). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09018*) on the mating surface of the bracket (28, 33). Apply a layer of SPECIAL MATERIALS (05013*) on the door structure in the contact area of the bracket (28 33). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Put the bracket (28, 33) in position and install the washers (27, 34), the bolts (26, 35) and the nuts (29). Put the bracket (39) in position and install the screws (36). </PARA>

@@ -106,7 +106,7 @@
                             <PARA>No specific</PARA>
                           </ENTRY>
                           <ENTRY COLNAME="COL3">
-                            <PARA>Torque wrench: range <TOR><TORVALUE MAX="3.60" MIN="0.20" UNIT="m.daN"><TORVALUE MAX="26.00" MIN="2.00" UNIT="lbf.ft"></TORVALUE></TORVALUE></TOR></PARA>
+                            <PARA>Torque wrench: range [0.20 , 3.60]m.daN / [2.00, 26.00]lbf.ft</PARA>
                           </ENTRY>
                         </ROW>
                         <ROW>
@@ -948,7 +948,7 @@
               <WARNING>
                 <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
               </WARNING>
-              <PARA>Safety the nut (19) with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON>. </PARA>
+              <PARA>Safety the nut (19) with LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*). </PARA>
             </L2ITEM>
             <L2ITEM>
               <PARA>Adjust the target on the target bracket (26) <REFBLOCK>52-71-11-820-806<REFINT REFID="EN52711182080600"><EFFECT EFFRG="001999"></EFFECT>52-71-11-820-806-A</REFINT></REFBLOCK>. </PARA>
@@ -988,14 +988,14 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 11-026. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Clean the contact area of the bearing flange (6) and the structure with <CON CONTYPE="AFRM"><CONNBR>11026*</CONNBR><CONNAME>CLEANING AGENTS</CONNAME></CON>. </PARA>
+                  <PARA>Clean the contact area of the bearing flange (6) and the structure with CLEANING AGENTS (11026*). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <WARNING>
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-013. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09013*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the mating surface of the bearing flange (6). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09013*) to the mating surface of the bearing flange (6). </PARA>
                 </L3ITEM>
               </LIST3>
             </L2ITEM>
@@ -1032,7 +1032,7 @@
                   <PARA>Turn the adjustment nut (12, 14) until the shake is removed. </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Safety the nut (12, 14) with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (13). </PARA>
+                  <PARA>Safety the nut (12, 14) with LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*) (13). </PARA>
                 </L3ITEM>
               </LIST3>
             </L2ITEM>
@@ -1066,14 +1066,14 @@
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 11-026. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Clean the mating surface of the stop fitting (24) and the structure with <CON CONTYPE="AFRM"><CONNBR>11026*</CONNBR><CONNAME>CLEANING AGENTS</CONNAME></CON>. </PARA>
+                  <PARA>Clean the mating surface of the stop fitting (24) and the structure with CLEANING AGENTS (11026*). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <WARNING>
                     <PARA>BE CAREFUL WHEN YOU USE MATERIAL No. 09-013. </PARA>
                     <PARA>OBEY THE MATERIAL MANUFACTURER'S INSTRUCTIONS. </PARA>
                   </WARNING>
-                  <PARA>Apply a layer of <CON CONTYPE="AFRM"><CONNBR>09013*</CONNBR><CONNAME>SEALANTS</CONNAME></CON> to the contact area of the stop fitting (24). </PARA>
+                  <PARA>Apply a layer of SEALANTS (09013*) to the contact area of the stop fitting (24). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Install the washers (21), the stop fitting (24), the washers (22) and the screws (23). </PARA>
@@ -1200,7 +1200,7 @@
                   <PARA>Put the rod (47) in position on the drive shaft (2) and install the washers (24, 25), the bolt (23) and the nut (26). Safety the nut (26) with the new <EXPD EXPDTYPE="AFRM"><CSN>52132106-230</CSN><EXPDNAME>cotter pin</EXPDNAME><ITEMNBR>27</ITEMNBR></EXPD>. If necessary, remove the lockwire (49), loosen the nuts (48) and adjust the length of the rod (47): </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Tighten the nuts (48) and safety with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (49). </PARA>
+                  <PARA>Tighten the nuts (48) and safety with LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*) (49). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Remove the adjustment gage (28). </PARA>
@@ -1253,7 +1253,7 @@
                   <PARA>Make sure that the clearance 1.1 mm (0.043 in.) to 2.1 mm (0.083 in.) between the lever (44) and the lever (42) on the shaft (43) is correct. If the clearance is not correct, adjust the rod (41). </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Tighten the nuts (39) and safety with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (40). </PARA>
+                  <PARA>Tighten the nuts (39) and safety with LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*) (40). </PARA>
                 </L3ITEM>
                 <L3ITEM>
                   <PARA>Install the rod (21) as described in paragraph F. (2) (h). </PARA>
@@ -1345,7 +1345,7 @@
                   <PARA>Turn the rod (18) to get the correct dimension. </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Tighten the nuts (23) and safety with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (24). </PARA>
+                  <PARA>Tighten the nuts (23) and safety with LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*) (24). </PARA>
                 </L3ITEM>
               </LIST3>
             </L2ITEM>
@@ -1427,7 +1427,7 @@
                   <PARA>Remove the lockwire (6), loosen the nuts (5) and adjust the rod (7) until the dimensions are correct. </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Tighten the nuts (5) and safety with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (6). </PARA>
+                  <PARA>Tighten the nuts (5) and safety with LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*) (6). </PARA>
                 </L3ITEM>
               </LIST3>
             </L2ITEM>
@@ -1568,7 +1568,7 @@
                   <WARNING>
                     <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
                   </WARNING>
-                  <PARA>Remove the lockwire (2), loosen the nuts (3) and adjust the length of the rod (1) until the dimension is correct. Tighten and safety the nuts (3) with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON>(2). </PARA>
+                  <PARA>Remove the lockwire (2), loosen the nuts (3) and adjust the length of the rod (1) until the dimension is correct. Tighten and safety the nuts (3) with LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*)(2). </PARA>
                 </L3ITEM>
               </LIST3>
             </L2ITEM>
@@ -1596,7 +1596,7 @@
               <WARNING>
                 <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
               </WARNING>
-              <PARA>Tighten and safety the nut (19) with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (20). </PARA>
+              <PARA>Tighten and safety the nut (19) with LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*) (20). </PARA>
             </L2ITEM>
             <L2ITEM>
               <PARA>Close the door. </PARA>
@@ -1636,7 +1636,7 @@
                   <PARA>Adjust the length of the rod (1) until the clearance is correct. </PARA>
                 </L3ITEM>
                 <L3ITEM>
-                  <PARA>Tighten the nuts (3) and safety with <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON> (2). </PARA>
+                  <PARA>Tighten the nuts (3) and safety with LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*) (2). </PARA>
                 </L3ITEM>
               </LIST3>
             </L2ITEM>
@@ -1727,13 +1727,13 @@
                       <PARA>Tighten the nuts (7) and make sure that the vertical position is correct. </PARA>
                     </L4ITEM>
                     <L4ITEM>
-                      <PARA>TORQUE the nuts (7) <TOR><TORVALUE MAX="0.37" MIN="0.28" UNIT="m.daN"><TORVALUE MAX="32.74" MIN="24.78" UNIT="lbf.in"></TORVALUE></TORVALUE></TOR>. </PARA>
+                      <PARA>TORQUE the nuts (7) [0.28 , 0.37]m.daN / [24.78, 32.74]lbf.in.</PARA>
                     </L4ITEM>
                     <L4ITEM>
                       <WARNING>
                         <PARA>USE GOGGLES WHEN YOU REMOVE OR INSTALL LOCKWIRE. EACH TIME YOU CUT LOCKWIRE, REMOVE AND DISCARD IT IMMEDIATELY. LOOSE LOCKWIRE CAN CAUSE INJURY AND/OR DAMAGE. </PARA>
                       </WARNING>
-                      <PARA>Safety the nuts (7) with the locking devices (6) and <CON CONTYPE="AFRM"><CONNBR>19010*</CONNBR><CONNAME>LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA</CONNAME></CON>. </PARA>
+                      <PARA>Safety the nuts (7) with the locking devices (6) and LOCKWIRE STAINLESS STEEL ANNEALED 0.8MM DIA (19010*). </PARA>
                     </L4ITEM>
                   </LIST4>
                 </L3ITEM>
