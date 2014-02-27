@@ -132,7 +132,7 @@ public class DataParsing {
 										Iterator<Element> iteratorRefInt = listRefInt.iterator();
 									    while (iteratorRefInt.hasNext()) {
 											Element refInt = (Element) iteratorRefInt.next();
-											jobSetUp += "<li><a href='"+refInt.getAttributeValue("REFID")+"?y="+jobSetUp.length()+"'>"+refInt.getText()+"</a></li>";
+											jobSetUp += "<li><span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span></li>";
 											stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+jobSetUp.length()+"'>"+refInt.getText()+"</a><br>");
 										}
 									}
@@ -255,7 +255,7 @@ public class DataParsing {
 									iteratorRefInt = listRefInt.iterator();
 								    while (iteratorRefInt.hasNext()) {
 										Element refInt = (Element) iteratorRefInt.next();
-										procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+										procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
 										stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 									}
 									
@@ -318,7 +318,7 @@ public class DataParsing {
 											iteratorRefInt = listRefInt.iterator();
 										    while (iteratorRefInt.hasNext()) {
 												Element refInt = (Element) iteratorRefInt.next();
-												procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+												procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
 												stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 											}
 											
@@ -352,7 +352,7 @@ public class DataParsing {
 													iteratorRefInt = listRefInt.iterator();
 												    while (iteratorRefInt.hasNext()) {
 														Element refInt = (Element) iteratorRefInt.next();
-														procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+														procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
 														stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 													}
 													
@@ -383,7 +383,7 @@ public class DataParsing {
 												iteratorRefInt = listRefInt.iterator();
 											    while (iteratorRefInt.hasNext()) {
 													Element refInt = (Element) iteratorRefInt.next();
-													procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+													procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
 													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 												}
 												
@@ -411,7 +411,7 @@ public class DataParsing {
 												iteratorRefInt = listRefInt.iterator();
 											    while (iteratorRefInt.hasNext()) {
 													Element refInt = (Element) iteratorRefInt.next();
-													procedure += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>";
+													procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
 													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 												}
 												
@@ -434,7 +434,7 @@ public class DataParsing {
 				
 			}
 		}
-		procedure += "<div id='test'><p>Ligne test pour l'infobulle...</p></div>";
+		procedure += "<span id='test'><p>Ligne test pour l'infobulle...</p></span>";
 		procedure += "</body></html>";
 		return formatText(procedure);
 	}
@@ -526,7 +526,7 @@ public class DataParsing {
 										iteratorRefInt = listRefInt.iterator();
 									    while (iteratorRefInt.hasNext()) {
 											Element refInt = (Element) iteratorRefInt.next();
-											closeUp += "<a href='"+refInt.getAttributeValue("REFID")+"?y="+closeUp.length()+"'>"+refInt.getText()+"</a>";
+											closeUp += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span>";
 										}
 									}
 									closeUp += "</li>";
@@ -639,11 +639,11 @@ public class DataParsing {
 											}else{
 												para = paraCurrent.getChild("REFINT");
 												if(para != null){
-													tools += "<a href='"+para.getAttributeValue("REFID")+"?y="+tools.length()+"'>"+para.getText()+"</a><br>";
+													tools += "<span id='"+para.getText()+"'><a href="+para.getAttributeValue("REFID")+"?id="+para.getText()+">"+para.getText()+"</a></span>";
 												}else{
 													para = paraCurrent.getChild("GRPHCREF");
 													if(para != null){
-														tools += "<a href='"+para.getAttributeValue("REFID")+"?y="+tools.length()+"'>"+para.getText()+"</a><br>";
+														tools += "</td><td><span id='"+para.getText()+"'><a href="+para.getAttributeValue("REFID")+"?id="+para.getText()+">"+para.getText()+"</a></span>";
 													}else{
 														List<Element> listPan = paraCurrent.getChildren("PAN");
 														if(!listPan.isEmpty()){

@@ -2,13 +2,13 @@ package com.eads.co.nomad;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 
 public class MainActivityJobCards extends FragmentActivity {
 	private ArrayList<JobCardData> jobCards;
@@ -160,11 +160,12 @@ public class MainActivityJobCards extends FragmentActivity {
 		JobCardAdapter adapter3 = new JobCardAdapter(this, jobCardsTab3);
 		
 		listeJobCards3.setAdapter((ExpandableListAdapter) adapter3);
-	}/*
+	}
+	
 	public void openJobCard(View view){
         Intent intent = new Intent(this, JobCard.class);
         intent.putExtra("task", "EN30115140080100");
         startActivity(intent);
-	}*/
+	}
 
 }

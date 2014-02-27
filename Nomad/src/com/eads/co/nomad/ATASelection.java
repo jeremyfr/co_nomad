@@ -255,5 +255,4 @@ public class ATASelection extends Activity {
 		getMenuInflater().inflate(R.menu.ataselection, menu);
 		return true;
 	}
-	
 }

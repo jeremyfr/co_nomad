@@ -429,9 +429,7 @@ public class AMMAnnexes extends Activity {
 			SwitchTaskManager taskManager = new SwitchTaskManager(this, this);
 			HashMap<String, String> h = ((History) this.getApplication())
 					.getHistory();
-			for (int i = 0; i < 20; i++) {
-				h.put(ammPart, parser.getTitle());
-			}
+		    h.put(ammPart, parser.getTitle());
 
 			/* Warnings part */
 			warnings = (LinearLayout) findViewById(R.id.warnings);
@@ -520,7 +518,7 @@ public class AMMAnnexes extends Activity {
 			e.printStackTrace();
 		}
 
-		/* Gestion du sider gauche (historique) */
+		/* Gestion du slider gauche (historique) */
 		ListView historique = (ListView) findViewById(R.id.left_drawer);
 		historique.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		historique.setAdapter(new ArrayAdapter<String>(this,
@@ -717,6 +715,10 @@ public class AMMAnnexes extends Activity {
 		a.setDuration((int) (initialHeight / v.getContext().getResources()
 				.getDisplayMetrics().density));
 		v.startAnimation(a);
+	}
+	
+	private boolean isCollapsed(int icon){
+		return Integer.parseInt(((ImageView) findViewById(icon)).getTag().toString()) == R.drawable.collapse;
 	}
 
 	@Override
