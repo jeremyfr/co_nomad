@@ -54,15 +54,15 @@ public class AMMAnnexes extends Activity {
 
 	private DataParsing parser;
 
-	private int x; // abscisse de la s�paration entre la zone de texte et
+	private int x; // abscisse de la séparation entre la zone de texte et
 					// l'annexe.
 	private static int xmax; // largeur maximale de la zone de texte ou de
 								// l'annexe.
-	private static int ymax; // ordonn�e d'apparition de la fl�che basse.
+	private static int ymax; // ordonnée d'apparition de la flèche basse.
 	private static int xmin; // largeur minimale de la zone de texte ou de
 								// l'annexe.
-	private static int ymin; // ordonn�e d'apparition de la fl�che haute.
-	private static int xseparator = 160; // largeur de la barre de s�paration.
+	private static int ymin; // ordonnée d'apparition de la flèche haute.
+	private static int xseparator = 160; // largeur de la barre de séparation.
 	private static int yinfobulle = 185; // hauteur de l'image infobulle.
 
 	private LinearLayout layout; // layout global contenant documentation et
@@ -76,7 +76,7 @@ public class AMMAnnexes extends Activity {
 	private LinearLayout warnings, jobSetUp, procedure, closeUp, tools,
 			pictures;
 
-	private WebView clickedWB; // WebView contenant le lien de l'annexe cliqu�.
+	private WebView clickedWB; // WebView contenant le lien de l'annexe cliquée.
 	private String annexe; // Nom de l'annexe.
 
 	private ImageView separator; // barre verticale.
@@ -93,7 +93,7 @@ public class AMMAnnexes extends Activity {
 	private ListView listview;
 	private int nb_annexe;
 
-	//Creation de la ArrayList qui nous permettra de remplire la listView
+	//Création de la ArrayList qui nous permettra de remplir la listView
     ArrayList<HashMap<String, Object>> listItem;
     HashMap<String, Object> map;
     
@@ -101,7 +101,7 @@ public class AMMAnnexes extends Activity {
 	private ImageView annexImg;
 	private FrameLayout layoutImg;
 
-	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // �tat de l'annexe.
+	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
 
 	// Affiche l'annexe.
 	private void setAnnexeX(int x) {
@@ -113,7 +113,7 @@ public class AMMAnnexes extends Activity {
 		// setInfobulle();
 	}
 
-	// Affiche l'annexe et met l'abscisse du s�parateur.
+	// Affiche l'annexe et met l'abscisse du séparateur.
 	private void setAnnexeXAndX(int _x) {
 		setAnnexeX(x);
 		x = _x;
@@ -139,7 +139,7 @@ public class AMMAnnexes extends Activity {
 		infobulle.setImageResource(R.drawable.vertical_line_empty);
 	}
 
-	// Place l'infobulle selon l'ordonn�e y relative � la WebView contenant le
+	// Place l'infobulle selon l'ordonnée y relative à la WebView contenant le
 	// lien vers l'annexe.
 	public void setInfobulle(int y) {
 
@@ -226,10 +226,9 @@ public class AMMAnnexes extends Activity {
 			this.annexe = annexe;
 			clickedWB = webView;
 			clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-			//Image a mettre
+			// Image a changer
 			ajouteList(annexe,String.valueOf(R.drawable.ata),clickedWB);
-			
-			//Image a mettre 
+			// Image a changer
 			setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata));
 			
 			state = AnnexesState.DISPLAYED_FREE;
@@ -246,9 +245,9 @@ public class AMMAnnexes extends Activity {
 				this.annexe = annexe;
 				clickedWB = webView;
 				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-					//Image a mettre
+				// Image a changer
 				ajouteList(annexe,String.valueOf(R.drawable.ata),clickedWB);
-				//Image a mettre
+				// Image a changer
 				setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata));
 				
 				state = AnnexesState.DISPLAYED_FREE;		
@@ -262,7 +261,7 @@ public class AMMAnnexes extends Activity {
 	}
 
 	private void getWidthHeight() {
-		// R�cup�ration de la largeur et de la hauteur du layout.
+		// Récupération de la largeur et de la hauteur du layout.
 		Timer t = new Timer();
 		class SetMax extends TimerTask {
 			@Override
