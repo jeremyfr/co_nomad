@@ -3,6 +3,8 @@ package com.eads.co.nomad;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.LightingColorFilter;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +53,7 @@ public class JobCardAdapter extends BaseExpandableListAdapter {
             childViewHolder.textViewChildAc = (TextView) convertView.findViewById(R.id.acDetails);
             childViewHolder.textViewChildTask = (TextView) convertView.findViewById(R.id.taskDetails);
             childViewHolder.buttonChild = (Button) convertView.findViewById(R.id.openButton);
-            
+            childViewHolder.buttonChild.getBackground().setColorFilter(new LightingColorFilter(0x000000, 0x268bd2)); //color/blue
             convertView.setTag(childViewHolder);
         } else {
         	childViewHolder = (ChildViewHolder) convertView.getTag();

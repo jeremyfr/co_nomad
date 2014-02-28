@@ -47,4 +47,11 @@ public class SwitchTaskManager extends WebViewClient {
 		}
 		return true;
 	}
+	
+    @Override
+    public void onScaleChanged(WebView view, float oldScale, float newScale) {
+        super.onScaleChanged(view, oldScale, newScale);
+        System.out.println("Scale changed from " + oldScale + " to " + newScale);
+    }
+
 }
