@@ -166,7 +166,7 @@ public class ATASelection extends Activity {
 	        }
 	      });
 		// Search field
-		/*EditText editText = (EditText) findViewById(R.id.search);
+		EditText editText = (EditText) findViewById(R.id.search);
 		editText.setOnEditorActionListener(new OnEditorActionListener() {
 			@Override
 			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -178,7 +178,7 @@ public class ATASelection extends Activity {
 		        }
 		        return handled;
 			}
-		});*/
+		});
 	}
 	
 	public void getATAList(){

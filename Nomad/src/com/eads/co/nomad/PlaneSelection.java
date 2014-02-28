@@ -15,6 +15,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -31,24 +32,41 @@ public class PlaneSelection extends Activity{
 	ArrayList<String> listeFSN; 
 	ArrayList<String> listeMSN; 
 	Button search;
-	
+	EditText theID;
 	HashMap<String,ArrayList<String>> listeAvionFSN;
+	HashMap<String,ArrayList<String>> listeAvionMSN;
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planeselection);
         
         listeAvions = new ArrayList<String>();
         listeAvions.add("A380");
-        
-        //listeAvionFSN = new HashMap<String, ArrayList<String>>();
+        listeAvions.add("A320");
+        theID = (EditText) findViewById(R.id.searchID);
+        listeAvionFSN = new HashMap<String, ArrayList<String>>();
+        listeAvionMSN = new HashMap<String, ArrayList<String>>();
         listeFSN = new ArrayList<String>();
         listeFSN.add("");
-        listeFSN.add("1");
+        listeFSN.add("35");
+        listeFSN.add("28");
         listeMSN = new ArrayList<String>();
         listeMSN.add("");
-        listeMSN.add("1");
-        listeMSN.add("2");
-        //listeAvionFSN.put("A380", listeFSN);
+        listeMSN.add("40");
+        listeMSN.add("69");
+        listeAvionFSN.put("A380", listeFSN);
+        listeAvionMSN.put("A380", listeMSN);
+        
+        listeFSN = new ArrayList<String>();
+        listeFSN.add("");
+        listeFSN.add("353");
+        
+        listeMSN = new ArrayList<String>();
+        listeMSN.add("");
+        listeMSN.add("226");
+        
+        listeAvionFSN.put("A320", listeFSN);
+        listeAvionMSN.put("A320", listeMSN);
+        
         titre = (TextView) findViewById(R.id.titlePlane);
         titre.setText("Plane selection");
         id = (TextView) findViewById(R.id.aircraftid);
@@ -90,7 +108,7 @@ public class PlaneSelection extends Activity{
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				//Afficher fsn et msn
-				spAdapt = new ArrayAdapter<String>(PlaneSelection.this, android.R.layout.simple_list_item_1, listeFSN);
+				spAdapt = new ArrayAdapter<String>(PlaneSelection.this, android.R.layout.simple_list_item_1, listeAvionFSN.get(listeAvions.get(arg2)));
 
 				fsn.setAdapter(spAdapt);
 				
@@ -133,7 +151,7 @@ public class PlaneSelection extends Activity{
 				});
 				
 				
-				spAdapt = new ArrayAdapter<String>(PlaneSelection.this, android.R.layout.simple_list_item_1, listeMSN);
+				spAdapt = new ArrayAdapter<String>(PlaneSelection.this, android.R.layout.simple_list_item_1, listeAvionMSN.get(listeAvions.get(arg2)));
 				msn.setAdapter(spAdapt);
 				msn.setVisibility(View.VISIBLE);
 				textmsn.setVisibility(View.VISIBLE);
