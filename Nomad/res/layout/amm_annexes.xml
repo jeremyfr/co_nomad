@@ -351,6 +351,21 @@
                 android:scaleType="matrix" />
 
             <ImageView
+                android:id="@+id/separator_up"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_line_up"
+                android:scaleType="matrix" />
+            
+            <ImageView
+                android:id="@+id/separator_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/vertical_line_down"
+                android:scaleType="matrix" />
+            
+            <ImageView
                 android:id="@+id/infobulle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

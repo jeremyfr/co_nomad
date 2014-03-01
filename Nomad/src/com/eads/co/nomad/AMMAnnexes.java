@@ -90,6 +90,8 @@ public class AMMAnnexes extends Activity {
 	private int y_absolue; // Position du lien vers l'annexe dans scrollView.
 
 	private ImageView separator; // barre verticale.
+	private ImageView separator_up; // barre verticale haute.
+	private ImageView separator_down; // barre verticale basse.
 	private ImageView infobulle; // image de l'infobulle.
 
 	private LinearLayout annexLayout; // layout de l'annexe.
@@ -135,6 +137,8 @@ public class AMMAnnexes extends Activity {
 		layout = (LinearLayout) findViewById(R.id.layout_amm);
 
 		separator = (ImageView) findViewById(R.id.separator);
+		separator_up = (ImageView) findViewById(R.id.separator_up);
+		separator_down = (ImageView) findViewById(R.id.separator_down);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
 
 		scrollView = (OurScrollView) findViewById(R.id.scrollView);
@@ -520,12 +524,16 @@ public class AMMAnnexes extends Activity {
 	// Affiche le séparateur et l'infobulle.
 	private void displaySeparator() {
 		separator.setImageResource(R.drawable.vertical_line);
+		separator_up.setImageResource(R.drawable.vertical_line_up);
+		separator_down.setImageResource(R.drawable.vertical_line_down);
 		infobulle.setImageResource(R.drawable.infobulle);
 	}
 
 	// Cache le séparateur et l'infobulle.
 	private void hideSeparator() {
 		separator.setImageResource(R.drawable.vertical_line_empty);
+		separator_up.setImageResource(R.drawable.vertical_line_empty);
+		separator_down.setImageResource(R.drawable.vertical_line_empty);
 		infobulle.setImageResource(R.drawable.vertical_line_empty);
 	}
 
@@ -592,12 +600,16 @@ public class AMMAnnexes extends Activity {
 						infobulle.getLayoutParams());
 				if (y < ymin) {
 					infobulle.setImageResource(R.drawable.fleche_haut);
+					separator_up.setImageResource(R.drawable.vertical_line_empty);
 					params.topMargin = ymin - yinfobulle / 3;
 				} else if (y > ymax) {
 					infobulle.setImageResource(R.drawable.fleche_bas);
+					separator_down.setImageResource(R.drawable.vertical_line_empty);
 					params.topMargin = ymax - yinfobulle / 3;
 				} else {
 					infobulle.setImageResource(R.drawable.infobulle);
+					separator_up.setImageResource(R.drawable.vertical_line_up);
+					separator_down.setImageResource(R.drawable.vertical_line_down);
 					params.topMargin = y - yinfobulle / 3;
 				}
 				infobulle.setLayoutParams(params);
