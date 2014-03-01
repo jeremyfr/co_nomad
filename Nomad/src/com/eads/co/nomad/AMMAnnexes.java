@@ -64,7 +64,7 @@ public class AMMAnnexes extends Activity {
 								// l'annexe.
 	private static int ymin; // ordonnée d'apparition de la flèche haute.
 	private static int xseparator = 160; // largeur de la barre de séparation.
-	private static int yinfobulle = 185; // hauteur de l'image infobulle.
+	private static int yinfobulle = 331; // hauteur de l'image infobulle.
 
 	private static int t1 = 50; // fréquence de rafraichissement du pointeur.
 	private static int t2 = 200; // temps avant de récupérer largeur et hauteur.
@@ -568,7 +568,7 @@ public class AMMAnnexes extends Activity {
 
 	private void setInfobulle(boolean state, int y, int pos) {
 		if (state) {
-			y_absolue = 50 + 30 * pos + warnings.getHeight()
+			y_absolue = 56 + 30 * pos + warnings.getHeight()
 					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
 					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
 					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
