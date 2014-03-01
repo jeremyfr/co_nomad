@@ -46,7 +46,6 @@ public class OurScrollView extends ScrollView {
 	
 	public void setAnnexe(WebView webView, String annexe)
 	{
-		Log.i("OurScrollView", "Set webView ok");
 		this.annexe = annexe;
 		this.webView = webView;
 	}

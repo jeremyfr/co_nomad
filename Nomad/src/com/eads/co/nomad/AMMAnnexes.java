@@ -301,10 +301,10 @@ public class AMMAnnexes extends Activity {
 				case NOT_DISPLAYED:
 					break;
 				case DISPLAYED_FREE:
+					hideSeparator();
 					scrollX = scrollView.getScrollX();
 					scrollY = scrollView.getScrollY();
 					setAnnexeX(xseparator / 3);
-					hideSeparator();
 					fullScreenAnnexButton
 							.setImageResource(R.drawable.btn_offscreen);
 					state = AnnexesState.DISPLAYED_FULLSCREEN;
@@ -312,10 +312,10 @@ public class AMMAnnexes extends Activity {
 				case DISPLAYED_PRESSED:
 					break;
 				case DISPLAYED_FULLSCREEN:
+					displaySeparator();
 					setAnnexeX(x);
 					scrollView.setScrollX(scrollX);
 					scrollView.setScrollY(scrollY);
-					displaySeparator();
 					fullScreenAnnexButton
 							.setImageResource(R.drawable.btn_fullscreen);
 					clickedWB.loadUrl("javascript:getPosition('" + annexe
