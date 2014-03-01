@@ -88,193 +88,22 @@ public class AMMAnnexes extends Activity {
 	private TextView titreAnnexe; // titre de l'annexe
 	private ImageButton closeAnnexButton; // bouton femer.
 	private ImageButton fullScreenAnnexButton; // bouton plein ecran.
-	private Button closeAllAnnexButton; //bouton ferme toutes les annexes
+	private Button closeAllAnnexButton; // bouton ferme toutes les annexes
 
-	//Pour les annexes multiples
+	// Pour les annexes multiples
 	private DrawerLayout mDrawerLayout;
 	private ListView listview;
 	private int nb_annexe;
 
-	//Création de la ArrayList qui nous permettra de remplir la listView
-    ArrayList<HashMap<String, Object>> listItem;
-    HashMap<String, Object> map;
-    
+	// Création de la ArrayList qui nous permettra de remplir la listView
+	ArrayList<HashMap<String, Object>> listItem;
+	HashMap<String, Object> map;
+
 	// Pour le multitouch
 	private ImageView annexImg;
 	private FrameLayout layoutImg;
 
 	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
-
-	// Affiche l'annexe.
-	private void setAnnexeX(int x) {
-		mDrawerLayout.setDrawerLockMode(0,Gravity.END);
-		scrollView.setLayoutParams(new LayoutParams(x - xseparator / 3,
-				LayoutParams.MATCH_PARENT));
-		annexLayout.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
-				ymax));
-		// setInfobulle();
-	}
-
-	// Affiche l'annexe et met l'abscisse du séparateur.
-	private void setAnnexeXAndX(int _x) {
-		setAnnexeX(x);
-		x = _x;
-	}
-	//Affiche le titre de l'annexe et met l'image de l'annexe
-	private void setTitleAndImgAnnexe(CharSequence text,String img, WebView wb){
-		int resID = getResources().getIdentifier(img, "drawable", "package.name");
-        annexImg.setImageResource(resID);
-		titreAnnexe.setText(text);
-		int position = trouveDansListe(titreAnnexe.getText().toString(),wb)-1;
-		listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
-	}
-	
-	// Affiche le séparateur et l'infobulle.
-	private void displaySeparator() {
-		separator.setImageResource(R.drawable.vertical_line);
-		infobulle.setImageResource(R.drawable.infobulle);
-	}
-
-	// Cache le séparateur et l'infobulle.
-	private void hideSeparator() {
-		separator.setImageResource(R.drawable.vertical_line_empty);
-		infobulle.setImageResource(R.drawable.vertical_line_empty);
-	}
-
-	// Place l'infobulle selon l'ordonnée y relative à la WebView contenant le
-	// lien vers l'annexe.
-	public void setInfobulle(int y) {
-
-		if (clickedWB.equals(warningWV)) {
-			setInfobulle(!isCollapsed(R.id.stateWarning), y, 0);
-		}
-
-		if (clickedWB.equals(jobSetUpWV)) {
-			setInfobulle(!isCollapsed(R.id.stateJobSetUp), y, 1);
-		}
-
-		if (clickedWB.equals(procedureWV)) {
-			setInfobulle(!isCollapsed(R.id.stateProcedure), y, 2);
-		}
-
-		if (clickedWB.equals(closeUpWV)) {
-			setInfobulle(!isCollapsed(R.id.stateCloseUp), y, 3);
-		}
-
-		if (clickedWB.equals(toolsWV)) {
-			setInfobulle(!isCollapsed(R.id.stateTools), y, 4);
-		}
-
-		if (clickedWB.equals(picturesWV)) {
-			setInfobulle(!isCollapsed(R.id.statePictures), y, 5);
-		}
-	}
-
-	private void setInfobulle(boolean state, int y, int pos) {
-		if (state) {
-			y_absolue = 50 + 30 * pos + warnings.getHeight()
-					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
-					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
-					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
-					+ (pos >= 4 ? 1 : 0) * tools.getHeight()
-					+ (pos >= 5 ? 1 : 0) * pictures.getHeight()
-					- clickedWB.getHeight() + y;
-		} else {
-			y_absolue = (int) (30 * (1 + pos)
-					+ ((pos >= 0 ? 0.5 : 0) + (pos >= 1 ? 0.5 : 0))
-					* warnings.getHeight()
-					+ ((pos >= 1 ? 0.5 : 0) + (pos >= 2 ? 0.5 : 0))
-					* jobSetUp.getHeight()
-					+ ((pos >= 2 ? 0.5 : 0) + (pos >= 3 ? 0.5 : 0))
-					* procedure.getHeight()
-					+ ((pos >= 3 ? 0.5 : 0) + (pos >= 4 ? 0.5 : 0))
-					* closeUp.getHeight()
-					+ ((pos >= 4 ? 0.5 : 0) + (pos >= 5 ? 0.5 : 0))
-					* tools.getHeight() + (pos >= 5 ? 0.5 : 0)
-					* pictures.getHeight());
-		}
-		displayInfobulle(y_absolue - scrollView.getScrollY());
-	}
-
-	private void displayInfobulle(final int y) {
-		runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-						infobulle.getLayoutParams());
-				if (y < ymin) {
-					infobulle.setImageResource(R.drawable.fleche_haut);
-					params.topMargin = ymin - yinfobulle / 3;
-				} else if (y > ymax) {
-					infobulle.setImageResource(R.drawable.fleche_bas);
-					params.topMargin = ymax - yinfobulle / 3;
-				} else {
-					infobulle.setImageResource(R.drawable.infobulle);
-					params.topMargin = y - yinfobulle / 3;
-				}
-				infobulle.setLayoutParams(params);
-			}
-		});
-	}
-
-	public void onAnnexeClic(WebView webView, String annexe) {
-		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
-		switch (state) {
-		case NOT_DISPLAYED:
-			setAnnexeXAndX(xmax / 2);
-			scrollView.setAnnexe(webView, annexe);
-			this.annexe = annexe;
-			clickedWB = webView;
-			clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-			// Image a changer
-			ajouteList(annexe,String.valueOf(R.drawable.ata),clickedWB);
-			// Image a changer
-			setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata),clickedWB);
-			
-			state = AnnexesState.DISPLAYED_FREE;
-			break;
-		case DISPLAYED_FREE:
-			if (testeActuel(annexe,webView)){
-				setAnnexeX(xmax + xseparator / 3);
-				supprimeElt(annexe,webView);
-				state = AnnexesState.NOT_DISPLAYED;
-			}
-			else {
-				setAnnexeXAndX(xmax / 2);		
-				scrollView.setAnnexe(webView, annexe);
-				this.annexe = annexe;
-				clickedWB = webView;
-				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-				// Image a changer
-				ajouteList(annexe,String.valueOf(R.drawable.ata),clickedWB);
-				// Image a changer
-				setTitleAndImgAnnexe(annexe,String.valueOf(R.drawable.ata),clickedWB);
-				
-				state = AnnexesState.DISPLAYED_FREE;		
-			}
-			break;
-		case DISPLAYED_PRESSED:
-			break;
-		case DISPLAYED_FULLSCREEN:
-			break;
-		}
-	}
-
-	private void getWidthHeight() {
-		// Récupération de la largeur et de la hauteur du layout.
-		Timer t = new Timer();
-		class SetMax extends TimerTask {
-			@Override
-			public void run() {
-				ymax = layout.getHeight();
-				xmax = layout.getWidth();
-				xmin = xmax / 4;
-				ymin = 0;
-				x = xmax / 2;
-			}
-		}
-		t.schedule(new SetMax(), 500);
-	}
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -313,22 +142,21 @@ public class AMMAnnexes extends Activity {
 		layoutImg = (FrameLayout) findViewById(R.id.layoutImage);
 		annexImg.setOnTouchListener(new PanAndZoomListener(layoutImg, annexImg,
 				Anchor.TOPLEFT));
-		
-		//Pour les annexes multiples
-		listview = (ListView)findViewById(R.id.listview);
+
+		// Pour les annexes multiples
+		listview = (ListView) findViewById(R.id.listview);
 		listview.setSelector(R.drawable.selector);
 		listItem = new ArrayList<HashMap<String, Object>>();
-		//Remplissage des fonctions sur le navigation drawer
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerLayout.setDrawerLockMode(1, Gravity.END);
+		// Remplissage des fonctions sur le navigation drawer
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerLayout.setDrawerLockMode(1, Gravity.END);
 		nb_annexe = 0;
-		
+
 		closeAllAnnexButton = (Button) findViewById(R.id.closeAllAnnexButton);
-		
-		//Récupération de la largeur et de la hauteur du layout
+
+		// Récupération de la largeur et de la hauteur du layout
 		getWidthHeight();
-		
-		
+
 		// Scroll lors d'un clic sur le titre de l'annexe.
 		titreAnnexe.setOnClickListener(new OnClickListener() {
 			@Override
@@ -336,25 +164,29 @@ public class AMMAnnexes extends Activity {
 				scrollView.scrollTo(scrollView.getScrollX(), y_absolue);
 			}
 		});
-		
+
 		listview.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-        	@SuppressWarnings("unchecked")
-         	public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-				HashMap<String, Object> map = (HashMap<String, Object>) listview.getItemAtPosition(position);
-				annexe = (String)map.get("titre");
+			@SuppressWarnings("unchecked")
+			public void onItemClick(AdapterView<?> a, View v, int position,
+					long id) {
+				HashMap<String, Object> map = (HashMap<String, Object>) listview
+						.getItemAtPosition(position);
+				annexe = (String) map.get("titre");
 				Log.e("AnnexeListener", "Nom de l'annexe cliquée" + annexe);
 				titreAnnexe.setText(annexe);
-				int resID = getResources().getIdentifier((String)map.get("img"), "drawable", "package.name");
-		        annexImg.setImageResource(resID);
-		        clickedWB = (WebView) map.get("webview");
-		        if (state != AnnexesState.DISPLAYED_FULLSCREEN){
-		        	clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-		        	scrollView.setAnnexe(clickedWB, annexe);
-		        }
-				
-        	}
-         });
+				int resID = getResources().getIdentifier(
+						(String) map.get("img"), "drawable", "package.name");
+				annexImg.setImageResource(resID);
+				clickedWB = (WebView) map.get("webview");
+				if (state != AnnexesState.DISPLAYED_FULLSCREEN) {
+					clickedWB.loadUrl("javascript:getPosition('" + annexe
+							+ "')");
+					scrollView.setAnnexe(clickedWB, annexe);
+				}
+
+			}
+		});
 
 		layout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
@@ -419,17 +251,17 @@ public class AMMAnnexes extends Activity {
 				case NOT_DISPLAYED:
 					break;
 				case DISPLAYED_FREE:
-					supprimeElt(titreAnnexe.getText().toString(),clickedWB);
+					supprimeElt(titreAnnexe.getText().toString(), clickedWB);
 					break;
 				case DISPLAYED_PRESSED:
 					break;
 				case DISPLAYED_FULLSCREEN:
-					supprimeElt(titreAnnexe.getText().toString(),clickedWB);
+					supprimeElt(titreAnnexe.getText().toString(), clickedWB);
 					break;
 				}
 			}
 		});
-		
+
 		// Listener sur le bouton fermer all.
 		closeAllAnnexButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -459,7 +291,8 @@ public class AMMAnnexes extends Activity {
 				case DISPLAYED_FREE:
 					setAnnexeX(xseparator / 3);
 					hideSeparator();
-					fullScreenAnnexButton.setImageResource(R.drawable.btn_offscreen);
+					fullScreenAnnexButton
+							.setImageResource(R.drawable.btn_offscreen);
 					state = AnnexesState.DISPLAYED_FULLSCREEN;
 					break;
 				case DISPLAYED_PRESSED:
@@ -467,9 +300,11 @@ public class AMMAnnexes extends Activity {
 				case DISPLAYED_FULLSCREEN:
 					setAnnexeX(x);
 					displaySeparator();
-					fullScreenAnnexButton.setImageResource(R.drawable.btn_fullscreen);
-					clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-		        	scrollView.setAnnexe(clickedWB, annexe);
+					fullScreenAnnexButton
+							.setImageResource(R.drawable.btn_fullscreen);
+					clickedWB.loadUrl("javascript:getPosition('" + annexe
+							+ "')");
+					scrollView.setAnnexe(clickedWB, annexe);
 					state = AnnexesState.DISPLAYED_FREE;
 					break;
 				}
@@ -492,7 +327,8 @@ public class AMMAnnexes extends Activity {
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle());
 
-			SwitchTaskManager taskManager = new SwitchTaskManager(this, this,"amm");
+			SwitchTaskManager taskManager = new SwitchTaskManager(this, this,
+					"amm");
 
 			HashMap<String, String> h = ((History) this.getApplication())
 					.getHistory();
@@ -605,7 +441,7 @@ public class AMMAnnexes extends Activity {
 			public void run() {
 				try {
 					while (!isInterrupted()) {
-						Thread.sleep(300);
+						Thread.sleep(100);
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
@@ -637,92 +473,280 @@ public class AMMAnnexes extends Activity {
 
 		t.start();
 	}
-	
-	//Fonction pour supprimer tout les éléments de la liste 
-	private void supprimeTout(){
-		listItem =  new ArrayList<HashMap<String, Object>>();
-        nb_annexe=0;
-        setAnnexeX(xmax + xseparator / 3);
+
+	// Affiche l'annexe.
+	private void setAnnexeX(int x) {
+		mDrawerLayout.setDrawerLockMode(0, Gravity.END);
+		scrollView.setLayoutParams(new LayoutParams(x - xseparator / 3,
+				LayoutParams.MATCH_PARENT));
+		annexLayout.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
+				ymax));
+		// setInfobulle();
+	}
+
+	// Affiche l'annexe et met l'abscisse du séparateur.
+	private void setAnnexeXAndX(int _x) {
+		setAnnexeX(x);
+		x = _x;
+	}
+
+	// Affiche le titre de l'annexe et met l'image de l'annexe
+	private void setTitleAndImgAnnexe(CharSequence text, String img, WebView wb) {
+		int resID = getResources().getIdentifier(img, "drawable",
+				"package.name");
+		annexImg.setImageResource(resID);
+		titreAnnexe.setText(text);
+		int position = trouveDansListe(titreAnnexe.getText().toString(), wb) - 1;
+		listview.performItemClick(
+				listview.getAdapter().getView(position, null, null), position,
+				position);
+	}
+
+	// Affiche le séparateur et l'infobulle.
+	private void displaySeparator() {
+		separator.setImageResource(R.drawable.vertical_line);
+		infobulle.setImageResource(R.drawable.infobulle);
+	}
+
+	// Cache le séparateur et l'infobulle.
+	private void hideSeparator() {
+		separator.setImageResource(R.drawable.vertical_line_empty);
+		infobulle.setImageResource(R.drawable.vertical_line_empty);
+	}
+
+	// Place l'infobulle selon l'ordonnée y relative à la WebView contenant le
+	// lien vers l'annexe.
+	public void setInfobulle(int y) {
+
+		if (clickedWB.equals(warningWV)) {
+			setInfobulle(!isCollapsed(R.id.stateWarning), y, 0);
+		}
+
+		if (clickedWB.equals(jobSetUpWV)) {
+			setInfobulle(!isCollapsed(R.id.stateJobSetUp), y, 1);
+		}
+
+		if (clickedWB.equals(procedureWV)) {
+			setInfobulle(!isCollapsed(R.id.stateProcedure), y, 2);
+		}
+
+		if (clickedWB.equals(closeUpWV)) {
+			setInfobulle(!isCollapsed(R.id.stateCloseUp), y, 3);
+		}
+
+		if (clickedWB.equals(toolsWV)) {
+			setInfobulle(!isCollapsed(R.id.stateTools), y, 4);
+		}
+
+		if (clickedWB.equals(picturesWV)) {
+			setInfobulle(!isCollapsed(R.id.statePictures), y, 5);
+		}
+	}
+
+	private void setInfobulle(boolean state, int y, int pos) {
+		if (state) {
+			y_absolue = 50 + 30 * pos + warnings.getHeight()
+					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
+					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
+					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
+					+ (pos >= 4 ? 1 : 0) * tools.getHeight()
+					+ (pos >= 5 ? 1 : 0) * pictures.getHeight()
+					- clickedWB.getHeight() + y;
+		} else {
+			y_absolue = (int) (30 * (1 + pos)
+					+ ((pos >= 0 ? 0.5 : 0) + (pos >= 1 ? 0.5 : 0))
+					* warnings.getHeight()
+					+ ((pos >= 1 ? 0.5 : 0) + (pos >= 2 ? 0.5 : 0))
+					* jobSetUp.getHeight()
+					+ ((pos >= 2 ? 0.5 : 0) + (pos >= 3 ? 0.5 : 0))
+					* procedure.getHeight()
+					+ ((pos >= 3 ? 0.5 : 0) + (pos >= 4 ? 0.5 : 0))
+					* closeUp.getHeight()
+					+ ((pos >= 4 ? 0.5 : 0) + (pos >= 5 ? 0.5 : 0))
+					* tools.getHeight() + (pos >= 5 ? 0.5 : 0)
+					* pictures.getHeight());
+		}
+		displayInfobulle(y_absolue - scrollView.getScrollY());
+	}
+
+	private void displayInfobulle(final int y) {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+						infobulle.getLayoutParams());
+				if (y < ymin) {
+					infobulle.setImageResource(R.drawable.fleche_haut);
+					params.topMargin = ymin - yinfobulle / 3;
+				} else if (y > ymax) {
+					infobulle.setImageResource(R.drawable.fleche_bas);
+					params.topMargin = ymax - yinfobulle / 3;
+				} else {
+					infobulle.setImageResource(R.drawable.infobulle);
+					params.topMargin = y - yinfobulle / 3;
+				}
+				infobulle.setLayoutParams(params);
+			}
+		});
+	}
+
+	public void onAnnexeClic(WebView webView, String annexe) {
+		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
+		switch (state) {
+		case NOT_DISPLAYED:
+			setAnnexeXAndX(xmax / 2);
+			scrollView.setAnnexe(webView, annexe);
+			this.annexe = annexe;
+			clickedWB = webView;
+			clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
+			// Image a changer
+			ajouteList(annexe, String.valueOf(R.drawable.ata), clickedWB);
+			// Image a changer
+			setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
+					clickedWB);
+
+			state = AnnexesState.DISPLAYED_FREE;
+			break;
+		case DISPLAYED_FREE:
+			if (testeActuel(annexe, webView)) {
+				setAnnexeX(xmax + xseparator / 3);
+				supprimeElt(annexe, webView);
+				state = AnnexesState.NOT_DISPLAYED;
+			} else {
+				setAnnexeXAndX(xmax / 2);
+				scrollView.setAnnexe(webView, annexe);
+				this.annexe = annexe;
+				clickedWB = webView;
+				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
+				// Image a changer
+				ajouteList(annexe, String.valueOf(R.drawable.ata), clickedWB);
+				// Image a changer
+				setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
+						clickedWB);
+
+				state = AnnexesState.DISPLAYED_FREE;
+			}
+			break;
+		case DISPLAYED_PRESSED:
+			break;
+		case DISPLAYED_FULLSCREEN:
+			break;
+		}
+	}
+
+	private void getWidthHeight() {
+		// Récupération de la largeur et de la hauteur du layout.
+		Timer t = new Timer();
+		class SetMax extends TimerTask {
+			@Override
+			public void run() {
+				ymax = layout.getHeight();
+				xmax = layout.getWidth();
+				xmin = xmax / 4;
+				ymin = 0;
+				x = xmax / 2;
+			}
+		}
+		t.schedule(new SetMax(), 500);
+	}
+
+	// Fonction pour supprimer tout les éléments de la liste
+	private void supprimeTout() {
+		listItem = new ArrayList<HashMap<String, Object>>();
+		nb_annexe = 0;
+		setAnnexeX(xmax + xseparator / 3);
 		state = AnnexesState.NOT_DISPLAYED;
 		closeAllAnnexButton.setVisibility(View.INVISIBLE);
 	}
-	//Fonction qui supprime un élément de la listview et agit en conséquence suivant la prèsence d'autres annexes
-	private void supprimeElt(String titre,WebView wb){
-		if (listItem.size()!=1){
-			Log.e("SupprimeElt","Indice de l'item : " + trouveDansListe(titre,wb));
-			int indice = trouveDansListe(titre,wb);
-			listItem.remove(indice-1);
-			Log.w("SupprimeElt","Taille de listItem : " + listItem.size() );
-	        nb_annexe--;
-	        listview.invalidateViews();
-	        if (listItem.size()==1){
-	        	closeAllAnnexButton.setVisibility(View.INVISIBLE);
-	        }
-	        int position = 0;
-			listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
-	        //setAnnexeXAndX(x);
-		}
-		else {
-			Log.e("SupprimeElt","Indice de l'item : " + trouveDansListe(titre,wb));
-			listItem.remove(trouveDansListe(titre,wb)-1);
+
+	// Fonction qui supprime un élément de la listview et agit en conséquence
+	// suivant la prèsence d'autres annexes
+	private void supprimeElt(String titre, WebView wb) {
+		if (listItem.size() != 1) {
+			Log.e("SupprimeElt",
+					"Indice de l'item : " + trouveDansListe(titre, wb));
+			int indice = trouveDansListe(titre, wb);
+			listItem.remove(indice - 1);
+			Log.w("SupprimeElt", "Taille de listItem : " + listItem.size());
+			nb_annexe--;
+			listview.invalidateViews();
+			if (listItem.size() == 1) {
+				closeAllAnnexButton.setVisibility(View.INVISIBLE);
+			}
+			int position = 0;
+			listview.performItemClick(
+					listview.getAdapter().getView(position, null, null),
+					position, position);
+			// setAnnexeXAndX(x);
+		} else {
+			Log.e("SupprimeElt",
+					"Indice de l'item : " + trouveDansListe(titre, wb));
+			listItem.remove(trouveDansListe(titre, wb) - 1);
 			listview.invalidateViews();
 			nb_annexe--;
 			setAnnexeX(xmax + xseparator / 3);
-			mDrawerLayout.setDrawerLockMode(1,Gravity.END);
+			mDrawerLayout.setDrawerLockMode(1, Gravity.END);
 			closeAllAnnexButton.setVisibility(View.INVISIBLE);
 			displaySeparator();
 			fullScreenAnnexButton.setImageResource(R.drawable.btn_fullscreen);
 			state = AnnexesState.NOT_DISPLAYED;
 		}
 	}
-	//Fonction pour trouver l'indice de l'élément titre.
-	private int trouveDansListe(String titre, WebView wb){
-		Iterator<HashMap<String,Object>> iterateur=listItem.iterator();
+
+	// Fonction pour trouver l'indice de l'élément titre.
+	private int trouveDansListe(String titre, WebView wb) {
+		Iterator<HashMap<String, Object>> iterateur = listItem.iterator();
 		int numero = 0;
 		boolean test = false;
-		while (!test && iterateur.hasNext())
-		{
+		while (!test && iterateur.hasNext()) {
 			HashMap<String, Object> mapElt = iterateur.next();
-			test = (mapElt.get("titre").equals(titre) && mapElt.get("webview").equals(wb));
+			test = (mapElt.get("titre").equals(titre) && mapElt.get("webview")
+					.equals(wb));
 			numero++;
 		}
 		return numero;
 	}
+
 	// Teste si l'objet de titre titre est l'annexe affichée actuellement
-	private boolean testeActuel(String titre,WebView wb){
+	private boolean testeActuel(String titre, WebView wb) {
 		return (titre.equals(titreAnnexe.getText().toString()) && clickedWB == wb);
 	}
+
 	// Teste si l'objet de titre titre est dans la listview
-	private boolean testeObjetDansListe(String titre, WebView wb){
-		Iterator<HashMap<String,Object>> iterateur=listItem.iterator();
+	private boolean testeObjetDansListe(String titre, WebView wb) {
+		Iterator<HashMap<String, Object>> iterateur = listItem.iterator();
 		boolean test = false;
-		while (!test && iterateur.hasNext())
-		{
+		while (!test && iterateur.hasNext()) {
 			HashMap<String, Object> mapElt = iterateur.next();
-			test = (mapElt.get("titre").equals(titre) && mapElt.get("webview").equals(wb));
+			test = (mapElt.get("titre").equals(titre) && mapElt.get("webview")
+					.equals(wb));
 		}
 		return test;
 	}
-	//Ajoute l'élément titre avec sont image a la listview
+
+	// Ajoute l'élément titre avec sont image a la listview
 	private void ajouteList(String titre, String img, WebView wb) {
 		if (!testeObjetDansListe(titre, wb)) {
 			map = new HashMap<String, Object>();
-	        map.put("titre", titre);
-	        map.put("img", img);
-	        map.put("webview", wb);
-	        listItem.add(map);
-	        //Création d'un SimpleAdapter qui se chargera de mettre les items pr�sent dans notre list (listItem) dans la vue affichage_annexes
-	        SimpleAdapter mSchedule = new SimpleAdapter (this.getBaseContext(), listItem, R.layout.affiche_annexes,
-	               new String[] {"img", "titre"}, new int[] {R.id.listImage, R.id.listTitreAnnexe});
-	        listview.setAdapter(mSchedule);
-	        // +1 annexe
-	        nb_annexe++;
-	        if (nb_annexe > 1){
+			map.put("titre", titre);
+			map.put("img", img);
+			map.put("webview", wb);
+			listItem.add(map);
+			// Création d'un SimpleAdapter qui se chargera de mettre les items
+			// pr�sent dans notre list (listItem) dans la vue affichage_annexes
+			SimpleAdapter mSchedule = new SimpleAdapter(this.getBaseContext(),
+					listItem, R.layout.affiche_annexes, new String[] { "img",
+							"titre" }, new int[] { R.id.listImage,
+							R.id.listTitreAnnexe });
+			listview.setAdapter(mSchedule);
+			// +1 annexe
+			nb_annexe++;
+			if (nb_annexe > 1) {
 				closeAllAnnexButton.setVisibility(View.VISIBLE);
 			}
 		}
 	}
-	
+
 	private void onHistoricItemClick(int position) {
 		Intent i = new Intent(this, AMMAnnexes.class);
 		i.putExtra("task", ((History) this.getApplication()).getKeyAt(position));
@@ -851,7 +875,7 @@ public class AMMAnnexes extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
+
 	private void expand(final View v) {
 		v.measure(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		final int targtetHeight = v.getMeasuredHeight();
