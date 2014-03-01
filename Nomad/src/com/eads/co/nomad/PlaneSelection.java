@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -38,7 +39,8 @@ public class PlaneSelection extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planeselection);
-        
+
+		getActionBar().setDisplayHomeAsUpEnabled(true);
         listeAvions = new ArrayList<String>();
         listeAvions.add("A380");
         listeAvions.add("A320");
@@ -67,8 +69,7 @@ public class PlaneSelection extends Activity{
         listeAvionFSN.put("A320", listeFSN);
         listeAvionMSN.put("A320", listeMSN);
         
-        titre = (TextView) findViewById(R.id.titlePlane);
-        titre.setText("Plane selection");
+        
         id = (TextView) findViewById(R.id.aircraftid);
         id.setText("Aircraft ID");
         msn = (Spinner) findViewById(R.id.spinnerMSN);
@@ -163,5 +164,17 @@ public class PlaneSelection extends Activity{
 		});
     }
 	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item){       
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				Intent intent = new Intent(this, MenuApp.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
 	
 }

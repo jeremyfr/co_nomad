@@ -147,6 +147,7 @@ public class DataParsing {
 								Element cblst = (Element) iteratorCblst.next();
 								List<Element> listCbsublst = cblst.getChildren("CBSUBLST");
 								Iterator<Element> iteratorCbsublst = listCbsublst.iterator();
+								int nbCblst = 1;
 								while (iteratorCbsublst.hasNext()) {
 									Element cbsublst = iteratorCbsublst.next();
 									List<Element> listCbdata = cbsublst.getChildren("CBDATA");
@@ -158,8 +159,8 @@ public class DataParsing {
 										jobSetUp += "<li>";
 										jobSetUp += cbdata.getChildText("CBNAME");
 										jobSetUp += "<div class='onoffswitch'>";
-										jobSetUp += "<input type='checkbox' name='onoffswitch"+nbCbdata+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+"' checked>";
-										jobSetUp += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+"'>";
+										jobSetUp += "<input type='checkbox' name='onoffswitch"+nbCbdata+nbCblst+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+nbCblst+"' checked>";
+										jobSetUp += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+nbCblst+"'>";
 										jobSetUp += "<div class='onoffswitch-inner'></div>";
 										jobSetUp += "<div class='onoffswitch-switch'></div>";
 										jobSetUp += "</label>";
@@ -168,6 +169,7 @@ public class DataParsing {
 										nbCbdata++;
 									}
 									jobSetUp += "</ul>";
+									nbCblst++;
 								}
 							}
 							jobSetUp += "</ul>";
@@ -268,6 +270,7 @@ public class DataParsing {
 									Element cblst = (Element) iteratorCblst.next();
 									List<Element> listCbsublst = cblst.getChildren("CBSUBLST");
 									Iterator<Element> iteratorCbsublst = listCbsublst.iterator();
+									int nbCblst = 1;
 									while (iteratorCbsublst.hasNext()) {
 										Element cbsublst = iteratorCbsublst.next();
 										List<Element> listCbdata = cbsublst.getChildren("CBDATA");
@@ -279,8 +282,8 @@ public class DataParsing {
 											procedure += "<li>";
 											procedure += cbdata.getChildText("CBNAME");
 											procedure += "<div class='onoffswitch'>";
-											procedure += "<input type='checkbox' name='onoffswitch"+nbCbdata+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+"' checked>";
-											procedure += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+"'>";
+											procedure += "<input type='checkbox' name='onoffswitch"+nbCbdata+nbCblst+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+nbCblst+"' checked>";
+											procedure += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+nbCblst+"'>";
 											procedure += "<div class='onoffswitch-inner'></div>";
 											procedure += "<div class='onoffswitch-switch'></div>";
 											procedure += "</label>";
@@ -289,6 +292,7 @@ public class DataParsing {
 											nbCbdata++;
 										}
 										procedure += "</ul>";
+										nbCblst++;
 									}
 								}
 							}
@@ -481,6 +485,7 @@ public class DataParsing {
 							List<Element> listCblst = l1Item.getChildren("CBLST");
 							Iterator<Element> iteratorCblst = listCblst.iterator();
 							while (iteratorCblst.hasNext()) {
+								int nbCblst = 1;
 								Element cblst = (Element) iteratorCblst.next();
 								List<Element> listCbsublst = cblst.getChildren("CBSUBLST");
 								Iterator<Element> iteratorCbsublst = listCbsublst.iterator();
@@ -495,8 +500,8 @@ public class DataParsing {
 										closeUp += "<li>";
 										closeUp += cbdata.getChildText("CBNAME");
 										closeUp += "<div class='onoffswitch'>";
-										closeUp += "<input type='checkbox' name='onoffswitch"+nbCbdata+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+"' checked>";
-										closeUp += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+"'>";
+										closeUp += "<input type='checkbox' name='onoffswitch"+nbCbdata+nbCblst+"' class='onoffswitch-checkbox' id='myonoffswitch"+nbCbdata+nbCblst+"' checked>";
+										closeUp += "<label class='onoffswitch-label' for='myonoffswitch"+nbCbdata+nbCblst+"'>";
 										closeUp += "<div class='onoffswitch-inner'></div>";
 										closeUp += "<div class='onoffswitch-switch'></div>";
 										closeUp += "</label>";
@@ -505,6 +510,7 @@ public class DataParsing {
 										nbCbdata++;
 									}
 									closeUp += "</ul>";
+									nbCblst++;
 								}
 							}
 							
