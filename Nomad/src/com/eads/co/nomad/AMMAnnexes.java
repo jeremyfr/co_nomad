@@ -89,6 +89,7 @@ public class AMMAnnexes extends Activity {
 	private String annexe; // Nom de l'annexe.
 	private int y_absolue; // Position du lien vers l'annexe dans scrollView.
 
+	private RelativeLayout separatorLayout; // layout de la barre verticale.
 	private ImageView separator; // barre verticale.
 	private ImageView separator_up; // barre verticale haute.
 	private ImageView separator_down; // barre verticale basse.
@@ -136,6 +137,7 @@ public class AMMAnnexes extends Activity {
 
 		layout = (LinearLayout) findViewById(R.id.layout_amm);
 
+		separatorLayout = (RelativeLayout) findViewById(R.id.separatorLayout);
 		separator = (ImageView) findViewById(R.id.separator);
 		separator_up = (ImageView) findViewById(R.id.separator_up);
 		separator_down = (ImageView) findViewById(R.id.separator_down);
@@ -523,18 +525,13 @@ public class AMMAnnexes extends Activity {
 
 	// Affiche le séparateur et l'infobulle.
 	private void displaySeparator() {
-		separator.setImageResource(R.drawable.vertical_line);
-		separator_up.setImageResource(R.drawable.vertical_line_up);
-		separator_down.setImageResource(R.drawable.vertical_line_down);
-		infobulle.setImageResource(R.drawable.infobulle);
+		separatorLayout.setVisibility(View.VISIBLE);
 	}
 
 	// Cache le séparateur et l'infobulle.
 	private void hideSeparator() {
-		separator.setImageResource(R.drawable.vertical_line_empty);
-		separator_up.setImageResource(R.drawable.vertical_line_empty);
-		separator_down.setImageResource(R.drawable.vertical_line_empty);
-		infobulle.setImageResource(R.drawable.vertical_line_empty);
+		separatorLayout.setVisibility(View.INVISIBLE);
+
 	}
 
 	// Place l'infobulle selon l'ordonnée y relative à la WebView contenant le
@@ -600,16 +597,16 @@ public class AMMAnnexes extends Activity {
 						infobulle.getLayoutParams());
 				if (y < ymin) {
 					infobulle.setImageResource(R.drawable.fleche_haut);
-					separator_up.setImageResource(R.drawable.vertical_line_empty);
+					separator_up.setVisibility(View.INVISIBLE);
 					params.topMargin = ymin - yinfobulle / 3;
 				} else if (y > ymax) {
 					infobulle.setImageResource(R.drawable.fleche_bas);
-					separator_down.setImageResource(R.drawable.vertical_line_empty);
+					separator_down.setVisibility(View.INVISIBLE);
 					params.topMargin = ymax - yinfobulle / 3;
 				} else {
 					infobulle.setImageResource(R.drawable.infobulle);
-					separator_up.setImageResource(R.drawable.vertical_line_up);
-					separator_down.setImageResource(R.drawable.vertical_line_down);
+					separator_up.setVisibility(View.VISIBLE);
+					separator_down.setVisibility(View.VISIBLE);
 					params.topMargin = y - yinfobulle / 3;
 				}
 				infobulle.setLayoutParams(params);

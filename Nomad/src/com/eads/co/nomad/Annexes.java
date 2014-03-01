@@ -131,8 +131,8 @@ public class Annexes extends Activity {
 
 	// Cache le séparateur et l'infobulle.
 	private void hideSeparator() {
-		separator.setImageResource(R.drawable.vertical_line_empty);
-		infobulle.setImageResource(R.drawable.vertical_line_empty);
+		//separator.setImageResource(R.drawable.vertical_line_empty);
+		//infobulle.setImageResource(R.drawable.vertical_line_empty);
 	}
 
 	// Place l'infobulle à l'ordonnée y.

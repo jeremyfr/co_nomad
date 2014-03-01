@@ -73,6 +73,7 @@ public class JobCard extends Activity {
 	
 	static WebView clickedWB; // WebView contenant le lien de l'annexe cliqué.
 
+	private RelativeLayout separatorLayout; // layout de la barre verticale.
 	ImageView separator; // barre verticale.
 	static ImageView infobulle; // image de l'infobulle.
 
@@ -112,14 +113,13 @@ public class JobCard extends Activity {
 
 	// Affiche le séparateur et l'infobulle.
 	private void displaySeparator() {
-		separator.setImageResource(R.drawable.vertical_line);
-		infobulle.setImageResource(R.drawable.infobulle);
+		separatorLayout.setVisibility(View.VISIBLE);
+
 	}
 
 	// Cache le séparateur et l'infobulle.
 	private void hideSeparator() {
-		separator.setImageResource(R.drawable.vertical_line_empty);
-		infobulle.setImageResource(R.drawable.vertical_line_empty);
+		separatorLayout.setVisibility(View.INVISIBLE);
 	}
 
 	// Place l'infobulle à l'ordonnée y.
@@ -198,6 +198,7 @@ public class JobCard extends Activity {
 
 		layout = (LinearLayout) findViewById(R.id.layout_amm);
 
+		separatorLayout = (RelativeLayout) findViewById(R.id.separatorLayout);
 		separator = (ImageView) findViewById(R.id.separator);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
 
