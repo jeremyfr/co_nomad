@@ -70,6 +70,9 @@ public class AMMAnnexes extends Activity {
 	private static int t2 = 200; // temps avant de récupérer largeur et hauteur.
 	private static int t3 = 300; // temps avant de mettre le scroll au bon
 									// endroit après ouverture d'une annexe.
+	
+	private int scrollX;
+	private int scrollY;
 
 	private LinearLayout layout; // layout global contenant documentation et
 									// annexes.
@@ -294,6 +297,8 @@ public class AMMAnnexes extends Activity {
 				case NOT_DISPLAYED:
 					break;
 				case DISPLAYED_FREE:
+					scrollX = scrollView.getScrollX();
+					scrollY = scrollView.getScrollY();
 					setAnnexeX(xseparator / 3);
 					hideSeparator();
 					fullScreenAnnexButton
@@ -304,6 +309,8 @@ public class AMMAnnexes extends Activity {
 					break;
 				case DISPLAYED_FULLSCREEN:
 					setAnnexeX(x);
+					scrollView.setScrollX(scrollX);
+					scrollView.setScrollY(scrollY);
 					displaySeparator();
 					fullScreenAnnexButton
 							.setImageResource(R.drawable.btn_fullscreen);
@@ -598,7 +605,7 @@ public class AMMAnnexes extends Activity {
 		});
 	}
 
-	public void onAnnexeClic(WebView webView, final String annexe) {
+	public void onAnnexeClic(WebView webView, String annexe) {
 		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
 		switch (state) {
 		case NOT_DISPLAYED:
