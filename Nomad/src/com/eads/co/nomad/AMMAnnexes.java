@@ -161,7 +161,8 @@ public class AMMAnnexes extends Activity {
 		titreAnnexe.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				scrollView.scrollTo(scrollView.getScrollX(), y_absolue - yinfobulle / 2);
+				scrollView.scrollTo(scrollView.getScrollX(), y_absolue
+						- yinfobulle / 2);
 			}
 		});
 
@@ -441,11 +442,10 @@ public class AMMAnnexes extends Activity {
 			public void run() {
 				try {
 					while (!isInterrupted()) {
-						Thread.sleep(100);
+						Thread.sleep(50);
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								Log.i("Etat", state.toString());
 								switch (state) {
 								case NOT_DISPLAYED:
 									break;
@@ -604,7 +604,6 @@ public class AMMAnnexes extends Activity {
 			// Image a changer
 			setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
 					clickedWB);
-
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
@@ -612,7 +611,7 @@ public class AMMAnnexes extends Activity {
 				setAnnexeX(xmax + xseparator / 3);
 				supprimeElt(annexe, webView);
 				state = AnnexesState.NOT_DISPLAYED;
-			} else {
+			} else if (nb_annexe == 0) {
 				setAnnexeXAndX(xmax / 2);
 				scrollView.setAnnexe(webView, annexe);
 				this.annexe = annexe;
@@ -623,7 +622,18 @@ public class AMMAnnexes extends Activity {
 				// Image a changer
 				setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
 						clickedWB);
-
+				state = AnnexesState.DISPLAYED_FREE;
+			} else {
+				setAnnexeX(x);
+				scrollView.setAnnexe(webView, annexe);
+				this.annexe = annexe;
+				clickedWB = webView;
+				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
+				// Image a changer
+				ajouteList(annexe, String.valueOf(R.drawable.ata), clickedWB);
+				// Image a changer
+				setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
+						clickedWB);
 				state = AnnexesState.DISPLAYED_FREE;
 			}
 			break;
