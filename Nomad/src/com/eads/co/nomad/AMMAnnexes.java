@@ -647,10 +647,14 @@ public class AMMAnnexes extends Activity {
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
-			if (testeActuel(annexe, webView)) {
+			if (testeActuel(annexe, webView) && nb_annexe==1) {
 				setAnnexeX(xmax + xseparator / 3);
 				supprimeElt(annexe, webView);
 				state = AnnexesState.NOT_DISPLAYED;
+			}
+			else if (testeActuel(annexe, webView)) {
+				supprimeElt(annexe, webView);
+				state = AnnexesState.DISPLAYED_FREE;
 			} else {
 				scrollView.setAnnexe(webView, annexe);
 				this.annexe = annexe;
