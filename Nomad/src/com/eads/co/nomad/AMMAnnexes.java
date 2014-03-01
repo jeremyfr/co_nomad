@@ -66,6 +66,11 @@ public class AMMAnnexes extends Activity {
 	private static int xseparator = 160; // largeur de la barre de séparation.
 	private static int yinfobulle = 185; // hauteur de l'image infobulle.
 
+	private static int t1 = 50; // fréquence de rafraichissement du pointeur.
+	private static int t2 = 200; // temps avant de récupérer largeur et hauteur.
+	private static int t3 = 300; // temps avant de mettre le scroll au bon
+									// endroit après ouverture d'une annexe.
+
 	private LinearLayout layout; // layout global contenant documentation et
 									// annexes.
 
@@ -441,7 +446,7 @@ public class AMMAnnexes extends Activity {
 			public void run() {
 				try {
 					while (!isInterrupted()) {
-						Thread.sleep(50);
+						Thread.sleep(t1);
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
@@ -469,7 +474,6 @@ public class AMMAnnexes extends Activity {
 				}
 			}
 		};
-
 		t.start();
 	}
 
@@ -594,7 +598,7 @@ public class AMMAnnexes extends Activity {
 		});
 	}
 
-	public void onAnnexeClic(WebView webView, String annexe) {
+	public void onAnnexeClic(WebView webView, final String annexe) {
 		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
 		switch (state) {
 		case NOT_DISPLAYED:
@@ -608,6 +612,19 @@ public class AMMAnnexes extends Activity {
 			// Image a changer
 			setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
 					clickedWB);
+			// Mise à jour de la position dans la doc.
+			Timer t_ouverture = new Timer();
+			class ScrollTo extends TimerTask {
+				@Override
+				public void run() {
+					runOnUiThread(new Runnable() {
+						public void run() {
+							scrollTo(y_absolue);
+						}
+					});
+				}
+			}
+			t_ouverture.schedule(new ScrollTo(), t3);
 			state = AnnexesState.DISPLAYED_FREE;
 			break;
 		case DISPLAYED_FREE:
@@ -648,7 +665,7 @@ public class AMMAnnexes extends Activity {
 				x = xmax / 2;
 			}
 		}
-		t.schedule(new SetMax(), 200);
+		t.schedule(new SetMax(), t2);
 	}
 
 	// Fonction pour supprimer tout les éléments de la liste
@@ -678,7 +695,6 @@ public class AMMAnnexes extends Activity {
 			listview.performItemClick(
 					listview.getAdapter().getView(position, null, null),
 					position, position);
-			// setAnnexeXAndX(x);
 		} else {
 			Log.e("SupprimeElt",
 					"Indice de l'item : " + trouveDansListe(titre, wb));
