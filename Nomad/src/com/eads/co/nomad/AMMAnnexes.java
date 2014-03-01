@@ -161,8 +161,7 @@ public class AMMAnnexes extends Activity {
 		titreAnnexe.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				scrollView.scrollTo(scrollView.getScrollX(), y_absolue
-						- yinfobulle / 2);
+				scrollTo(y_absolue);
 			}
 		});
 
@@ -474,6 +473,11 @@ public class AMMAnnexes extends Activity {
 		t.start();
 	}
 
+	// Scroll à une ordonnée de la documentation.
+	private void scrollTo(int y) {
+		scrollView.scrollTo(scrollView.getScrollX(), y - yinfobulle / 2);
+	}
+
 	// Affiche l'annexe.
 	private void setAnnexeX(int x) {
 		mDrawerLayout.setDrawerLockMode(0, Gravity.END);
@@ -594,7 +598,7 @@ public class AMMAnnexes extends Activity {
 		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
 		switch (state) {
 		case NOT_DISPLAYED:
-			setAnnexeXAndX(xmax / 2);
+			setAnnexeX(x);
 			scrollView.setAnnexe(webView, annexe);
 			this.annexe = annexe;
 			clickedWB = webView;
@@ -611,20 +615,7 @@ public class AMMAnnexes extends Activity {
 				setAnnexeX(xmax + xseparator / 3);
 				supprimeElt(annexe, webView);
 				state = AnnexesState.NOT_DISPLAYED;
-			} else if (nb_annexe == 0) {
-				setAnnexeXAndX(xmax / 2);
-				scrollView.setAnnexe(webView, annexe);
-				this.annexe = annexe;
-				clickedWB = webView;
-				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-				// Image a changer
-				ajouteList(annexe, String.valueOf(R.drawable.ata), clickedWB);
-				// Image a changer
-				setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
-						clickedWB);
-				state = AnnexesState.DISPLAYED_FREE;
 			} else {
-				setAnnexeX(x);
 				scrollView.setAnnexe(webView, annexe);
 				this.annexe = annexe;
 				clickedWB = webView;
@@ -657,7 +648,7 @@ public class AMMAnnexes extends Activity {
 				x = xmax / 2;
 			}
 		}
-		t.schedule(new SetMax(), 500);
+		t.schedule(new SetMax(), 200);
 	}
 
 	// Fonction pour supprimer tout les éléments de la liste
@@ -743,7 +734,7 @@ public class AMMAnnexes extends Activity {
 			map.put("webview", wb);
 			listItem.add(map);
 			// Création d'un SimpleAdapter qui se chargera de mettre les items
-			// pr�sent dans notre list (listItem) dans la vue affichage_annexes
+			// présent dans notre list (listItem) dans la vue affichage_annexes
 			SimpleAdapter mSchedule = new SimpleAdapter(this.getBaseContext(),
 					listItem, R.layout.affiche_annexes, new String[] { "img",
 							"titre" }, new int[] { R.id.listImage,
