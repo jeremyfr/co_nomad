@@ -161,7 +161,7 @@ public class AMMAnnexes extends Activity {
 		titreAnnexe.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				scrollView.scrollTo(scrollView.getScrollX(), y_absolue);
+				scrollView.scrollTo(scrollView.getScrollX(), y_absolue - yinfobulle / 2);
 			}
 		});
 
