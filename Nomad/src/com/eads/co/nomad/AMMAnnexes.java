@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.webkit.WebView;
@@ -44,7 +45,7 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
  * Class used to manage the display of the documentation.
  * 
  * @author Nicolas Bruniquel
- * @author J�r�my Fricou
+ * @author Jérémy Fricou
  * @author Florian Lefebvre
  * @author Benjamin Louradour
  * @author Guillaume Saas
@@ -78,6 +79,7 @@ public class AMMAnnexes extends Activity {
 
 	private WebView clickedWB; // WebView contenant le lien de l'annexe cliquée.
 	private String annexe; // Nom de l'annexe.
+	private int y_absolue; // Position du lien vers l'annexe dans scrollView.
 
 	private ImageView separator; // barre verticale.
 	private ImageView infobulle; // image de l'infobulle.
@@ -127,13 +129,13 @@ public class AMMAnnexes extends Activity {
 		listview.performItemClick(listview.getAdapter().getView(position, null, null), position, position);
 	}
 	
-	// Affiche le separateur et l'infobulle.
+	// Affiche le séparateur et l'infobulle.
 	private void displaySeparator() {
 		separator.setImageResource(R.drawable.vertical_line);
 		infobulle.setImageResource(R.drawable.infobulle);
 	}
 
-	// Cache le s�parateur et l'infobulle.
+	// Cache le séparateur et l'infobulle.
 	private void hideSeparator() {
 		separator.setImageResource(R.drawable.vertical_line_empty);
 		infobulle.setImageResource(R.drawable.vertical_line_empty);
@@ -169,7 +171,6 @@ public class AMMAnnexes extends Activity {
 	}
 
 	private void setInfobulle(boolean state, int y, int pos) {
-		int y_absolue, y_relative;
 		if (state) {
 			y_absolue = 50 + 30 * pos + warnings.getHeight()
 					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
@@ -192,8 +193,7 @@ public class AMMAnnexes extends Activity {
 					* tools.getHeight() + (pos >= 5 ? 0.5 : 0)
 					* pictures.getHeight());
 		}
-		y_relative = y_absolue - scrollView.getScrollY();
-		displayInfobulle(y_relative);
+		displayInfobulle(y_absolue - scrollView.getScrollY());
 	}
 
 	private void displayInfobulle(final int y) {
@@ -327,6 +327,15 @@ public class AMMAnnexes extends Activity {
 		
 		//Récupération de la largeur et de la hauteur du layout
 		getWidthHeight();
+		
+		
+		// Scroll lors d'un clic sur le titre de l'annexe.
+		titreAnnexe.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				scrollView.scrollTo(scrollView.getScrollX(), y_absolue);
+			}
+		});
 		
 		listview.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -842,7 +851,7 @@ public class AMMAnnexes extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
+	
 	private void expand(final View v) {
 		v.measure(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		final int targtetHeight = v.getMeasuredHeight();
