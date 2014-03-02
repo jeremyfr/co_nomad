@@ -191,15 +191,39 @@ public class Plane3D extends Activity {
 				plane = Primitives.getCube(10);
 				plane.calcTextureWrapSpherical();
 				plane.setTexture("texture");
-				plane.strip();
-				plane.build();
+
 				try {
+					
+					Texture b737_800_2_T = new Texture(getResources().getAssets().open("A380/b737_800_2_T.png"));				
+					TextureManager.getInstance().addTexture("b737_800_2_T.png", b737_800_2_T);
+					
+					Texture a380_01 = new Texture(getResources().getAssets().open("A380/a380_01.png"));				
+					TextureManager.getInstance().addTexture("a380_01.png", a380_01);		
+					
+					Texture A380_mw = new Texture(getResources().getAssets().open("A380/A380_mw.png"));				
+					TextureManager.getInstance().addTexture("A380_mw.png", A380_mw);
+					
+					Texture A380_R = new Texture(getResources().getAssets().open("A380/A380_R.png"));				
+					TextureManager.getInstance().addTexture("A380_R.png", A380_R);
+					
+					Texture A380_part1 = new Texture(getResources().getAssets().open("A380/A380_part1.png"));				
+					TextureManager.getInstance().addTexture("A380_part1.png", A380_part1);	
+					
+					Texture A380_part2 = new Texture(getResources().getAssets().open("A380/A380_part2.png"));				
+					TextureManager.getInstance().addTexture("A380_part2.png", A380_part2);				
+					
+					Texture A380_part3 = new Texture(getResources().getAssets().open("A380/A380_part3.png"));				
+					TextureManager.getInstance().addTexture("A380_part3.png", A380_part3);	
+					
 					plane = Object3D.mergeAll(Loader.loadOBJ(getResources()
 							.getAssets().open("A380/A380.obj"), getResources()
 							.getAssets().open("A380/A380.mtl"), 0.005f));
 				} catch (IOException e) {
 					System.out.println("mauvais chemin");
 				}
+				
+				plane.strip();
+				plane.build();
 				world.addObject(plane);
 
 				Camera cam = world.getCamera();

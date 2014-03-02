@@ -11,7 +11,7 @@ Kd 1 1 1
 Ks 1 1 1
 illum 2
 Ns 18.3792
-map_Kd b737_800_2_T.tga
+map_Kd b737_800_2_T.png
 map_bump 
 bump 
 map_opacity 
@@ -27,7 +27,7 @@ Kd 1 1 1
 Ks 1 1 1
 illum 2
 Ns 18.3792
-map_Kd b737_800_2_T.tga
+map_Kd b737_800_2_T.png
 map_bump 
 bump 
 map_opacity 
@@ -75,7 +75,7 @@ Kd 1 1 1
 Ks 1 1 1
 illum 2
 Ns 18.3792
-map_Kd b737_800_2_T.tga
+map_Kd b737_800_2_T.png
 map_bump 
 bump 
 map_opacity 
@@ -155,7 +155,7 @@ Kd 1 1 1
 Ks 1 1 1
 illum 2
 Ns 21.1121
-map_Kd a380_01.tga
+map_Kd a380_01.png
 map_bump 
 bump 
 map_opacity 
@@ -203,7 +203,7 @@ Kd 1 1 1
 Ks 1 1 1
 illum 2
 Ns 21.1121
-map_Kd a380_01.tga
+map_Kd a380_01.png
 map_bump 
 bump 
 map_opacity 
@@ -219,7 +219,7 @@ Kd 1 1 1
 Ks 0.972314 0.976157 0.976157
 illum 2
 Ns 119.428
-map_Kd A380_mw.tga
+map_Kd A380_mw.png
 map_bump 
 bump 
 map_opacity 
@@ -235,7 +235,7 @@ Kd 1 1 1
 Ks 1 1 1
 illum 2
 Ns 21.1121
-map_Kd A380_L.tga
+map_Kd A380_L.png
 map_bump 
 bump 
 map_opacity 
@@ -251,7 +251,7 @@ Kd 1 1 1
 Ks 1 1 1
 illum 2
 Ns 24.2515
-map_Kd A380_R.tga
+map_Kd A380_R.png
 map_bump 
 bump 
 map_opacity 
@@ -267,7 +267,7 @@ Kd 1 1 1
 Ks 1 1 1
 illum 2
 Ns 29.8571
-map_Kd A380_part1.tga
+map_Kd A380_part1.png
 map_bump 
 bump 
 map_opacity 
@@ -283,7 +283,7 @@ Kd 1 1 1
 Ks 1 1 1
 illum 2
 Ns 25.9921
-map_Kd A380_part2.tga
+map_Kd A380_part2.png
 map_bump 
 bump 
 map_opacity 
@@ -299,7 +299,7 @@ Kd 1 1 1
 Ks 1 1 1
 illum 2
 Ns 14.9285
-map_Kd A380_part3.tga
+map_Kd A380_part3.png
 map_bump 
 bump 
 map_opacity 
