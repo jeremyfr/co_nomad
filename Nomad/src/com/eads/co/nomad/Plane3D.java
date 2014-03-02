@@ -1,8 +1,5 @@
 package com.eads.co.nomad;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
@@ -12,8 +9,6 @@ import javax.microedition.khronos.egl.EGLDisplay;
 import javax.microedition.khronos.opengles.GL10;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -24,12 +19,10 @@ import com.threed.jpct.Light;
 import com.threed.jpct.Loader;
 import com.threed.jpct.Logger;
 import com.threed.jpct.Object3D;
-import com.threed.jpct.Primitives;
 import com.threed.jpct.SimpleVector;
 import com.threed.jpct.Texture;
 import com.threed.jpct.TextureManager;
 import com.threed.jpct.World;
-import com.threed.jpct.util.BitmapHelper;
 import com.threed.jpct.util.MemoryHelper;
 
 /**
@@ -177,20 +170,11 @@ public class Plane3D extends Activity {
 			if (master == null) {
 
 				world = new World();
-				world.setAmbientLight(20, 20, 20);
+				world.setAmbientLight(200, 200, 200);
 
 				sun = new Light(world);
-				sun.setIntensity(250, 250, 250);
-
-				// Create a texture out of the icon...:-)
-				Texture texture = new Texture(BitmapHelper.rescale(
-						BitmapHelper.convert(getResources().getDrawable(
-								R.drawable.ata)), 256, 256));
-				TextureManager.getInstance().addTexture("texture", texture);
-
-				plane = Primitives.getCube(10);
-				plane.calcTextureWrapSpherical();
-				plane.setTexture("texture");
+				sun.enable();
+				sun.setIntensity(500, 500, 500);
 
 				try {
 					
@@ -217,11 +201,12 @@ public class Plane3D extends Activity {
 					
 					plane = Object3D.mergeAll(Loader.loadOBJ(getResources()
 							.getAssets().open("A380/A380.obj"), getResources()
-							.getAssets().open("A380/A380.mtl"), 0.005f));
+							.getAssets().open("A380/A380.mtl"), 0.007f));
 				} catch (IOException e) {
 					System.out.println("mauvais chemin");
 				}
 				
+				plane.setCulling(false);
 				plane.strip();
 				plane.build();
 				world.addObject(plane);
