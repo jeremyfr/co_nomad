@@ -203,7 +203,7 @@ public class JobCard extends Activity {
 		infobulle = (ImageView) findViewById(R.id.infobulle);
 
 		scrollView = (OurScrollView) findViewById(R.id.scrollView);
-
+		scrollView.setActivity(this);
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		titreAnnexe = (TextView) findViewById(R.id.annexTitle);
 		closeAnnexButton = (Button) findViewById(R.id.closeAnnexButton);
