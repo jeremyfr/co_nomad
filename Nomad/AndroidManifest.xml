@@ -27,6 +27,10 @@
             android:label="@string/menu" >
         </activity>
         <activity
+            android:name="com.eads.co.nomad.Plane3D"
+            android:label="@string/menu" >
+        </activity>
+        <activity
             android:name="com.eads.co.nomad.AMM"
             android:label="@string/amm" >
         </activity>
