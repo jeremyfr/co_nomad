@@ -12,6 +12,7 @@
             android:paddingTop="5dp"
             android:layout_gravity="center_horizontal"
             android:text="Titre"
+            android:textColor="@color/text1_dark"
     />
     <ImageView
 	        android:id="@+id/listImage"
