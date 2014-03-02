@@ -11,6 +11,7 @@ import javax.microedition.khronos.opengles.GL10;
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.threed.jpct.Camera;
@@ -48,6 +49,12 @@ public class Plane3D extends Activity {
 
 	private float xpos = -1;
 	private float ypos = -1;
+	private float xpos1 = -1;
+	private float ypos1 = -1;
+	
+	private boolean cameraZoom;
+	private float zoomValueLast;
+	private float zoomValue;
 
 	private Object3D plane = null;
 	private int fps = 0;
@@ -121,6 +128,21 @@ public class Plane3D extends Activity {
 			return true;
 		}
 
+		if (me.getActionMasked() == MotionEvent.ACTION_POINTER_DOWN) {
+			cameraZoom = true;
+			xpos1 = me.getX(1);
+			ypos1 = me.getY(1);
+			zoomValueLast = zoomValue();
+			touchTurn = 0;
+			touchTurnUp = 0;
+		}
+		
+		if (me.getActionMasked() == MotionEvent.ACTION_POINTER_UP) {
+			cameraZoom = false;
+			xpos1 = -1;
+			ypos1 = -1;
+		}
+		
 		if (me.getAction() == MotionEvent.ACTION_UP) {
 			xpos = -1;
 			ypos = -1;
@@ -135,9 +157,17 @@ public class Plane3D extends Activity {
 
 			xpos = me.getX();
 			ypos = me.getY();
-
-			touchTurn = xd / -100f;
-			touchTurnUp = yd / -100f;
+			if (cameraZoom) {
+				xpos1 = me.getX(1);
+				ypos1 = me.getY(1);
+				float currentZoomValue = zoomValue();
+				float newValue = 1 + (zoomValueLast - currentZoomValue) / 400f;
+				zoomValueLast = currentZoomValue;
+				zoomValue = newValue;
+			} else {
+				touchTurn = xd / -100f;
+				touchTurnUp = yd / -100f;
+			}
 			return true;
 		}
 
@@ -149,10 +179,19 @@ public class Plane3D extends Activity {
 
 		return super.onTouchEvent(me);
 	}
-
+	
+	private float zoomValue() {
+		float distance = (float) Math.sqrt((xpos - xpos1) * (xpos - xpos1) + (ypos - ypos1) * (ypos - ypos1));
+		return distance;
+	}
+	
 	protected boolean isFullscreenOpaque() {
 		return true;
 	}
+	
+	
+
+
 
 	class MyRenderer implements GLSurfaceView.Renderer {
 
@@ -242,7 +281,19 @@ public class Plane3D extends Activity {
 				plane.rotateX(touchTurnUp);
 				touchTurnUp = 0;
 			}
-
+			
+			// zoom
+			if (cameraZoom) {
+				Camera cam = world.getCamera();
+				if (zoomValue > 1.0) {
+					cam.moveCamera(Camera.CAMERA_MOVEOUT, zoomValue*0.5f);
+				}
+				else if (zoomValue < 1.0) {
+					cam.moveCamera(Camera.CAMERA_MOVEIN, zoomValue*0.5f);
+				}
+				cam.lookAt(plane.getTransformedCenter());
+			}
+			
 			world.renderScene(fb);
 			world.draw(fb);
 			fb.display();
