@@ -399,12 +399,7 @@
                             android:textColor="@color/text1_light"
                             android:textSize="@dimen/font_size_2" />
 
-                        <Button
-                            android:id="@+id/closeAllAnnexButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Close All"
-                            android:visibility="invisible" />
+                      
 
                         <ImageButton
                             android:id="@+id/closeAnnexButton"
