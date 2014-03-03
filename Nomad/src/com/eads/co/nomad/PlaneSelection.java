@@ -3,6 +3,8 @@ package com.eads.co.nomad;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.eads.co.nomad.R.color;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.DataSetObserver;
@@ -36,6 +38,9 @@ public class PlaneSelection extends Activity{
 	EditText theID;
 	HashMap<String,ArrayList<String>> listeAvionFSN;
 	HashMap<String,ArrayList<String>> listeAvionMSN;
+	int planeSelected = -1;
+	
+	
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planeselection);
@@ -90,8 +95,7 @@ public class PlaneSelection extends Activity{
         
         
         fsn = (Spinner) findViewById(R.id.spinnerFSN);
-        //spAdapt = new ArrayAdapter<String>(this, 0);
-        //fsn.setAdapter(spAdapt);
+
         textmsn= (TextView) findViewById(R.id.textmsn);
         textfsn = (TextView) findViewById(R.id.textfsn);
         fsn.setVisibility(View.INVISIBLE);
@@ -108,15 +112,24 @@ public class PlaneSelection extends Activity{
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
+				
+
+	        	int c = getResources().getColor(R.color.blue);
+	        	planes.getChildAt(arg2).setBackgroundColor(c);
+	            
+	        	if (planeSelected != -1){
+	        		int color = getResources().getColor(R.color.background1_light);
+		        	planes.getChildAt(planeSelected).setBackgroundColor(color);
+	        	}
+	        	planeSelected = arg2;
+				
+				
 				//Afficher fsn et msn
 				spAdapt = new ArrayAdapter<String>(PlaneSelection.this, android.R.layout.simple_list_item_1, listeAvionFSN.get(listeAvions.get(arg2)));
-
 				fsn.setAdapter(spAdapt);
-				
 				fsn.setVisibility(View.VISIBLE);
 				fsn.setSelection(0);
 				fsn.setOnItemSelectedListener(new OnItemSelectedListener() {
-
 					@Override
 					public void onItemSelected(AdapterView<?> arg0, View arg1,
 							int arg2, long arg3) {

@@ -16,6 +16,8 @@ public class DataParsing {
 	private Document document;
 	private Element racine;
 	private ArrayList<String> stepsProcedure = new ArrayList<String>();
+	private List<Element> listUnLitem;
+	private Iterator<Element> iteratorUnLitem;
 	public DataParsing(InputStream input) throws JDOMException, IOException {
 		super();
 		parser = new SAXBuilder();
@@ -133,7 +135,7 @@ public class DataParsing {
 									    while (iteratorRefInt.hasNext()) {
 											Element refInt = (Element) iteratorRefInt.next();
 											jobSetUp += "<li><span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span></li>";
-											stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+jobSetUp.length()+"'>"+refInt.getText()+"</a><br>");
+											
 										}
 									}
 								}else{
@@ -686,7 +688,99 @@ public class DataParsing {
 	public String getPictures() {
 		String pictures = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 		// TODO Auto-generated method stub
-		pictures += "PICTURES";
+		//pictures += "PICTURES";
+		List<Element> listPretopic = racine.getChild("TFMATR").getChildren("PRETOPIC");
+		List<Element> listList1;
+		List<Element> listL1Item;
+		List<Element> listTable;
+		List<Element> listTgroup;
+		List<Element> listColspec;
+		List<Element> listColspec2;
+		List<Element> listSpanSpec;
+		List<Element> listTbody;
+		List<Element> listRow;
+		List<Element> listEntry;
+		List<Element> listPara;
+		List<Element> listrefint;
+		Iterator<Element> iteratorL1Item;
+		Iterator<Element> iteratorPara;
+		Iterator<Element> iteratorTopics = listPretopic.iterator();
+		Iterator<Element> iteratorList1;
+		Iterator<Element> iteratorTable;
+		Iterator<Element> iteratorTgroup;
+		Iterator<Element> iteratorColspec;
+		Iterator<Element> iteratorColspec2;
+		Iterator<Element> iteratorSpanSpec;
+		Iterator<Element> iteratorTbody;
+		Iterator<Element> iteratorRow;
+		Iterator<Element> iteratorEntry;
+		Iterator<Element> iteratorrefint;
+		while(iteratorTopics.hasNext()){
+			Element topic = iteratorTopics.next();
+			listList1 = topic.getChildren("LIST1");
+			iteratorList1 = listList1.iterator();
+			while(iteratorList1.hasNext()){
+				Element list1 = iteratorList1.next();
+				listL1Item = list1.getChildren("L1ITEM");
+				iteratorL1Item = listL1Item.iterator();
+				while(iteratorL1Item.hasNext()){
+					Element l1item = iteratorL1Item.next();
+					listTable = l1item.getChildren("TABLE");
+					iteratorTable = listTable.iterator();
+					while (iteratorTable.hasNext()){
+						Element table = iteratorTable.next();
+						listTgroup = table.getChildren("TGROUP");
+						iteratorTgroup = listTgroup.iterator();
+						while(iteratorTgroup.hasNext()){
+							Element tGroup = iteratorTgroup.next();
+							listColspec = tGroup.getChildren("COLSPEC");
+							iteratorColspec = listColspec.iterator();
+							while (iteratorColspec.hasNext()){
+								Element colspec = iteratorColspec.next();
+								listColspec2 = colspec.getChildren("COLSPEC");
+								iteratorColspec2 = listColspec2.iterator();
+								while (iteratorColspec2.hasNext()){
+									Element colspec2 = iteratorColspec2.next();
+									listSpanSpec = colspec2.getChildren("SPANSPEC");
+									iteratorSpanSpec = listSpanSpec.iterator();
+									while(iteratorSpanSpec.hasNext()){
+										Element spanspec = iteratorSpanSpec.next();
+										listTbody = spanspec.getChildren("TBODY");
+										iteratorTbody = listTbody.iterator();
+										while(iteratorTbody.hasNext()){
+											Element tBody = iteratorTbody.next();
+											listRow = tBody.getChildren("ROW");
+											iteratorRow = listRow.iterator();
+											while(iteratorRow.hasNext()){
+												Element row = iteratorRow.next();
+												listEntry = row.getChildren("ENTRY");
+												iteratorEntry = listEntry.iterator();
+												while(iteratorEntry.hasNext()){
+													Element entry = iteratorEntry.next();
+													listPara = entry.getChildren("PARA");
+													iteratorPara = listPara.iterator();
+													while(iteratorPara.hasNext()){
+														Element para = iteratorPara.next();
+														listrefint = para.getChildren("REFINT");
+														iteratorrefint = listrefint.iterator();
+														while(iteratorrefint.hasNext()){
+															Element refint = iteratorrefint.next();
+															pictures += "<img src='ata.jpg'/><br>";
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						
+					}
+				}
+			}
+		}
+
 		pictures += "</body></html>";
 		return pictures;
 	}
