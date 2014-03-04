@@ -109,10 +109,13 @@ public class PlaneSelection extends Activity{
 			@Override
 			public void onClick(View arg0) {
 				//mettre en place un if pour voir si l'id existe
+				String fsnToSend = "40";
+				String msnToSend = "69";
 				Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
-				intent.putExtra("FSN", "");
-				intent.putExtra("MSN", "");
-				intent.putExtra("ID", "");
+				intent.putExtra("Avion",selectedPlane );
+				intent.putExtra("FSN", fsnToSend);
+				intent.putExtra("MSN", msnToSend);
+				intent.putExtra("ID", "F-GFKQ");
 				startActivity(intent);
 				
 			}
@@ -184,10 +187,14 @@ public class PlaneSelection extends Activity{
 					public void onItemSelected(AdapterView<?> arg0, View arg1,
 							int arg2, long arg3) {
 						if(arg2 != 0){
+							String msnToSend = (String)msn.getSelectedItem();
+							String fsnToSend = listeAvionFSN.get(selectedPlane).get(arg2);
 							Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
-							intent.putExtra("FSN", "");
-							intent.putExtra("MSN", "");
-							intent.putExtra("ID", "");
+							intent.putExtra("Avion",selectedPlane );
+							intent.putExtra("FSN", fsnToSend);
+							intent.putExtra("MSN", msnToSend);
+							intent.putExtra("ID", "F-GFKQ");
+							startActivity(intent);
 							startActivity(intent);
 						}
 					}
