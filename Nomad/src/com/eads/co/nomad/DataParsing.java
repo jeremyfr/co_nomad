@@ -765,7 +765,7 @@ public class DataParsing {
 														iteratorrefint = listrefint.iterator();
 														while(iteratorrefint.hasNext()){
 															Element refint = iteratorrefint.next();
-															pictures += "<img src='ata.jpg'/><br>";
+															pictures += refint.getText() +"<br><img src='ata.jpg'/><br>";
 														}
 													}
 												}
