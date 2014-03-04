@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -16,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
@@ -35,6 +39,13 @@ public class ATASelection extends Activity {
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		setContentView(R.layout.activity_ataselection);
+		
+		if (Intent.ACTION_SEARCH.equals(getIntent().getAction())) {
+		    String query = getIntent().getStringExtra(SearchManager.QUERY);
+		    Intent mapIntent = new Intent(this, Research.class);
+		    mapIntent.putExtra("query", query);
+		    startActivity(mapIntent);
+		}
 		
 		instance = this;
 		getATAList(); // retrieve the list of ATAs and sub ATAs
@@ -165,21 +176,24 @@ public class ATASelection extends Activity {
 	          }
 	        }
 	      });
-		// Search field
-		EditText editText = (EditText) findViewById(R.id.search);
-		editText.setOnEditorActionListener(new OnEditorActionListener() {
-			@Override
-			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-				boolean handled = false;
-		        if (actionId == EditorInfo.IME_ACTION_SEND) {
-		        	Intent intent = new Intent(ATASelection.this, Research.class);
-		            startActivity(intent);
-		            handled = true;
-		        }
-		        return handled;
-			}
-		});
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menusearch, menu);
+	    
+	    SearchManager searchManager =
+	            (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+	     SearchView searchView =
+	             (SearchView) menu.findItem(R.id.search).getActionView();
+	     searchView.setSearchableInfo(
+	             searchManager.getSearchableInfo(getComponentName()));
+
+	    return true;
+	}
+	
+	
 	
 	public void getATAList(){
 		listATA = new ArrayList<ATA>();

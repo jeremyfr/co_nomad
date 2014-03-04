@@ -5,5 +5,10 @@
     android:orientation="vertical"
     android:background="@color/background1_light" >
     
+    <ListView
+        android:id="@+id/resultsSearch"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent" >
+    </ListView>
 
 </LinearLayout>
