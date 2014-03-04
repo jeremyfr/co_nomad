@@ -23,7 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="0dp"
             android:gravity="right"
-            android:text="OK" />
+            android:background="@color/blue"
+            android:textColor="@color/background1_dark"
+            android:text="Validate" />
     </LinearLayout>
 
 </LinearLayout>

@@ -746,7 +746,6 @@ public class JobCard extends Activity {
 								ps.setTask(toDel.getTask());
 								previousSteps.add(ps);
 								stepAdaptPrevious.notifyDataSetChanged();
-								
 							}
 						}
 
@@ -812,7 +811,7 @@ public class JobCard extends Activity {
 		}
 
 		@Override
-		public Object getItem(int arg0) {
+		public PreviousStep getItem(int arg0) {
 			return mStep.get(arg0);
 		}
 
@@ -831,17 +830,50 @@ public class JobCard extends Activity {
 			
 				arg1 = mInf.inflate(R.layout.previousstep, null);
 				h = new PreviousStepViewHolder();
+				h.mButton = (Button) arg1.findViewById(R.id.invalidate);
+				h.mButton.setVisibility(View.INVISIBLE);
 				h.mWV = (WebView) arg1.findViewById(R.id.webViewPrevious);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
 				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
 				h.mWV.setBackgroundColor(getResources().getColor(R.color.background2_light));
 
+				if(pos ==previousSteps.size()-1){
+
+					h.mButton.setVisibility(View.VISIBLE);
+					h.mButton.setOnClickListener(new OnClickListener() {
+						
+						@Override
+						public void onClick(View arg0) {
+							if(pos == previousSteps.size()-1){
+								LayoutParams lpc = (LayoutParams) listStepProc.getLayoutParams();
+								lpc.height += 110;
+								listStepProc.setLayoutParams(lpc);
+								lpc = (LayoutParams) listStepPreviousProc.getLayoutParams();
+								lpc.height -=110;
+								listStepPreviousProc.setLayoutParams(lpc);
+								
+								PreviousStep toDel = previousSteps.remove(pos);
+								
+								Step s = new Step();
+								s.setTask(toDel.getTask());
+								steps.add(0,s);
+								stepAdapt.notifyDataSetChanged();
+								stepAdaptPrevious.notifyDataSetChanged();
+								
+							}
+						}
+
+						
+					});
+				}else{
+					h.mButton.setVisibility(View.INVISIBLE);
+				}
 				arg1.setTag(h);
 			}
 			else{
 				h = (PreviousStepViewHolder) arg1.getTag();
-			};
+			}
 			h.setmWV(mStep.get(pos).getTask());
 			
 			return arg1;
@@ -853,13 +885,15 @@ public class JobCard extends Activity {
 
 		private class PreviousStepViewHolder{
 			private WebView mWV;
-			
+			private Button mButton;
 			
 			public void setmWV(String t){
 				mWV.loadDataWithBaseURL("file:///android_asset/", t, "text/html", "UTF-8", null);
-
-		}
-
+			}
+			
+			public void setButton(Button b){
+				mButton = b;			
+			}
 		
 	}
 	}

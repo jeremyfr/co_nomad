@@ -184,6 +184,8 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+            		android:background="@color/blue"
+            		android:textColor="@color/background1_dark"
                     android:text="> Previous Steps" />
 
                 <LinearLayout
