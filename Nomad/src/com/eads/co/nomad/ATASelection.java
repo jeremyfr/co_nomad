@@ -2,28 +2,21 @@ package com.eads.co.nomad;
 
 import java.util.ArrayList;
 
-import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.view.KeyEvent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class ATASelection extends Activity {
 	private ATASelection instance;
@@ -33,13 +26,20 @@ public class ATASelection extends Activity {
 	private ListView sousSousListeATA;
 	private int ataSelected = -1;
 	private int lastSubATASelected = -1;
-
+	private String title;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		String msn, fsn,id,plane;
+		Bundle infos = this.getIntent().getExtras();
+		fsn = infos.getString("FSN");
+		msn = infos.getString("MSN");
+		id = infos.getString("ID");
+		plane = infos.getString("Avion");
 		setContentView(R.layout.activity_ataselection);
-		
+		title = "Plane:"+plane+" MSN:"+msn+" FSN:"+fsn +" ID:"+id;
+		setTitle(title); 
 		if (Intent.ACTION_SEARCH.equals(getIntent().getAction())) {
 		    String query = getIntent().getStringExtra(SearchManager.QUERY);
 		    Intent mapIntent = new Intent(this, Research.class);
@@ -138,7 +138,8 @@ public class ATASelection extends Activity {
 	        		  intent.putExtra("task", "EN30115140080200");
 	        		  break;
 	        	  }
-				  startActivity(intent); 
+	        	  intent.putExtra("titre", title);
+	        	  startActivity(intent); 
 				}
 				else if (subAta.getDescription() == "- 20 - Air Intakes"){
 	        	  switch(position){
@@ -155,6 +156,7 @@ public class ATASelection extends Activity {
 	        		  intent.putExtra("task", "EN30210004080700");
 	        		  break;
 	        	  }
+	        	  intent.putExtra("titre", title);
 				  startActivity(intent); 
 				}
 	          }
@@ -171,6 +173,7 @@ public class ATASelection extends Activity {
 	        		  intent.putExtra("task", "EN52142140080100");
 	        		  break;
 	        	  }
+	        	  intent.putExtra("titre", title);
 				  startActivity(intent); 
 				}
 	          }

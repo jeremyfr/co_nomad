@@ -124,7 +124,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 	// Pour le multitouch
 	private ImageView annexImg;
 	private FrameLayout layoutImg;
-	
+	private String title;
 
 	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
 
@@ -341,7 +341,9 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 		String ammPart = "";
 		if (bundle != null) {
 			ammPart = (String) bundle.get("task");
+			title = bundle.getString("titre");
 		}
+		
 		InputStream input = null;
 		try {
 			input = getApplicationContext().getAssets().open(ammPart + ".xml");
@@ -350,7 +352,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 		}
 		try {
 			parser = new DataParsing(input);
-			this.setTitle(parser.getTitle());
+			this.setTitle(parser.getTitle()+ " "+ title);
 
 			SwitchTaskManager taskManager = new SwitchTaskManager(this, this,
 					"amm");

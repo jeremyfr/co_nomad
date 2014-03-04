@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:color = "@color/background1_dark"
             android:textSize="@dimen/font_size_3"
+            android:background="@color/background2_light"
             android:text="TextView" />
 
         <EditText
@@ -36,6 +37,8 @@
             android:id="@+id/buttonsearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:textColor="@color/background1_dark"
             android:text="Search" />
 
     </LinearLayout>
@@ -55,10 +58,11 @@
 
             <TextView
                 android:id="@+id/titrelistplane"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Plane List"
                 android:textSize="@dimen/font_size_3"
+                android:background="@color/background2_light"
                 android:color="@color/background1_dark" />
 
             <ListView
@@ -123,11 +127,13 @@
 
         <TextView
             android:id="@+id/textPlanes"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/background2_light"
+            android:text="Last planes"
             android:textSize="@dimen/font_size_3"
-            android:color="@color/background1_dark"
-            android:text="Last planes" />
+            android:color="@color/background1_dark" />
+
 <View
     android:layout_width="fill_parent"
     android:layout_height="1dp"

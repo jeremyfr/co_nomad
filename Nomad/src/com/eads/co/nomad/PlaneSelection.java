@@ -37,11 +37,12 @@ public class PlaneSelection extends Activity{
 	ArrayList<String> listeFSN; 
 	ArrayList<String> listeMSN; 
 	static ArrayList<String> listLastPlanes; 
-	
+	String avionid,selectedPlane;
 	Button search;
 	EditText theID;
 	HashMap<String,ArrayList<String>> listeAvionFSN;
 	HashMap<String,ArrayList<String>> listeAvionMSN;
+	
 	int planeSelected = -1;
 	
 	
@@ -109,6 +110,9 @@ public class PlaneSelection extends Activity{
 			public void onClick(View arg0) {
 				//mettre en place un if pour voir si l'id existe
 				Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
+				intent.putExtra("FSN", "");
+				intent.putExtra("MSN", "");
+				intent.putExtra("ID", "");
 				startActivity(intent);
 				
 			}
@@ -143,7 +147,7 @@ public class PlaneSelection extends Activity{
 		        	planes.getChildAt(planeSelected).setBackgroundColor(color);
 	        	}
 	        	planeSelected = arg2;
-				
+				selectedPlane = listeAvions.get(arg2);
 				
 				//Afficher fsn et msn
 				spAdapt = new ArrayAdapter<String>(PlaneSelection.this, android.R.layout.simple_list_item_1, listeAvionFSN.get(listeAvions.get(arg2)));
@@ -155,7 +159,13 @@ public class PlaneSelection extends Activity{
 					public void onItemSelected(AdapterView<?> arg0, View arg1,
 							int arg2, long arg3) {
 						if(arg2 != 0){
+							String fsnToSend = (String)fsn.getSelectedItem();
+							String msnToSend = listeAvionMSN.get(selectedPlane).get(arg2);
 							Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
+							intent.putExtra("Avion",selectedPlane );
+							intent.putExtra("FSN", fsnToSend);
+							intent.putExtra("MSN", msnToSend);
+							intent.putExtra("ID", "F-GFKQ");
 							startActivity(intent);
 							listLastPlanes.add(spAdapt.getItem(arg2));
 						}
@@ -175,6 +185,9 @@ public class PlaneSelection extends Activity{
 							int arg2, long arg3) {
 						if(arg2 != 0){
 							Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
+							intent.putExtra("FSN", "");
+							intent.putExtra("MSN", "");
+							intent.putExtra("ID", "");
 							startActivity(intent);
 						}
 					}
@@ -192,8 +205,7 @@ public class PlaneSelection extends Activity{
 				msn.setVisibility(View.VISIBLE);
 
 				textor.setVisibility(View.VISIBLE);
-				InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-		        imm.hideSoftInputFromWindow(theID.getWindowToken(), 0);
+
 			}
         	
 		});

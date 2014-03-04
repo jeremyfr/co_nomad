@@ -158,6 +158,9 @@ public class MainActivityJobCards extends FragmentActivity {
         //Intent intent = new Intent(this, JobCard.class);
 		Intent intent = new Intent(this, JobCard.class);
         intent.putExtra("task", "EN30115140080100");
+        intent.putExtra("FSN", "EN30115140080100");
+        intent.putExtra("MSN", "EN30115140080100");
+        intent.putExtra("ID", "EN30115140080100");
         startActivity(intent);
 	}
 	
