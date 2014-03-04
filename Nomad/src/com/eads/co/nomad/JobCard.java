@@ -744,8 +744,12 @@ public class JobCard extends Activity {
 								stepAdapt.notifyDataSetChanged();
 								PreviousStep ps = new PreviousStep();
 								ps.setTask(toDel.getTask());
+
 								previousSteps.add(ps);
-								stepAdaptPrevious.notifyDataSetChanged();
+								//stepAdaptPrevious.notifyDataSetChanged();
+								stepAdaptPrevious = new PreviousStepListAdapter(ct);
+								stepAdaptPrevious.setListItems(previousSteps);
+								listStepPreviousProc.setAdapter(stepAdaptPrevious);
 							}
 						}
 
@@ -838,14 +842,14 @@ public class JobCard extends Activity {
 				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
 				h.mWV.setBackgroundColor(getResources().getColor(R.color.background2_light));
 
-				if(pos ==previousSteps.size()-1){
+				if(pos == (mStep.size())-1){
 
 					h.mButton.setVisibility(View.VISIBLE);
 					h.mButton.setOnClickListener(new OnClickListener() {
 						
 						@Override
 						public void onClick(View arg0) {
-							if(pos == previousSteps.size()-1){
+							if(pos == (mStep.size())-1 ){
 								LayoutParams lpc = (LayoutParams) listStepProc.getLayoutParams();
 								lpc.height += 110;
 								listStepProc.setLayoutParams(lpc);
@@ -855,11 +859,15 @@ public class JobCard extends Activity {
 								
 								PreviousStep toDel = previousSteps.remove(pos);
 								
+								
 								Step s = new Step();
 								s.setTask(toDel.getTask());
 								steps.add(0,s);
 								stepAdapt.notifyDataSetChanged();
-								stepAdaptPrevious.notifyDataSetChanged();
+								stepAdaptPrevious = new PreviousStepListAdapter(ct);
+								stepAdaptPrevious.setListItems(previousSteps);
+								listStepPreviousProc.setAdapter(stepAdaptPrevious);
+								
 								
 							}
 						}
@@ -892,7 +900,8 @@ public class JobCard extends Activity {
 			}
 			
 			public void setButton(Button b){
-				mButton = b;			
+				mButton = b;
+				b.setVisibility(View.INVISIBLE);
 			}
 		
 	}
