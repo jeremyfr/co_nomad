@@ -57,7 +57,7 @@ public class ATASelection extends Activity {
 			listeStrings[i] = listATA.get(i).getDescription();
 		}
 
-		listeATAView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listeStrings));
+		listeATAView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,listeStrings));
 		
 		sousListeATAView = (ListView)findViewById(R.id.sousListeATA);
 		sousSousListeATA = (ListView)findViewById(R.id.sousSousListeATA);
@@ -88,10 +88,10 @@ public class ATASelection extends Activity {
 	    			sousListeStrings[i] = listSubATA.get(i).getDescription();
 	    		}
 
-	    		sousListeATA.setAdapter(new ArrayAdapter<String>(instance, android.R.layout.simple_list_item_1,sousListeStrings));
+	    		sousListeATA.setAdapter(new ArrayAdapter<String>(instance, R.layout.simple_list_item_ata,sousListeStrings));
 	    		// remove previous sublist
 	    		sousListeStrings = new String[0];
-	    		sousSousListeATA.setAdapter(new ArrayAdapter<String>(instance, android.R.layout.simple_list_item_1,sousListeStrings));
+	    		sousSousListeATA.setAdapter(new ArrayAdapter<String>(instance, R.layout.simple_list_item_ata,sousListeStrings));
 	        }
 	      });
 		
@@ -117,7 +117,7 @@ public class ATASelection extends Activity {
 	    			sousListeStrings[i] = listSubSubATA.get(i).getDescription();
 	    		}
 
-	    		sousSousListeATA.setAdapter(new ArrayAdapter<String>(instance, android.R.layout.simple_list_item_1,sousListeStrings));
+	    		sousSousListeATA.setAdapter(new ArrayAdapter<String>(instance, R.layout.simple_list_item_ata,sousListeStrings));
 
 	        }
 	      });
@@ -209,11 +209,6 @@ public class ATASelection extends Activity {
 		ATALevel3 chap5 = new ATALevel3("51-801 - Installation of the Wing Anti-ice Control-valve");
 		ATALevel3 chap6 = new ATALevel3("51-802 - Installation of the Wing Anti-ice Control-valve-filter");
 		
-		ATALevel3 chap7 = new ATALevel3("section 1");
-		ATALevel3 chap8 = new ATALevel3("section 2");
-		ATALevel3 chap9 = new ATALevel3("section 3");
-		ATALevel3 chap10 = new ATALevel3("section 4");
-		
 		ATALevel3 chap11 = new ATALevel3("21-801 - Installation of the Door Locking Mechanism Door M4L/M4R");
 		ATALevel3 chap12 = new ATALevel3("21-801 - Adjustment of the Door Locking Mechanism Door M4L/M4R");
 		ATALevel3 chap13 = new ATALevel3("21-801 - Installation of the Door-Locking Mechanism Door M5L/M5R");
@@ -233,10 +228,6 @@ public class ATASelection extends Activity {
 		chaptersATA30Airfoil.add(chap6);
 		
 		ArrayList<ATALevel3> chaptersATA36 = new ArrayList<ATALevel3>();
-		chaptersATA36.add(chap7);
-		chaptersATA36.add(chap8);
-		chaptersATA36.add(chap9);
-		chaptersATA36.add(chap10);
 		
 		ArrayList<ATALevel3> chaptersATA52 = new ArrayList<ATALevel3>();
 		chaptersATA52.add(chap11);
