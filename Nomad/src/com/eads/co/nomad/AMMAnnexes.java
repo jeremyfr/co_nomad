@@ -435,12 +435,14 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 			picturesWV = ((WebView) findViewById(R.id.pictures_text));
 
 			picturesWV.setInitialScale(100);
+			
 			picturesWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getPictures(), "text/html", "UTF-8", null);
 			picturesWV.setWebViewClient(taskManager);
 			picturesWV.getSettings().setJavaScriptEnabled(true);
 			picturesWV.addJavascriptInterface(new JavaScriptInterface(this),
 					"MyAndroid");
+			picturesWV.getLayoutParams().height = pictures.getLayoutParams().height;
 		} catch (Exception e) {
 			ammPart = ammPart.substring(ammPart.lastIndexOf('/') + 1);
 			this.setTitle("Procedure " + ammPart + " introuvable");
