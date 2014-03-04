@@ -191,14 +191,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@color/background1_light"
+                    android:background="@color/background2_light"
                     android:orientation="vertical" >
 
                     <ListView
                         android:id="@+id/listPreviousStep"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/background1_light"
+                        android:background="@color/background2_light"
                         android:clickable="false"
                         android:textColor="@color/blue" >
 

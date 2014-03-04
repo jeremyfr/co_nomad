@@ -835,7 +835,7 @@ public class JobCard extends Activity {
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
 				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
-				h.mWV.setBackgroundColor(getResources().getColor(R.color.background1_light));
+				h.mWV.setBackgroundColor(getResources().getColor(R.color.background2_light));
 
 				arg1.setTag(h);
 			}
