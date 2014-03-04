@@ -4,7 +4,10 @@
     android:layout_height="match_parent"
     android:background = "@color/background1_light"
     android:padding="@dimen/activity_margin"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:id="@+id/mainLayout"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
 
     <Space
         android:layout_width="match_parent"
@@ -26,7 +29,8 @@
             android:id="@+id/searchID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"   />
+            android:ems="10"
+            android:inputType="text" />
 
         <Button
             android:id="@+id/buttonsearch"
@@ -35,51 +39,50 @@
             android:text="Search" />
 
     </LinearLayout>
-
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="1dp"
+    android:background="@android:color/darker_gray"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="353dp"
         android:layout_marginTop="30dp" >
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="578dp"
+            android:layout_height="match_parent"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/titrelistplane"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-           		android:color = "@color/background1_dark"
-            	android:textSize="@dimen/font_size_3"
-                android:text="Plane List" />
+                android:text="Plane List"
+                android:textSize="@dimen/font_size_3"
+                android:color="@color/background1_dark" />
 
             <ListView
                 android:id="@+id/listViewPlanes"
                 android:layout_width="200dp"
                 android:layout_height="match_parent" >
-            </ListView>
 
+            </ListView>
+            
         </LinearLayout>
+	<View
+    android:layout_width="1dp"
+    android:layout_height="fill_parent"
+    android:background="@android:color/darker_gray"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="50"
             android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/textmsn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                
-           		android:color = "@color/background1_dark"
-            	android:textSize="@dimen/font_size_3"
-                android:text="MSN" />
 
             <Spinner
                 android:id="@+id/spinnerMSN"
-                android:layout_width="475dp"
+                android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center" />
 
@@ -90,33 +93,50 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            
-           		android:color = "@color/background1_dark"
-            	android:textSize="@dimen/font_size_3"
-            android:text="or" />
+            android:text="or"
+            android:textSize="@dimen/font_size_3"
+            android:color="@color/background1_dark" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="50"
             android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/textfsn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                
-           		android:color = "@color/background1_dark"
-            	android:textSize="@dimen/font_size_3"
-                android:text="FSN" />
 
             <Spinner
                 android:id="@+id/spinnerFSN"
-                android:layout_width="475dp"
+                android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center" />
 
         </LinearLayout>
+
+    </LinearLayout>
+	<View
+    android:layout_width="fill_parent"
+    android:layout_height="1dp"
+    android:background="@android:color/darker_gray"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textPlanes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_3"
+            android:color="@color/background1_dark"
+            android:text="Last planes" />
+<View
+    android:layout_width="fill_parent"
+    android:layout_height="1dp"
+    android:background="@android:color/darker_gray"/>
+        <ListView
+            android:id="@+id/listlastPlanes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
 
     </LinearLayout>
 

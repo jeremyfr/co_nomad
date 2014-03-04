@@ -327,14 +327,13 @@
                             <LinearLayout
                                 android:id="@+id/pictures_layout"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_height="match_parent"
                                 android:orientation="vertical" >
 
                                 <WebView
                                     android:id="@+id/pictures_text"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="match_parent"
                                     android:fontFamily="@string/font"
                                     android:textColor="@color/text1_light"
                                     android:textSize="@dimen/font_size_4" />

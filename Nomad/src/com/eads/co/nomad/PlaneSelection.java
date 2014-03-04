@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.eads.co.nomad.R.color;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -26,14 +28,16 @@ import android.widget.TextView;
 
 public class PlaneSelection extends Activity{
 
-	TextView titre, id,textor,textmsn,textfsn;
+	TextView titre, id,textor;
 	Spinner msn, fsn;
 	ArrayAdapter<String> spAdapt;
 	ArrayAdapter<String> planeAdapt;
-	ListView planes;
+	ListView planes,lastplanes;
 	ArrayList<String> listeAvions;
 	ArrayList<String> listeFSN; 
 	ArrayList<String> listeMSN; 
+	static ArrayList<String> listLastPlanes; 
+	
 	Button search;
 	EditText theID;
 	HashMap<String,ArrayList<String>> listeAvionFSN;
@@ -44,7 +48,24 @@ public class PlaneSelection extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.planeselection);
+        listLastPlanes = new ArrayList<String>();
+        listLastPlanes.add("A380 FSN:35 MSN:40");
+        listLastPlanes.add("A320 FSN:353 MSN:226");
+        lastplanes = (ListView) findViewById(R.id.listlastPlanes);
+        findViewById(R.id.mainLayout).requestFocus();
+        lastplanes.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,listLastPlanes));
+        
+        lastplanes.setOnItemClickListener(new OnItemClickListener() {
 
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
+				startActivity(intent);
+				
+			}
+		});
+        
 		getActionBar().setDisplayHomeAsUpEnabled(true);
         listeAvions = new ArrayList<String>();
         listeAvions.add("A380");
@@ -53,22 +74,22 @@ public class PlaneSelection extends Activity{
         listeAvionFSN = new HashMap<String, ArrayList<String>>();
         listeAvionMSN = new HashMap<String, ArrayList<String>>();
         listeFSN = new ArrayList<String>();
-        listeFSN.add("");
+        listeFSN.add("FSN");
         listeFSN.add("35");
         listeFSN.add("28");
         listeMSN = new ArrayList<String>();
-        listeMSN.add("");
+        listeMSN.add("MSN");
         listeMSN.add("40");
         listeMSN.add("69");
         listeAvionFSN.put("A380", listeFSN);
         listeAvionMSN.put("A380", listeMSN);
         
         listeFSN = new ArrayList<String>();
-        listeFSN.add("");
+        listeFSN.add("FSN");
         listeFSN.add("353");
         
         listeMSN = new ArrayList<String>();
-        listeMSN.add("");
+        listeMSN.add("MSN");
         listeMSN.add("226");
         
         listeAvionFSN.put("A320", listeFSN);
@@ -96,14 +117,14 @@ public class PlaneSelection extends Activity{
         
         fsn = (Spinner) findViewById(R.id.spinnerFSN);
 
-        textmsn= (TextView) findViewById(R.id.textmsn);
-        textfsn = (TextView) findViewById(R.id.textfsn);
+        //textmsn= (TextView) findViewById(R.id.textmsn);
+        //textfsn = (TextView) findViewById(R.id.textfsn);
         fsn.setVisibility(View.INVISIBLE);
         msn.setVisibility(View.INVISIBLE);
         textor = (TextView) findViewById(R.id.textor);
         textor.setVisibility(View.INVISIBLE);
-        textmsn.setVisibility(View.INVISIBLE);
-        textfsn.setVisibility(View.INVISIBLE);
+        //textmsn.setVisibility(View.INVISIBLE);
+        //textfsn.setVisibility(View.INVISIBLE);
         planes = (ListView) findViewById(R.id.listViewPlanes);
         planeAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,listeAvions);
         planes.setAdapter(planeAdapt);
@@ -136,6 +157,7 @@ public class PlaneSelection extends Activity{
 						if(arg2 != 0){
 							Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
 							startActivity(intent);
+							listLastPlanes.add(spAdapt.getItem(arg2));
 						}
 					}
 
@@ -168,13 +190,14 @@ public class PlaneSelection extends Activity{
 				spAdapt = new ArrayAdapter<String>(PlaneSelection.this, android.R.layout.simple_list_item_1, listeAvionMSN.get(listeAvions.get(arg2)));
 				msn.setAdapter(spAdapt);
 				msn.setVisibility(View.VISIBLE);
-				textmsn.setVisibility(View.VISIBLE);
-				textfsn.setVisibility(View.VISIBLE);
+
 				textor.setVisibility(View.VISIBLE);
-				
+				InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		        imm.hideSoftInputFromWindow(theID.getWindowToken(), 0);
 			}
         	
 		});
+        
     }
 	
 	@Override
