@@ -51,12 +51,12 @@ public class Research extends Activity {
       if (query.contains("general")){
     	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 00 - General",
     	  		"36 - PNEUMATIC > - 00 - General", "52 - DOORS > - 00 - General"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
       }
       else if (query.contains("airfoil")){
     	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-801 - Installation of the Wing Anti-ice Control-valve",
     			  "30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-802 - Installation of the Wing Anti-ice Control-valve filter"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View view,
 	            int position, long id) {
@@ -79,7 +79,7 @@ public class Research extends Activity {
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-804 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Open position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-806 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Closed Position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-807 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Closed position"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
   	        public void onItemClick(AdapterView<?> parent, View view,
   	            int position, long id) {
@@ -109,7 +109,7 @@ public class Research extends Activity {
     	  String[] results = {"52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Adjustment of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door-Locking Mechanism Door M5L/M5R"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
     	        public void onItemClick(AdapterView<?> parent, View view,
     	            int position, long id) {
@@ -134,7 +134,7 @@ public class Research extends Activity {
       else if (query.contains("installation") || query.contains("wing") || query.contains("valve")|| query.contains("anti-ice")){
     	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-801 - Installation of the Wing Anti-ice Control-valve",
     			  "30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-802 - Installation of the Wing Anti-ice Control-valve filter"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
     	        public void onItemClick(AdapterView<?> parent, View view,
     	            int position, long id) {
@@ -157,7 +157,7 @@ public class Research extends Activity {
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-804 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Open position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-806 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Closed Position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-807 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Closed position"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
   	        public void onItemClick(AdapterView<?> parent, View view,
   	            int position, long id) {
@@ -187,7 +187,7 @@ public class Research extends Activity {
     	  String[] results = {"52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Adjustment of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door-Locking Mechanism Door M5L/M5R"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
     	        public void onItemClick(AdapterView<?> parent, View view,
     	            int position, long id) {
@@ -216,7 +216,7 @@ public class Research extends Activity {
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-804 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Open position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-806 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Closed Position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-807 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Closed position"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View view,
 	            int position, long id) {
@@ -254,7 +254,7 @@ public class Research extends Activity {
     	  String[] results = {"52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Adjustment of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door-Locking Mechanism Door M5L/M5R"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
     	        public void onItemClick(AdapterView<?> parent, View view,
     	            int position, long id) {
