@@ -1,7 +1,11 @@
 package com.eads.co.nomad;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -51,7 +55,12 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
  * @author Guillaume Saas
  */
 
-public class AMMAnnexes extends Activity {
+public class AMMAnnexes extends Activity implements PropertyChangeListener,Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private DataParsing parser;
 
@@ -99,7 +108,6 @@ public class AMMAnnexes extends Activity {
 	private TextView titreAnnexe; // titre de l'annexe
 	private ImageButton closeAnnexButton; // bouton femer.
 	private ImageButton fullScreenAnnexButton; // bouton plein ecran.
-	
 
 	// Pour les annexes multiples
 	private DrawerLayout mDrawerLayout;
@@ -113,6 +121,7 @@ public class AMMAnnexes extends Activity {
 	// Pour le multitouch
 	private ImageView annexImg;
 	private FrameLayout layoutImg;
+	
 
 	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
 
@@ -134,7 +143,8 @@ public class AMMAnnexes extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		setContentView(R.layout.amm_annexes);
-
+		
+		
 		layout = (LinearLayout) findViewById(R.id.layout_amm);
 
 		separatorLayout = (RelativeLayout) findViewById(R.id.separatorLayout);
@@ -146,6 +156,8 @@ public class AMMAnnexes extends Activity {
 		scrollView = (OurScrollView) findViewById(R.id.scrollView);
 		scrollView.setActivity(this);
 
+
+
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		titreAnnexe = (TextView) findViewById(R.id.annexTitle);
 		closeAnnexButton = (ImageButton) findViewById(R.id.closeAnnexButton);
@@ -154,9 +166,11 @@ public class AMMAnnexes extends Activity {
 		// Pour le multitouch
 		annexImg = (ImageView) findViewById(R.id.annexImage);
 		layoutImg = (FrameLayout) findViewById(R.id.layoutImage);
-		annexImg.setOnTouchListener(new PanAndZoomListener(layoutImg, annexImg,
-				Anchor.TOPLEFT));
-
+		PanAndZoomListener pan = new PanAndZoomListener(layoutImg, annexImg,
+				Anchor.TOPLEFT);
+		annexImg.setOnTouchListener(pan);
+		pan.addPropertyChangeListener(this);
+		
 		// Pour les annexes multiples
 		listview = (ListView) findViewById(R.id.listview);
 		listview.setSelector(R.drawable.selector);
@@ -165,8 +179,6 @@ public class AMMAnnexes extends Activity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerLayout.setDrawerLockMode(1, Gravity.END);
 		nb_annexe = 0;
-
-		
 
 		// Récupération de la largeur et de la hauteur du layout
 		getWidthHeight();
@@ -967,4 +979,14 @@ public class AMMAnnexes extends Activity {
 	public void onBackPressed() {
 		super.onBackPressed();
 	}
+	
+
+	@Override
+	public void propertyChange(PropertyChangeEvent event) {
+		Log.e("Dans propertyChange","Cool");
+		if (event.getNewValue().equals("FULLSCREEN")) {
+			fullScreenAnnexButton.performClick();
+		}
+	}
+	
 }

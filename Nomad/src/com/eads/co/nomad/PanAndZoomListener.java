@@ -1,5 +1,10 @@
 package com.eads.co.nomad;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.io.Serializable;
+import java.util.Calendar;
+
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.PointF;
@@ -18,251 +23,372 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+public class PanAndZoomListener implements OnTouchListener, Serializable {
 
+	public static class Anchor {
 
+		public static final int CENTER = 0;
+		public static final int TOPLEFT = 1;
+	}
 
+	private static final String TAG = "PanAndZoomListener";
+	// We can be in one of these 3 states
+	static final int NONE = 0;
+	static final int DRAG = 1;
+	static final int ZOOM = 2;
+	int mode = NONE;
+	// Remember some things for zooming
+	PointF start = new PointF();
+	PointF mid = new PointF();
+	float oldDist = 1f;
+	PanZoomCalculator panZoomCalculator;
+	PropertyChangeSupport prop;
+	long prevtime;
+	long thistime;
 
+	private enum States {
+		IDLE, UNCLICK, RELACHE, DOUBLECLICK
+	};
 
+	private States etat = States.IDLE;
 
+	public PanAndZoomListener(FrameLayout containter, View view, int anchor) {
+		panZoomCalculator = new PanZoomCalculator(containter, view, anchor);
+		prop = new PropertyChangeSupport(this);
+	}
 
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		prop.addPropertyChangeListener(listener);
+	}
 
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		prop.removePropertyChangeListener(listener);
+	}
 
+	public void addPropertyChangeListener(String string,
+			PropertyChangeListener listener) {
+		prop.addPropertyChangeListener(string, listener);
+	}
 
+	public void removePropertyChangeListener(String string,
+			PropertyChangeListener listener) {
+		prop.removePropertyChangeListener(string, listener);
+	}
 
+	public boolean onTouch(View view, MotionEvent event) {
 
-public class PanAndZoomListener implements OnTouchListener {
+		// Handle touch events here...
+		switch (event.getAction() & MotionEvent.ACTION_MASK) {
+		case MotionEvent.ACTION_DOWN:
+			start.set(event.getX(), event.getY());
+			Log.d(TAG, "mode=DRAG");
+			mode = DRAG;
+			switch (etat) {
+			case IDLE:
+				prevtime = Calendar.getInstance().getTimeInMillis();
+				etat = States.UNCLICK;
+				break;
+			case DOUBLECLICK:
+				break;
+			case RELACHE:
+				thistime = Calendar.getInstance().getTimeInMillis();
+				Log.e("CAS RELACHE DOWN", "Diff : " + (thistime - prevtime));
+				if (prevtime < thistime) {
+					// Check if times are within our max delay
+					if ((thistime - prevtime) <= 500) {
+						etat = States.DOUBLECLICK;
+						Log.e("CAS RELACHE DOWN", "DOUBLE CLIIIICKKK");
+						prop.firePropertyChange("Fullscreen", "DISPLAY_FREE",
+								"FULLSCREEN");
+					} else {
+						etat = States.IDLE;
+					}
+				} else {
+					etat = States.IDLE;
+				}
 
-  public static class Anchor {
+				break;
+			case UNCLICK:
+				break;
+			}
+			break;
+		case MotionEvent.ACTION_POINTER_DOWN:
+			switch (etat) {
+			case IDLE:
+				break;
+			case DOUBLECLICK:
+				break;
+			case RELACHE:
+				break;
+			case UNCLICK:
+				etat = States.IDLE;
+				break;
+			}
+			oldDist = spacing(event);
+			Log.d(TAG, "oldDist=" + oldDist);
+			if (oldDist > 10f) {
+				midPoint(mid, event);
+				mode = ZOOM;
+				Log.d(TAG, "mode=ZOOM");
+			}
 
-    public static final int CENTER = 0;
-    public static final int TOPLEFT = 1;
-  }
-  private static final String TAG = "PanAndZoomListener";
-  // We can be in one of these 3 states
-  static final int NONE = 0;
-  static final int DRAG = 1;
-  static final int ZOOM = 2;
-  int mode = NONE;
-  // Remember some things for zooming
-  PointF start = new PointF();
-  PointF mid = new PointF();
-  float oldDist = 1f;
-  PanZoomCalculator panZoomCalculator;
+			break;
+		case MotionEvent.ACTION_UP:
+			switch (etat) {
+			case IDLE:
+				break;
+			case DOUBLECLICK:
+				etat = States.IDLE;
+				break;
+			case RELACHE:
+				break;
+			case UNCLICK:
+				etat = States.RELACHE;
+				break;
+			}
+			break;
+		case MotionEvent.ACTION_POINTER_UP:
+			switch (etat) {
+			case IDLE:
+				break;
+			case DOUBLECLICK:
+				etat = States.IDLE;
+				break;
+			case RELACHE:
+				etat = States.IDLE;
+				break;
+			case UNCLICK:
+				etat = States.IDLE;
+				break;
+			}
+			mode = NONE;
+			Log.d(TAG, "mode=NONE");
+			break;
+		case MotionEvent.ACTION_MOVE:
+			switch (etat) {
+			case IDLE:
+				break;
+			case DOUBLECLICK:
+				etat = States.IDLE;
+				break;
+			case RELACHE:
+				etat = States.IDLE;
+				break;
+			case UNCLICK:
+				break;
+			}
+			if (mode == DRAG) {
+				panZoomCalculator.doPan(event.getX() - start.x, event.getY()
+						- start.y);
+				start.set(event.getX(), event.getY());
+			} else if (mode == ZOOM) {
+				float newDist = spacing(event);
+				Log.d(TAG, "newDist=" + newDist);
+				if (newDist > 10f) {
+					float scale = newDist / oldDist;
+					oldDist = newDist;
+					panZoomCalculator.doZoom(scale, mid);
+				}
+			}
+			break;
+		}
+		return true; // indicate event was handled
+	}
 
-  public PanAndZoomListener(FrameLayout containter, View view, int anchor) {
-    panZoomCalculator = new PanZoomCalculator(containter, view, anchor);
-  }
+	// Determine the space between the first two fingers
+	private float spacing(MotionEvent event) {
 
-  public boolean onTouch(View view, MotionEvent event) {
+		float x = event.getX(0) - event.getX(1);
+		float y = event.getY(0) - event.getY(1);
+		return FloatMath.sqrt(x * x + y * y);
+	}
 
-    // Handle touch events here...
-    switch (event.getAction() & MotionEvent.ACTION_MASK) {
-      case MotionEvent.ACTION_DOWN:
-        start.set(event.getX(), event.getY());
-        Log.d(TAG, "mode=DRAG");
-        mode = DRAG;
-        break;
-      case MotionEvent.ACTION_POINTER_DOWN:
-        oldDist = spacing(event);
-        Log.d(TAG, "oldDist=" + oldDist);
-        if (oldDist > 10f) {
-          midPoint(mid, event);
-          mode = ZOOM;
-          Log.d(TAG, "mode=ZOOM");
-        }
-        break;
-      case MotionEvent.ACTION_UP:
-      case MotionEvent.ACTION_POINTER_UP:
-        mode = NONE;
-        Log.d(TAG, "mode=NONE");
-        break;
-      case MotionEvent.ACTION_MOVE:
-        if (mode == DRAG) {
-          panZoomCalculator.doPan(event.getX() - start.x, event.getY() - start.y);
-          start.set(event.getX(), event.getY());
-        } else if (mode == ZOOM) {
-          float newDist = spacing(event);
-          Log.d(TAG, "newDist=" + newDist);
-          if (newDist > 10f) {
-            float scale = newDist / oldDist;
-            oldDist = newDist;
-            panZoomCalculator.doZoom(scale, mid);
-          }
-        }
-        break;
-    }
-    return true; // indicate event was handled
-  }
+	// Calculate the mid point of the first two fingers
+	private void midPoint(PointF point, MotionEvent event) {
+		// ...
+		float x = event.getX(0) + event.getX(1);
+		float y = event.getY(0) + event.getY(1);
+		point.set(x / 2, y / 2);
+	}
 
-  // Determine the space between the first two fingers 
-  private float spacing(MotionEvent event) {
+	class PanZoomCalculator {
 
-    float x = event.getX(0) - event.getX(1);
-    float y = event.getY(0) - event.getY(1);
-    return FloatMath.sqrt(x * x + y * y);
-  }
+		// / The current pan position
+		PointF currentPan;
+		// / The current zoom position
+		float currentZoom;
+		// / The windows dimensions that we are zooming/panning in
+		View window;
+		View child;
+		Matrix matrix;
+		// Pan jitter is a workaround to get the video view to update it's
+		// layout properly when zoom is changed
+		int panJitter = 0;
+		int anchor;
 
-  // Calculate the mid point of the first two fingers
-  private void midPoint(PointF point, MotionEvent event) {
-    // ...
-    float x = event.getX(0) + event.getX(1);
-    float y = event.getY(0) + event.getY(1);
-    point.set(x / 2, y / 2);
-  }
+		PanZoomCalculator(View container, View child, int anchor) {
+			// Initialize class fields
+			currentPan = new PointF(0, 0);
+			currentZoom = 1f;
+			;
+			this.window = container;
+			this.child = child;
+			matrix = new Matrix();
+			this.anchor = anchor;
+			onPanZoomChanged();
+			this.child.addOnLayoutChangeListener(new OnLayoutChangeListener() {
+				// This catches when the image bitmap changes, for some reason
+				// it doesn't recurse
 
-  class PanZoomCalculator {
+				public void onLayoutChange(View v, int left, int top,
+						int right, int bottom, int oldLeft, int oldTop,
+						int oldRight, int oldBottom) {
+					onPanZoomChanged();
+				}
+			});
+		}
 
-    /// The current pan position
-    PointF currentPan;
-    /// The current zoom position
-    float currentZoom;
-    /// The windows dimensions that we are zooming/panning in
-    View window;
-    View child;
-    Matrix matrix;
-    // Pan jitter is a workaround to get the video view to update it's layout properly when zoom is changed
-    int panJitter = 0;
-    int anchor;
+		public void doZoom(float scale, PointF zoomCenter) {
 
-    PanZoomCalculator(View container, View child, int anchor) {
-      // Initialize class fields
-      currentPan = new PointF(0, 0);
-      currentZoom = 1f;;
-      this.window = container;
-      this.child = child;
-      matrix = new Matrix();
-      this.anchor = anchor;
-      onPanZoomChanged();
-      this.child.addOnLayoutChangeListener(new OnLayoutChangeListener() {
-        // This catches when the image bitmap changes, for some reason it doesn't recurse
+			float oldZoom = currentZoom;
 
-        public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-          onPanZoomChanged();
-        }
-      });
-    }
+			// multiply in the zoom change
+			currentZoom *= scale;
 
-    public void doZoom(float scale, PointF zoomCenter) {
+			// this limits the zoom
+			currentZoom = Math.max(getMinimumZoom(), currentZoom);
+			currentZoom = Math.min(8f, currentZoom);
 
-      float oldZoom = currentZoom;
+			// Adjust the pan accordingly
+			// Need to make it such that the point under the zoomCenter remains
+			// under the zoom center after the zoom
 
-      // multiply in the zoom change
-      currentZoom *= scale;
+			// calculate in fractions of the image so:
 
-      // this limits the zoom
-      currentZoom = Math.max(getMinimumZoom(), currentZoom);
-      currentZoom = Math.min(8f, currentZoom);
+			float width = window.getWidth();
+			float height = window.getHeight();
+			float oldScaledWidth = width * oldZoom;
+			float oldScaledHeight = height * oldZoom;
+			float newScaledWidth = width * currentZoom;
+			float newScaledHeight = height * currentZoom;
 
-      // Adjust the pan accordingly
-      // Need to make it such that the point under the zoomCenter remains under the zoom center after the zoom
+			if (anchor == Anchor.CENTER) {
 
-      // calculate in fractions of the image so:
+				float reqXPos = ((oldScaledWidth - width) * 0.5f + zoomCenter.x - currentPan.x)
+						/ oldScaledWidth;
+				float reqYPos = ((oldScaledHeight - height) * 0.5f
+						+ zoomCenter.y - currentPan.y)
+						/ oldScaledHeight;
+				float actualXPos = ((newScaledWidth - width) * 0.5f
+						+ zoomCenter.x - currentPan.x)
+						/ newScaledWidth;
+				float actualYPos = ((newScaledHeight - height) * 0.5f
+						+ zoomCenter.y - currentPan.y)
+						/ newScaledHeight;
 
-      float width = window.getWidth();
-      float height = window.getHeight();
-      float oldScaledWidth = width * oldZoom;
-      float oldScaledHeight = height * oldZoom;
-      float newScaledWidth = width * currentZoom;
-      float newScaledHeight = height * currentZoom;
+				currentPan.x += (actualXPos - reqXPos) * newScaledWidth;
+				currentPan.y += (actualYPos - reqYPos) * newScaledHeight;
+			} else {
+				// assuming top left
+				float reqXPos = (zoomCenter.x - currentPan.x) / oldScaledWidth;
+				float reqYPos = (zoomCenter.y - currentPan.y) / oldScaledHeight;
+				float actualXPos = (zoomCenter.x - currentPan.x)
+						/ newScaledWidth;
+				float actualYPos = (zoomCenter.y - currentPan.y)
+						/ newScaledHeight;
+				currentPan.x += (actualXPos - reqXPos) * newScaledWidth;
+				currentPan.y += (actualYPos - reqYPos) * newScaledHeight;
+			}
 
-      if (anchor == Anchor.CENTER) {
+			onPanZoomChanged();
+		}
 
-        float reqXPos = ((oldScaledWidth - width) * 0.5f + zoomCenter.x - currentPan.x) / oldScaledWidth;
-        float reqYPos = ((oldScaledHeight - height) * 0.5f + zoomCenter.y - currentPan.y) / oldScaledHeight;
-        float actualXPos = ((newScaledWidth - width) * 0.5f + zoomCenter.x - currentPan.x) / newScaledWidth;
-        float actualYPos = ((newScaledHeight - height) * 0.5f + zoomCenter.y - currentPan.y) / newScaledHeight;
+		public void doPan(float panX, float panY) {
+			currentPan.x += panX;
+			currentPan.y += panY;
+			onPanZoomChanged();
+		}
 
-        currentPan.x += (actualXPos - reqXPos) * newScaledWidth;
-        currentPan.y += (actualYPos - reqYPos) * newScaledHeight;
-      } else {
-        // assuming top left
-        float reqXPos = (zoomCenter.x - currentPan.x) / oldScaledWidth;
-        float reqYPos = (zoomCenter.y - currentPan.y) / oldScaledHeight;
-        float actualXPos = (zoomCenter.x - currentPan.x) / newScaledWidth;
-        float actualYPos = (zoomCenter.y - currentPan.y) / newScaledHeight;
-        currentPan.x += (actualXPos - reqXPos) * newScaledWidth;
-        currentPan.y += (actualYPos - reqYPos) * newScaledHeight;
-      }
+		private float getMinimumZoom() {
+			return 1f;
+		}
 
-      onPanZoomChanged();
-    }
+		// / Call this to reset the Pan/Zoom state machine
+		public void reset() {
+			// Reset zoom and pan
+			currentZoom = getMinimumZoom();
+			currentPan = new PointF(0f, 0f);
+			onPanZoomChanged();
+		}
 
-    public void doPan(float panX, float panY) {
-      currentPan.x += panX;
-      currentPan.y += panY;
-      onPanZoomChanged();
-    }
+		public void onPanZoomChanged() {
 
-    private float getMinimumZoom() {
-      return 1f;
-    }
+			// Things to try: use a scroll view and set the pan from the
+			// scrollview
+			// when panning, and set the pan of the scroll view when zooming
 
-    /// Call this to reset the Pan/Zoom state machine
-    public void reset() {
-      // Reset zoom and pan
-      currentZoom = getMinimumZoom();
-      currentPan = new PointF(0f, 0f);
-      onPanZoomChanged();
-    }
+			float winWidth = window.getWidth();
+			float winHeight = window.getHeight();
 
-    public void onPanZoomChanged() {
+			if (currentZoom <= 1f) {
+				currentPan.x = 0;
+				currentPan.y = 0;
+			} else if (anchor == Anchor.CENTER) {
 
-      // Things to try: use a scroll view and set the pan from the scrollview
-      // when panning, and set the pan of the scroll view when zooming
+				float maxPanX = (currentZoom - 1f) * window.getWidth() * 0.5f;
+				float maxPanY = (currentZoom - 1f) * window.getHeight() * 0.5f;
+				currentPan.x = Math.max(-maxPanX,
+						Math.min(maxPanX, currentPan.x));
+				currentPan.y = Math.max(-maxPanY,
+						Math.min(maxPanY, currentPan.y));
+			} else {
+				// assume top left
 
-      float winWidth = window.getWidth();
-      float winHeight = window.getHeight();
+				float maxPanX = (currentZoom - 1f) * window.getWidth();
+				float maxPanY = (currentZoom - 1f) * window.getHeight();
+				currentPan.x = Math.max(-maxPanX, Math.min(0, currentPan.x));
+				currentPan.y = Math.max(-maxPanY, Math.min(0, currentPan.y));
+			}
 
-      if (currentZoom <= 1f) {
-        currentPan.x = 0;
-        currentPan.y = 0;
-      } else if (anchor == Anchor.CENTER) {
+			if (child instanceof ImageView
+					&& ((ImageView) child).getScaleType() == ImageView.ScaleType.MATRIX) {
+				ImageView view = (ImageView) child;
+				Drawable drawable = view.getDrawable();
+				if (drawable != null) {
+					Bitmap bm = ((BitmapDrawable) drawable).getBitmap();
+					if (bm != null) {
+						// Limit Pan
 
-        float maxPanX = (currentZoom - 1f) * window.getWidth() * 0.5f;
-        float maxPanY = (currentZoom - 1f) * window.getHeight() * 0.5f;
-        currentPan.x = Math.max(-maxPanX, Math.min(maxPanX, currentPan.x));
-        currentPan.y = Math.max(-maxPanY, Math.min(maxPanY, currentPan.y));
-      } else {
-        // assume top left
-        
-        float maxPanX = (currentZoom - 1f) * window.getWidth();
-        float maxPanY = (currentZoom - 1f) * window.getHeight();
-        currentPan.x = Math.max(-maxPanX, Math.min(0, currentPan.x));
-        currentPan.y = Math.max(-maxPanY, Math.min(0, currentPan.y));
-      }
+						float bmWidth = bm.getWidth();
+						float bmHeight = bm.getHeight();
 
-      if (child instanceof ImageView && ((ImageView) child).getScaleType()== ImageView.ScaleType.MATRIX) {
-        ImageView view = (ImageView) child;
-        Drawable drawable = view.getDrawable();
-        if (drawable != null) {
-          Bitmap bm = ((BitmapDrawable) drawable).getBitmap();
-          if (bm != null) {
-            // Limit Pan
+						float fitToWindow = Math.min(winWidth / bmWidth,
+								winHeight / bmHeight);
+						float xOffset = (winWidth - bmWidth * fitToWindow)
+								* 0.5f * currentZoom;
+						float yOffset = (winHeight - bmHeight * fitToWindow)
+								* 0.5f * currentZoom;
 
-            float bmWidth = bm.getWidth();
-            float bmHeight = bm.getHeight();
+						matrix.reset();
+						matrix.postScale(currentZoom * fitToWindow, currentZoom
+								* fitToWindow);
+						matrix.postTranslate(currentPan.x + xOffset,
+								currentPan.y + yOffset);
+						((ImageView) child).setImageMatrix(matrix);
+					}
+				}
+			} else {
+				MarginLayoutParams lp = (MarginLayoutParams) child
+						.getLayoutParams();
 
-            float fitToWindow = Math.min(winWidth / bmWidth, winHeight / bmHeight);
-            float xOffset = (winWidth - bmWidth * fitToWindow) * 0.5f * currentZoom;
-            float yOffset = (winHeight - bmHeight * fitToWindow) * 0.5f * currentZoom;
+				lp.leftMargin = (int) currentPan.x + panJitter;
+				lp.topMargin = (int) currentPan.y;
+				lp.width = (int) (window.getWidth() * currentZoom);
+				lp.height = (int) (window.getHeight() * currentZoom);
+				panJitter ^= 1;
 
-            matrix.reset();
-            matrix.postScale(currentZoom * fitToWindow, currentZoom * fitToWindow);
-            matrix.postTranslate(currentPan.x + xOffset, currentPan.y + yOffset);
-            ((ImageView) child).setImageMatrix(matrix);
-          }
-        }
-      } else {
-        MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();
-
-        lp.leftMargin = (int) currentPan.x + panJitter;
-        lp.topMargin = (int) currentPan.y;
-        lp.width = (int) (window.getWidth() * currentZoom);
-        lp.height = (int) (window.getHeight() * currentZoom);
-        panJitter ^= 1;
-
-        child.setLayoutParams(lp);
-      }
-    }
-  }
+				child.setLayoutParams(lp);
+			}
+		}
+	}
 }
