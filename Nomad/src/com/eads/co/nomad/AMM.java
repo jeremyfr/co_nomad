@@ -53,7 +53,7 @@ public class AMM extends Activity {
 			this.setTitle(parser.getTitle());
 			setContentView(R.layout.amm);
 
-			SwitchTaskManager taskManager = new SwitchTaskManager(this,"amm");
+			//SwitchTaskManager taskManager = new SwitchTaskManager(this,this,"amm");
 
 			//SwitchTaskManager taskManager = new SwitchTaskManager(this);
 			/* Warnings part */

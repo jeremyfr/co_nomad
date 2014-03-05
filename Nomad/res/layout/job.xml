@@ -17,7 +17,7 @@
     android:orientation="horizontal" >
 
     <LinearLayout
-        android:id="@+id/layout_amm"
+        android:id="@+id/layout_jobcard"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal" >
@@ -43,7 +43,7 @@
                     android:clickable="true"
                     android:orientation="vertical" >
 
-                    <LinearLayout
+                   <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -68,21 +68,55 @@
                             android:textSize="@dimen/font_size_2" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/warnings_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical" >
+	                 <LinearLayout
+	                     android:id="@+id/warnings_layout"
+	                     android:layout_width="match_parent"
+	                     android:layout_height="match_parent"
+	                     android:background="@color/background1_light"
+	                     android:orientation="vertical"
+	                     android:padding="@dimen/activity_margin" >
 
-                        <WebView
-                            android:id="@+id/warnings_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@string/font"
-                            android:textColor="@color/red"
-                            android:textSize="@dimen/font_size_4" />
-                    </LinearLayout>
+                <Button
+                    android:id="@+id/previousButtonWarn"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            		android:background="@color/blue"
+            		android:textColor="@color/background1_dark"
+                    android:text="> Previous Steps" />
+
+                <LinearLayout
+                    android:id="@+id/previousLayoutWarn"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/background2_light"
+                    android:orientation="vertical" >
+
+                    <ListView
+                        android:id="@+id/listPreviousStepWarn"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/background2_light"
+                        android:clickable="false"
+                        android:textColor="@color/blue" >
+
+                    </ListView>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ListView
+                    android:id="@+id/listStepWarn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background1_light" >
+
+                </ListView>
+            </LinearLayout>
+            
                 </LinearLayout>
 
                 <LinearLayout
@@ -125,14 +159,46 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical" >
+ <Button
+                    android:id="@+id/previousButtonJobSetup"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            		android:background="@color/blue"
+            		android:textColor="@color/background1_dark"
+                    android:text="> Previous Steps" />
 
-                        <WebView
-                            android:id="@+id/jobSetUp_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@string/font"
-                            android:textColor="@color/text1_light"
-                            android:textSize="@dimen/font_size_4" />
+                <LinearLayout
+                    android:id="@+id/previousLayoutJobSetup"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/background2_light"
+                    android:orientation="vertical" >
+
+                    <ListView
+                        android:id="@+id/listPreviousStepJobSetup"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/background2_light"
+                        android:clickable="false"
+                        android:textColor="@color/blue" >
+
+                    </ListView>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ListView
+                    android:id="@+id/listStepJobSetup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background1_light" >
+
+                </ListView>
+
                     </LinearLayout>
                 </LinearLayout>
 
@@ -171,7 +237,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                android:id="@+id/procedure_text"
+                android:id="@+id/procedure_layout"
                 android:layout_width="match_parent"
                 android:layout_height="129dp"
                 android:layout_weight="1"
@@ -180,7 +246,7 @@
                 android:padding="@dimen/activity_margin" >
 
                 <Button
-                    android:id="@+id/previousButton"
+                    android:id="@+id/previousButtonProc"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -189,7 +255,7 @@
                     android:text="> Previous Steps" />
 
                 <LinearLayout
-                    android:id="@+id/previousLayout"
+                    android:id="@+id/previousLayoutProc"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="20dp"
@@ -197,7 +263,7 @@
                     android:orientation="vertical" >
 
                     <ListView
-                        android:id="@+id/listPreviousStep"
+                        android:id="@+id/listPreviousStepProc"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/background2_light"
@@ -212,7 +278,7 @@
                     android:layout_height="wrap_content" />
 
                 <ListView
-                    android:id="@+id/listStep"
+                    android:id="@+id/listStepProc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/background1_light" >
@@ -262,13 +328,46 @@
                         android:layout_weight="1"
                         android:orientation="vertical" >
 
-                        <WebView
-                            android:id="@+id/closeUp_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@string/font"
-                            android:textColor="@color/text1_light"
-                            android:textSize="@dimen/font_size_4" />
+						
+                        <Button
+                    android:id="@+id/previousButtonCloseUp"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            		android:background="@color/blue"
+            		android:textColor="@color/background1_dark"
+                    android:text="> Previous Steps" />
+
+                <LinearLayout
+                    android:id="@+id/previousLayoutCloseUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@color/background2_light"
+                    android:orientation="vertical" >
+
+                    <ListView
+                        android:id="@+id/listPreviousStepCloseUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/background2_light"
+                        android:clickable="false"
+                        android:textColor="@color/blue" >
+
+                    </ListView>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ListView
+                    android:id="@+id/listStepCloseUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/background1_light" >
+
+                </ListView>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -376,89 +475,127 @@
             </LinearLayout>
         </com.eads.co.nomad.OurScrollView>
 
-        <RelativeLayout
-            android:id="@+id/separatorLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" >
+ <!-- Info bulle -->
 
-            <ImageView
-                android:id="@+id/separator"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/vertical_line" />
-"
-
-            <ImageView
-                android:id="@+id/infobulle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scaleType="matrix"
-                android:src="@drawable/infobulle" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/annexLayout"
-            android:layout_width="0px"
-            android:layout_height="fill_parent"
-            android:orientation="vertical" >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/annexTitle"
+                <RelativeLayout
+                    android:id="@+id/separatorLayout"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="TextView" />
+                    android:layout_height="match_parent" >
 
-                <Button
-                    android:id="@+id/closeAnnexButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:gravity="right"
-                    android:text="Close" />
-            </RelativeLayout>
+                    <ImageView
+                        android:id="@+id/separator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="matrix"
+                        android:src="@drawable/vertical_line" />
 
-            <FrameLayout
-                android:id="@+id/layoutImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="90" >
+                    <ImageView
+                        android:id="@+id/separator_up"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="matrix"
+                        android:src="@drawable/vertical_line_up" />
 
-                <ImageView
-                    android:id="@+id/annexImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="matrix"
-                    android:src="@drawable/ata" />
-            </FrameLayout>
+                    <ImageView
+                        android:id="@+id/separator_down"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:scaleType="matrix"
+                        android:src="@drawable/vertical_line_down" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="10" >
+                    <ImageView
+                        android:id="@+id/infobulle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="matrix"
+                        android:src="@drawable/infobulle" />
+                </RelativeLayout>
 
-                <Button
-                    android:id="@+id/fullScreenAnnexButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="FullScreen" />
-            </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/annexLayout"
+                    android:layout_width="0px"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/annexTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="TextView"
+                            android:textColor="@color/text1_light"
+                            android:textSize="@dimen/font_size_2" />
+
+                      
+
+                        <ImageButton
+                            android:id="@+id/closeAnnexButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:background="@null"
+                            android:src="@drawable/btn_close"
+                            android:text="Close" />
+                    </RelativeLayout>
+
+                    <FrameLayout
+                        android:id="@+id/layoutImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="90" >
+
+                        <ImageView
+                            android:id="@+id/annexImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="matrix"
+                            android:src="@drawable/ata" />
+                    </FrameLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="10" >
+
+                        <ImageButton
+                            android:id="@+id/fullScreenAnnexButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:background="@null"
+                            android:src="@drawable/btn_fullscreen" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
-</FrameLayout>
-<!-- The navigation drawers -->
-<ListView android:id="@+id/left_drawer"
-    android:layout_width="400dp"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    android:choiceMode="singleChoice"
-    android:divider="@color/text1_dark"
-    android:dividerHeight="2dp"
-    android:background="@color/background1_dark"/>
+    </FrameLayout>
+    <!-- The navigation drawers -->
+
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="400dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="start"
+        android:background="@color/background1_dark"
+        android:choiceMode="singleChoice"
+        android:divider="@color/text1_dark"
+        android:dividerHeight="2dp" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="300dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="end"
+        android:background="@color/background1_dark"
+        android:choiceMode="singleChoice"
+        android:divider="@color/text1_dark"
+        android:dividerHeight="2dp"
+        android:orientation="vertical" >
+    </ListView>
+
 </android.support.v4.widget.DrawerLayout>

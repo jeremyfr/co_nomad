@@ -12,16 +12,19 @@ public class SwitchTaskManager extends WebViewClient {
 	private Context context;
 	private String part;
 
-	public SwitchTaskManager(Context context, String p) {
+	public SwitchTaskManager(Context context, JobCard activity, String p) {
 		this.context = context;
 		part = p;
+		activityJobCard = activity;
+		
+		
 	}
 	
-	private AMMAnnexes activity;
-
+	private AMMAnnexes activityAMM;
+	private JobCard activityJobCard;
 	public SwitchTaskManager(Context context, AMMAnnexes activity, String p) {
 		this.context = context;
-		this.activity = activity;
+		this.activityAMM = activity;
 		this.part  = p;
 	}
 
@@ -33,9 +36,9 @@ public class SwitchTaskManager extends WebViewClient {
 		if (url.contains("?id=")) {
 			String[] split = url.split("id=");
 			if(part.equals("jobcard")){
-				JobCard.onAnnexeClic(view, split [1]);
+				activityJobCard.onAnnexeClic(view, split [1]);
 			}else{
-				activity.onAnnexeClic(view, split[1]);	
+				activityAMM.onAnnexeClic(view, split[1]);	
 			}
 			
 			

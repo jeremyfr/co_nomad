@@ -18,6 +18,10 @@ public class DataParsing {
 	private ArrayList<String> stepsProcedure = new ArrayList<String>();
 	private List<Element> listUnLitem;
 	private Iterator<Element> iteratorUnLitem;
+	private ArrayList<String> stepsWarning = new ArrayList<String>();
+	private ArrayList<String> stepsJobSetup = new ArrayList<String>();
+	private ArrayList<String> stepsCloseUp = new ArrayList<String>();
+	
 	public DataParsing(InputStream input) throws JDOMException, IOException {
 		super();
 		parser = new SAXBuilder();
@@ -28,7 +32,18 @@ public class DataParsing {
 	public ArrayList<String> getStepsProcedure() {
 		return stepsProcedure;
 	}
-
+	
+	public ArrayList<String> getStepsCloseUp() {
+		return stepsCloseUp;
+	}
+	
+	public ArrayList<String> getStepsJobSetup() {
+		return stepsJobSetup;
+	}
+	
+	public ArrayList<String> getStepsWarning() {
+		return stepsWarning;
+	}
 
 	public void setInput(InputStream input) throws JDOMException, IOException {
 		document = parser.build(input);
@@ -66,6 +81,7 @@ public class DataParsing {
 				warnings += "<p id='warning'>";
 				Element currentItem = (Element) iteratorItems.next();
 				warnings += currentItem.getText()+"<br/>"; // Display para text
+				stepsWarning.add("<ul>"+currentItem.getText()+"</ul>");
 				/* Display list of para is necessary */
 				if(currentItem.getText().endsWith(": ")){
 					Element currentListItem = (Element) iteratorListList.next();
@@ -75,6 +91,7 @@ public class DataParsing {
 					while (iteratorListItem.hasNext()) {
 						Element currentListListItem = (Element) iteratorListItem.next();
 						warnings += "<li>"+currentListListItem.getChild("PARA").getText()+"</li>";
+						stepsWarning.add("<ul>"+currentListListItem.getChild("PARA").getText()+"</ul>");
 					}
 					warnings += "</ul>";
 					warnings += "</p>";
@@ -110,7 +127,7 @@ public class DataParsing {
 					Element subTask = (Element) iteratorSubTask.next();
 					jobSetUp += "<p>";
 					jobSetUp += "Task : <a href='"+subTask.getAttributeValue("KEY")+"'>"+subTask.getAttributeValue("KEY")+"</a><br/>";
-					
+					stepsJobSetup.add("Task : <a href='"+subTask.getAttributeValue("KEY")+"'>"+subTask.getAttributeValue("KEY")+"</a><br/>");
 					listList1 = subTask.getChildren("LIST1");
 					iteratorListList = listList1.iterator();
 					/* LIST1 */
@@ -135,11 +152,12 @@ public class DataParsing {
 									    while (iteratorRefInt.hasNext()) {
 											Element refInt = (Element) iteratorRefInt.next();
 											jobSetUp += "<li><span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span></li>";
-											
+											stepsJobSetup.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+"'>"+refInt.getText()+"</a>");
 										}
 									}
 								}else{
 									jobSetUp += "<li>"+para.getText()+"</li>";
+									stepsJobSetup.add(para.getText());
 								}
 							}
 							
@@ -233,7 +251,7 @@ public class DataParsing {
 					Element subTask = (Element) iteratorSubTask.next();
 					procedure += "<p>";
 					procedure += "Task : <a href='"+subTask.getAttributeValue("KEY")+"'>"+subTask.getAttributeValue("KEY")+"</a><br/>";
-					
+					stepsProcedure.add("Task : <a href='"+subTask.getAttributeValue("KEY")+"'>"+subTask.getAttributeValue("KEY")+"</a>");
 					listList1 = subTask.getChildren("LIST1");
 					iteratorListList = listList1.iterator();
 					/* LIST1 */
@@ -260,7 +278,7 @@ public class DataParsing {
 								    while (iteratorRefInt.hasNext()) {
 										Element refInt = (Element) iteratorRefInt.next();
 										procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
-										stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+										stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 									}
 									
 								}
@@ -325,7 +343,7 @@ public class DataParsing {
 										    while (iteratorRefInt.hasNext()) {
 												Element refInt = (Element) iteratorRefInt.next();
 												procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
-												stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+												stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 											}
 											
 										}
@@ -359,7 +377,7 @@ public class DataParsing {
 												    while (iteratorRefInt.hasNext()) {
 														Element refInt = (Element) iteratorRefInt.next();
 														procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
-														stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+														stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 													}
 													
 												}
@@ -390,7 +408,7 @@ public class DataParsing {
 											    while (iteratorRefInt.hasNext()) {
 													Element refInt = (Element) iteratorRefInt.next();
 													procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
-													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 												}
 												
 											}
@@ -418,7 +436,7 @@ public class DataParsing {
 											    while (iteratorRefInt.hasNext()) {
 													Element refInt = (Element) iteratorRefInt.next();
 													procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
-													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?y="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
 												}
 												
 											}
@@ -471,7 +489,7 @@ public class DataParsing {
 					Element subTask = (Element) iteratorSubTask.next();
 					closeUp += "<p>";
 					closeUp += "Task : <a href='"+subTask.getAttributeValue("KEY")+"'>"+subTask.getAttributeValue("KEY")+"</a><br/>";
-					
+					stepsCloseUp.add("Task : <a href='"+subTask.getAttributeValue("KEY")+"'>"+subTask.getAttributeValue("KEY")+"</a>");
 					listList1 = subTask.getChildren("LIST1");
 					iteratorListList = listList1.iterator();
 					/* LIST1 */
@@ -527,6 +545,7 @@ public class DataParsing {
 									Element l2Item = (Element) iteratorL2Item.next();
 									Element paraL2Item = l2Item.getChild("PARA");
 									closeUp += "<li>"+paraL2Item.getText();
+									stepsCloseUp.add(paraL2Item.getText());
 									Element refblock = paraL2Item.getChild("REFBLOCK");
 									if(refblock!=null){
 										listRefInt = refblock.getChildren("REFINT");
@@ -534,6 +553,7 @@ public class DataParsing {
 									    while (iteratorRefInt.hasNext()) {
 											Element refInt = (Element) iteratorRefInt.next();
 											closeUp += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span>";
+											stepsCloseUp.add("<a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a>");
 										}
 									}
 									closeUp += "</li>";
@@ -765,7 +785,7 @@ public class DataParsing {
 														iteratorrefint = listrefint.iterator();
 														while(iteratorrefint.hasNext()){
 															Element refint = iteratorrefint.next();
-															pictures += refint.getText() +"<br><img src='ata.jpg'/><br>";
+															pictures += refint.getText() +"<br><img src='ata.jpg'/><br><br>";
 														}
 													}
 												}
@@ -793,4 +813,7 @@ public class DataParsing {
 		
 		return text;
 	}
+
+
+
 }
