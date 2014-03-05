@@ -27,7 +27,7 @@
         android:layout_weight="20"
         android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:textColor="@color/background1_dark"/>
+        android:textColor="@color/background1_light"/>
 
     
 </LinearLayout>

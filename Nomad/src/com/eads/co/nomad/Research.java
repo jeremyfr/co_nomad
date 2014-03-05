@@ -34,7 +34,7 @@ public class Research extends Activity {
     public boolean onOptionsItemSelected(MenuItem item){       
 		switch (item.getItemId()) {
 			case android.R.id.home:
-				Intent intent = new Intent(this, MainActivity.class);
+				Intent intent = new Intent(this, MenuApp.class);
 				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(intent);
 				return true;
@@ -51,23 +51,22 @@ public class Research extends Activity {
       if (query.contains("general")){
     	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 00 - General",
     	  		"36 - PNEUMATIC > - 00 - General", "52 - DOORS > - 00 - General"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
       }
       else if (query.contains("airfoil")){
-    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 10 - Airfoil",
-    			  "30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-801 - Installation of the Wing Anti-ice Control-valve",
+    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-801 - Installation of the Wing Anti-ice Control-valve",
     			  "30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-802 - Installation of the Wing Anti-ice Control-valve filter"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View view,
 	            int position, long id) {
 	        	Intent intent = new Intent(Research.this, AMMAnnexes.class);
 	        	switch(position){
-	        	  case 1:
+	        	  case 0:
 	        		  intent.putExtra("task", "EN30115140080100");
 	        		  startActivity(intent); 
 	        		  break;
-				  case 2:
+				  case 1:
 	        		  intent.putExtra("task", "EN30115140080200");
 	        		  startActivity(intent); 
 	        		  break;
@@ -76,30 +75,29 @@ public class Research extends Activity {
     	  });
       }
       else if (query.contains("air intakes")){
-    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 20 - Air intakes",
-    			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-801 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Open Position",
+    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-801 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Open Position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-804 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Open position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-806 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Closed Position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-807 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Closed position"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
   	        public void onItemClick(AdapterView<?> parent, View view,
   	            int position, long id) {
   	        	Intent intent = new Intent(Research.this, AMMAnnexes.class);
   	        	switch(position){
-  	        	  case 1:
+  	        	  case 0:
   	        		  intent.putExtra("task", "EN30210004080100");
   	        		  startActivity(intent); 
   	        		  break;
-  				  case 2:
+  				  case 1:
   	        		  intent.putExtra("task", "EN30210004080400");
   	        		  startActivity(intent); 
   	        		  break;
-  				  case 3:
+  				  case 2:
 	        		  intent.putExtra("task", "EN30210004080600");
 	        		  startActivity(intent); 
 	        		  break;
-  				  case 4:
+  				  case 3:
 	        		  intent.putExtra("task", "EN30210004080700");
 	        		  startActivity(intent); 
 	        		  break;
@@ -107,50 +105,25 @@ public class Research extends Activity {
   	        }
       	  });
       }
-      else if (query.contains("pitot") || query.contains("static")){
-    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 30 - Pitot and static"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
-      }
-      else if (query.contains("windows") || query.contains("windshields")){
-    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 40 - Windows, Windshields and Doors"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
-      }
-      else if (query.contains("antennas")){
-    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 50 - Antennas"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
-      }
-      else if (query.contains("propellers") || query.contains("rotors")){
-    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 60 - Propellers/Rotors"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
-      }
-      else if (query.contains("water lines")){
-    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 70 - Water lines"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
-      }
-      else if (query.contains("detection")){
-    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 80 - Detection"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
-      }
       else if (query.contains("passenger") || query.contains("crew")){
-    	  String[] results = {"52 - DOORS > - 10 - Passenger/Crew",
-    			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door Locking Mechanism Door M4L/M4R",
+    	  String[] results = {"52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Adjustment of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door-Locking Mechanism Door M5L/M5R"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
     	        public void onItemClick(AdapterView<?> parent, View view,
     	            int position, long id) {
     	        	Intent intent = new Intent(Research.this, AMMAnnexes.class);
     	        	switch(position){
-    	        	  case 1:
+    	        	  case 0:
     	        		  intent.putExtra("task", "EN52132140080100");
     	        		  startActivity(intent); 
     	        		  break;
-    				  case 2:
+    				  case 1:
     	        		  intent.putExtra("task", "EN52132182080100");
     	        		  startActivity(intent); 
     	        		  break;
-    				  case 3:
+    				  case 2:
 	  	        		  intent.putExtra("task", "EN52142140080100");
 	  	        		  startActivity(intent); 
   	        		  break;
@@ -158,10 +131,10 @@ public class Research extends Activity {
     	        }
         	  });
       }
-      else if (query.contains("installation") || query.contains("wing anti-ice") || query.contains("valve")){
+      else if (query.contains("installation") || query.contains("wing") || query.contains("valve")|| query.contains("anti-ice")){
     	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-801 - Installation of the Wing Anti-ice Control-valve",
     			  "30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-802 - Installation of the Wing Anti-ice Control-valve filter"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
     	        public void onItemClick(AdapterView<?> parent, View view,
     	            int position, long id) {
@@ -184,7 +157,7 @@ public class Research extends Activity {
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-804 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Open position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-806 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Closed Position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-807 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Closed position"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
   	        public void onItemClick(AdapterView<?> parent, View view,
   	            int position, long id) {
@@ -214,7 +187,7 @@ public class Research extends Activity {
     	  String[] results = {"52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Adjustment of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door-Locking Mechanism Door M5L/M5R"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
     	        public void onItemClick(AdapterView<?> parent, View view,
     	            int position, long id) {
@@ -237,41 +210,39 @@ public class Research extends Activity {
         	  });
       }
       else if (query.contains("ice") || query.contains("rain")){
-    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 10 - Airfoil",
-    			  "30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-801 - Installation of the Wing Anti-ice Control-valve",
+    	  String[] results = {"30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-801 - Installation of the Wing Anti-ice Control-valve",
     			  "30 - ICE AND RAIN PROTECTION > - 10 - Airfoil > 51-802 - Installation of the Wing Anti-ice Control-valve filter",
-    			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-801 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Open Position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-804 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Open position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-806 - Deactivation of the Engine Air Intake Anti-Ice System in the Locked Closed Position",
     			  "30 - ICE AND RAIN PROTECTION > - 20 - Air intakes > 00-807 - Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Closed position"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
 	        public void onItemClick(AdapterView<?> parent, View view,
 	            int position, long id) {
 	        	Intent intent = new Intent(Research.this, AMMAnnexes.class);
 	        	switch(position){
-	        	  case 1:
+	        	  case 0:
 	        		  intent.putExtra("task", "EN30115140080100");
 	        		  startActivity(intent); 
 	        		  break;
-				  case 2:
+				  case 1:
 	        		  intent.putExtra("task", "EN30115140080200");
 	        		  startActivity(intent); 
 	        		  break;
-				  case 4:
+				  case 2:
   	        		  intent.putExtra("task", "EN30210004080100");
   	        		  startActivity(intent); 
   	        		  break;
-  				  case 5:
+  				  case 3:
   	        		  intent.putExtra("task", "EN30210004080400");
   	        		  startActivity(intent); 
   	        		  break;
-  				  case 6:
+  				  case 4:
 	        		  intent.putExtra("task", "EN30210004080600");
 	        		  startActivity(intent); 
 	        		  break;
-  				  case 7:
+  				  case 5:
 	        		  intent.putExtra("task", "EN30210004080700");
 	        		  startActivity(intent); 
 	        		  break;
@@ -280,25 +251,24 @@ public class Research extends Activity {
     	  });
       }
       else if (query.contains("doors")){
-    	  String[] results = {"52 - DOORS > - 10 - Passenger/Crew",
-    			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door Locking Mechanism Door M4L/M4R",
+    	  String[] results = {"52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Adjustment of the Door Locking Mechanism Door M4L/M4R",
     			  "52 - DOORS > - 10 - Passenger/Crew > 21-801 - Installation of the Door-Locking Mechanism Door M5L/M5R"};
-    	  resultsView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,results));
+    	  resultsView.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item_ata,results));
     	  resultsView.setOnItemClickListener(new OnItemClickListener() {
     	        public void onItemClick(AdapterView<?> parent, View view,
     	            int position, long id) {
     	        	Intent intent = new Intent(Research.this, AMMAnnexes.class);
     	        	switch(position){
-    	        	  case 1:
+    	        	  case 0:
     	        		  intent.putExtra("task", "EN52132140080100");
     	        		  startActivity(intent); 
     	        		  break;
-    				  case 2:
+    				  case 1:
     	        		  intent.putExtra("task", "EN52132182080100");
     	        		  startActivity(intent); 
     	        		  break;
-    				  case 3:
+    				  case 2:
 	  	        		  intent.putExtra("task", "EN52142140080100");
 	  	        		  startActivity(intent); 
   	        		  break;
