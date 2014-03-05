@@ -6,7 +6,8 @@ public class JobCardDetails {
 	private String acDetails;
 	private String taskDetails;
 
-	public JobCardDetails(JobCardData jobCard, String acDetails, String taskDetails) {
+	public JobCardDetails(JobCardData jobCard, String acDetails,
+			String taskDetails) {
 		super();
 		this.jobCard = jobCard;
 		this.acDetails = acDetails;
@@ -24,11 +25,11 @@ public class JobCardDetails {
 	public String getAcDetails() {
 		return acDetails;
 	}
-	
+
 	public void setAcDetails(String acDetails) {
 		this.acDetails = acDetails;
 	}
-	
+
 	public String getTaskDetails() {
 		return taskDetails;
 	}

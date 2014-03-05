@@ -1,13 +1,6 @@
 package com.eads.co.nomad;
 
-import android.content.Context;
-import android.util.Log;
-
 public class JavaScriptInterface {
-
-	private enum Classe {
-		AMM, JOBCARD;
-	}
 
 	private AMMAnnexes activityAMM;
 	private JobCard activityJobCard;

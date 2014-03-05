@@ -2,7 +2,6 @@ package com.eads.co.nomad;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -12,29 +11,24 @@ import java.util.Iterator;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -43,7 +37,6 @@ import android.widget.SimpleAdapter;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.eads.co.nomad.PanAndZoomListener.Anchor;
@@ -58,7 +51,8 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
  * @author Guillaume Saas
  */
 
-public class AMMAnnexes extends Activity implements PropertyChangeListener,Serializable {
+public class AMMAnnexes extends Activity implements PropertyChangeListener,
+		Serializable {
 
 	/**
 	 * 
@@ -102,7 +96,6 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 	private int y_absolue; // Position du lien vers l'annexe dans scrollView.
 
 	private RelativeLayout separatorLayout; // layout de la barre verticale.
-	private ImageView separator; // barre verticale.
 	private ImageView separator_up; // barre verticale haute.
 	private ImageView separator_down; // barre verticale basse.
 	private ImageView infobulle; // image de l'infobulle.
@@ -146,20 +139,16 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		setContentView(R.layout.amm_annexes);
-		
-		
+
 		layout = (LinearLayout) findViewById(R.id.layout_amm);
 
 		separatorLayout = (RelativeLayout) findViewById(R.id.separatorLayout);
-		separator = (ImageView) findViewById(R.id.separator);
 		separator_up = (ImageView) findViewById(R.id.separator_up);
 		separator_down = (ImageView) findViewById(R.id.separator_down);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
 
 		scrollView = (OurScrollView) findViewById(R.id.scrollView);
 		scrollView.setActivity(this);
-
-
 
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		titreAnnexe = (TextView) findViewById(R.id.annexTitle);
@@ -173,7 +162,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 				Anchor.TOPLEFT);
 		annexImg.setOnTouchListener(pan);
 		pan.addPropertyChangeListener(this);
-		
+
 		// Pour les annexes multiples
 		listview = (ListView) findViewById(R.id.listview);
 		listview.setSelector(R.drawable.selector);
@@ -190,7 +179,10 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 		titreAnnexe.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				scrollTo(y_absolue);
+				int y = y_absolue - scrollView.getScrollY();
+				if (y < ymin || y > ymax) {
+					scrollTo(y_absolue);
+				}
 			}
 		});
 
@@ -228,6 +220,18 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 			}
 		});
 
+		// Listener sur l'infobulle.
+		infobulle.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int y = y_absolue - scrollView.getScrollY();
+				if (y < ymin || y > ymax) {
+					scrollTo(y_absolue);
+				}
+			}
+		});
+
+		// Listener sur la barre verticale.
 		layout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -343,7 +347,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 			ammPart = (String) bundle.get("task");
 			title = bundle.getString("titre");
 		}
-		
+
 		InputStream input = null;
 		try {
 			input = getApplicationContext().getAssets().open(ammPart + ".xml");
@@ -352,10 +356,9 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 		}
 		try {
 			parser = new DataParsing(input);
-			this.setTitle(parser.getTitle()+ " "+ title);
+			this.setTitle(parser.getTitle() + " " + title);
 
-			SwitchTaskManager taskManager = new SwitchTaskManager(this, this,
-					"amm");
+			SwitchTaskManager taskManager = new SwitchTaskManager(this, this);
 
 			HashMap<String, String> h = ((History) this.getApplication())
 					.getHistory();
@@ -435,7 +438,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 			picturesWV = ((WebView) findViewById(R.id.pictures_text));
 
 			picturesWV.setInitialScale(100);
-			
+
 			picturesWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getPictures(), "text/html", "UTF-8", null);
 			picturesWV.setWebViewClient(taskManager);
@@ -502,7 +505,6 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 		};
 		t.start();
 	}
-
 
 	// Scroll à une ordonnée de la documentation.
 	private void scrollTo(int y) {
@@ -989,14 +991,13 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 	public void onBackPressed() {
 		super.onBackPressed();
 	}
-	
 
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
-		Log.e("Dans propertyChange","Cool");
+		Log.e("Dans propertyChange", "Cool");
 		if (event.getNewValue().equals("FULLSCREEN")) {
 			fullScreenAnnexButton.performClick();
 		}
 	}
-	
+
 }

@@ -2,30 +2,27 @@ package com.eads.co.nomad;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-import android.webkit.JsResult;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 public class SwitchTaskManager extends WebViewClient {
 	private Context context;
-	private String part;
-
-	public SwitchTaskManager(Context context, JobCard activity, String p) {
-		this.context = context;
-		part = p;
-		activityJobCard = activity;
-		
-		
-	}
-	
 	private AMMAnnexes activityAMM;
 	private JobCard activityJobCard;
-	public SwitchTaskManager(Context context, AMMAnnexes activity, String p) {
+	private Classe classe;
+
+	public SwitchTaskManager(Context context, JobCard activity) {
+		this.context = context;
+		this.activityJobCard = activity;
+		this.classe = Classe.JOBCARD;
+	}
+
+	public SwitchTaskManager(Context context, AMMAnnexes activity) {
 		this.context = context;
 		this.activityAMM = activity;
-		this.part  = p;
+		this.classe = Classe.AMM;
+
 	}
 
 	@Override
@@ -35,13 +32,15 @@ public class SwitchTaskManager extends WebViewClient {
 		/* Ouverture d'une annexe */
 		if (url.contains("?id=")) {
 			String[] split = url.split("id=");
-			if(part.equals("jobcard")){
-				activityJobCard.onAnnexeClic(view, split [1]);
-			}else{
-				activityAMM.onAnnexeClic(view, split[1]);	
+			switch (classe) {
+			case AMM:
+				activityAMM.onAnnexeClic(view, split[1]);
+				break;
+			case JOBCARD:
+				activityJobCard.onAnnexeClic(view, split[1]);
+				break;
 			}
-			
-			
+
 			/* Changement de tache */
 		} else {
 			Intent i = new Intent(context, AMMAnnexes.class);
@@ -50,11 +49,4 @@ public class SwitchTaskManager extends WebViewClient {
 		}
 		return true;
 	}
-	
-    @Override
-    public void onScaleChanged(WebView view, float oldScale, float newScale) {
-        super.onScaleChanged(view, oldScale, newScale);
-        System.out.println("Scale changed from " + oldScale + " to " + newScale);
-    }
-
 }

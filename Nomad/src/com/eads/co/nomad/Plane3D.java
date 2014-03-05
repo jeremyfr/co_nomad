@@ -11,7 +11,6 @@ import javax.microedition.khronos.opengles.GL10;
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import com.threed.jpct.Camera;
@@ -51,7 +50,7 @@ public class Plane3D extends Activity {
 	private float ypos = -1;
 	private float xpos1 = -1;
 	private float ypos1 = -1;
-	
+
 	private boolean cameraZoom;
 	private float zoomValueLast;
 	private float zoomValue;
@@ -136,13 +135,13 @@ public class Plane3D extends Activity {
 			touchTurn = 0;
 			touchTurnUp = 0;
 		}
-		
+
 		if (me.getActionMasked() == MotionEvent.ACTION_POINTER_UP) {
 			cameraZoom = false;
 			xpos1 = -1;
 			ypos1 = -1;
 		}
-		
+
 		if (me.getAction() == MotionEvent.ACTION_UP) {
 			xpos = -1;
 			ypos = -1;
@@ -179,19 +178,16 @@ public class Plane3D extends Activity {
 
 		return super.onTouchEvent(me);
 	}
-	
+
 	private float zoomValue() {
-		float distance = (float) Math.sqrt((xpos - xpos1) * (xpos - xpos1) + (ypos - ypos1) * (ypos - ypos1));
+		float distance = (float) Math.sqrt((xpos - xpos1) * (xpos - xpos1)
+				+ (ypos - ypos1) * (ypos - ypos1));
 		return distance;
 	}
-	
+
 	protected boolean isFullscreenOpaque() {
 		return true;
 	}
-	
-	
-
-
 
 	class MyRenderer implements GLSurfaceView.Renderer {
 
@@ -216,35 +212,49 @@ public class Plane3D extends Activity {
 				sun.setIntensity(500, 500, 500);
 
 				try {
-					
-					Texture b737_800_2_T = new Texture(getResources().getAssets().open("A380/b737_800_2_T.png"));				
-					TextureManager.getInstance().addTexture("b737_800_2_T.png", b737_800_2_T);
-					
-					Texture a380_01 = new Texture(getResources().getAssets().open("A380/a380_01.png"));				
-					TextureManager.getInstance().addTexture("a380_01.png", a380_01);		
-					
-					Texture A380_mw = new Texture(getResources().getAssets().open("A380/A380_mw.png"));				
-					TextureManager.getInstance().addTexture("A380_mw.png", A380_mw);
-					
-					Texture A380_R = new Texture(getResources().getAssets().open("A380/A380_R.png"));				
-					TextureManager.getInstance().addTexture("A380_R.png", A380_R);
-					
-					Texture A380_part1 = new Texture(getResources().getAssets().open("A380/A380_part1.png"));				
-					TextureManager.getInstance().addTexture("A380_part1.png", A380_part1);	
-					
-					Texture A380_part2 = new Texture(getResources().getAssets().open("A380/A380_part2.png"));				
-					TextureManager.getInstance().addTexture("A380_part2.png", A380_part2);				
-					
-					Texture A380_part3 = new Texture(getResources().getAssets().open("A380/A380_part3.png"));				
-					TextureManager.getInstance().addTexture("A380_part3.png", A380_part3);	
-					
+
+					Texture b737_800_2_T = new Texture(getResources()
+							.getAssets().open("A380/b737_800_2_T.png"));
+					TextureManager.getInstance().addTexture("b737_800_2_T.png",
+							b737_800_2_T);
+
+					Texture a380_01 = new Texture(getResources().getAssets()
+							.open("A380/a380_01.png"));
+					TextureManager.getInstance().addTexture("a380_01.png",
+							a380_01);
+
+					Texture A380_mw = new Texture(getResources().getAssets()
+							.open("A380/A380_mw.png"));
+					TextureManager.getInstance().addTexture("A380_mw.png",
+							A380_mw);
+
+					Texture A380_R = new Texture(getResources().getAssets()
+							.open("A380/A380_R.png"));
+					TextureManager.getInstance().addTexture("A380_R.png",
+							A380_R);
+
+					Texture A380_part1 = new Texture(getResources().getAssets()
+							.open("A380/A380_part1.png"));
+					TextureManager.getInstance().addTexture("A380_part1.png",
+							A380_part1);
+
+					Texture A380_part2 = new Texture(getResources().getAssets()
+							.open("A380/A380_part2.png"));
+					TextureManager.getInstance().addTexture("A380_part2.png",
+							A380_part2);
+
+					Texture A380_part3 = new Texture(getResources().getAssets()
+							.open("A380/A380_part3.png"));
+					TextureManager.getInstance().addTexture("A380_part3.png",
+							A380_part3);
+
 					plane = Object3D.mergeAll(Loader.loadOBJ(getResources()
 							.getAssets().open("A380/A380.obj"), getResources()
 							.getAssets().open("A380/A380.mtl"), 0.007f));
 				} catch (IOException e) {
 					System.out.println("mauvais chemin");
 				}
-				
+
 				plane.setCulling(false);
 				plane.strip();
 				plane.build();
@@ -281,19 +291,18 @@ public class Plane3D extends Activity {
 				plane.rotateX(touchTurnUp);
 				touchTurnUp = 0;
 			}
-			
+
 			// zoom
 			if (cameraZoom) {
 				Camera cam = world.getCamera();
 				if (zoomValue > 1.0) {
-					cam.moveCamera(Camera.CAMERA_MOVEOUT, zoomValue*0.5f);
-				}
-				else if (zoomValue < 1.0) {
-					cam.moveCamera(Camera.CAMERA_MOVEIN, zoomValue*0.5f);
+					cam.moveCamera(Camera.CAMERA_MOVEOUT, zoomValue * 0.5f);
+				} else if (zoomValue < 1.0) {
+					cam.moveCamera(Camera.CAMERA_MOVEIN, zoomValue * 0.5f);
 				}
 				cam.lookAt(plane.getTransformedCenter());
 			}
-			
+
 			world.renderScene(fb);
 			world.draw(fb);
 			fb.display();

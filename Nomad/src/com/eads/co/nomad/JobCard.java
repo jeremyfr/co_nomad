@@ -59,7 +59,8 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
  * @author Guillaume Saas
  */
 @SuppressLint({ "JavascriptInterface", "SetJavaScriptEnabled" })
-public class JobCard extends Activity implements PropertyChangeListener,Serializable{
+public class JobCard extends Activity implements PropertyChangeListener,
+		Serializable {
 
 	ListView listStepProc;
 	ListView listStepPreviousProc;
@@ -81,12 +82,12 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 	StepListAdapterProcedure stepAdaptProc;
 	PreviousStepListAdapterProcedure stepAdaptPreviousProc;
 	String head = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
-	String endbody ="</body></html>";
+	String endbody = "</body></html>";
 	StepListAdapterWarn stepAdaptWarn;
 	PreviousStepListAdapterWarn stepAdaptPreviousWarn;
 	StepListAdapterJobSetup stepAdaptJobSetup;
 	PreviousStepListAdapterJobSetup stepAdaptPreviousJobSetup;
-	
+
 	StepListAdapterCloseUp stepAdaptCloseUp;
 	PreviousStepListAdapterCloseUp stepAdaptPreviousCloseUp;
 
@@ -156,8 +157,6 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
 	LayoutParams lpc;
 
-	
-	
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
@@ -176,8 +175,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		setContentView(R.layout.job);
-		
-		
+
 		layout = (LinearLayout) findViewById(R.id.layout_jobcard);
 
 		separatorLayout = (RelativeLayout) findViewById(R.id.separatorLayout);
@@ -188,8 +186,6 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		scrollView = (OurScrollView) findViewById(R.id.scrollView);
 		scrollView.setActivity(this);
-
-
 
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		titreAnnexe = (TextView) findViewById(R.id.annexTitle);
@@ -203,7 +199,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 				Anchor.TOPLEFT);
 		annexImg.setOnTouchListener(pan);
 		pan.addPropertyChangeListener(this);
-		
+
 		// Pour les annexes multiples
 		listview = (ListView) findViewById(R.id.listview);
 		listview.setSelector(R.drawable.selector);
@@ -371,9 +367,9 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		String ammPart = "";
 		if (bundle != null) {
 			ammPart = (String) bundle.get("task");
-			//title = bundle.getString("titre");
+			// title = bundle.getString("titre");
 		}
-		
+
 		InputStream input = null;
 		try {
 			input = getApplicationContext().getAssets().open(ammPart + ".xml");
@@ -384,8 +380,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle());
 
-			SwitchTaskManager taskManager = new SwitchTaskManager(this, this,
-					"jobcard");
+			SwitchTaskManager taskManager = new SwitchTaskManager(this, this);
 
 			HashMap<String, String> h = ((History) this.getApplication())
 					.getHistory();
@@ -395,22 +390,23 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 			warnings = (LinearLayout) findViewById(R.id.warnings);
 			warnings.setOnClickListener(manageWarnings);
-			((ImageView) findViewById(R.id.stateWarning)).setTag(R.drawable.expand);
-			
+			((ImageView) findViewById(R.id.stateWarning))
+					.setTag(R.drawable.expand);
+
 			listStepWarn = (ListView) findViewById(R.id.listStepWarn);
 			listStepPreviousWarning = (ListView) findViewById(R.id.listPreviousStepWarn);
 			Button prevWarn = (Button) findViewById(R.id.previousButtonWarn);
 			prevWarn.setOnClickListener(managePreviousWarn);
 			prevWarn.setTag(">");
-			
+
 			String warn = parser.getWarnings();
 
-			previousStepsWarn = new ArrayList<PreviousStep>();	
+			previousStepsWarn = new ArrayList<PreviousStep>();
 			stepsWarn = new ArrayList<Step>();
 			ArrayList<String> stepWarn = parser.getStepsWarning();
 			for (int i = 0; i < stepWarn.size(); i++) {
 				s = new Step();
-				s.setTask(head+stepWarn.get(i)+endbody);
+				s.setTask(head + stepWarn.get(i) + endbody);
 				stepsWarn.add(s);
 			}
 
@@ -418,10 +414,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			stepAdaptWarn.setListItems(stepsWarn);
 			listStepWarn.setAdapter(stepAdaptWarn);
 			lpc = (LayoutParams) listStepWarn.getLayoutParams();
-			lpc.height = 190*stepsWarn.size();
-			//lpc.height = 1000;
+			lpc.height = 190 * stepsWarn.size();
+			// lpc.height = 1000;
 			listStepWarn.setLayoutParams(lpc);
-				
+
 			listStepPreviousWarning = (ListView) findViewById(R.id.listPreviousStepWarn);
 			stepAdaptPreviousWarn = new PreviousStepListAdapterWarn(this);
 			stepAdaptPreviousWarn.setListItems(previousStepsWarn);
@@ -429,15 +425,16 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			lpc = (LayoutParams) listStepPreviousWarning.getLayoutParams();
 			lpc.height = 10;
 			listStepPreviousWarning.setLayoutParams(lpc);
-			
-			
-			/*warningWV = ((WebView) findViewById(R.id.warnings_text));
-			warningWV.loadDataWithBaseURL("file:///android_asset/",
-					parser.getWarnings(), "text/html", "UTF-8", null);
-			warningWV.setWebViewClient(taskManager);
-			warningWV.getSettings().setJavaScriptEnabled(true);
-			warningWV.addJavascriptInterface(new JavaScriptInterface(this),
-					"MyAndroid");*/
+
+			/*
+			 * warningWV = ((WebView) findViewById(R.id.warnings_text));
+			 * warningWV.loadDataWithBaseURL("file:///android_asset/",
+			 * parser.getWarnings(), "text/html", "UTF-8", null);
+			 * warningWV.setWebViewClient(taskManager);
+			 * warningWV.getSettings().setJavaScriptEnabled(true);
+			 * warningWV.addJavascriptInterface(new JavaScriptInterface(this),
+			 * "MyAndroid");
+			 */
 
 			/* Job Setup part */
 			jobSetUp = (LinearLayout) findViewById(R.id.jobSetUp);
@@ -445,21 +442,21 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			collapse((LinearLayout) findViewById(R.id.jobSetUp_layout));
 			((ImageView) findViewById(R.id.stateJobSetUp))
 					.setTag(R.drawable.collapse);
-			
+
 			listStepJobSetup = (ListView) findViewById(R.id.listStepJobSetup);
 			listStepPreviousJobSetup = (ListView) findViewById(R.id.listPreviousStepJobSetup);
 			Button prevJobSetup = (Button) findViewById(R.id.previousButtonJobSetup);
 			prevJobSetup.setOnClickListener(managePreviousJobSetup);
 			prevJobSetup.setTag(">");
-			
+
 			String jobSetup = parser.getJobSetUp();
 
-			previousStepsJobSetup = new ArrayList<PreviousStep>();	
+			previousStepsJobSetup = new ArrayList<PreviousStep>();
 			stepsJobSetup = new ArrayList<Step>();
 			ArrayList<String> stepJobSetup = parser.getStepsJobSetup();
 			for (int i = 0; i < stepJobSetup.size(); i++) {
 				s = new Step();
-				s.setTask(head+stepJobSetup.get(i)+endbody);
+				s.setTask(head + stepJobSetup.get(i) + endbody);
 				stepsJobSetup.add(s);
 			}
 
@@ -467,56 +464,59 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			stepAdaptJobSetup.setListItems(stepsJobSetup);
 			listStepJobSetup.setAdapter(stepAdaptJobSetup);
 			lpc = (LayoutParams) listStepJobSetup.getLayoutParams();
-			lpc.height = 190*stepsJobSetup.size();
+			lpc.height = 190 * stepsJobSetup.size();
 			listStepJobSetup.setLayoutParams(lpc);
-				
+
 			listStepPreviousJobSetup = (ListView) findViewById(R.id.listPreviousStepJobSetup);
-			stepAdaptPreviousJobSetup = new PreviousStepListAdapterJobSetup(this);
+			stepAdaptPreviousJobSetup = new PreviousStepListAdapterJobSetup(
+					this);
 			stepAdaptPreviousJobSetup.setListItems(previousStepsJobSetup);
 			listStepPreviousJobSetup.setAdapter(stepAdaptPreviousJobSetup);
 			lpc = (LayoutParams) listStepPreviousJobSetup.getLayoutParams();
 			lpc.height = 10;
 			listStepPreviousJobSetup.setLayoutParams(lpc);
-			
-			/*jobSetUpWV = ((WebView) findViewById(R.id.jobSetUp_text));
-			jobSetUpWV.loadDataWithBaseURL("file:///android_asset/",
-					parser.getJobSetUp(), "text/html", "UTF-8", null);
-			jobSetUpWV.setWebViewClient(taskManager);
-			jobSetUpWV.getSettings().setJavaScriptEnabled(true);
-			jobSetUpWV.addJavascriptInterface(new JavaScriptInterface(this),
-					"MyAndroid");*/
+
+			/*
+			 * jobSetUpWV = ((WebView) findViewById(R.id.jobSetUp_text));
+			 * jobSetUpWV.loadDataWithBaseURL("file:///android_asset/",
+			 * parser.getJobSetUp(), "text/html", "UTF-8", null);
+			 * jobSetUpWV.setWebViewClient(taskManager);
+			 * jobSetUpWV.getSettings().setJavaScriptEnabled(true);
+			 * jobSetUpWV.addJavascriptInterface(new JavaScriptInterface(this),
+			 * "MyAndroid");
+			 */
 			/* Procedure part */
-			
+
 			procedure = (LinearLayout) findViewById(R.id.procedure);
 			procedure.setOnClickListener(manageProcedure);
 			collapse((LinearLayout) findViewById(R.id.procedure_layout));
 			((ImageView) findViewById(R.id.stateProcedure))
 					.setTag(R.drawable.collapse);
-			
+
 			listStepProc = (ListView) findViewById(R.id.listStepProc);
 			listStepPreviousProc = (ListView) findViewById(R.id.listPreviousStepProc);
 			Button prevProc = (Button) findViewById(R.id.previousButtonProc);
 			prevProc.setOnClickListener(managePreviousProc);
 			prevProc.setTag(">");
-			
+
 			String proc = parser.getProcedure();
-			
+
 			stepsProc = new ArrayList<Step>();
 			ArrayList<String> stepProc = parser.getStepsProcedure();
 			for (int i = 0; i < stepProc.size(); i++) {
 				s = new Step();
-				s.setTask(head+stepProc.get(i)+endbody);
+				s.setTask(head + stepProc.get(i) + endbody);
 				stepsProc.add(s);
 			}
 
-			previousStepsProc = new ArrayList<PreviousStep>();	
+			previousStepsProc = new ArrayList<PreviousStep>();
 			stepAdaptProc = new StepListAdapterProcedure(this);
 			stepAdaptProc.setListItems(stepsProc);
 			listStepProc.setAdapter(stepAdaptProc);
 			lpc = (LayoutParams) listStepProc.getLayoutParams();
-			lpc.height = 190*stepsProc.size();
+			lpc.height = 190 * stepsProc.size();
 			listStepProc.setLayoutParams(lpc);
-				
+
 			listStepPreviousProc = (ListView) findViewById(R.id.listPreviousStepProc);
 			stepAdaptPreviousProc = new PreviousStepListAdapterProcedure(this);
 			stepAdaptPreviousProc.setListItems(previousStepsProc);
@@ -524,39 +524,38 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			lpc = (LayoutParams) listStepPreviousProc.getLayoutParams();
 			lpc.height = 10;
 			listStepPreviousProc.setLayoutParams(lpc);
-			
+
 			/* Close Up part */
 			closeUp = (LinearLayout) findViewById(R.id.closeUp);
 			closeUp.setOnClickListener(manageCloseUp);
 			collapse((LinearLayout) findViewById(R.id.closeUp_layout));
 			((ImageView) findViewById(R.id.stateCloseUp))
 					.setTag(R.drawable.collapse);
-			
-			
+
 			listStepCloseUp = (ListView) findViewById(R.id.listStepCloseUp);
 			listStepPreviousCloseUp = (ListView) findViewById(R.id.listPreviousStepCloseUp);
 			Button prevCloseUp = (Button) findViewById(R.id.previousButtonCloseUp);
 			prevCloseUp.setOnClickListener(managePreviousCloseUp);
 			prevCloseUp.setTag(">");
-			
+
 			String closeUp = parser.getCloseUp();
-			
+
 			stepsCloseUp = new ArrayList<Step>();
 			ArrayList<String> stepCloseUp = parser.getStepsCloseUp();
 			for (int i = 0; i < stepCloseUp.size(); i++) {
 				s = new Step();
-				s.setTask(head+stepCloseUp.get(i)+endbody);
+				s.setTask(head + stepCloseUp.get(i) + endbody);
 				stepsCloseUp.add(s);
 			}
 
-			previousStepsCloseUp = new ArrayList<PreviousStep>();	
+			previousStepsCloseUp = new ArrayList<PreviousStep>();
 			stepAdaptCloseUp = new StepListAdapterCloseUp(this);
 			stepAdaptCloseUp.setListItems(stepsCloseUp);
 			listStepCloseUp.setAdapter(stepAdaptCloseUp);
 			lpc = (LayoutParams) listStepCloseUp.getLayoutParams();
-			lpc.height = 190*stepsCloseUp.size();
+			lpc.height = 190 * stepsCloseUp.size();
 			listStepCloseUp.setLayoutParams(lpc);
-				
+
 			listStepPreviousCloseUp = (ListView) findViewById(R.id.listPreviousStepProc);
 			stepAdaptPreviousCloseUp = new PreviousStepListAdapterCloseUp(this);
 			stepAdaptPreviousCloseUp.setListItems(previousStepsCloseUp);
@@ -564,15 +563,16 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			lpc = (LayoutParams) listStepPreviousCloseUp.getLayoutParams();
 			lpc.height = 10;
 			listStepPreviousCloseUp.setLayoutParams(lpc);
-			
-			
-			/*closeUpWV = ((WebView) findViewById(R.id.closeUp_text));
-			closeUpWV.loadDataWithBaseURL("file:///android_asset/",
-					parser.getCloseUp(), "text/html", "UTF-8", null);
-			closeUpWV.setWebViewClient(taskManager);
-			closeUpWV.getSettings().setJavaScriptEnabled(true);
-			closeUpWV.addJavascriptInterface(new JavaScriptInterface(this),
-					"MyAndroid");*/
+
+			/*
+			 * closeUpWV = ((WebView) findViewById(R.id.closeUp_text));
+			 * closeUpWV.loadDataWithBaseURL("file:///android_asset/",
+			 * parser.getCloseUp(), "text/html", "UTF-8", null);
+			 * closeUpWV.setWebViewClient(taskManager);
+			 * closeUpWV.getSettings().setJavaScriptEnabled(true);
+			 * closeUpWV.addJavascriptInterface(new JavaScriptInterface(this),
+			 * "MyAndroid");
+			 */
 			/* Tools part */
 			tools = (LinearLayout) findViewById(R.id.tools);
 			tools.setOnClickListener(manageTools);
@@ -595,7 +595,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			picturesWV = ((WebView) findViewById(R.id.pictures_text));
 
 			picturesWV.setInitialScale(100);
-			
+
 			picturesWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getPictures(), "text/html", "UTF-8", null);
 			picturesWV.setWebViewClient(taskManager);
@@ -662,7 +662,6 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		};
 		t.start();
 	}
-
 
 	// Scroll à une ordonnée de la documentation.
 	private void scrollTo(int y) {
@@ -992,60 +991,60 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			expandOrCollapse(R.id.pictures_layout, R.id.statePictures);
 		}
 	};
-	
+
 	private View.OnClickListener managePreviousProc = new View.OnClickListener() {
 		public void onClick(View v) {
 			Button b = (Button) findViewById(R.id.previousButtonProc);
-			if(v.getTag().equals(">")){
+			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutProc));
 				v.setTag("v");
 				b.setText("v Previous Steps");
-			}else{	
+			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutProc));
 				v.setTag(">");
 				b.setText("> Previous Steps");
 			}
 		}
 	};
-	
+
 	private View.OnClickListener managePreviousWarn = new View.OnClickListener() {
 		public void onClick(View v) {
 			Button b = (Button) findViewById(R.id.previousButtonWarn);
-			if(v.getTag().equals(">")){
+			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutWarn));
 				v.setTag("v");
 				b.setText("v Previous Steps");
-			}else{	
+			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutWarn));
 				v.setTag(">");
 				b.setText("> Previous Steps");
 			}
 		}
 	};
-	
+
 	private View.OnClickListener managePreviousJobSetup = new View.OnClickListener() {
 		public void onClick(View v) {
 			Button b = (Button) findViewById(R.id.previousButtonJobSetup);
-			if(v.getTag().equals(">")){
+			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
 				v.setTag("v");
 				b.setText("v Previous Steps");
-			}else{	
+			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
 				v.setTag(">");
 				b.setText("> Previous Steps");
 			}
 		}
 	};
-	
+
 	private View.OnClickListener managePreviousCloseUp = new View.OnClickListener() {
 		public void onClick(View v) {
 			Button b = (Button) findViewById(R.id.previousButtonCloseUp);
-			if(v.getTag().equals(">")){
+			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutCloseUp));
 				v.setTag("v");
 				b.setText("v Previous Steps");
-			}else{	
+			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutCloseUp));
 				v.setTag(">");
 				b.setText("> Previous Steps");
@@ -1062,7 +1061,8 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 	 *            , the icon to manage
 	 */
 	private void expandOrCollapse(int part, int icon) {
-		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag().toString());
+		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag()
+				.toString());
 		if (tag == R.drawable.collapse) {
 			expand(part, icon);
 		} else {
@@ -1208,26 +1208,23 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 	public void onBackPressed() {
 		super.onBackPressed();
 	}
-	
 
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
-		Log.e("Dans propertyChange","Cool");
+		Log.e("Dans propertyChange", "Cool");
 		if (event.getNewValue().equals("FULLSCREEN")) {
 			fullScreenAnnexButton.performClick();
 		}
 	}
-	
-	
-	
-	public class StepListAdapterWarn extends BaseAdapter{
+
+	public class StepListAdapterWarn extends BaseAdapter {
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
 		private Button mButton;
 		private Context ct;
 		private int position;
-		
+
 		public StepListAdapterWarn(Context c) {
 			mInf = LayoutInflater.from(c);
 			ct = c;
@@ -1235,7 +1232,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public int getCount() {
-			
+
 			return mStep.size();
 		}
 
@@ -1246,7 +1243,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public long getItemId(int arg0) {
-			
+
 			return arg0;
 		}
 
@@ -1254,93 +1251,99 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		public View getView(final int pos, View arg1, ViewGroup arg2) {
 			position = pos;
 			StepViewHolder h;
-			if(arg1 == null){
-				SwitchTaskManager taskManager = new SwitchTaskManager(JobCard.this,JobCard.this,"jobcard");
+			if (arg1 == null) {
+				SwitchTaskManager taskManager = new SwitchTaskManager(
+						JobCard.this, JobCard.this);
 				arg1 = mInf.inflate(R.layout.step, null);
 				h = new StepViewHolder();
-				//h.mTask = (TextView) arg1.findViewById(R.id.task);
+				// h.mTask = (TextView) arg1.findViewById(R.id.task);
 				h.mWV = (WebView) arg1.findViewById(R.id.webView1);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
-				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
-				h.mWV.setBackgroundColor(getResources().getColor(R.color.background1_light));
+				h.mWV.addJavascriptInterface(new JavaScriptInterface(
+						JobCard.this), "MyAndroid");
+				h.mWV.setBackgroundColor(getResources().getColor(
+						R.color.background1_light));
 				h.mButton = (Button) arg1.findViewById(R.id.Ok);
-				if(pos ==0){
+				if (pos == 0) {
 					h.mButton.setOnClickListener(new OnClickListener() {
-						
+
 						@Override
 						public void onClick(View arg0) {
-							if(pos == 0){
-								LayoutParams lpc = (LayoutParams) listStepWarn.getLayoutParams();
+							if (pos == 0) {
+								LayoutParams lpc = (LayoutParams) listStepWarn
+										.getLayoutParams();
 								lpc.height -= 190;
 								listStepWarn.setLayoutParams(lpc);
-								lpc = (LayoutParams) listStepPreviousWarning.getLayoutParams();
-								lpc.height +=190;
+								lpc = (LayoutParams) listStepPreviousWarning
+										.getLayoutParams();
+								lpc.height += 190;
 								listStepPreviousWarning.setLayoutParams(lpc);
-								
+
 								Step toDel = mStep.remove(pos);
 								stepAdaptWarn.notifyDataSetChanged();
 								PreviousStep ps = new PreviousStep();
 								ps.setTask(toDel.getTask());
 
 								previousStepsWarn.add(ps);
-								stepAdaptPreviousWarn = new PreviousStepListAdapterWarn(ct);
-								stepAdaptPreviousWarn.setListItems(previousStepsWarn);
-								listStepPreviousWarning.setAdapter(stepAdaptPreviousWarn);
-								
+								stepAdaptPreviousWarn = new PreviousStepListAdapterWarn(
+										ct);
+								stepAdaptPreviousWarn
+										.setListItems(previousStepsWarn);
+								listStepPreviousWarning
+										.setAdapter(stepAdaptPreviousWarn);
+
 							}
 						}
 
-						
 					});
-				}else{
+				} else {
 					h.mButton.setVisibility(View.INVISIBLE);
 				}
 				arg1.setTag(h);
-			}
-			else{
+			} else {
 				h = (StepViewHolder) arg1.getTag();
 			}
-			//h.setTask(mStep.get(pos).getTask());
+			// h.setTask(mStep.get(pos).getTask());
 			h.setmWV(mStep.get(pos).getTask());
 			h.setButton(mStep.get(pos).getB());
-			
+
 			return arg1;
 		}
 
-		public void setListItems(List<Step> l){
+		public void setListItems(List<Step> l) {
 			mStep = l;
 		}
 
-		private class StepViewHolder{
-			//private TextView mTask;
+		private class StepViewHolder {
+			// private TextView mTask;
 			private WebView mWV;
 			private Button mButton;
-			
-			/*public void setTask(String t){
-				mTask.setText(t);
-			}*/
-			
-			public void setmWV(String t){
-				mWV.loadDataWithBaseURL("file:///android_asset/", t, "text/html", "UTF-8", null);
+
+			/*
+			 * public void setTask(String t){ mTask.setText(t); }
+			 */
+
+			public void setmWV(String t) {
+				mWV.loadDataWithBaseURL("file:///android_asset/", t,
+						"text/html", "UTF-8", null);
 			}
-			
-			public void setButton(Button b){
-				mButton = b;			
+
+			public void setButton(Button b) {
+				mButton = b;
 			}
 		}
 
-		
 	}
-	
-	public class PreviousStepListAdapterWarn extends BaseAdapter{
+
+	public class PreviousStepListAdapterWarn extends BaseAdapter {
 
 		private List<PreviousStep> mStep;
 		private LayoutInflater mInf;
 
 		private Context ct;
 		private int position;
-		
+
 		public PreviousStepListAdapterWarn(Context c) {
 			mInf = LayoutInflater.from(c);
 			ct = c;
@@ -1348,7 +1351,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public int getCount() {
-			
+
 			return mStep.size();
 		}
 
@@ -1359,7 +1362,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public long getItemId(int arg0) {
-			
+
 			return arg0;
 		}
 
@@ -1367,9 +1370,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		public View getView(final int pos, View arg1, ViewGroup arg2) {
 			position = pos;
 			PreviousStepViewHolder h;
-			if(arg1 == null){
-				SwitchTaskManager taskManager = new SwitchTaskManager(JobCard.this,JobCard.this,"jobcard");
-			
+			if (arg1 == null) {
+				SwitchTaskManager taskManager = new SwitchTaskManager(
+						JobCard.this, JobCard.this);
+
 				arg1 = mInf.inflate(R.layout.previousstep, null);
 				h = new PreviousStepViewHolder();
 				h.mButton = (Button) arg1.findViewById(R.id.invalidate);
@@ -1377,82 +1381,85 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 				h.mWV = (WebView) arg1.findViewById(R.id.webViewPrevious);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
-				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
-				h.mWV.setBackgroundColor(getResources().getColor(R.color.background2_light));
+				h.mWV.addJavascriptInterface(new JavaScriptInterface(
+						JobCard.this), "MyAndroid");
+				h.mWV.setBackgroundColor(getResources().getColor(
+						R.color.background2_light));
 
-				if(pos == (mStep.size())-1){
+				if (pos == (mStep.size()) - 1) {
 
 					h.mButton.setVisibility(View.VISIBLE);
 					h.mButton.setOnClickListener(new OnClickListener() {
-						
+
 						@Override
 						public void onClick(View arg0) {
-							if(pos == (mStep.size())-1 ){
-								LayoutParams lpc = (LayoutParams) listStepWarn.getLayoutParams();
+							if (pos == (mStep.size()) - 1) {
+								LayoutParams lpc = (LayoutParams) listStepWarn
+										.getLayoutParams();
 								lpc.height += 190;
 								listStepWarn.setLayoutParams(lpc);
-								lpc = (LayoutParams) listStepPreviousWarning.getLayoutParams();
-								lpc.height -=190;
+								lpc = (LayoutParams) listStepPreviousWarning
+										.getLayoutParams();
+								lpc.height -= 190;
 								listStepPreviousWarning.setLayoutParams(lpc);
-								
+
 								PreviousStep toDel = mStep.remove(pos);
-								
-								
+
 								Step s = new Step();
 								s.setTask(toDel.getTask());
-								stepsWarn.add(0,s);
+								stepsWarn.add(0, s);
 								stepAdaptWarn.notifyDataSetChanged();
-								stepAdaptPreviousWarn = new PreviousStepListAdapterWarn(ct);
+								stepAdaptPreviousWarn = new PreviousStepListAdapterWarn(
+										ct);
 								stepAdaptPreviousWarn.setListItems(mStep);
-								listStepPreviousWarning.setAdapter(stepAdaptPreviousWarn);
-								
-								
+								listStepPreviousWarning
+										.setAdapter(stepAdaptPreviousWarn);
+
 							}
 						}
 
-						
 					});
-				}else{
+				} else {
 					h.mButton.setVisibility(View.INVISIBLE);
 				}
 				arg1.setTag(h);
-			}
-			else{
+			} else {
 				h = (PreviousStepViewHolder) arg1.getTag();
 			}
 			h.setmWV(mStep.get(pos).getTask());
-			
+
 			return arg1;
 		}
 
-		public void setListItems(List<PreviousStep> previousSteps){
+		public void setListItems(List<PreviousStep> previousSteps) {
 			mStep = previousSteps;
 		}
 
-		private class PreviousStepViewHolder{
+		private class PreviousStepViewHolder {
 			private WebView mWV;
 			private Button mButton;
-			
-			public void setmWV(String t){
-				mWV.loadDataWithBaseURL("file:///android_asset/", t, "text/html", "UTF-8", null);
+
+			public void setmWV(String t) {
+				mWV.loadDataWithBaseURL("file:///android_asset/", t,
+						"text/html", "UTF-8", null);
 			}
-			
-			public void setButton(Button b){
+
+			public void setButton(Button b) {
 				mButton = b;
 				b.setVisibility(View.INVISIBLE);
 			}
-		
+
 		}
 	}
-	
-	public class StepListAdapterJobSetup extends BaseAdapter{
+
+	public class StepListAdapterJobSetup extends BaseAdapter {
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
 		private Button mButton;
 		private Context ct;
 		private int position;
-		
+
 		public StepListAdapterJobSetup(Context c) {
 			mInf = LayoutInflater.from(c);
 			ct = c;
@@ -1460,7 +1467,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public int getCount() {
-			
+
 			return mStep.size();
 		}
 
@@ -1471,7 +1478,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public long getItemId(int arg0) {
-			
+
 			return arg0;
 		}
 
@@ -1479,104 +1486,108 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		public View getView(final int pos, View arg1, ViewGroup arg2) {
 			position = pos;
 			StepViewHolder h;
-			if(arg1 == null){
-				SwitchTaskManager taskManager = new SwitchTaskManager(JobCard.this,JobCard.this,"jobcard");
+			if (arg1 == null) {
+				SwitchTaskManager taskManager = new SwitchTaskManager(
+						JobCard.this, JobCard.this);
 				arg1 = mInf.inflate(R.layout.step, null);
 				h = new StepViewHolder();
-				//h.mTask = (TextView) arg1.findViewById(R.id.task);
+				// h.mTask = (TextView) arg1.findViewById(R.id.task);
 				h.mWV = (WebView) arg1.findViewById(R.id.webView1);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
-				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
-				h.mWV.setBackgroundColor(getResources().getColor(R.color.background1_light));
+				h.mWV.addJavascriptInterface(new JavaScriptInterface(
+						JobCard.this), "MyAndroid");
+				h.mWV.setBackgroundColor(getResources().getColor(
+						R.color.background1_light));
 				h.mButton = (Button) arg1.findViewById(R.id.Ok);
-				if(pos ==0){
+				if (pos == 0) {
 					h.mButton.setOnClickListener(new OnClickListener() {
-						
-
 
 						@Override
 						public void onClick(View arg0) {
-							if(pos == 0){
-								LayoutParams lpc = (LayoutParams) listStepJobSetup.getLayoutParams();
+							if (pos == 0) {
+								LayoutParams lpc = (LayoutParams) listStepJobSetup
+										.getLayoutParams();
 								lpc.height -= 190;
 								listStepJobSetup.setLayoutParams(lpc);
-								lpc = (LayoutParams) listStepPreviousJobSetup.getLayoutParams();
-								lpc.height +=190;
+								lpc = (LayoutParams) listStepPreviousJobSetup
+										.getLayoutParams();
+								lpc.height += 190;
 								listStepPreviousJobSetup.setLayoutParams(lpc);
-								
+
 								Step toDel = mStep.remove(pos);
 								stepAdaptJobSetup.notifyDataSetChanged();
 								PreviousStep ps = new PreviousStep();
 								ps.setTask(toDel.getTask());
 
 								previousStepsJobSetup.add(ps);
-								stepAdaptPreviousJobSetup = new PreviousStepListAdapterJobSetup(ct);
-								stepAdaptPreviousJobSetup.setListItems(previousStepsJobSetup);
-								listStepPreviousJobSetup.setAdapter(stepAdaptPreviousJobSetup);
-								
+								stepAdaptPreviousJobSetup = new PreviousStepListAdapterJobSetup(
+										ct);
+								stepAdaptPreviousJobSetup
+										.setListItems(previousStepsJobSetup);
+								listStepPreviousJobSetup
+										.setAdapter(stepAdaptPreviousJobSetup);
+
 							}
 						}
 
-						
 					});
-				}else{
+				} else {
 					h.mButton.setVisibility(View.INVISIBLE);
 				}
 				arg1.setTag(h);
-			}
-			else{
+			} else {
 				h = (StepViewHolder) arg1.getTag();
 			}
-			//h.setTask(mStep.get(pos).getTask());
+			// h.setTask(mStep.get(pos).getTask());
 			h.setmWV(mStep.get(pos).getTask());
 			h.setButton(mStep.get(pos).getB());
-			
+
 			return arg1;
 		}
 
-		public void setListItems(List<Step> l){
+		public void setListItems(List<Step> l) {
 			mStep = l;
 		}
 
-		private class StepViewHolder{
-			//private TextView mTask;
+		private class StepViewHolder {
+			// private TextView mTask;
 			private WebView mWV;
 			private Button mButton;
-			
-			/*public void setTask(String t){
-				mTask.setText(t);
-			}*/
-			
-			public void setmWV(String t){
-				mWV.loadDataWithBaseURL("file:///android_asset/", t, "text/html", "UTF-8", null);
+
+			/*
+			 * public void setTask(String t){ mTask.setText(t); }
+			 */
+
+			public void setmWV(String t) {
+				mWV.loadDataWithBaseURL("file:///android_asset/", t,
+						"text/html", "UTF-8", null);
 			}
-			
-			public void setButton(Button b){
-				mButton = b;			
+
+			public void setButton(Button b) {
+				mButton = b;
 			}
 		}
 
-		
 	}
-	
-	public class PreviousStepListAdapterJobSetup extends BaseAdapter{
+
+	public class PreviousStepListAdapterJobSetup extends BaseAdapter {
 
 		private List<PreviousStep> mStep;
 		private LayoutInflater mInf;
 
 		private Context ct;
 		private int position;
-		
+
 		public PreviousStepListAdapterJobSetup(Context c) {
 			mInf = LayoutInflater.from(c);
 			ct = c;
-			
+
 		}
 
 		@Override
 		public int getCount() {
-			
+
 			return mStep.size();
 		}
 
@@ -1587,7 +1598,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public long getItemId(int arg0) {
-			
+
 			return arg0;
 		}
 
@@ -1595,9 +1606,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		public View getView(final int pos, View arg1, ViewGroup arg2) {
 			position = pos;
 			PreviousStepViewHolder h;
-			if(arg1 == null){
-				SwitchTaskManager taskManager = new SwitchTaskManager(JobCard.this,JobCard.this,"jobcard");
-			
+			if (arg1 == null) {
+				SwitchTaskManager taskManager = new SwitchTaskManager(
+						JobCard.this, JobCard.this);
+
 				arg1 = mInf.inflate(R.layout.previousstep, null);
 				h = new PreviousStepViewHolder();
 				h.mButton = (Button) arg1.findViewById(R.id.invalidate);
@@ -1605,81 +1617,85 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 				h.mWV = (WebView) arg1.findViewById(R.id.webViewPrevious);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
-				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
-				h.mWV.setBackgroundColor(getResources().getColor(R.color.background2_light));
+				h.mWV.addJavascriptInterface(new JavaScriptInterface(
+						JobCard.this), "MyAndroid");
+				h.mWV.setBackgroundColor(getResources().getColor(
+						R.color.background2_light));
 
-				if(pos == (mStep.size())-1){
+				if (pos == (mStep.size()) - 1) {
 
 					h.mButton.setVisibility(View.VISIBLE);
 					h.mButton.setOnClickListener(new OnClickListener() {
-						
+
 						@Override
 						public void onClick(View arg0) {
-							if(pos == (mStep.size())-1 ){
-								LayoutParams lpc = (LayoutParams) listStepJobSetup.getLayoutParams();
+							if (pos == (mStep.size()) - 1) {
+								LayoutParams lpc = (LayoutParams) listStepJobSetup
+										.getLayoutParams();
 								lpc.height += 190;
 								listStepJobSetup.setLayoutParams(lpc);
-								lpc = (LayoutParams) listStepPreviousJobSetup.getLayoutParams();
-								lpc.height -=190;
+								lpc = (LayoutParams) listStepPreviousJobSetup
+										.getLayoutParams();
+								lpc.height -= 190;
 								listStepPreviousJobSetup.setLayoutParams(lpc);
-								
+
 								PreviousStep toDel = mStep.remove(pos);
-								
-								
+
 								Step s = new Step();
 								s.setTask(toDel.getTask());
-								stepsJobSetup.add(0,s);
+								stepsJobSetup.add(0, s);
 								stepAdaptJobSetup.notifyDataSetChanged();
-								stepAdaptPreviousJobSetup = new PreviousStepListAdapterJobSetup(ct);
+								stepAdaptPreviousJobSetup = new PreviousStepListAdapterJobSetup(
+										ct);
 								stepAdaptPreviousJobSetup.setListItems(mStep);
-								listStepPreviousJobSetup.setAdapter(stepAdaptPreviousJobSetup);
-								
-								
+								listStepPreviousJobSetup
+										.setAdapter(stepAdaptPreviousJobSetup);
+
 							}
 						}
 
-						
 					});
-				}else{
+				} else {
 					h.mButton.setVisibility(View.INVISIBLE);
 				}
 				arg1.setTag(h);
-			}
-			else{
+			} else {
 				h = (PreviousStepViewHolder) arg1.getTag();
 			}
 			h.setmWV(mStep.get(pos).getTask());
-			
+
 			return arg1;
 		}
 
-		public void setListItems(List<PreviousStep> previousSteps){
+		public void setListItems(List<PreviousStep> previousSteps) {
 			mStep = previousSteps;
 		}
 
-		private class PreviousStepViewHolder{
+		private class PreviousStepViewHolder {
 			private WebView mWV;
 			private Button mButton;
-			
-			public void setmWV(String t){
-				mWV.loadDataWithBaseURL("file:///android_asset/", t, "text/html", "UTF-8", null);
+
+			public void setmWV(String t) {
+				mWV.loadDataWithBaseURL("file:///android_asset/", t,
+						"text/html", "UTF-8", null);
 			}
-			
-			public void setButton(Button b){
+
+			public void setButton(Button b) {
 				mButton = b;
 				b.setVisibility(View.INVISIBLE);
 			}
-		
+
 		}
 	}
-	public class StepListAdapterProcedure extends BaseAdapter{
+
+	public class StepListAdapterProcedure extends BaseAdapter {
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
 		private Button mButton;
 		private Context ct;
 		private int position;
-		
+
 		public StepListAdapterProcedure(Context c) {
 			mInf = LayoutInflater.from(c);
 			ct = c;
@@ -1687,7 +1703,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public int getCount() {
-			
+
 			return mStep.size();
 		}
 
@@ -1698,7 +1714,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public long getItemId(int arg0) {
-			
+
 			return arg0;
 		}
 
@@ -1706,93 +1722,99 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		public View getView(final int pos, View arg1, ViewGroup arg2) {
 			position = pos;
 			StepViewHolder h;
-			if(arg1 == null){
-				SwitchTaskManager taskManager = new SwitchTaskManager(JobCard.this,JobCard.this,"jobcard");
+			if (arg1 == null) {
+				SwitchTaskManager taskManager = new SwitchTaskManager(
+						JobCard.this, JobCard.this);
 				arg1 = mInf.inflate(R.layout.step, null);
 				h = new StepViewHolder();
-				//h.mTask = (TextView) arg1.findViewById(R.id.task);
+				// h.mTask = (TextView) arg1.findViewById(R.id.task);
 				h.mWV = (WebView) arg1.findViewById(R.id.webView1);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
-				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
-				h.mWV.setBackgroundColor(getResources().getColor(R.color.background1_light));
+				h.mWV.addJavascriptInterface(new JavaScriptInterface(
+						JobCard.this), "MyAndroid");
+				h.mWV.setBackgroundColor(getResources().getColor(
+						R.color.background1_light));
 				h.mButton = (Button) arg1.findViewById(R.id.Ok);
-				if(pos ==0){
+				if (pos == 0) {
 					h.mButton.setOnClickListener(new OnClickListener() {
-						
+
 						@Override
 						public void onClick(View arg0) {
-							if(pos == 0){
-								LayoutParams lpc = (LayoutParams) listStepProc.getLayoutParams();
+							if (pos == 0) {
+								LayoutParams lpc = (LayoutParams) listStepProc
+										.getLayoutParams();
 								lpc.height -= 190;
 								listStepProc.setLayoutParams(lpc);
-								lpc = (LayoutParams) listStepPreviousProc.getLayoutParams();
-								lpc.height +=190;
+								lpc = (LayoutParams) listStepPreviousProc
+										.getLayoutParams();
+								lpc.height += 190;
 								listStepPreviousProc.setLayoutParams(lpc);
-								
+
 								Step toDel = mStep.remove(pos);
 								stepAdaptProc.notifyDataSetChanged();
 								PreviousStep ps = new PreviousStep();
 								ps.setTask(toDel.getTask());
 
 								previousStepsProc.add(ps);
-								stepAdaptPreviousProc = new PreviousStepListAdapterProcedure(ct);
-								stepAdaptPreviousProc.setListItems(previousStepsProc);
-								listStepPreviousProc.setAdapter(stepAdaptPreviousProc);
-								
+								stepAdaptPreviousProc = new PreviousStepListAdapterProcedure(
+										ct);
+								stepAdaptPreviousProc
+										.setListItems(previousStepsProc);
+								listStepPreviousProc
+										.setAdapter(stepAdaptPreviousProc);
+
 							}
 						}
 
-						
 					});
-				}else{
+				} else {
 					h.mButton.setVisibility(View.INVISIBLE);
 				}
 				arg1.setTag(h);
-			}
-			else{
+			} else {
 				h = (StepViewHolder) arg1.getTag();
 			}
-			//h.setTask(mStep.get(pos).getTask());
+			// h.setTask(mStep.get(pos).getTask());
 			h.setmWV(mStep.get(pos).getTask());
 			h.setButton(mStep.get(pos).getB());
-			
+
 			return arg1;
 		}
 
-		public void setListItems(List<Step> l){
+		public void setListItems(List<Step> l) {
 			mStep = l;
 		}
 
-		private class StepViewHolder{
-			//private TextView mTask;
+		private class StepViewHolder {
+			// private TextView mTask;
 			private WebView mWV;
 			private Button mButton;
-			
-			/*public void setTask(String t){
-				mTask.setText(t);
-			}*/
-			
-			public void setmWV(String t){
-				mWV.loadDataWithBaseURL("file:///android_asset/", t, "text/html", "UTF-8", null);
+
+			/*
+			 * public void setTask(String t){ mTask.setText(t); }
+			 */
+
+			public void setmWV(String t) {
+				mWV.loadDataWithBaseURL("file:///android_asset/", t,
+						"text/html", "UTF-8", null);
 			}
-			
-			public void setButton(Button b){
-				mButton = b;			
+
+			public void setButton(Button b) {
+				mButton = b;
 			}
 		}
 
-		
 	}
-	
-	public class PreviousStepListAdapterProcedure extends BaseAdapter{
+
+	public class PreviousStepListAdapterProcedure extends BaseAdapter {
 
 		private List<PreviousStep> mStep;
 		private LayoutInflater mInf;
 
 		private Context ct;
 		private int position;
-		
+
 		public PreviousStepListAdapterProcedure(Context c) {
 			mInf = LayoutInflater.from(c);
 			ct = c;
@@ -1800,7 +1822,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public int getCount() {
-			
+
 			return mStep.size();
 		}
 
@@ -1811,7 +1833,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public long getItemId(int arg0) {
-			
+
 			return arg0;
 		}
 
@@ -1819,9 +1841,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		public View getView(final int pos, View arg1, ViewGroup arg2) {
 			position = pos;
 			PreviousStepViewHolder h;
-			if(arg1 == null){
-				SwitchTaskManager taskManager = new SwitchTaskManager(JobCard.this,JobCard.this,"jobcard");
-			
+			if (arg1 == null) {
+				SwitchTaskManager taskManager = new SwitchTaskManager(
+						JobCard.this, JobCard.this);
+
 				arg1 = mInf.inflate(R.layout.previousstep, null);
 				h = new PreviousStepViewHolder();
 				h.mButton = (Button) arg1.findViewById(R.id.invalidate);
@@ -1829,81 +1852,85 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 				h.mWV = (WebView) arg1.findViewById(R.id.webViewPrevious);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
-				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
-				h.mWV.setBackgroundColor(getResources().getColor(R.color.background2_light));
+				h.mWV.addJavascriptInterface(new JavaScriptInterface(
+						JobCard.this), "MyAndroid");
+				h.mWV.setBackgroundColor(getResources().getColor(
+						R.color.background2_light));
 
-				if(pos == (mStep.size())-1){
+				if (pos == (mStep.size()) - 1) {
 
 					h.mButton.setVisibility(View.VISIBLE);
 					h.mButton.setOnClickListener(new OnClickListener() {
-						
+
 						@Override
 						public void onClick(View arg0) {
-							if(pos == (mStep.size())-1 ){
-								LayoutParams lpc = (LayoutParams) listStepProc.getLayoutParams();
+							if (pos == (mStep.size()) - 1) {
+								LayoutParams lpc = (LayoutParams) listStepProc
+										.getLayoutParams();
 								lpc.height += 190;
 								listStepProc.setLayoutParams(lpc);
-								lpc = (LayoutParams) listStepPreviousProc.getLayoutParams();
-								lpc.height -=190;
+								lpc = (LayoutParams) listStepPreviousProc
+										.getLayoutParams();
+								lpc.height -= 190;
 								listStepPreviousProc.setLayoutParams(lpc);
-								
+
 								PreviousStep toDel = mStep.remove(pos);
-								
-								
+
 								Step s = new Step();
 								s.setTask(toDel.getTask());
-								stepsProc.add(0,s);
+								stepsProc.add(0, s);
 								stepAdaptProc.notifyDataSetChanged();
-								stepAdaptPreviousProc = new PreviousStepListAdapterProcedure(ct);
+								stepAdaptPreviousProc = new PreviousStepListAdapterProcedure(
+										ct);
 								stepAdaptPreviousProc.setListItems(mStep);
-								listStepPreviousProc.setAdapter(stepAdaptPreviousProc);
-								
-								
+								listStepPreviousProc
+										.setAdapter(stepAdaptPreviousProc);
+
 							}
 						}
 
-						
 					});
-				}else{
+				} else {
 					h.mButton.setVisibility(View.INVISIBLE);
 				}
 				arg1.setTag(h);
-			}
-			else{
+			} else {
 				h = (PreviousStepViewHolder) arg1.getTag();
 			}
 			h.setmWV(mStep.get(pos).getTask());
-			
+
 			return arg1;
 		}
 
-		public void setListItems(List<PreviousStep> previousSteps){
+		public void setListItems(List<PreviousStep> previousSteps) {
 			mStep = previousSteps;
 		}
 
-		private class PreviousStepViewHolder{
+		private class PreviousStepViewHolder {
 			private WebView mWV;
 			private Button mButton;
-			
-			public void setmWV(String t){
-				mWV.loadDataWithBaseURL("file:///android_asset/", t, "text/html", "UTF-8", null);
+
+			public void setmWV(String t) {
+				mWV.loadDataWithBaseURL("file:///android_asset/", t,
+						"text/html", "UTF-8", null);
 			}
-			
-			public void setButton(Button b){
+
+			public void setButton(Button b) {
 				mButton = b;
 				b.setVisibility(View.INVISIBLE);
 			}
-		
+
 		}
 	}
-	public class StepListAdapterCloseUp extends BaseAdapter{
+
+	public class StepListAdapterCloseUp extends BaseAdapter {
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
 		private Button mButton;
 		private Context ct;
 		private int position;
-		
+
 		public StepListAdapterCloseUp(Context c) {
 			mInf = LayoutInflater.from(c);
 			ct = c;
@@ -1911,7 +1938,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public int getCount() {
-			
+
 			return mStep.size();
 		}
 
@@ -1922,7 +1949,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public long getItemId(int arg0) {
-			
+
 			return arg0;
 		}
 
@@ -1930,102 +1957,108 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		public View getView(final int pos, View arg1, ViewGroup arg2) {
 			position = pos;
 			StepViewHolder h;
-			if(arg1 == null){
-				SwitchTaskManager taskManager = new SwitchTaskManager(JobCard.this,JobCard.this,"jobcard");
+			if (arg1 == null) {
+				SwitchTaskManager taskManager = new SwitchTaskManager(
+						JobCard.this, JobCard.this);
 				arg1 = mInf.inflate(R.layout.step, null);
 				h = new StepViewHolder();
-				//h.mTask = (TextView) arg1.findViewById(R.id.task);
+				// h.mTask = (TextView) arg1.findViewById(R.id.task);
 				h.mWV = (WebView) arg1.findViewById(R.id.webView1);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
-				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
-				h.mWV.setBackgroundColor(getResources().getColor(R.color.background1_light));
+				h.mWV.addJavascriptInterface(new JavaScriptInterface(
+						JobCard.this), "MyAndroid");
+				h.mWV.setBackgroundColor(getResources().getColor(
+						R.color.background1_light));
 				h.mButton = (Button) arg1.findViewById(R.id.Ok);
-				if(pos ==0){
+				if (pos == 0) {
 					h.mButton.setOnClickListener(new OnClickListener() {
-						
+
 						@Override
 						public void onClick(View arg0) {
-							if(pos == 0){
-								LayoutParams lpc = (LayoutParams) listStepCloseUp.getLayoutParams();
+							if (pos == 0) {
+								LayoutParams lpc = (LayoutParams) listStepCloseUp
+										.getLayoutParams();
 								lpc.height -= 190;
 								listStepCloseUp.setLayoutParams(lpc);
-								lpc = (LayoutParams) listStepPreviousCloseUp.getLayoutParams();
-								lpc.height +=190;
+								lpc = (LayoutParams) listStepPreviousCloseUp
+										.getLayoutParams();
+								lpc.height += 190;
 								listStepPreviousCloseUp.setLayoutParams(lpc);
-								
+
 								Step toDel = mStep.remove(pos);
 								stepAdaptCloseUp.notifyDataSetChanged();
 								PreviousStep ps = new PreviousStep();
 								ps.setTask(toDel.getTask());
 
 								previousStepsCloseUp.add(ps);
-								stepAdaptPreviousCloseUp = new PreviousStepListAdapterCloseUp(ct);
-								stepAdaptPreviousCloseUp.setListItems(previousStepsCloseUp);
-								listStepPreviousCloseUp.setAdapter(stepAdaptPreviousCloseUp);
-								
+								stepAdaptPreviousCloseUp = new PreviousStepListAdapterCloseUp(
+										ct);
+								stepAdaptPreviousCloseUp
+										.setListItems(previousStepsCloseUp);
+								listStepPreviousCloseUp
+										.setAdapter(stepAdaptPreviousCloseUp);
+
 							}
 						}
 
-						
 					});
-				}else{
+				} else {
 					h.mButton.setVisibility(View.INVISIBLE);
 				}
 				arg1.setTag(h);
-			}
-			else{
+			} else {
 				h = (StepViewHolder) arg1.getTag();
 			}
-			//h.setTask(mStep.get(pos).getTask());
+			// h.setTask(mStep.get(pos).getTask());
 			h.setmWV(mStep.get(pos).getTask());
 			h.setButton(mStep.get(pos).getB());
-			
+
 			return arg1;
 		}
 
-		public void setListItems(List<Step> l){
+		public void setListItems(List<Step> l) {
 			mStep = l;
 		}
 
-		private class StepViewHolder{
-			//private TextView mTask;
+		private class StepViewHolder {
+			// private TextView mTask;
 			private WebView mWV;
 			private Button mButton;
-			
-			/*public void setTask(String t){
-				mTask.setText(t);
-			}*/
-			
-			public void setmWV(String t){
-				mWV.loadDataWithBaseURL("file:///android_asset/", t, "text/html", "UTF-8", null);
+
+			/*
+			 * public void setTask(String t){ mTask.setText(t); }
+			 */
+
+			public void setmWV(String t) {
+				mWV.loadDataWithBaseURL("file:///android_asset/", t,
+						"text/html", "UTF-8", null);
 			}
-			
-			public void setButton(Button b){
-				mButton = b;			
+
+			public void setButton(Button b) {
+				mButton = b;
 			}
 		}
 
-		
 	}
-	
-	public class PreviousStepListAdapterCloseUp extends BaseAdapter{
+
+	public class PreviousStepListAdapterCloseUp extends BaseAdapter {
 
 		private List<PreviousStep> mStep;
 		private LayoutInflater mInf;
 
 		private Context ct;
 		private int position;
-		
+
 		public PreviousStepListAdapterCloseUp(Context c) {
 			mInf = LayoutInflater.from(c);
 			ct = c;
-			
+
 		}
 
 		@Override
 		public int getCount() {
-			
+
 			return mStep.size();
 		}
 
@@ -2036,7 +2069,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 
 		@Override
 		public long getItemId(int arg0) {
-			
+
 			return arg0;
 		}
 
@@ -2044,9 +2077,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 		public View getView(final int pos, View arg1, ViewGroup arg2) {
 			position = pos;
 			PreviousStepViewHolder h;
-			if(arg1 == null){
-				SwitchTaskManager taskManager = new SwitchTaskManager(JobCard.this,JobCard.this,"jobcard");
-			
+			if (arg1 == null) {
+				SwitchTaskManager taskManager = new SwitchTaskManager(
+						JobCard.this, JobCard.this);
+
 				arg1 = mInf.inflate(R.layout.previousstep, null);
 				h = new PreviousStepViewHolder();
 				h.mButton = (Button) arg1.findViewById(R.id.invalidate);
@@ -2054,71 +2088,74 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 				h.mWV = (WebView) arg1.findViewById(R.id.webViewPrevious);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
-				h.mWV.addJavascriptInterface(new JavaScriptInterface(JobCard.this),"MyAndroid");
-				h.mWV.setBackgroundColor(getResources().getColor(R.color.background2_light));
+				h.mWV.addJavascriptInterface(new JavaScriptInterface(
+						JobCard.this), "MyAndroid");
+				h.mWV.setBackgroundColor(getResources().getColor(
+						R.color.background2_light));
 
-				if(pos == (mStep.size())-1){
+				if (pos == (mStep.size()) - 1) {
 
 					h.mButton.setVisibility(View.VISIBLE);
 					h.mButton.setOnClickListener(new OnClickListener() {
-						
+
 						@Override
 						public void onClick(View arg0) {
-							if(pos == (mStep.size())-1 ){
-								LayoutParams lpc = (LayoutParams) listStepCloseUp.getLayoutParams();
+							if (pos == (mStep.size()) - 1) {
+								LayoutParams lpc = (LayoutParams) listStepCloseUp
+										.getLayoutParams();
 								lpc.height += 190;
 								listStepCloseUp.setLayoutParams(lpc);
-								lpc = (LayoutParams) listStepPreviousCloseUp.getLayoutParams();
-								lpc.height -=190;
+								lpc = (LayoutParams) listStepPreviousCloseUp
+										.getLayoutParams();
+								lpc.height -= 190;
 								listStepCloseUp.setLayoutParams(lpc);
-								
+
 								PreviousStep toDel = mStep.remove(pos);
-								
-								
+
 								Step s = new Step();
 								s.setTask(toDel.getTask());
-								stepsCloseUp.add(0,s);
+								stepsCloseUp.add(0, s);
 								stepAdaptCloseUp.notifyDataSetChanged();
-								stepAdaptPreviousCloseUp = new PreviousStepListAdapterCloseUp(ct);
+								stepAdaptPreviousCloseUp = new PreviousStepListAdapterCloseUp(
+										ct);
 								stepAdaptPreviousCloseUp.setListItems(mStep);
-								listStepPreviousCloseUp.setAdapter(stepAdaptPreviousCloseUp);
-								
-								
+								listStepPreviousCloseUp
+										.setAdapter(stepAdaptPreviousCloseUp);
+
 							}
 						}
 
-						
 					});
-				}else{
+				} else {
 					h.mButton.setVisibility(View.INVISIBLE);
 				}
 				arg1.setTag(h);
-			}
-			else{
+			} else {
 				h = (PreviousStepViewHolder) arg1.getTag();
 			}
 			h.setmWV(mStep.get(pos).getTask());
-			
+
 			return arg1;
 		}
 
-		public void setListItems(List<PreviousStep> previousSteps){
+		public void setListItems(List<PreviousStep> previousSteps) {
 			mStep = previousSteps;
 		}
 
-		private class PreviousStepViewHolder{
+		private class PreviousStepViewHolder {
 			private WebView mWV;
 			private Button mButton;
-			
-			public void setmWV(String t){
-				mWV.loadDataWithBaseURL("file:///android_asset/", t, "text/html", "UTF-8", null);
+
+			public void setmWV(String t) {
+				mWV.loadDataWithBaseURL("file:///android_asset/", t,
+						"text/html", "UTF-8", null);
 			}
-			
-			public void setButton(Button b){
+
+			public void setButton(Button b) {
 				mButton = b;
 				b.setVisibility(View.INVISIBLE);
 			}
-		
+
 		}
 	}
 }

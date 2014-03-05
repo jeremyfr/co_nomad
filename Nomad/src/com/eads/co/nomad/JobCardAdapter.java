@@ -28,10 +28,11 @@ public class JobCardAdapter extends BaseExpandableListAdapter {
 	public boolean areAllItemsEnabled() {
 		return true;
 	}
-	
+
 	@Override
 	public Object getChild(int groupPosition, int childPosition) {
-		return jobCards.get(groupPosition).getJobCardDetails().get(childPosition);
+		return jobCards.get(groupPosition).getJobCardDetails()
+				.get(childPosition);
 	}
 
 	@Override
@@ -40,54 +41,63 @@ public class JobCardAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override
-	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-		final JobCardDetails objet = (JobCardDetails) getChild(groupPosition, childPosition);
-		
+	public View getChildView(int groupPosition, int childPosition,
+			boolean isLastChild, View convertView, ViewGroup parent) {
+		final JobCardDetails objet = (JobCardDetails) getChild(groupPosition,
+				childPosition);
+
 		ChildViewHolder childViewHolder;
-		
-        if (convertView == null) {
-        	childViewHolder = new ChildViewHolder();
-        	
-            convertView = inflater.inflate(R.layout.job_card, null);
-            
-            childViewHolder.textViewChildAc = (TextView) convertView.findViewById(R.id.acDetails);
-            childViewHolder.textViewChildTask = (TextView) convertView.findViewById(R.id.taskDetails);
-            childViewHolder.buttonChild = (Button) convertView.findViewById(R.id.openButton);
-            childViewHolder.buttonChild.getBackground().setColorFilter(new LightingColorFilter(0x000000, 0x268bd2)); //color/blue
-            convertView.setTag(childViewHolder);
-        } else {
-        	childViewHolder = (ChildViewHolder) convertView.getTag();
-        }
-        
-        childViewHolder.textViewChildAc.setText(objet.getAcDetails());
-        childViewHolder.textViewChildTask.setText(objet.getTaskDetails());
-        
-//        childViewHolder.buttonChild.setOnClickListener(new OnClickListener() {
-//			
-//			public void onClick(View v) {
-//				Toast.makeText(context, "Groupe : " + objet.getGroupe().getNom() + " - Bouton : " + objet.getNom(), Toast.LENGTH_SHORT).show();				
-//			}
-//		});
-        
-        return convertView;
-		
-//		ChildViewHolder childViewHolder;
-//		
-//        if (convertView == null) {
-//        	childViewHolder = new ChildViewHolder();
-//        	
-//            convertView = inflater.inflate(R.layout.job_card, null);
-//            
-//            childViewHolder.textViewDetails = (TextView) convertView.findViewById(R.id.details);
-//            
-//            convertView.setTag(childViewHolder);
-//        } else {
-//        	childViewHolder = (ChildViewHolder) convertView.getTag();
-//        }
-//        
-//        childViewHolder.textViewDetails.setText(objet.getName());
-//        
-//        return convertView;
+
+		if (convertView == null) {
+			childViewHolder = new ChildViewHolder();
+
+			convertView = inflater.inflate(R.layout.job_card, null);
+
+			childViewHolder.textViewChildAc = (TextView) convertView
+					.findViewById(R.id.acDetails);
+			childViewHolder.textViewChildTask = (TextView) convertView
+					.findViewById(R.id.taskDetails);
+			childViewHolder.buttonChild = (Button) convertView
+					.findViewById(R.id.openButton);
+			childViewHolder.buttonChild.getBackground().setColorFilter(
+					new LightingColorFilter(0x000000, 0x268bd2)); // color/blue
+			convertView.setTag(childViewHolder);
+		} else {
+			childViewHolder = (ChildViewHolder) convertView.getTag();
+		}
+
+		childViewHolder.textViewChildAc.setText(objet.getAcDetails());
+		childViewHolder.textViewChildTask.setText(objet.getTaskDetails());
+
+		// childViewHolder.buttonChild.setOnClickListener(new OnClickListener()
+		// {
+		//
+		// public void onClick(View v) {
+		// Toast.makeText(context, "Groupe : " + objet.getGroupe().getNom() +
+		// " - Bouton : " + objet.getNom(), Toast.LENGTH_SHORT).show();
+		// }
+		// });
+
+		return convertView;
+
+		// ChildViewHolder childViewHolder;
+		//
+		// if (convertView == null) {
+		// childViewHolder = new ChildViewHolder();
+		//
+		// convertView = inflater.inflate(R.layout.job_card, null);
+		//
+		// childViewHolder.textViewDetails = (TextView)
+		// convertView.findViewById(R.id.details);
+		//
+		// convertView.setTag(childViewHolder);
+		// } else {
+		// childViewHolder = (ChildViewHolder) convertView.getTag();
+		// }
+		//
+		// childViewHolder.textViewDetails.setText(objet.getName());
+		//
+		// return convertView;
 	}
 
 	@Override
@@ -114,23 +124,24 @@ public class JobCardAdapter extends BaseExpandableListAdapter {
 	public View getGroupView(int groupPosition, boolean isExpanded,
 			View convertView, ViewGroup parent) {
 		GroupViewHolder gholder;
-		
+
 		JobCardData group = (JobCardData) getGroup(groupPosition);
-		
-        if (convertView == null) {
-        	gholder = new GroupViewHolder();
-        	
-        	convertView = inflater.inflate(R.layout.job_card_group, null);
-        	
-        	gholder.textViewGroup = (TextView) convertView.findViewById(R.id.jobCardGroup);
-        	convertView.setTag(gholder);
-        } else {
-        	gholder = (GroupViewHolder) convertView.getTag();
-        }
-        
-        gholder.textViewGroup.setText(group.getName());
-        
-        return convertView;
+
+		if (convertView == null) {
+			gholder = new GroupViewHolder();
+
+			convertView = inflater.inflate(R.layout.job_card_group, null);
+
+			gholder.textViewGroup = (TextView) convertView
+					.findViewById(R.id.jobCardGroup);
+			convertView.setTag(gholder);
+		} else {
+			gholder = (GroupViewHolder) convertView.getTag();
+		}
+
+		gholder.textViewGroup.setText(group.getName());
+
+		return convertView;
 	}
 
 	@Override
@@ -142,11 +153,11 @@ public class JobCardAdapter extends BaseExpandableListAdapter {
 	public boolean isChildSelectable(int groupPosition, int childPosition) {
 		return true;
 	}
-	
+
 	class GroupViewHolder {
 		public TextView textViewGroup;
 	}
-	
+
 	class ChildViewHolder {
 		public TextView textViewChildAc;
 		public TextView textViewChildTask;

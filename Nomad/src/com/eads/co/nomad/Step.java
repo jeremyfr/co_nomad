@@ -5,8 +5,6 @@ import android.widget.Button;
 public class Step {
 	private String task;
 	private Button b;
-	
-
 
 	public Button getB() {
 		return b;
@@ -23,5 +21,5 @@ public class Step {
 	public void setTask(String text) {
 		this.task = text;
 	}
-	
-}	
+
+}
