@@ -81,7 +81,7 @@ public class DataParsing {
 				warnings += "<p id='warning'>";
 				Element currentItem = (Element) iteratorItems.next();
 				warnings += currentItem.getText()+"<br/>"; // Display para text
-				stepsWarning.add("<ul>"+currentItem.getText()+"</ul>");
+				stepsWarning.add("<ul id='warning'>"+currentItem.getText()+"</ul>");
 				/* Display list of para is necessary */
 				if(currentItem.getText().endsWith(": ")){
 					Element currentListItem = (Element) iteratorListList.next();
@@ -91,7 +91,7 @@ public class DataParsing {
 					while (iteratorListItem.hasNext()) {
 						Element currentListListItem = (Element) iteratorListItem.next();
 						warnings += "<li>"+currentListListItem.getChild("PARA").getText()+"</li>";
-						stepsWarning.add("<ul>"+currentListListItem.getChild("PARA").getText()+"</ul>");
+						stepsWarning.add("<ul id='warning'>"+currentListListItem.getChild("PARA").getText()+"</ul>");
 					}
 					warnings += "</ul>";
 					warnings += "</p>";
@@ -278,7 +278,7 @@ public class DataParsing {
 								    while (iteratorRefInt.hasNext()) {
 										Element refInt = (Element) iteratorRefInt.next();
 										procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
-										stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+										stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+"'>"+refInt.getText()+"</a><br>");
 									}
 									
 								}
@@ -343,7 +343,7 @@ public class DataParsing {
 										    while (iteratorRefInt.hasNext()) {
 												Element refInt = (Element) iteratorRefInt.next();
 												procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
-												stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+												stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+"'>"+refInt.getText()+"</a><br>");
 											}
 											
 										}
@@ -377,7 +377,7 @@ public class DataParsing {
 												    while (iteratorRefInt.hasNext()) {
 														Element refInt = (Element) iteratorRefInt.next();
 														procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
-														stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+														stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+"'>"+refInt.getText()+"</a><br>");
 													}
 													
 												}
@@ -398,7 +398,7 @@ public class DataParsing {
 										while (iteratorPara4.hasNext()) {
 											Element para4 = (Element) iteratorPara4.next();
 											procedure += "<ul id=warning><li>"+para4.getText();;
-											stepsProcedure.add(para4.getText());
+											stepsProcedure.add("<ul id=warning>"+para4.getText()+"</ul>");
 											listRef = para4.getChildren("REFBLOCK");
 											iteratorRef = listRef.iterator();
 											while(iteratorRef.hasNext()){
@@ -408,7 +408,7 @@ public class DataParsing {
 											    while (iteratorRefInt.hasNext()) {
 													Element refInt = (Element) iteratorRefInt.next();
 													procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
-													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+"'>"+refInt.getText()+"</a><br>");
 												}
 												
 											}
@@ -426,7 +426,7 @@ public class DataParsing {
 										while (iteratorPara5.hasNext()) {
 											Element para5 = (Element) iteratorPara5.next();
 											procedure += "<ul id=caution><li>"+para5.getText();;
-											stepsProcedure.add(para5.getText());
+											stepsProcedure.add("<ul id=caution>"+para5.getText()+"</ul>");
 											listRef = para5.getChildren("REFBLOCK");
 											iteratorRef = listRef.iterator();
 											while(iteratorRef.hasNext()){
@@ -436,7 +436,7 @@ public class DataParsing {
 											    while (iteratorRefInt.hasNext()) {
 													Element refInt = (Element) iteratorRefInt.next();
 													procedure += "<span id='"+refInt.getText()+"'><a href="+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+">"+refInt.getText()+"</a></span><br>";
-													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+procedure.length()+"'>"+refInt.getText()+"</a><br>");
+													stepsProcedure.add("<a href='"+refInt.getAttributeValue("REFID")+"?id="+refInt.getText()+"'>"+refInt.getText()+"</a><br>");
 												}
 												
 											}

@@ -62,6 +62,11 @@ public class PlaneSelection extends Activity{
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
+				String[] listinfo = listLastPlanes.get(arg2).split(" ");
+				intent.putExtra("Avion",listinfo[0] );
+				intent.putExtra("FSN", listinfo[1]);
+				intent.putExtra("MSN", listinfo[2]);
+				intent.putExtra("ID", "F-GFKQ");
 				startActivity(intent);
 				
 			}
@@ -112,7 +117,7 @@ public class PlaneSelection extends Activity{
 				String fsnToSend = "40";
 				String msnToSend = "69";
 				Intent intent = new Intent(PlaneSelection.this, ATASelection.class);
-				intent.putExtra("Avion",selectedPlane );
+				intent.putExtra("Avion","A380" );
 				intent.putExtra("FSN", fsnToSend);
 				intent.putExtra("MSN", msnToSend);
 				intent.putExtra("ID", "F-GFKQ");

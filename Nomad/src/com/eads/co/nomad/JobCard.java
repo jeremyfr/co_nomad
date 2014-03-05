@@ -80,7 +80,8 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 	Step s;
 	StepListAdapterProcedure stepAdaptProc;
 	PreviousStepListAdapterProcedure stepAdaptPreviousProc;
-	
+	String head = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
+	String endbody ="</body></html>";
 	StepListAdapterWarn stepAdaptWarn;
 	PreviousStepListAdapterWarn stepAdaptPreviousWarn;
 	StepListAdapterJobSetup stepAdaptJobSetup;
@@ -409,7 +410,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			ArrayList<String> stepWarn = parser.getStepsWarning();
 			for (int i = 0; i < stepWarn.size(); i++) {
 				s = new Step();
-				s.setTask(stepWarn.get(i));
+				s.setTask(head+stepWarn.get(i)+endbody);
 				stepsWarn.add(s);
 			}
 
@@ -417,7 +418,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			stepAdaptWarn.setListItems(stepsWarn);
 			listStepWarn.setAdapter(stepAdaptWarn);
 			lpc = (LayoutParams) listStepWarn.getLayoutParams();
-			lpc.height = 110*stepsWarn.size();
+			lpc.height = 190*stepsWarn.size();
 			//lpc.height = 1000;
 			listStepWarn.setLayoutParams(lpc);
 				
@@ -458,7 +459,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			ArrayList<String> stepJobSetup = parser.getStepsJobSetup();
 			for (int i = 0; i < stepJobSetup.size(); i++) {
 				s = new Step();
-				s.setTask(stepJobSetup.get(i));
+				s.setTask(head+stepJobSetup.get(i)+endbody);
 				stepsJobSetup.add(s);
 			}
 
@@ -466,7 +467,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			stepAdaptJobSetup.setListItems(stepsJobSetup);
 			listStepJobSetup.setAdapter(stepAdaptJobSetup);
 			lpc = (LayoutParams) listStepJobSetup.getLayoutParams();
-			lpc.height = 110*stepsJobSetup.size();
+			lpc.height = 190*stepsJobSetup.size();
 			listStepJobSetup.setLayoutParams(lpc);
 				
 			listStepPreviousJobSetup = (ListView) findViewById(R.id.listPreviousStepJobSetup);
@@ -504,7 +505,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			ArrayList<String> stepProc = parser.getStepsProcedure();
 			for (int i = 0; i < stepProc.size(); i++) {
 				s = new Step();
-				s.setTask(stepProc.get(i));
+				s.setTask(head+stepProc.get(i)+endbody);
 				stepsProc.add(s);
 			}
 
@@ -513,7 +514,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			stepAdaptProc.setListItems(stepsProc);
 			listStepProc.setAdapter(stepAdaptProc);
 			lpc = (LayoutParams) listStepProc.getLayoutParams();
-			lpc.height = 110*stepsProc.size();
+			lpc.height = 190*stepsProc.size();
 			listStepProc.setLayoutParams(lpc);
 				
 			listStepPreviousProc = (ListView) findViewById(R.id.listPreviousStepProc);
@@ -544,7 +545,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			ArrayList<String> stepCloseUp = parser.getStepsCloseUp();
 			for (int i = 0; i < stepCloseUp.size(); i++) {
 				s = new Step();
-				s.setTask(stepCloseUp.get(i));
+				s.setTask(head+stepCloseUp.get(i)+endbody);
 				stepsCloseUp.add(s);
 			}
 
@@ -553,7 +554,7 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 			stepAdaptCloseUp.setListItems(stepsCloseUp);
 			listStepCloseUp.setAdapter(stepAdaptCloseUp);
 			lpc = (LayoutParams) listStepCloseUp.getLayoutParams();
-			lpc.height = 110*stepsCloseUp.size();
+			lpc.height = 190*stepsCloseUp.size();
 			listStepCloseUp.setLayoutParams(lpc);
 				
 			listStepPreviousCloseUp = (ListView) findViewById(R.id.listPreviousStepProc);
@@ -1271,10 +1272,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 						public void onClick(View arg0) {
 							if(pos == 0){
 								LayoutParams lpc = (LayoutParams) listStepWarn.getLayoutParams();
-								lpc.height -= 110;
+								lpc.height -= 190;
 								listStepWarn.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousWarning.getLayoutParams();
-								lpc.height +=110;
+								lpc.height +=190;
 								listStepPreviousWarning.setLayoutParams(lpc);
 								
 								Step toDel = mStep.remove(pos);
@@ -1388,10 +1389,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 						public void onClick(View arg0) {
 							if(pos == (mStep.size())-1 ){
 								LayoutParams lpc = (LayoutParams) listStepWarn.getLayoutParams();
-								lpc.height += 110;
+								lpc.height += 190;
 								listStepWarn.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousWarning.getLayoutParams();
-								lpc.height -=110;
+								lpc.height -=190;
 								listStepPreviousWarning.setLayoutParams(lpc);
 								
 								PreviousStep toDel = mStep.remove(pos);
@@ -1498,10 +1499,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 						public void onClick(View arg0) {
 							if(pos == 0){
 								LayoutParams lpc = (LayoutParams) listStepJobSetup.getLayoutParams();
-								lpc.height -= 110;
+								lpc.height -= 190;
 								listStepJobSetup.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousJobSetup.getLayoutParams();
-								lpc.height +=110;
+								lpc.height +=190;
 								listStepPreviousJobSetup.setLayoutParams(lpc);
 								
 								Step toDel = mStep.remove(pos);
@@ -1616,10 +1617,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 						public void onClick(View arg0) {
 							if(pos == (mStep.size())-1 ){
 								LayoutParams lpc = (LayoutParams) listStepJobSetup.getLayoutParams();
-								lpc.height += 110;
+								lpc.height += 190;
 								listStepJobSetup.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousJobSetup.getLayoutParams();
-								lpc.height -=110;
+								lpc.height -=190;
 								listStepPreviousJobSetup.setLayoutParams(lpc);
 								
 								PreviousStep toDel = mStep.remove(pos);
@@ -1723,10 +1724,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 						public void onClick(View arg0) {
 							if(pos == 0){
 								LayoutParams lpc = (LayoutParams) listStepProc.getLayoutParams();
-								lpc.height -= 110;
+								lpc.height -= 190;
 								listStepProc.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousProc.getLayoutParams();
-								lpc.height +=110;
+								lpc.height +=190;
 								listStepPreviousProc.setLayoutParams(lpc);
 								
 								Step toDel = mStep.remove(pos);
@@ -1840,10 +1841,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 						public void onClick(View arg0) {
 							if(pos == (mStep.size())-1 ){
 								LayoutParams lpc = (LayoutParams) listStepProc.getLayoutParams();
-								lpc.height += 110;
+								lpc.height += 190;
 								listStepProc.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousProc.getLayoutParams();
-								lpc.height -=110;
+								lpc.height -=190;
 								listStepPreviousProc.setLayoutParams(lpc);
 								
 								PreviousStep toDel = mStep.remove(pos);
@@ -1947,10 +1948,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 						public void onClick(View arg0) {
 							if(pos == 0){
 								LayoutParams lpc = (LayoutParams) listStepCloseUp.getLayoutParams();
-								lpc.height -= 110;
+								lpc.height -= 190;
 								listStepCloseUp.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousCloseUp.getLayoutParams();
-								lpc.height +=110;
+								lpc.height +=190;
 								listStepPreviousCloseUp.setLayoutParams(lpc);
 								
 								Step toDel = mStep.remove(pos);
@@ -2065,10 +2066,10 @@ public class JobCard extends Activity implements PropertyChangeListener,Serializ
 						public void onClick(View arg0) {
 							if(pos == (mStep.size())-1 ){
 								LayoutParams lpc = (LayoutParams) listStepCloseUp.getLayoutParams();
-								lpc.height += 110;
+								lpc.height += 190;
 								listStepCloseUp.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousCloseUp.getLayoutParams();
-								lpc.height -=110;
+								lpc.height -=190;
 								listStepCloseUp.setLayoutParams(lpc);
 								
 								PreviousStep toDel = mStep.remove(pos);
