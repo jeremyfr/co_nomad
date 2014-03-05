@@ -51,8 +51,7 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
  * @author Guillaume Saas
  */
 
-public class AMMAnnexes extends Activity implements PropertyChangeListener,
-		Serializable {
+public class AMMAnnexes extends Activity implements PropertyChangeListener,Serializable {
 
 	/**
 	 * 
@@ -117,6 +116,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 	// Pour le multitouch
 	private ImageView annexImg;
 	private FrameLayout layoutImg;
+	
 	private String title;
 
 	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
@@ -139,7 +139,8 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		setContentView(R.layout.amm_annexes);
-
+		
+		
 		layout = (LinearLayout) findViewById(R.id.layout_amm);
 
 		separatorLayout = (RelativeLayout) findViewById(R.id.separatorLayout);
@@ -149,6 +150,8 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 
 		scrollView = (OurScrollView) findViewById(R.id.scrollView);
 		scrollView.setActivity(this);
+
+
 
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		titreAnnexe = (TextView) findViewById(R.id.annexTitle);
@@ -162,7 +165,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 				Anchor.TOPLEFT);
 		annexImg.setOnTouchListener(pan);
 		pan.addPropertyChangeListener(this);
-
+		
 		// Pour les annexes multiples
 		listview = (ListView) findViewById(R.id.listview);
 		listview.setSelector(R.drawable.selector);
@@ -179,13 +182,10 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 		titreAnnexe.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				int y = y_absolue - scrollView.getScrollY();
-				if (y < ymin || y > ymax) {
-					scrollTo(y_absolue);
-				}
+				scrollTo(y_absolue);
 			}
 		});
-
+		
 		map = new HashMap<String, Object>();
 		map.put("titre", "Close All");
 		map.put("img", String.valueOf(R.drawable.close));
@@ -347,7 +347,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 			ammPart = (String) bundle.get("task");
 			title = bundle.getString("titre");
 		}
-
+		
 		InputStream input = null;
 		try {
 			input = getApplicationContext().getAssets().open(ammPart + ".xml");
@@ -356,7 +356,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 		}
 		try {
 			parser = new DataParsing(input);
-			this.setTitle(parser.getTitle() + " " + title);
+			this.setTitle(parser.getTitle()+ " "+ title);
 
 			SwitchTaskManager taskManager = new SwitchTaskManager(this, this);
 
@@ -438,7 +438,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 			picturesWV = ((WebView) findViewById(R.id.pictures_text));
 
 			picturesWV.setInitialScale(100);
-
+			
 			picturesWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getPictures(), "text/html", "UTF-8", null);
 			picturesWV.setWebViewClient(taskManager);
@@ -505,6 +505,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 		};
 		t.start();
 	}
+
 
 	// Scroll à une ordonnée de la documentation.
 	private void scrollTo(int y) {
@@ -991,13 +992,14 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 	public void onBackPressed() {
 		super.onBackPressed();
 	}
+	
 
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
-		Log.e("Dans propertyChange", "Cool");
+		Log.e("Dans propertyChange","Cool");
 		if (event.getNewValue().equals("FULLSCREEN")) {
 			fullScreenAnnexButton.performClick();
 		}
 	}
-
+	
 }

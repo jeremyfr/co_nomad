@@ -32,8 +32,8 @@ public class MainActivityJobCards extends FragmentActivity {
 		ArrayList<JobCardDetails> jobCardDetails = new ArrayList<JobCardDetails>();
 		JobCardDetails jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
-				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
+				"Date : 03/05/2014\nRef. : EN30115140080100",
+				"Documentation : AMM, TSM, IPC\nRequired execution time : 30 min\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
 		jobCards.add(j);
@@ -43,7 +43,7 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
+				"Date : 03/05/2014\nRef. : EN30115140080200",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
@@ -54,8 +54,8 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
-				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
+				"Date : 03/05/2014\nRef. : EN30115140080100",
+				"Documentation : AMM, TSM, IPC\nRequired execution time : 2h\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
 		jobCards.add(j);
@@ -65,8 +65,8 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
-				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
+				"Date : 03/05/2014\nRef. : EN30210004080100",
+				"Documentation : AMM, TSM, IPC\nRequired execution time : 55 min\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
 		jobCards.add(j);
@@ -76,8 +76,8 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
-				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
+				"Date : 03/05/2014\nRef. : EN30210004080400",
+				"Documentation : AMM, TSM, IPC\nRequired execution time : 45 min\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
 		jobCards.add(j);
@@ -87,8 +87,8 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
-				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
+				"Date : 03/05/2014\nRef. : EN30210004080600",
+				"Documentation : AMM, TSM, IPC\nRequired execution time : 1 h\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
 		jobCards.add(j);
@@ -105,7 +105,7 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
+				"Date : 03/05/2014\nRef. : EN30115140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
@@ -115,7 +115,7 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
+				"Date : 03/05/2014\nRef. : EN30115140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
@@ -125,7 +125,7 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
+				"Date : 03/05/2014\nRef. : EN30115140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
@@ -144,7 +144,7 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
+				"Date : 03/05/2014\nRef. : EN52132140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
@@ -155,8 +155,8 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
-				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
+				"Date : 03/05/2014\nRef. : EN52132182080100",
+				"Documentation : AMM, TSM, IPC\nRequired execution time : 55 min\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
 		jobCardsTab3.add(j);
@@ -166,8 +166,8 @@ public class MainActivityJobCards extends FragmentActivity {
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
 				j,
-				"Date : 06/12/2014\nRef. : EN30115140080100",
-				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
+				"Date : 03/05/2014\nRef. : EN52142140080100",
+				"Documentation : AMM, TSM, IPC\nRequired execution time : 2 h\nRequired operators : 2");
 		jobCardDetails.add(jDetails);
 		j.setJobCardDetails(jobCardDetails);
 		jobCardsTab3.add(j);
@@ -182,10 +182,12 @@ public class MainActivityJobCards extends FragmentActivity {
 	public void openJobCard(View view) {
 		// Intent intent = new Intent(this, JobCard.class);
 		Intent intent = new Intent(this, JobCard.class);
-		intent.putExtra("task", "EN30115140080100");
-		intent.putExtra("FSN", "EN30115140080100");
-		intent.putExtra("MSN", "EN30115140080100");
-		intent.putExtra("ID", "EN30115140080100");
+		intent.putExtra("task", "EN52132140080100");
+		intent.putExtra("FSN", "EN52132140080100");
+		intent.putExtra("MSN", "EN52132140080100");
+		intent.putExtra("ID", "EN52132140080100");
+
+		intent.putExtra("titre", "A380 MSN:69 FSN:28 ID:F-GHBQ");
 		startActivity(intent);
 	}
 

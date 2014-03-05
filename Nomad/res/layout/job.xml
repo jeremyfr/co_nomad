@@ -81,9 +81,11 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-            		android:background="@color/blue"
-            		android:textColor="@color/background1_dark"
-                    android:text="> Previous Steps" />
+                    android:background="@color/blue"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="> Previous Steps"
+                    android:textColor="@color/background1_light" />
 
                 <LinearLayout
                     android:id="@+id/previousLayoutWarn"
@@ -97,6 +99,10 @@
                         android:id="@+id/listPreviousStepWarn"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
                         android:background="@color/background2_light"
                         android:clickable="false"
                         android:textColor="@color/blue" >
@@ -159,14 +165,17 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical" >
+
  <Button
-                    android:id="@+id/previousButtonJobSetup"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-            		android:background="@color/blue"
-            		android:textColor="@color/background1_dark"
-                    android:text="> Previous Steps" />
+     android:id="@+id/previousButtonJobSetup"
+     style="?android:attr/buttonStyleSmall"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:background="@color/blue"
+     android:paddingLeft="10dp"
+     android:paddingRight="10dp"
+     android:text="> Previous Steps"
+     android:textColor="@color/background1_light" />
 
                 <LinearLayout
                     android:id="@+id/previousLayoutJobSetup"
@@ -180,6 +189,10 @@
                         android:id="@+id/listPreviousStepJobSetup"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
                         android:background="@color/background2_light"
                         android:clickable="false"
                         android:textColor="@color/blue" >
@@ -250,9 +263,11 @@
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-            		android:background="@color/blue"
-            		android:textColor="@color/background1_dark"
-                    android:text="> Previous Steps" />
+                    android:background="@color/blue"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="> Previous Steps"
+                    android:textColor="@color/background1_light" />
 
                 <LinearLayout
                     android:id="@+id/previousLayoutProc"
@@ -266,6 +281,10 @@
                         android:id="@+id/listPreviousStepProc"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
                         android:background="@color/background2_light"
                         android:clickable="false"
                         android:textColor="@color/blue" >
@@ -328,15 +347,16 @@
                         android:layout_weight="1"
                         android:orientation="vertical" >
 
-						
                         <Button
-                    android:id="@+id/previousButtonCloseUp"
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-            		android:background="@color/blue"
-            		android:textColor="@color/background1_dark"
-                    android:text="> Previous Steps" />
+                            android:id="@+id/previousButtonCloseUp"
+                            style="?android:attr/buttonStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/blue"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:text="> Previous Steps"
+                            android:textColor="@color/background1_light" />
 
                 <LinearLayout
                     android:id="@+id/previousLayoutCloseUp"
@@ -350,6 +370,10 @@
                         android:id="@+id/listPreviousStepCloseUp"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
                         android:background="@color/background2_light"
                         android:clickable="false"
                         android:textColor="@color/blue" >

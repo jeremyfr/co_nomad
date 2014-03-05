@@ -20,13 +20,16 @@
         <Button
             android:id="@+id/Ok"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom"
             android:layout_marginRight="0dp"
             android:background="@color/blue"
-            android:gravity="right"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="Validate"
-            android:textColor="@color/background1_dark" />
+            android:textColor="@color/background1_light" />
+
     </LinearLayout>
 
 </LinearLayout>

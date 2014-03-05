@@ -3,8 +3,6 @@ package com.eads.co.nomad;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.jdom2.JDOMException;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

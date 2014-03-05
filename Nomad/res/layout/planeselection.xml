@@ -9,43 +9,50 @@
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="30dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
 
         <TextView
             android:id="@+id/aircraftid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:color = "@color/background1_dark"
-            android:textSize="@dimen/font_size_3"
             android:background="@color/background2_light"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="@dimen/font_size_3"
+            android:color="@color/background1_dark" />
 
         <EditText
             android:id="@+id/searchID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="text" >
+
+            <requestFocus />
+        </EditText>
 
         <Button
             android:id="@+id/buttonsearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/blue"
-            android:textColor="@color/background1_dark"
-            android:text="Search" />
-
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="OK"
+            android:textColor="@color/background1_light" />
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
 <View
     android:layout_width="fill_parent"
-    android:layout_height="1dp"
-    android:background="@android:color/darker_gray"/>
+    android:layout_height="3dp"
+    android:background="@color/background2_dark" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="353dp"
@@ -73,10 +80,11 @@
             </ListView>
             
         </LinearLayout>
+
 	<View
-    android:layout_width="1dp"
-    android:layout_height="fill_parent"
-    android:background="@android:color/darker_gray"/>
+	    android:layout_width="3dp"
+	    android:layout_height="fill_parent"
+	    android:background="@color/background2_dark" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -96,6 +104,7 @@
             android:id="@+id/textor"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="or"
             android:textSize="@dimen/font_size_3"
@@ -116,10 +125,12 @@
         </LinearLayout>
 
     </LinearLayout>
+
 	<View
-    android:layout_width="fill_parent"
-    android:layout_height="1dp"
-    android:background="@android:color/darker_gray"/>
+	    android:layout_width="fill_parent"
+	    android:layout_height="3dp"
+	    android:background="@color/background2_dark" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -136,8 +147,9 @@
 
 <View
     android:layout_width="fill_parent"
-    android:layout_height="1dp"
-    android:background="@android:color/darker_gray"/>
+    android:layout_height="3dp"
+    android:background="@color/background2_dark" />
+
         <ListView
             android:id="@+id/listlastPlanes"
             android:layout_width="match_parent"

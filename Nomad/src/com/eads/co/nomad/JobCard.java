@@ -44,7 +44,6 @@ import android.widget.SimpleAdapter;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.eads.co.nomad.PanAndZoomListener.Anchor;
@@ -130,7 +129,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 	private int y_absolue; // Position du lien vers l'annexe dans scrollView.
 
 	private RelativeLayout separatorLayout; // layout de la barre verticale.
-	private ImageView separator; // barre verticale.
 	private ImageView separator_up; // barre verticale haute.
 	private ImageView separator_down; // barre verticale basse.
 	private ImageView infobulle; // image de l'infobulle.
@@ -169,6 +167,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 		getWidthHeight();
 	}
 
+	@SuppressLint("ResourceAsColor")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -179,7 +178,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 		layout = (LinearLayout) findViewById(R.id.layout_jobcard);
 
 		separatorLayout = (RelativeLayout) findViewById(R.id.separatorLayout);
-		separator = (ImageView) findViewById(R.id.separator);
 		separator_up = (ImageView) findViewById(R.id.separator_up);
 		separator_down = (ImageView) findViewById(R.id.separator_down);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
@@ -367,7 +365,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 		String ammPart = "";
 		if (bundle != null) {
 			ammPart = (String) bundle.get("task");
-			// title = bundle.getString("titre");
+			title = bundle.getString("titre");
 		}
 
 		InputStream input = null;
@@ -378,7 +376,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 		}
 		try {
 			parser = new DataParsing(input);
-			this.setTitle(parser.getTitle());
+			this.setTitle(parser.getTitle() + "   /   " + title);
 
 			SwitchTaskManager taskManager = new SwitchTaskManager(this, this);
 
@@ -399,8 +397,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			prevWarn.setOnClickListener(managePreviousWarn);
 			prevWarn.setTag(">");
 
-			String warn = parser.getWarnings();
-
 			previousStepsWarn = new ArrayList<PreviousStep>();
 			stepsWarn = new ArrayList<Step>();
 			ArrayList<String> stepWarn = parser.getStepsWarning();
@@ -414,8 +410,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			stepAdaptWarn.setListItems(stepsWarn);
 			listStepWarn.setAdapter(stepAdaptWarn);
 			lpc = (LayoutParams) listStepWarn.getLayoutParams();
-			lpc.height = 190 * stepsWarn.size();
-			// lpc.height = 1000;
+			lpc.height = 185 * stepsWarn.size();
 			listStepWarn.setLayoutParams(lpc);
 
 			listStepPreviousWarning = (ListView) findViewById(R.id.listPreviousStepWarn);
@@ -449,8 +444,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			prevJobSetup.setOnClickListener(managePreviousJobSetup);
 			prevJobSetup.setTag(">");
 
-			String jobSetup = parser.getJobSetUp();
-
 			previousStepsJobSetup = new ArrayList<PreviousStep>();
 			stepsJobSetup = new ArrayList<Step>();
 			ArrayList<String> stepJobSetup = parser.getStepsJobSetup();
@@ -464,7 +457,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			stepAdaptJobSetup.setListItems(stepsJobSetup);
 			listStepJobSetup.setAdapter(stepAdaptJobSetup);
 			lpc = (LayoutParams) listStepJobSetup.getLayoutParams();
-			lpc.height = 190 * stepsJobSetup.size();
+			lpc.height = 185 * stepsJobSetup.size();
 			listStepJobSetup.setLayoutParams(lpc);
 
 			listStepPreviousJobSetup = (ListView) findViewById(R.id.listPreviousStepJobSetup);
@@ -499,8 +492,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			prevProc.setOnClickListener(managePreviousProc);
 			prevProc.setTag(">");
 
-			String proc = parser.getProcedure();
-
 			stepsProc = new ArrayList<Step>();
 			ArrayList<String> stepProc = parser.getStepsProcedure();
 			for (int i = 0; i < stepProc.size(); i++) {
@@ -514,7 +505,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			stepAdaptProc.setListItems(stepsProc);
 			listStepProc.setAdapter(stepAdaptProc);
 			lpc = (LayoutParams) listStepProc.getLayoutParams();
-			lpc.height = 190 * stepsProc.size();
+			lpc.height = 185 * stepsProc.size();
 			listStepProc.setLayoutParams(lpc);
 
 			listStepPreviousProc = (ListView) findViewById(R.id.listPreviousStepProc);
@@ -538,8 +529,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			prevCloseUp.setOnClickListener(managePreviousCloseUp);
 			prevCloseUp.setTag(">");
 
-			String closeUp = parser.getCloseUp();
-
 			stepsCloseUp = new ArrayList<Step>();
 			ArrayList<String> stepCloseUp = parser.getStepsCloseUp();
 			for (int i = 0; i < stepCloseUp.size(); i++) {
@@ -553,10 +542,9 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			stepAdaptCloseUp.setListItems(stepsCloseUp);
 			listStepCloseUp.setAdapter(stepAdaptCloseUp);
 			lpc = (LayoutParams) listStepCloseUp.getLayoutParams();
-			lpc.height = 190 * stepsCloseUp.size();
+			lpc.height = 185 * stepsCloseUp.size();
 			listStepCloseUp.setLayoutParams(lpc);
 
-			listStepPreviousCloseUp = (ListView) findViewById(R.id.listPreviousStepProc);
 			stepAdaptPreviousCloseUp = new PreviousStepListAdapterCloseUp(this);
 			stepAdaptPreviousCloseUp.setListItems(previousStepsCloseUp);
 			listStepPreviousCloseUp.setAdapter(stepAdaptPreviousCloseUp);
@@ -1221,7 +1209,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
-		private Button mButton;
 		private Context ct;
 		private int position;
 
@@ -1256,7 +1243,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						JobCard.this, JobCard.this);
 				arg1 = mInf.inflate(R.layout.step, null);
 				h = new StepViewHolder();
-				// h.mTask = (TextView) arg1.findViewById(R.id.task);
 				h.mWV = (WebView) arg1.findViewById(R.id.webView1);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
@@ -1273,11 +1259,11 @@ public class JobCard extends Activity implements PropertyChangeListener,
 							if (pos == 0) {
 								LayoutParams lpc = (LayoutParams) listStepWarn
 										.getLayoutParams();
-								lpc.height -= 190;
+								lpc.height -= 185;
 								listStepWarn.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousWarning
 										.getLayoutParams();
-								lpc.height += 190;
+								lpc.height += 185;
 								listStepPreviousWarning.setLayoutParams(lpc);
 
 								Step toDel = mStep.remove(pos);
@@ -1396,11 +1382,11 @@ public class JobCard extends Activity implements PropertyChangeListener,
 							if (pos == (mStep.size()) - 1) {
 								LayoutParams lpc = (LayoutParams) listStepWarn
 										.getLayoutParams();
-								lpc.height += 190;
+								lpc.height += 185;
 								listStepWarn.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousWarning
 										.getLayoutParams();
-								lpc.height -= 190;
+								lpc.height -= 185;
 								listStepPreviousWarning.setLayoutParams(lpc);
 
 								PreviousStep toDel = mStep.remove(pos);
@@ -1456,7 +1442,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
-		private Button mButton;
 		private Context ct;
 		private int position;
 
@@ -1491,7 +1476,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						JobCard.this, JobCard.this);
 				arg1 = mInf.inflate(R.layout.step, null);
 				h = new StepViewHolder();
-				// h.mTask = (TextView) arg1.findViewById(R.id.task);
 				h.mWV = (WebView) arg1.findViewById(R.id.webView1);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
@@ -1508,11 +1492,11 @@ public class JobCard extends Activity implements PropertyChangeListener,
 							if (pos == 0) {
 								LayoutParams lpc = (LayoutParams) listStepJobSetup
 										.getLayoutParams();
-								lpc.height -= 190;
+								lpc.height -= 185;
 								listStepJobSetup.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousJobSetup
 										.getLayoutParams();
-								lpc.height += 190;
+								lpc.height += 185;
 								listStepPreviousJobSetup.setLayoutParams(lpc);
 
 								Step toDel = mStep.remove(pos);
@@ -1632,11 +1616,11 @@ public class JobCard extends Activity implements PropertyChangeListener,
 							if (pos == (mStep.size()) - 1) {
 								LayoutParams lpc = (LayoutParams) listStepJobSetup
 										.getLayoutParams();
-								lpc.height += 190;
+								lpc.height += 185;
 								listStepJobSetup.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousJobSetup
 										.getLayoutParams();
-								lpc.height -= 190;
+								lpc.height -= 185;
 								listStepPreviousJobSetup.setLayoutParams(lpc);
 
 								PreviousStep toDel = mStep.remove(pos);
@@ -1692,7 +1676,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
-		private Button mButton;
 		private Context ct;
 		private int position;
 
@@ -1744,11 +1727,11 @@ public class JobCard extends Activity implements PropertyChangeListener,
 							if (pos == 0) {
 								LayoutParams lpc = (LayoutParams) listStepProc
 										.getLayoutParams();
-								lpc.height -= 190;
+								lpc.height -= 185;
 								listStepProc.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousProc
 										.getLayoutParams();
-								lpc.height += 190;
+								lpc.height += 185;
 								listStepPreviousProc.setLayoutParams(lpc);
 
 								Step toDel = mStep.remove(pos);
@@ -1867,11 +1850,11 @@ public class JobCard extends Activity implements PropertyChangeListener,
 							if (pos == (mStep.size()) - 1) {
 								LayoutParams lpc = (LayoutParams) listStepProc
 										.getLayoutParams();
-								lpc.height += 190;
+								lpc.height += 185;
 								listStepProc.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousProc
 										.getLayoutParams();
-								lpc.height -= 190;
+								lpc.height -= 185;
 								listStepPreviousProc.setLayoutParams(lpc);
 
 								PreviousStep toDel = mStep.remove(pos);
@@ -1927,7 +1910,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
-		private Button mButton;
 		private Context ct;
 		private int position;
 
@@ -1979,11 +1961,11 @@ public class JobCard extends Activity implements PropertyChangeListener,
 							if (pos == 0) {
 								LayoutParams lpc = (LayoutParams) listStepCloseUp
 										.getLayoutParams();
-								lpc.height -= 190;
+								lpc.height -= 185;
 								listStepCloseUp.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousCloseUp
 										.getLayoutParams();
-								lpc.height += 190;
+								lpc.height += 185;
 								listStepPreviousCloseUp.setLayoutParams(lpc);
 
 								Step toDel = mStep.remove(pos);
@@ -2103,11 +2085,11 @@ public class JobCard extends Activity implements PropertyChangeListener,
 							if (pos == (mStep.size()) - 1) {
 								LayoutParams lpc = (LayoutParams) listStepCloseUp
 										.getLayoutParams();
-								lpc.height += 190;
+								lpc.height += 185;
 								listStepCloseUp.setLayoutParams(lpc);
 								lpc = (LayoutParams) listStepPreviousCloseUp
 										.getLayoutParams();
-								lpc.height -= 190;
+								lpc.height -= 185;
 								listStepCloseUp.setLayoutParams(lpc);
 
 								PreviousStep toDel = mStep.remove(pos);
