@@ -14,27 +14,25 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 public class PlaneSelection extends Activity {
 
-	TextView titre, id, textor;
-	Spinner msn, fsn;
-	ArrayAdapter<String> spAdapt;
-	ArrayAdapter<String> planeAdapt;
-	ListView planes, lastplanes;
-	ArrayList<String> listeAvions;
-	ArrayList<String> listeFSN;
-	ArrayList<String> listeMSN;
-	static ArrayList<String> listLastPlanes;
-	String avionid, selectedPlane;
-	Button search;
-	EditText theID;
-	HashMap<String, ArrayList<String>> listeAvionFSN;
-	HashMap<String, ArrayList<String>> listeAvionMSN;
+	private TextView id, textor;
+	private Spinner msn, fsn;
+	private ArrayAdapter<String> spAdapt;
+	private ArrayAdapter<String> planeAdapt;
+	private ListView planes, lastplanes;
+	private ArrayList<String> listeAvions;
+	private ArrayList<String> listeFSN;
+	private ArrayList<String> listeMSN;
+	private ArrayList<String> listLastPlanes;
+	private String selectedPlane;
+	private Button search;
+	private HashMap<String, ArrayList<String>> listeAvionFSN;
+	private HashMap<String, ArrayList<String>> listeAvionMSN;
 
 	int planeSelected = -1;
 
@@ -70,7 +68,6 @@ public class PlaneSelection extends Activity {
 		listeAvions = new ArrayList<String>();
 		listeAvions.add("A380");
 		listeAvions.add("A320");
-		theID = (EditText) findViewById(R.id.searchID);
 		listeAvionFSN = new HashMap<String, ArrayList<String>>();
 		listeAvionMSN = new HashMap<String, ArrayList<String>>();
 		listeFSN = new ArrayList<String>();
