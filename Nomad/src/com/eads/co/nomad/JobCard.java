@@ -44,6 +44,7 @@ import android.widget.SimpleAdapter;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.eads.co.nomad.PanAndZoomListener.Anchor;
@@ -397,6 +398,8 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			prevWarn.setOnClickListener(managePreviousWarn);
 			prevWarn.setTag(">");
 
+			String warn = parser.getWarnings();
+
 			previousStepsWarn = new ArrayList<PreviousStep>();
 			stepsWarn = new ArrayList<Step>();
 			ArrayList<String> stepWarn = parser.getStepsWarning();
@@ -443,6 +446,8 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			Button prevJobSetup = (Button) findViewById(R.id.previousButtonJobSetup);
 			prevJobSetup.setOnClickListener(managePreviousJobSetup);
 			prevJobSetup.setTag(">");
+
+			String jobSetup = parser.getJobSetUp();
 
 			previousStepsJobSetup = new ArrayList<PreviousStep>();
 			stepsJobSetup = new ArrayList<Step>();
@@ -492,6 +497,8 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			prevProc.setOnClickListener(managePreviousProc);
 			prevProc.setTag(">");
 
+			String proc = parser.getProcedure();
+
 			stepsProc = new ArrayList<Step>();
 			ArrayList<String> stepProc = parser.getStepsProcedure();
 			for (int i = 0; i < stepProc.size(); i++) {
@@ -529,6 +536,8 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			prevCloseUp.setOnClickListener(managePreviousCloseUp);
 			prevCloseUp.setTag(">");
 
+			String closeUp = parser.getCloseUp();
+
 			stepsCloseUp = new ArrayList<Step>();
 			ArrayList<String> stepCloseUp = parser.getStepsCloseUp();
 			for (int i = 0; i < stepCloseUp.size(); i++) {
@@ -545,6 +554,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			lpc.height = 185 * stepsCloseUp.size();
 			listStepCloseUp.setLayoutParams(lpc);
 
+			listStepPreviousCloseUp = (ListView) findViewById(R.id.listPreviousStepProc);
 			stepAdaptPreviousCloseUp = new PreviousStepListAdapterCloseUp(this);
 			stepAdaptPreviousCloseUp.setListItems(previousStepsCloseUp);
 			listStepPreviousCloseUp.setAdapter(stepAdaptPreviousCloseUp);
@@ -1209,6 +1219,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
+		private Button mButton;
 		private Context ct;
 		private int position;
 
@@ -1442,6 +1453,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
+		private Button mButton;
 		private Context ct;
 		private int position;
 
@@ -1676,6 +1688,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
+		private Button mButton;
 		private Context ct;
 		private int position;
 
@@ -1910,6 +1923,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
+		private Button mButton;
 		private Context ct;
 		private int position;
 
