@@ -5,6 +5,7 @@ import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -121,7 +122,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 	private WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV,
 			picturesWV;
-
+	private TextView dateRevisionTV;
 	private LinearLayout warnings, jobSetUp, procedure, closeUp, tools,
 			pictures;
 
@@ -385,8 +386,11 @@ public class JobCard extends Activity implements PropertyChangeListener,
 					.getHistory();
 			h.put(ammPart, parser.getTitle());
 
+			/* Date */
+			dateRevisionTV = (TextView)findViewById(R.id.date_text);
+			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+			dateRevisionTV.setText("Last revision : "+formatter.format(parser.getLastRevision()));
 			/* Warnings part */
-
 			warnings = (LinearLayout) findViewById(R.id.warnings);
 			warnings.setOnClickListener(manageWarnings);
 			((ImageView) findViewById(R.id.stateWarning))

@@ -2,7 +2,10 @@ package com.eads.co.nomad;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -48,6 +51,21 @@ public class DataParsing {
 		racine = document.getRootElement();
 	}
 
+	public Date getLastRevision() {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		Date date = new Date();
+		try {
+	        date = formatter.parse(racine.getAttributeValue("REVDATE"));
+			System.out.println(date);
+			formatter = new SimpleDateFormat("dd/MM/yyyy");
+			System.out.println("DATE : "+formatter.format(date));
+			return date;
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return date;
+		}
+	}
+	
 	public String getTitle() {
 		return racine.getAttributeValue("CHAPNBR") + "."
 				+ racine.getAttributeValue("SECTNBR") + "."

@@ -1,5 +1,7 @@
 package com.eads.co.nomad;
 
+import java.util.LinkedHashMap;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +14,8 @@ public class MenuApp extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.menu_app);
+		// Clear history
+		((History) this.getApplication()).setHistory(new LinkedHashMap<String, String>());
 	}
 
 	public void toAMM(View view) {
