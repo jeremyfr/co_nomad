@@ -41,7 +41,7 @@ public class ATASelection extends Activity {
 		setContentView(R.layout.activity_ataselection);
 		title = "ATA Selection   /   Plane:" + plane + " MSN:" + msn + " FSN:"
 				+ fsn + " ID:" + id;
-		setTitle(title);
+		//setTitle(title);
 		if (Intent.ACTION_SEARCH.equals(getIntent().getAction())) {
 			String query = getIntent().getStringExtra(SearchManager.QUERY);
 			Intent mapIntent = new Intent(this, Research.class);

@@ -53,7 +53,7 @@ public class PlaneSelection extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				Intent intent = new Intent(PlaneSelection.this,
-						ATASelection.class);
+						AMMATA.class);
 				String[] listinfo = listLastPlanes.get(arg2).split(" ");
 				intent.putExtra("Avion", listinfo[0]);
 				intent.putExtra("FSN", listinfo[1].replace("FSN:", ""));
@@ -107,7 +107,7 @@ public class PlaneSelection extends Activity {
 				String fsnToSend = "40";
 				String msnToSend = "69";
 				Intent intent = new Intent(PlaneSelection.this,
-						ATASelection.class);
+						AMMATA.class);
 				intent.putExtra("Avion", "A380");
 				intent.putExtra("FSN", fsnToSend);
 				intent.putExtra("MSN", msnToSend);
@@ -164,7 +164,7 @@ public class PlaneSelection extends Activity {
 							String msnToSend = listeAvionMSN.get(selectedPlane)
 									.get(arg2);
 							Intent intent = new Intent(PlaneSelection.this,
-									ATASelection.class);
+									AMMATA.class);
 							intent.putExtra("Avion", selectedPlane);
 							intent.putExtra("FSN", fsnToSend);
 							intent.putExtra("MSN", msnToSend);
@@ -191,7 +191,7 @@ public class PlaneSelection extends Activity {
 							String fsnToSend = listeAvionFSN.get(selectedPlane)
 									.get(arg2);
 							Intent intent = new Intent(PlaneSelection.this,
-									ATASelection.class);
+									AMMATA.class);
 							intent.putExtra("Avion", selectedPlane);
 							intent.putExtra("FSN", fsnToSend);
 							intent.putExtra("MSN", msnToSend);
