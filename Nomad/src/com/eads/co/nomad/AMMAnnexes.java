@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -170,6 +171,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 		// Pour les annexes multiples
 		listview = (ListView) findViewById(R.id.listview);
 		listview.setSelector(R.drawable.selector);
+		
 		listItem = new ArrayList<HashMap<String, Object>>();
 		// Remplissage des fonctions sur le navigation drawer
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -587,7 +589,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 
 	private void setInfobulle(boolean state, int y, int pos) {
 		if (state) {
-			y_absolue = 56 + 30 * pos + warnings.getHeight()
+			y_absolue = 96 + 30 * pos + warnings.getHeight()
 					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
 					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
 					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
