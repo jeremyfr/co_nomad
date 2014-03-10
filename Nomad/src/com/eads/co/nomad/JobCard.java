@@ -740,7 +740,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 	private void setInfobulle(boolean state, int y, int pos) {
 		if (state) {
-			y_absolue = 56 + 30 * pos + warnings.getHeight()
+			y_absolue = 96 + 30 * pos + warnings.getHeight()
 					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
 					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
 					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
@@ -748,7 +748,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 					+ (pos >= 5 ? 1 : 0) * pictures.getHeight()
 					- clickedWB.getHeight() + y;
 		} else {
-			y_absolue = (int) (30 * (1 + pos)
+			y_absolue = (int) (70 + 30 * pos
 					+ ((pos >= 0 ? 0.5 : 0) + (pos >= 1 ? 0.5 : 0))
 					* warnings.getHeight()
 					+ ((pos >= 1 ? 0.5 : 0) + (pos >= 2 ? 0.5 : 0))
