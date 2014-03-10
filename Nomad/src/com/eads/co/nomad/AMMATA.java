@@ -1,5 +1,6 @@
 package com.eads.co.nomad;
 
+import android.app.SearchManager;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +23,17 @@ public class AMMATA extends TabActivity {
 		String title = "ATA Selection   /   Plane:" + plane + " MSN:" + msn + " FSN:"
 				+ fsn + " ID:" + id;
 		setTitle(title);
-		
+		if (Intent.ACTION_SEARCH.equals(getIntent().getAction())) {
+			String query = getIntent().getStringExtra(SearchManager.QUERY);
+			Intent mapIntent = new Intent(this, Research.class);
+			mapIntent.putExtra("query", query);
+//			mapIntent.putExtra("titre", title);
+//			mapIntent.putExtra("Avion", plane);
+//			mapIntent.putExtra("FSN", fsn);
+//			mapIntent.putExtra("MSN", msn);
+//			mapIntent.putExtra("ID", id);
+			startActivity(mapIntent);
+		}
         /* TabHost will have Tabs */
         TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
         
