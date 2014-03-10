@@ -138,13 +138,14 @@ public class PlaneSelection extends Activity {
 					long arg3) {
 
 				int c = getResources().getColor(R.color.blue);
-				planes.getChildAt(arg2).setBackgroundColor(c);
 
 				if (planeSelected != -1) {
 					int color = getResources().getColor(
 							R.color.background1_light);
 					planes.getChildAt(planeSelected).setBackgroundColor(color);
 				}
+
+				planes.getChildAt(arg2).setBackgroundColor(c);
 				planeSelected = arg2;
 				selectedPlane = listeAvions.get(arg2);
 
