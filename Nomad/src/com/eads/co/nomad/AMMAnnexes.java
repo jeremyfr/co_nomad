@@ -2,8 +2,15 @@ package com.eads.co.nomad;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,11 +22,12 @@ import java.util.TimerTask;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -35,13 +43,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SimpleAdapter;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.eads.co.nomad.PanAndZoomListener.Anchor;
+import com.eads.co.nomad.R.color;
 
 /**
  * Class used to manage the display of the documentation.
@@ -358,7 +367,6 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 		try {
 			parser = new DataParsing(input);
 			this.setTitle(parser.getTitle() + " " + title);
-
 			SwitchTaskManager taskManager = new SwitchTaskManager(this, this);
 
 			HashMap<String, String> h = ((History) this.getApplication())
@@ -367,9 +375,16 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 
 			/* Date */
 			dateRevisionTV = (TextView) findViewById(R.id.date_text);
-			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-			dateRevisionTV.setText("Last revision : "
-					+ formatter.format(parser.getLastRevision()));
+			displayLastRevision(ammPart);
+			// Add procedure to used procedures
+			File file = new File(getApplicationContext().getFilesDir(),"proceduresUsed.txt");
+			if(!procedureUsed(file, ammPart)){
+				FileWriter logWriter = new FileWriter(file);                  
+		        BufferedWriter out = new BufferedWriter(logWriter); 
+		        out.write(ammPart);
+		        out.newLine();
+		        out.close();
+			}
 			/* Warnings part */
 			warnings = (LinearLayout) findViewById(R.id.warnings);
 			warnings.setOnClickListener(manageWarnings);
@@ -501,7 +516,6 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 								case DISPLAYED_FULLSCREEN:
 									break;
 								}
-
 							}
 						});
 					}
@@ -510,6 +524,46 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 			}
 		};
 		t.start();
+	}
+
+	private void displayLastRevision(String procedure) {
+		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+		File file = new File(getApplicationContext().getFilesDir(),"proceduresUsed.txt");
+		if(procedureUsed(file, procedure)){
+			dateRevisionTV.setText("Last revision : "
+					+ formatter.format(parser.getLastRevision()));
+		}else{
+			dateRevisionTV.setPadding(70, 0, 0, 0);
+			dateRevisionTV.setTextColor(getResources().getColor(color.red));
+			dateRevisionTV.setTypeface(null, Typeface.BOLD);
+			dateRevisionTV.setGravity(Gravity.LEFT);
+			dateRevisionTV.setText("New revision found : "
+					+ formatter.format(parser.getLastRevision()));
+		}
+	}
+
+	@SuppressWarnings("resource")
+	private boolean procedureUsed(File file, String procedure){
+		InputStream instream;
+		boolean procedureFound = false;
+		try {
+			instream = new FileInputStream(file);
+			if (instream != null) {
+				BufferedReader buffreader = new BufferedReader(new InputStreamReader(instream));
+				String line = buffreader.readLine();
+				while (line != null && procedureFound == false) {
+					if(line.contains(procedure)){
+						procedureFound = true;
+					}
+					line = buffreader.readLine();
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return procedureFound;
 	}
 
 	// Scroll à une ordonnée de la documentation.

@@ -1,8 +1,15 @@
 package com.eads.co.nomad;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -24,7 +31,24 @@ public class MainActivity extends Activity {
 						toMenu(v);
 						return true;
 					}
-				});
+		});
+		manageFileProcedureUsed();
+	}
+
+	/**
+	 * Manage the file that save procedure used.
+	 * It is possible to know if a procedure was updated since last use.
+	 */
+	private void manageFileProcedureUsed() {
+		File file = new File(getApplicationContext().getFilesDir(),"proceduresUsed.txt");
+		if(!file.exists()){
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public void toMenu(View view) {
