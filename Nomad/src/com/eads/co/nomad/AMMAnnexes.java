@@ -53,7 +53,8 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
  * @author Guillaume Saas
  */
 
-public class AMMAnnexes extends Activity implements PropertyChangeListener,Serializable {
+public class AMMAnnexes extends Activity implements PropertyChangeListener,
+		Serializable {
 
 	/**
 	 * 
@@ -88,7 +89,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 
 	private WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV,
 			picturesWV;
-    private TextView dateRevisionTV;
+	private TextView dateRevisionTV;
 	private LinearLayout warnings, jobSetUp, procedure, closeUp, tools,
 			pictures;
 
@@ -118,7 +119,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 	// Pour le multitouch
 	private ImageView annexImg;
 	private FrameLayout layoutImg;
-	
+
 	private String title;
 
 	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
@@ -141,8 +142,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		setContentView(R.layout.amm_annexes);
-		
-		
+
 		layout = (LinearLayout) findViewById(R.id.layout_amm);
 
 		separatorLayout = (RelativeLayout) findViewById(R.id.separatorLayout);
@@ -152,8 +152,6 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 
 		scrollView = (OurScrollView) findViewById(R.id.scrollView);
 		scrollView.setActivity(this);
-
-
 
 		annexLayout = (LinearLayout) findViewById(R.id.annexLayout);
 		titreAnnexe = (TextView) findViewById(R.id.annexTitle);
@@ -167,11 +165,11 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 				Anchor.TOPLEFT);
 		annexImg.setOnTouchListener(pan);
 		pan.addPropertyChangeListener(this);
-		
+
 		// Pour les annexes multiples
 		listview = (ListView) findViewById(R.id.listview);
 		listview.setSelector(R.drawable.selector);
-		
+
 		listItem = new ArrayList<HashMap<String, Object>>();
 		// Remplissage des fonctions sur le navigation drawer
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -188,7 +186,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 				scrollTo(y_absolue);
 			}
 		});
-		
+
 		map = new HashMap<String, Object>();
 		map.put("titre", "Close All");
 		map.put("img", String.valueOf(R.drawable.close));
@@ -350,7 +348,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 			ammPart = (String) bundle.get("task");
 			title = bundle.getString("titre");
 		}
-		
+
 		InputStream input = null;
 		try {
 			input = getApplicationContext().getAssets().open(ammPart + ".xml");
@@ -359,7 +357,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 		}
 		try {
 			parser = new DataParsing(input);
-			this.setTitle(parser.getTitle()+ " "+ title);
+			this.setTitle(parser.getTitle() + " " + title);
 
 			SwitchTaskManager taskManager = new SwitchTaskManager(this, this);
 
@@ -368,9 +366,10 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 			h.put(ammPart, parser.getTitle());
 
 			/* Date */
-			dateRevisionTV = (TextView)findViewById(R.id.date_text);
+			dateRevisionTV = (TextView) findViewById(R.id.date_text);
 			SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-			dateRevisionTV.setText("Last revision : "+formatter.format(parser.getLastRevision()));
+			dateRevisionTV.setText("Last revision : "
+					+ formatter.format(parser.getLastRevision()));
 			/* Warnings part */
 			warnings = (LinearLayout) findViewById(R.id.warnings);
 			warnings.setOnClickListener(manageWarnings);
@@ -445,7 +444,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 			picturesWV = ((WebView) findViewById(R.id.pictures_text));
 
 			picturesWV.setInitialScale(100);
-			
+
 			picturesWV.loadDataWithBaseURL("file:///android_asset/",
 					parser.getPictures(), "text/html", "UTF-8", null);
 			picturesWV.setWebViewClient(taskManager);
@@ -512,7 +511,6 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 		};
 		t.start();
 	}
-
 
 	// Scroll à une ordonnée de la documentation.
 	private void scrollTo(int y) {
@@ -597,7 +595,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 					+ (pos >= 5 ? 1 : 0) * pictures.getHeight()
 					- clickedWB.getHeight() + y;
 		} else {
-			y_absolue = (int) (30 * (1 + pos)
+			y_absolue = (int) (70 + 30 * pos
 					+ ((pos >= 0 ? 0.5 : 0) + (pos >= 1 ? 0.5 : 0))
 					* warnings.getHeight()
 					+ ((pos >= 1 ? 0.5 : 0) + (pos >= 2 ? 0.5 : 0))
@@ -999,14 +997,13 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,Seria
 	public void onBackPressed() {
 		super.onBackPressed();
 	}
-	
 
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
-		Log.e("Dans propertyChange","Cool");
+		Log.e("Dans propertyChange", "Cool");
 		if (event.getNewValue().equals("FULLSCREEN")) {
 			fullScreenAnnexButton.performClick();
 		}
 	}
-	
+
 }
