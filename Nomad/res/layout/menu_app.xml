@@ -14,34 +14,29 @@
     	android:orientation="horizontal"
     	android:layout_weight="1"
         android:gravity="center">
-	    <ImageButton
+	    <ImageView
 	        android:id="@+id/amm"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="493px"
+	        android:layout_height="493px"
 	        android:background="@null"
 	        android:contentDescription="AMM"
 	        android:onClick="toAMM"
-       		android:layout_weight="1"
-	        android:src="@drawable/button_amm" />
-	
-	    <ImageButton
+	        android:src="@drawable/button_amm"/>
+	    <ImageView
 	        android:id="@+id/ipc"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="493px"
+	        android:layout_height="493px"
 	        android:background="@null"
 	        android:contentDescription="IPC"
 	        android:onClick="toIPC"
-        	android:layout_weight="1"
 	        android:src="@drawable/button_ipc" />
-	
-	    <ImageButton
+	    <ImageView
 	        android:id="@+id/jobCard"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="493px"
+	        android:layout_height="493px"
 	        android:background="@null"
 	        android:contentDescription="Job Card"
 	        android:onClick="toJobCard"
-        	android:layout_weight="1"
 	        android:src="@drawable/button_jobcard" />
     </LinearLayout>
     
@@ -52,24 +47,21 @@
         android:layout_weight="1"
         android:gravity="center"
     	android:orientation="horizontal">
-	    <ImageButton
+	    <ImageView
 	        android:id="@+id/options"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="493px"
+	        android:layout_height="493px"
 	        android:background="@null"
 	        android:contentDescription="Options"
 	        android:onClick="toOptions"
-        	android:layout_weight="1"
 	        android:src="@drawable/button_options" />
-
-	    <ImageButton
+	    <ImageView
 	        android:id="@+id/quit"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_width="493px"
+	        android:layout_height="493px"
 	        android:background="@null"
 	        android:contentDescription="Quit"
 	        android:onClick="quit"
-        	android:layout_weight="1"
 	        android:src="@drawable/button_quit" />
 	</LinearLayout>
 </LinearLayout>

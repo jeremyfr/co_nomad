@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
@@ -31,6 +32,7 @@ public class MainActivityJobCards extends FragmentActivity {
 				"Installation of the Wing Anti-ice Control-valve");
 		ArrayList<JobCardDetails> jobCardDetails = new ArrayList<JobCardDetails>();
 		JobCardDetails jDetails = new JobCardDetails(
+				1,
 				j,
 				"Date : 03/05/2014\nRef. : EN30115140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 30 min\nRequired operators : 2");
@@ -42,6 +44,7 @@ public class MainActivityJobCards extends FragmentActivity {
 				"Installation of the Wing Anti-ice Control-valve-filter");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				2,
 				j,
 				"Date : 03/05/2014\nRef. : EN30115140080200",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
@@ -53,6 +56,7 @@ public class MainActivityJobCards extends FragmentActivity {
 				"Deactivation of the Engine Air Intake Anti-Ice System in the Locked Open Position");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				3,
 				j,
 				"Date : 03/05/2014\nRef. : EN30115140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 2h\nRequired operators : 2");
@@ -64,6 +68,7 @@ public class MainActivityJobCards extends FragmentActivity {
 				"Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Open position");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				4,
 				j,
 				"Date : 03/05/2014\nRef. : EN30210004080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 55 min\nRequired operators : 2");
@@ -75,6 +80,7 @@ public class MainActivityJobCards extends FragmentActivity {
 				"Deactivation of the Engine Air Intake Anti-Ice System in the Locked Closed Position");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				5,
 				j,
 				"Date : 03/05/2014\nRef. : EN30210004080400",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 45 min\nRequired operators : 2");
@@ -86,6 +92,7 @@ public class MainActivityJobCards extends FragmentActivity {
 				"Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Closed position");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				6,
 				j,
 				"Date : 03/05/2014\nRef. : EN30210004080600",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 1 h\nRequired operators : 2");
@@ -101,9 +108,10 @@ public class MainActivityJobCards extends FragmentActivity {
 
 		jobCardsTab2 = new ArrayList<JobCardData>();
 
-		j = new JobCardData("Job Card #1");
+		j = new JobCardData("Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Open position");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				7,
 				j,
 				"Date : 03/05/2014\nRef. : EN30115140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
@@ -111,9 +119,10 @@ public class MainActivityJobCards extends FragmentActivity {
 		j.setJobCardDetails(jobCardDetails);
 		jobCardsTab2.add(j);
 
-		j = new JobCardData("Job Card #2");
+		j = new JobCardData("Deactivation of the Anti-Ice Pressure-Regulating Valve of the Engine Air Intake in the Locked-Closed position");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				8,
 				j,
 				"Date : 03/05/2014\nRef. : EN30115140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
@@ -121,9 +130,10 @@ public class MainActivityJobCards extends FragmentActivity {
 		j.setJobCardDetails(jobCardDetails);
 		jobCardsTab2.add(j);
 
-		j = new JobCardData("Job Card #3");
+		j = new JobCardData("Deactivation of the Engine Air Intake Anti-Ice System in the Locked Closed Position");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				9,
 				j,
 				"Date : 03/05/2014\nRef. : EN30115140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
@@ -143,6 +153,7 @@ public class MainActivityJobCards extends FragmentActivity {
 				"Installation of the Door Locking Mechanism Door M4L/M4R");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				10,
 				j,
 				"Date : 03/05/2014\nRef. : EN52132140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 50 min\nRequired operators : 2");
@@ -154,6 +165,7 @@ public class MainActivityJobCards extends FragmentActivity {
 				"Adjustment of the Door Locking Mechanism Door M4L/M4R");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				11,
 				j,
 				"Date : 03/05/2014\nRef. : EN52132182080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 55 min\nRequired operators : 2");
@@ -165,6 +177,7 @@ public class MainActivityJobCards extends FragmentActivity {
 				"Installation of the Door-Locking Mechanism Door M5L/M5R");
 		jobCardDetails = new ArrayList<JobCardDetails>();
 		jDetails = new JobCardDetails(
+				12,
 				j,
 				"Date : 03/05/2014\nRef. : EN52142140080100",
 				"Documentation : AMM, TSM, IPC\nRequired execution time : 2 h\nRequired operators : 2");
@@ -179,17 +192,34 @@ public class MainActivityJobCards extends FragmentActivity {
 		listeJobCards3.setAdapter((ExpandableListAdapter) adapter3);
 	}
 
-	public void openJobCard(View view) {
-		// Intent intent = new Intent(this, JobCard.class);
-		Intent intent = new Intent(this, JobCard.class);
-		intent.putExtra("task", "EN52132140080100");
-		intent.putExtra("FSN", "EN52132140080100");
-		intent.putExtra("MSN", "EN52132140080100");
-		intent.putExtra("ID", "EN52132140080100");
-
-		intent.putExtra("titre", "A380 MSN:69 FSN:28 ID:F-GHBQ");
-		startActivity(intent);
-	}
+//	public void openJobCard(View view) {
+//		Intent intent = new Intent(this, JobCard.class);
+//		
+//		ViewParent layout = view.getParent();
+//		View expandableList = (View) layout.getParent();
+//		
+//		if (expandableList.getId() == R.id.listeJobCards3){
+//			intent.putExtra("task", "EN52132140080100");
+//			intent.putExtra("FSN", "EN52132140080100");
+//			intent.putExtra("MSN", "EN52132140080100");
+//			intent.putExtra("ID", "EN52132140080100");
+//			intent.putExtra("titre", "A380 MSN:69 FSN:28 ID:F-GHBQ");
+//		} else if (expandableList.getId() == R.id.listeJobCards1){
+//			intent.putExtra("task", "EN30115140080100");
+//			intent.putExtra("FSN", "EN30115140080100");
+//			intent.putExtra("MSN", "EN30115140080100");
+//			intent.putExtra("ID", "EN30115140080100");
+//			intent.putExtra("titre", "A380 MSN:40 FSN:35 ID:F-HPJB");
+//		}
+//		else{
+//			intent.putExtra("task", "EN30115140080100");
+//			intent.putExtra("FSN", "EN30115140080100");
+//			intent.putExtra("MSN", "EN30115140080100");
+//			intent.putExtra("ID", "EN30115140080100");
+//			intent.putExtra("titre", "A380 MSN:226 FSN:353 ID:F-GFKU");
+//		}
+//		startActivity(intent);
+//	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

@@ -3,6 +3,7 @@ package com.eads.co.nomad;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.LightingColorFilter;
 import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
@@ -69,35 +70,100 @@ public class JobCardAdapter extends BaseExpandableListAdapter {
 		childViewHolder.textViewChildAc.setText(objet.getAcDetails());
 		childViewHolder.textViewChildTask.setText(objet.getTaskDetails());
 
-		// childViewHolder.buttonChild.setOnClickListener(new OnClickListener()
-		// {
-		//
-		// public void onClick(View v) {
-		// Toast.makeText(context, "Groupe : " + objet.getGroupe().getNom() +
-		// " - Bouton : " + objet.getNom(), Toast.LENGTH_SHORT).show();
-		// }
-		// });
+		childViewHolder.buttonChild.setOnClickListener(new OnClickListener(){
+			 public void onClick(View v) {
+				 Intent intent = new Intent(context, JobCard.class);
+				 switch (objet.getId()){
+				 case 1:
+					intent.putExtra("task", "EN30115140080100");
+					intent.putExtra("FSN", "EN30115140080100");
+					intent.putExtra("MSN", "EN30115140080100");
+					intent.putExtra("ID", "EN30115140080100");
+					intent.putExtra("titre", "A380 MSN:40 FSN:35 ID:F-HPJB");
+					 break;
+				 case 2:
+					intent.putExtra("task", "EN30115140080200");
+					intent.putExtra("FSN", "EN30115140080200");
+					intent.putExtra("MSN", "EN30115140080200");
+					intent.putExtra("ID", "EN30115140080200");
+					intent.putExtra("titre", "A380 MSN:40 FSN:35 ID:F-HPJB");
+					 break;
+				 case 3:
+					intent.putExtra("task", "EN30210004080100");
+					intent.putExtra("FSN", "EN30210004080100");
+					intent.putExtra("MSN", "EN30210004080100");
+					intent.putExtra("ID", "EN30210004080100");
+					intent.putExtra("titre", "A380 MSN:40 FSN:35 ID:F-HPJB");
+					 break;
+				 case 4:
+					intent.putExtra("task", "EN30210004080400");
+					intent.putExtra("FSN", "EN30210004080400");
+					intent.putExtra("MSN", "EN30210004080400");
+					intent.putExtra("ID", "EN30210004080400");
+					intent.putExtra("titre", "A380 MSN:40 FSN:35 ID:F-HPJB");
+					 break;
+				 case 5:
+					intent.putExtra("task", "EN30210004080600");
+					intent.putExtra("FSN", "EN30210004080600");
+					intent.putExtra("MSN", "EN30210004080600");
+					intent.putExtra("ID", "EN30210004080600");
+					intent.putExtra("titre", "A380 MSN:40 FSN:35 ID:F-HPJB");
+					 break;
+				 case 6:
+					intent.putExtra("task", "EN30210004080700");
+					intent.putExtra("FSN", "EN30210004080700");
+					intent.putExtra("MSN", "EN30210004080700");
+					intent.putExtra("ID", "EN30210004080700");
+					intent.putExtra("titre", "A380 MSN:40 FSN:35 ID:F-HPJB");
+					 break;
+				 case 7:
+					intent.putExtra("task", "EN30210004080400");
+					intent.putExtra("FSN", "EN30210004080400");
+					intent.putExtra("MSN", "EN30210004080400");
+					intent.putExtra("ID", "EN30210004080400");
+					intent.putExtra("titre", "A380 MSN:226 FSN:353 ID:F-GFKU");
+					 break;
+				 case 8:
+					intent.putExtra("task", "EN30210004080700");
+					intent.putExtra("FSN", "EN30210004080700");
+					intent.putExtra("MSN", "EN30210004080700");
+					intent.putExtra("ID", "EN30210004080700");
+					intent.putExtra("titre", "A380 MSN:226 FSN:353 ID:F-GFKU");
+					 break;
+				 case 9:
+					intent.putExtra("task", "EN30210004080600");
+					intent.putExtra("FSN", "EN30210004080600");
+					intent.putExtra("MSN", "EN30210004080600");
+					intent.putExtra("ID", "EN30210004080600");
+					intent.putExtra("titre", "A380 MSN:226 FSN:353 ID:F-GFKU");
+					 break;
+				 case 10:
+					intent.putExtra("task", "EN52132140080100");
+					intent.putExtra("FSN", "EN52132140080100");
+					intent.putExtra("MSN", "EN52132140080100");
+					intent.putExtra("ID", "EN52132140080100");
+					intent.putExtra("titre", "A380 MSN:69 FSN:28 ID:F-GHBQ");
+					 break;
+				 case 11:
+					intent.putExtra("task", "EN52132182080100");
+					intent.putExtra("FSN", "EN52132182080100");
+					intent.putExtra("MSN", "EN52132182080100");
+					intent.putExtra("ID", "EN52132182080100");
+					intent.putExtra("titre", "A380 MSN:69 FSN:28 ID:F-GHBQ");
+					 break;
+				 case 12:
+					intent.putExtra("task", "EN52142140080100");
+					intent.putExtra("FSN", "EN52142140080100");
+					intent.putExtra("MSN", "EN52142140080100");
+					intent.putExtra("ID", "EN52142140080100");
+					intent.putExtra("titre", "A380 MSN:69 FSN:28 ID:F-GHBQ");
+					 break;
+				 }
+				 context.startActivity(intent);
+			 }
+		});
 
 		return convertView;
-
-		// ChildViewHolder childViewHolder;
-		//
-		// if (convertView == null) {
-		// childViewHolder = new ChildViewHolder();
-		//
-		// convertView = inflater.inflate(R.layout.job_card, null);
-		//
-		// childViewHolder.textViewDetails = (TextView)
-		// convertView.findViewById(R.id.details);
-		//
-		// convertView.setTag(childViewHolder);
-		// } else {
-		// childViewHolder = (ChildViewHolder) convertView.getTag();
-		// }
-		//
-		// childViewHolder.textViewDetails.setText(objet.getName());
-		//
-		// return convertView;
 	}
 
 	@Override
