@@ -46,6 +46,11 @@ public class ATASelection extends Activity {
 			String query = getIntent().getStringExtra(SearchManager.QUERY);
 			Intent mapIntent = new Intent(this, Research.class);
 			mapIntent.putExtra("query", query);
+//			mapIntent.putExtra("titre", title);
+//			mapIntent.putExtra("Avion", plane);
+//			mapIntent.putExtra("FSN", fsn);
+//			mapIntent.putExtra("MSN", msn);
+//			mapIntent.putExtra("ID", id);
 			startActivity(mapIntent);
 		}
 
