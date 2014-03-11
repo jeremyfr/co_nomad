@@ -14,6 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,7 +31,7 @@ public class PlaneSelection extends Activity {
 	private ArrayList<String> listeMSN;
 	private ArrayList<String> listLastPlanes;
 	private String selectedPlane;
-	private Button search;
+	private ImageButton search;
 	private HashMap<String, ArrayList<String>> listeAvionFSN;
 	private HashMap<String, ArrayList<String>> listeAvionMSN;
 
@@ -98,7 +99,7 @@ public class PlaneSelection extends Activity {
 		spAdapt = new ArrayAdapter<String>(this, 0);
 		msn.setAdapter(spAdapt);
 
-		search = (Button) findViewById(R.id.buttonsearch);
+		search = (ImageButton) findViewById(R.id.buttonsearch);
 		search.setOnClickListener(new OnClickListener() {
 
 			@Override

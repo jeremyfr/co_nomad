@@ -33,7 +33,7 @@
             <requestFocus />
         </EditText>
 
-        <Button
+       <!--  <Button
             android:id="@+id/buttonsearch"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -41,7 +41,17 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="OK"
-            android:textColor="@color/background1_light" />
+            android:textColor="@color/background1_light" /> -->
+            
+            <ImageButton
+                android:id="@+id/buttonsearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/background1_light"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/button_ok_search" />
+
     </LinearLayout>
 
     <Space
@@ -83,7 +93,7 @@
 
 	<View
 	    android:layout_width="3dp"
-	    android:layout_height="350dp"
+	    android:layout_height="340dp"
 	    android:background="@color/background2_dark" />
 
         <LinearLayout
