@@ -152,7 +152,7 @@ public class PlaneSelection extends Activity {
 
 				// Afficher fsn et msn
 				spAdapt = new ArrayAdapter<String>(PlaneSelection.this,
-						android.R.layout.simple_list_item_1, listeAvionFSN
+						R.layout.centered_spinner, listeAvionFSN
 								.get(listeAvions.get(arg2)));
 				fsn.setAdapter(spAdapt);
 				fsn.setVisibility(View.VISIBLE);
@@ -211,7 +211,7 @@ public class PlaneSelection extends Activity {
 				});
 
 				spAdapt = new ArrayAdapter<String>(PlaneSelection.this,
-						android.R.layout.simple_list_item_1, listeAvionMSN
+						R.layout.centered_spinner, listeAvionMSN
 								.get(listeAvions.get(arg2)));
 				msn.setAdapter(spAdapt);
 				msn.setVisibility(View.VISIBLE);
