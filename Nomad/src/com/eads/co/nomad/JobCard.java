@@ -1227,7 +1227,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
-		private Button mButton;
+		private ImageButton mButton;
 		private Context ct;
 		private int position;
 
@@ -1269,7 +1269,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						JobCard.this), "MyAndroid");
 				h.mWV.setBackgroundColor(getResources().getColor(
 						R.color.background1_light));
-				h.mButton = (Button) arg1.findViewById(R.id.Ok);
+				h.mButton = (ImageButton) arg1.findViewById(R.id.Ok);
 				if (pos == 0) {
 					h.mButton.setOnClickListener(new OnClickListener() {
 
@@ -1328,20 +1328,15 @@ public class JobCard extends Activity implements PropertyChangeListener,
 		}
 
 		private class StepViewHolder {
-			// private TextView mTask;
 			private WebView mWV;
-			private Button mButton;
-
-			/*
-			 * public void setTask(String t){ mTask.setText(t); }
-			 */
+			private ImageButton mButton;
 
 			public void setmWV(String t) {
 				mWV.loadDataWithBaseURL("file:///android_asset/", t,
 						"text/html", "UTF-8", null);
 			}
 
-			public void setButton(Button b) {
+			public void setButton(ImageButton b) {
 				mButton = b;
 			}
 		}
@@ -1388,7 +1383,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 				arg1 = mInf.inflate(R.layout.previousstep, null);
 				h = new PreviousStepViewHolder();
-				h.mButton = (Button) arg1.findViewById(R.id.invalidate);
+				h.mButton = (ImageButton) arg1.findViewById(R.id.invalidate);
 				h.mButton.setVisibility(View.INVISIBLE);
 				h.mWV = (WebView) arg1.findViewById(R.id.webViewPrevious);
 				h.mWV.setWebViewClient(taskManager);
@@ -1453,14 +1448,14 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private class PreviousStepViewHolder {
 			private WebView mWV;
-			private Button mButton;
+			private ImageButton mButton;
 
 			public void setmWV(String t) {
 				mWV.loadDataWithBaseURL("file:///android_asset/", t,
 						"text/html", "UTF-8", null);
 			}
 
-			public void setButton(Button b) {
+			public void setButton(ImageButton b) {
 				mButton = b;
 				b.setVisibility(View.INVISIBLE);
 			}
@@ -1472,7 +1467,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
-		private Button mButton;
+		private ImageButton mButton;
 		private Context ct;
 		private int position;
 
@@ -1514,7 +1509,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						JobCard.this), "MyAndroid");
 				h.mWV.setBackgroundColor(getResources().getColor(
 						R.color.background1_light));
-				h.mButton = (Button) arg1.findViewById(R.id.Ok);
+				h.mButton = (ImageButton) arg1.findViewById(R.id.Ok);
 				
 					if (pos == 0) {
 						if(!warningFinish){
@@ -1580,7 +1575,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 		private class StepViewHolder {
 			// private TextView mTask;
 			private WebView mWV;
-			private Button mButton;
+			private ImageButton mButton;
 
 			/*
 			 * public void setTask(String t){ mTask.setText(t); }
@@ -1591,7 +1586,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						"text/html", "UTF-8", null);
 			}
 
-			public void setButton(Button b) {
+			public void setButton(ImageButton b) {
 				mButton = b;
 			}
 		}
@@ -1639,7 +1634,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 				arg1 = mInf.inflate(R.layout.previousstep, null);
 				h = new PreviousStepViewHolder();
-				h.mButton = (Button) arg1.findViewById(R.id.invalidate);
+				h.mButton = (ImageButton) arg1.findViewById(R.id.invalidate);
 				h.mButton.setVisibility(View.INVISIBLE);
 				h.mWV = (WebView) arg1.findViewById(R.id.webViewPrevious);
 				h.mWV.setWebViewClient(taskManager);
@@ -1705,14 +1700,14 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private class PreviousStepViewHolder {
 			private WebView mWV;
-			private Button mButton;
+			private ImageButton mButton;
 
 			public void setmWV(String t) {
 				mWV.loadDataWithBaseURL("file:///android_asset/", t,
 						"text/html", "UTF-8", null);
 			}
 
-			public void setButton(Button b) {
+			public void setButton(ImageButton b) {
 				mButton = b;
 				b.setVisibility(View.INVISIBLE);
 			}
@@ -1724,7 +1719,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
-		private Button mButton;
+		private ImageButton mButton;
 		private Context ct;
 		private int position;
 
@@ -1767,7 +1762,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						JobCard.this), "MyAndroid");
 				h.mWV.setBackgroundColor(getResources().getColor(
 						R.color.background1_light));
-				h.mButton = (Button) arg1.findViewById(R.id.Ok);
+				h.mButton = (ImageButton) arg1.findViewById(R.id.Ok);
 				if (pos == 0) {
 					if(!warningFinish && !setUpFinish){
 						h.mButton.setVisibility(View.INVISIBLE);
@@ -1830,7 +1825,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 		private class StepViewHolder {
 			// private TextView mTask;
 			private WebView mWV;
-			private Button mButton;
+			private ImageButton mButton;
 
 			/*
 			 * public void setTask(String t){ mTask.setText(t); }
@@ -1841,7 +1836,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						"text/html", "UTF-8", null);
 			}
 
-			public void setButton(Button b) {
+			public void setButton(ImageButton b) {
 				mButton = b;
 			}
 		}
@@ -1888,7 +1883,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 				arg1 = mInf.inflate(R.layout.previousstep, null);
 				h = new PreviousStepViewHolder();
-				h.mButton = (Button) arg1.findViewById(R.id.invalidate);
+				h.mButton = (ImageButton) arg1.findViewById(R.id.invalidate);
 				h.mButton.setVisibility(View.INVISIBLE);
 				h.mWV = (WebView) arg1.findViewById(R.id.webViewPrevious);
 				h.mWV.setWebViewClient(taskManager);
@@ -1954,14 +1949,14 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private class PreviousStepViewHolder {
 			private WebView mWV;
-			private Button mButton;
+			private ImageButton mButton;
 
 			public void setmWV(String t) {
 				mWV.loadDataWithBaseURL("file:///android_asset/", t,
 						"text/html", "UTF-8", null);
 			}
 
-			public void setButton(Button b) {
+			public void setButton(ImageButton b) {
 				mButton = b;
 				b.setVisibility(View.INVISIBLE);
 			}
@@ -1973,7 +1968,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private List<Step> mStep;
 		private LayoutInflater mInf;
-		private Button mButton;
+		private ImageButton mButton;
 		private Context ct;
 		private int position;
 
@@ -2016,7 +2011,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						JobCard.this), "MyAndroid");
 				h.mWV.setBackgroundColor(getResources().getColor(
 						R.color.background1_light));
-				h.mButton = (Button) arg1.findViewById(R.id.Ok);
+				h.mButton = (ImageButton) arg1.findViewById(R.id.Ok);
 				if (pos == 0) {
 					if(!warningFinish && !setUpFinish && !procedureFinish){
 						h.mButton.setVisibility(View.VISIBLE);
@@ -2076,7 +2071,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 		private class StepViewHolder {
 			// private TextView mTask;
 			private WebView mWV;
-			private Button mButton;
+			private ImageButton mButton;
 
 			/*
 			 * public void setTask(String t){ mTask.setText(t); }
@@ -2087,7 +2082,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						"text/html", "UTF-8", null);
 			}
 
-			public void setButton(Button b) {
+			public void setButton(ImageButton b) {
 				mButton = b;
 			}
 		}
@@ -2135,7 +2130,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 				arg1 = mInf.inflate(R.layout.previousstep, null);
 				h = new PreviousStepViewHolder();
-				h.mButton = (Button) arg1.findViewById(R.id.invalidate);
+				h.mButton = (ImageButton) arg1.findViewById(R.id.invalidate);
 				h.mButton.setVisibility(View.INVISIBLE);
 				h.mWV = (WebView) arg1.findViewById(R.id.webViewPrevious);
 				h.mWV.setWebViewClient(taskManager);
@@ -2196,14 +2191,14 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		private class PreviousStepViewHolder {
 			private WebView mWV;
-			private Button mButton;
+			private ImageButton mButton;
 
 			public void setmWV(String t) {
 				mWV.loadDataWithBaseURL("file:///android_asset/", t,
 						"text/html", "UTF-8", null);
 			}
 
-			public void setButton(Button b) {
+			public void setButton(ImageButton b) {
 				mButton = b;
 				b.setVisibility(View.INVISIBLE);
 			}

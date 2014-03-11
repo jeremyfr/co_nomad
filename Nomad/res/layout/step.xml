@@ -17,7 +17,7 @@
             android:layout_weight="1"
             android:background="@color/background1_light" />
 
-        <Button
+        <!-- <Button
             android:id="@+id/Ok"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
@@ -28,7 +28,16 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="Validate"
-            android:textColor="@color/background1_light" />
+            android:textColor="@color/background1_light" /> -->
+            
+            <ImageButton
+                android:id="@+id/Ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/background1_light"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/button_validate"/>
 
     </LinearLayout>
 

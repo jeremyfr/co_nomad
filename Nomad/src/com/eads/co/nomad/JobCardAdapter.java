@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,7 +59,7 @@ public class JobCardAdapter extends BaseExpandableListAdapter {
 					.findViewById(R.id.acDetails);
 			childViewHolder.textViewChildTask = (TextView) convertView
 					.findViewById(R.id.taskDetails);
-			childViewHolder.buttonChild = (Button) convertView
+			childViewHolder.buttonChild = (ImageButton) convertView
 					.findViewById(R.id.openButton);
 			childViewHolder.buttonChild.getBackground().setColorFilter(
 					new LightingColorFilter(0x000000, 0x268bd2)); // color/blue
@@ -227,7 +228,7 @@ public class JobCardAdapter extends BaseExpandableListAdapter {
 	class ChildViewHolder {
 		public TextView textViewChildAc;
 		public TextView textViewChildTask;
-		public Button buttonChild;
+		public ImageButton buttonChild;
 	}
 
 }

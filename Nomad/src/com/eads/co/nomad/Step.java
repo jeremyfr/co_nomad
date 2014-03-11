@@ -1,16 +1,17 @@
 package com.eads.co.nomad;
 
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Step {
 	private String task;
-	private Button b;
+	private ImageButton b;
 
-	public Button getB() {
+	public ImageButton getB() {
 		return b;
 	}
 
-	public void setB(Button b) {
+	public void setB(ImageButton b) {
 		this.b = b;
 	}
 

@@ -20,14 +20,22 @@
         android:padding="10dp" 
         android:textSize="@dimen/font_size_4"/>
     
-    <Button android:id="@+id/openButton" 
+    <!-- <Button android:id="@+id/openButton" 
         android:text="OPEN"
 		android:onClick="openJobCard"
         android:layout_width="0dp"
         android:layout_weight="20"
         android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:textColor="@color/background1_light"/>
-
+        android:textColor="@color/background1_light"/> -->
+        
+		<ImageButton
+                android:id="@+id/openButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/background1_light"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/button_open"/>
     
 </LinearLayout>
