@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
@@ -61,4 +62,17 @@ public class AMMATA extends TabActivity {
         tabHost.addTab(secondTabSpec);
         
     }
+    
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			Intent intent = new Intent(this, PlaneSelection.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 }
