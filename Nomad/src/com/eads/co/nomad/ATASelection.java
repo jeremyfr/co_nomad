@@ -8,6 +8,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,20 +28,21 @@ public class ATASelection extends Activity {
 	private int ataSelected = -1;
 	private int lastSubATASelected = -1;
 	private String title;
+	private String msn, fsn, aid, plane;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//getActionBar().setDisplayHomeAsUpEnabled(true);
-		String msn, fsn, id, plane;
+		
 		Bundle infos = this.getIntent().getExtras();
 		fsn = infos.getString("FSN");
 		msn = infos.getString("MSN");
-		id = infos.getString("ID");
+		aid = infos.getString("ID");
 		plane = infos.getString("Avion");
 		setContentView(R.layout.activity_ataselection);
 		title = "ATA Selection   /   Plane:" + plane + " MSN:" + msn + " FSN:"
-				+ fsn + " ID:" + id;
+				+ fsn + " ID:" + aid;
 		//setTitle(title);
 		/*if (Intent.ACTION_SEARCH.equals(getIntent().getAction())) {
 			String query = getIntent().getStringExtra(SearchManager.QUERY);
@@ -142,6 +144,10 @@ public class ATASelection extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Intent intent = new Intent(ATASelection.this, AMMAnnexes.class);
+				intent.putExtra("MSN", msn);
+				intent.putExtra("FSN", fsn);
+				intent.putExtra("ID", aid);
+				intent.putExtra("Avion",plane);
 				ATA ata = listATA.get(ataSelected);
 				ATALevel2 subAta = ata.getListATALevel2().get(
 						lastSubATASelected);

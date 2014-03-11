@@ -65,10 +65,9 @@ public class AMMATA extends TabActivity implements OnTabChangeListener{
         tabHost.addTab(secondTabSpec);
         
         for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
-            tabHost.getTabWidget().getChildAt(i).setBackgroundColor(getResources().getColor(R.color.background2_light)); // unselected
+            tabHost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#e5dbbe")); // unselected
         }
-        tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(Color.parseColor("#e5dbbe")); // selected
-        
+        tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(getResources().getColor(R.color.blue)); // selected
         tabHost.setOnTabChangedListener(this);
     }
     
@@ -88,9 +87,9 @@ public class AMMATA extends TabActivity implements OnTabChangeListener{
 	@Override
 	public void onTabChanged(String tabId) {
 		for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
-            tabHost.getTabWidget().getChildAt(i).setBackgroundColor(getResources().getColor(R.color.background2_light)); // unselected
+            tabHost.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#e5dbbe")); // unselected
         }
-        tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(Color.parseColor("#e5dbbe")); // selected
+        tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(getResources().getColor(R.color.blue)); // selected
 		
 	}
 }

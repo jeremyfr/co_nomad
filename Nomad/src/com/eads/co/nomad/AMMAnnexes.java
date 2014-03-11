@@ -90,6 +90,8 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 
 	private int scrollX;
 	private int scrollY;
+	
+	private String msn, fsn, id, plane;
 
 	private LinearLayout layout; // layout global contenant documentation et
 									// annexes.
@@ -356,6 +358,10 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 		if (bundle != null) {
 			ammPart = (String) bundle.get("task");
 			title = bundle.getString("titre");
+			fsn = bundle.getString("FSN");
+			msn = bundle.getString("MSN");
+			id = bundle.getString("ID");
+			plane = bundle.getString("Avion");
 		}
 
 		InputStream input = null;
@@ -962,7 +968,11 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			Intent intent = new Intent(this, MenuApp.class);
+			Intent intent = new Intent(this, AMMATA.class);
+			intent.putExtra("MSN", msn);
+			intent.putExtra("FSN", fsn);
+			intent.putExtra("ID", id);
+			intent.putExtra("Avion", plane);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(intent);
 			return true;
@@ -1054,7 +1064,6 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
-		Log.e("Dans propertyChange", "Cool");
 		if (event.getNewValue().equals("FULLSCREEN")) {
 			fullScreenAnnexButton.performClick();
 		}
