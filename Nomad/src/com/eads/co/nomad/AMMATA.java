@@ -3,12 +3,15 @@ package com.eads.co.nomad;
 import android.app.SearchManager;
 import android.app.TabActivity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
-public class AMMATA extends TabActivity {
+public class AMMATA extends TabActivity implements OnTabChangeListener{
+	private TabHost tabHost;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class AMMATA extends TabActivity {
 			startActivity(mapIntent);
 		}
         /* TabHost will have Tabs */
-        TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
+        tabHost = (TabHost)findViewById(android.R.id.tabhost);
         
         /* TabSpec used to create a new tab. 
          * By using TabSpec only we can able to setContent to the tab.
@@ -61,6 +64,12 @@ public class AMMATA extends TabActivity {
         tabHost.addTab(firstTabSpec);
         tabHost.addTab(secondTabSpec);
         
+        for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
+            tabHost.getTabWidget().getChildAt(i).setBackgroundColor(getResources().getColor(R.color.background2_light)); // unselected
+        }
+        tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(Color.parseColor("#e5dbbe")); // selected
+        
+        tabHost.setOnTabChangedListener(this);
     }
     
     @Override
@@ -74,5 +83,14 @@ public class AMMATA extends TabActivity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	@Override
+	public void onTabChanged(String tabId) {
+		for (int i = 0; i < tabHost.getTabWidget().getChildCount(); i++) {
+            tabHost.getTabWidget().getChildAt(i).setBackgroundColor(getResources().getColor(R.color.background2_light)); // unselected
+        }
+        tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(Color.parseColor("#e5dbbe")); // selected
+		
 	}
 }
