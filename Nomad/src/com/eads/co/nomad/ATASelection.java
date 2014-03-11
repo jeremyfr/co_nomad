@@ -81,7 +81,6 @@ public class ATASelection extends Activity {
 				ATA ata = listATA.get(position);
 
 				int c = getResources().getColor(R.color.blue);
-				listeATAView.getChildAt(position).setBackgroundColor(c);
 
 				if (ataSelected != -1) {
 					int color = getResources().getColor(
@@ -89,6 +88,7 @@ public class ATASelection extends Activity {
 					listeATAView.getChildAt(ataSelected).setBackgroundColor(
 							color);
 				}
+				listeATAView.getChildAt(position).setBackgroundColor(c);
 				ataSelected = position;
 				lastSubATASelected = -1;
 
@@ -118,7 +118,6 @@ public class ATASelection extends Activity {
 				ATALevel2 subATA = listATA.get(ataSelected).getListATALevel2()
 						.get(position);
 				int c = getResources().getColor(R.color.blue);
-				sousListeATAView.getChildAt(position).setBackgroundColor(c);
 
 				if (lastSubATASelected != -1) {
 					int color = getResources().getColor(
@@ -126,6 +125,7 @@ public class ATASelection extends Activity {
 					sousListeATAView.getChildAt(lastSubATASelected)
 							.setBackgroundColor(color);
 				}
+				sousListeATAView.getChildAt(position).setBackgroundColor(c);
 				lastSubATASelected = position;
 
 				ArrayList<ATALevel3> listSubSubATA = subATA.getListATALevel3();
