@@ -353,13 +353,13 @@ public class DataParsing {
 												+ ">" + refInt.getText()
 												+ "</a></span><br>";
 										stepsProcedure
-												.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<a href='"
+												.set(stepsProcedure.size()-1,(stepsProcedure.get(stepsProcedure.size()-1).replace("</li></ul>",""))+"<a href='"
 														+ refInt.getAttributeValue("REFID")
 														+ "?id="
 														+ refInt.getText()
 														+ "'>"
 														+ refInt.getText()
-														+ "</a><br>");
+														+ "</a></li></ul>");
 									}
 
 								}
@@ -474,13 +474,13 @@ public class DataParsing {
 														+ refInt.getText()
 														+ "</a></span><br>";
 												stepsProcedure
-														.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<a href='"
+														.set(stepsProcedure.size()-1,(stepsProcedure.get(stepsProcedure.size()-1).replace("</li></ul></ul>",""))+"<a href='"
 																+ refInt.getAttributeValue("REFID")
 																+ "?id="
 																+ refInt.getText()
 																+ "'>"
 																+ refInt.getText()
-																+ "</a><br>");
+																+ "</a></li></ul></ul>");
 											}
 
 										}
@@ -511,10 +511,9 @@ public class DataParsing {
 														.next();
 												procedure += "<ul><li>"
 														+ para3.getText();
-												stepsProcedure
-														.add("<ul><ul><ul><li>"
-																+ para3.getText()
-																+ "</li></ul></ul></ul>");
+												stepsProcedure.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<ul><ul><ul><li>"
+														+ para3.getText()
+														+ "</li></ul></ul></ul>");
 												listRef = para3
 														.getChildren("REFBLOCK");
 												iteratorRef = listRef
@@ -540,13 +539,13 @@ public class DataParsing {
 																+ refInt.getText()
 																+ "</a></span><br>";
 														stepsProcedure
-																.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<a href='"
+																.set(stepsProcedure.size()-1,(stepsProcedure.get(stepsProcedure.size()-1).replace("</li></ul></ul></ul>",""))+"<a href='"
 																		+ refInt.getAttributeValue("REFID")
 																		+ "?id="
 																		+ refInt.getText()
 																		+ "'>"
 																		+ refInt.getText()
-																		+ "</a><br>");
+																		+ "</a></li></ul></ul></ul>");
 													}
 
 												}
@@ -598,7 +597,7 @@ public class DataParsing {
 															+ refInt.getText()
 															+ "</a></span><br>";
 													stepsProcedure
-															.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<a href='"
+															.set(stepsProcedure.size()-1,(stepsProcedure.get(stepsProcedure.size()-1))+"<a href='"
 																	+ refInt.getAttributeValue("REFID")
 																	+ "?id="
 																	+ refInt.getText()

@@ -30,15 +30,15 @@
             android:text="Invalidate"
             android:textColor="@color/background1_light" /> -->
             
-            
             <ImageButton
-            	android:id="@+id/invalidate"
+                android:id="@+id/invalidate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:background="@color/background1_light"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:src="@drawable/button_invalidate"/>
+                android:src="@drawable/button_invalidate" />
 
     </LinearLayout>
 

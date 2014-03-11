@@ -432,16 +432,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			lpc.height = 10;
 			listStepPreviousWarning.setLayoutParams(lpc);
 
-			/*
-			 * warningWV = ((WebView) findViewById(R.id.warnings_text));
-			 * warningWV.loadDataWithBaseURL("file:///android_asset/",
-			 * parser.getWarnings(), "text/html", "UTF-8", null);
-			 * warningWV.setWebViewClient(taskManager);
-			 * warningWV.getSettings().setJavaScriptEnabled(true);
-			 * warningWV.addJavascriptInterface(new JavaScriptInterface(this),
-			 * "MyAndroid");
-			 */
-
+			collapse((LinearLayout) findViewById(R.id.previousLayoutWarn));
 			/* Job Setup part */
 			jobSetUp = (LinearLayout) findViewById(R.id.jobSetUp);
 			jobSetUp.setOnClickListener(manageJobSetUp);
@@ -482,15 +473,8 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			lpc.height = 10;
 			listStepPreviousJobSetup.setLayoutParams(lpc);
 
-			/*
-			 * jobSetUpWV = ((WebView) findViewById(R.id.jobSetUp_text));
-			 * jobSetUpWV.loadDataWithBaseURL("file:///android_asset/",
-			 * parser.getJobSetUp(), "text/html", "UTF-8", null);
-			 * jobSetUpWV.setWebViewClient(taskManager);
-			 * jobSetUpWV.getSettings().setJavaScriptEnabled(true);
-			 * jobSetUpWV.addJavascriptInterface(new JavaScriptInterface(this),
-			 * "MyAndroid");
-			 */
+			collapse((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
+			
 			/* Procedure part */
 
 			procedure = (LinearLayout) findViewById(R.id.procedure);
@@ -531,6 +515,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			lpc.height = 10;
 			listStepPreviousProc.setLayoutParams(lpc);
 
+			collapse((LinearLayout) findViewById(R.id.previousLayoutProc));
 			/* Close Up part */
 			closeUp = (LinearLayout) findViewById(R.id.closeUp);
 			closeUp.setOnClickListener(manageCloseUp);
@@ -570,15 +555,8 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			lpc.height = 10;
 			listStepPreviousCloseUp.setLayoutParams(lpc);
 
-			/*
-			 * closeUpWV = ((WebView) findViewById(R.id.closeUp_text));
-			 * closeUpWV.loadDataWithBaseURL("file:///android_asset/",
-			 * parser.getCloseUp(), "text/html", "UTF-8", null);
-			 * closeUpWV.setWebViewClient(taskManager);
-			 * closeUpWV.getSettings().setJavaScriptEnabled(true);
-			 * closeUpWV.addJavascriptInterface(new JavaScriptInterface(this),
-			 * "MyAndroid");
-			 */
+			collapse((LinearLayout) findViewById(R.id.previousLayoutCloseUp));
+			
 			/* Tools part */
 			tools = (LinearLayout) findViewById(R.id.tools);
 			tools.setOnClickListener(manageTools);
