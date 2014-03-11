@@ -1023,6 +1023,7 @@ public class DataParsing {
 		Iterator<Element> iteratorRow;
 		Iterator<Element> iteratorEntry;
 		Iterator<Element> iteratorrefint;
+		pictures += "<br><table><tr><td width='20%'>Title</td><td width='80%'>Picture</td></tr>";
 		while (iteratorTopics.hasNext()) {
 			Element topic = iteratorTopics.next();
 			listList1 = topic.getChildren("LIST1");
@@ -1089,9 +1090,8 @@ public class DataParsing {
 																.hasNext()) {
 															Element refint = iteratorrefint
 																	.next();
-															pictures += refint
-																	.getText()
-																	+ "<br><img src='ata.jpg'/><br><br>";
+															pictures += "<tr><td>" +refint.getText() 
+																	+ "</td><td><img src='ata.jpg' width='100%'/></td></tr>";
 														}
 													}
 												}
@@ -1101,11 +1101,11 @@ public class DataParsing {
 								}
 							}
 						}
-
 					}
 				}
 			}
 		}
+		pictures += "</table><br>";
 
 		pictures += "</body></html>";
 		return pictures;
