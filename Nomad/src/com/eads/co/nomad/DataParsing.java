@@ -22,6 +22,8 @@ public class DataParsing {
 	private ArrayList<String> stepsWarning = new ArrayList<String>();
 	private ArrayList<String> stepsJobSetup = new ArrayList<String>();
 	private ArrayList<String> stepsCloseUp = new ArrayList<String>();
+	private List<Element> listGrphref;
+	private Iterator<Element> iteratorGrphref;
 
 	public DataParsing(InputStream input) throws JDOMException, IOException {
 		super();
@@ -191,7 +193,7 @@ public class DataParsing {
 													+ ">" + refInt.getText()
 													+ "</a></span></li>";
 											stepsJobSetup
-													.add("<a href='"
+													.set(stepsJobSetup.size()-1,stepsJobSetup.get(stepsJobSetup.size()-1)+"<a href='"
 															+ refInt.getAttributeValue("REFID")
 															+ "?id="
 															+ refInt.getText()
@@ -351,7 +353,7 @@ public class DataParsing {
 												+ ">" + refInt.getText()
 												+ "</a></span><br>";
 										stepsProcedure
-												.add("<a href='"
+												.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<a href='"
 														+ refInt.getAttributeValue("REFID")
 														+ "?id="
 														+ refInt.getText()
@@ -361,6 +363,22 @@ public class DataParsing {
 									}
 
 								}
+								
+								listGrphref = para.getChildren("GRPHCREF");
+								iteratorGrphref = listGrphref.iterator();
+								while(iteratorGrphref.hasNext()){
+									Element grphref = iteratorGrphref.next();
+									stepsProcedure
+									.set(stepsProcedure.size()-1,(stepsProcedure.get(stepsProcedure.size()-1).replace("</li></ul>", ""))+"<a href='"
+											+ grphref.getAttributeValue("REFID")
+											+ "?id="
+											+ grphref.getAttributeValue("REFID")
+											+ "'>"
+											+ grphref.getAttributeValue("REFID")
+											+ "</a></li></ul>");
+								}
+								
+								
 								procedure += "</li>";
 
 								List<Element> listCblst = l1Item
@@ -431,7 +449,7 @@ public class DataParsing {
 										Element para2 = (Element) iteratorPara2
 												.next();
 										procedure += "<li>" + para2.getText();
-										stepsProcedure.add("<ul><ul><li>"
+										stepsProcedure.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<ul><ul><li>"
 												+ para2.getText()
 												+ "</li></ul></ul>");
 										listRef = para2.getChildren("REFBLOCK");
@@ -456,7 +474,7 @@ public class DataParsing {
 														+ refInt.getText()
 														+ "</a></span><br>";
 												stepsProcedure
-														.add("<a href='"
+														.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<a href='"
 																+ refInt.getAttributeValue("REFID")
 																+ "?id="
 																+ refInt.getText()
@@ -522,7 +540,7 @@ public class DataParsing {
 																+ refInt.getText()
 																+ "</a></span><br>";
 														stepsProcedure
-																.add("<a href='"
+																.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<a href='"
 																		+ refInt.getAttributeValue("REFID")
 																		+ "?id="
 																		+ refInt.getText()
@@ -580,7 +598,7 @@ public class DataParsing {
 															+ refInt.getText()
 															+ "</a></span><br>";
 													stepsProcedure
-															.add("<a href='"
+															.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<a href='"
 																	+ refInt.getAttributeValue("REFID")
 																	+ "?id="
 																	+ refInt.getText()
@@ -635,7 +653,7 @@ public class DataParsing {
 															+ refInt.getText()
 															+ "</a></span><br>";
 													stepsProcedure
-															.add("<a href='"
+															.set(stepsProcedure.size()-1,stepsProcedure.get(stepsProcedure.size()-1)+"<a href='"
 																	+ refInt.getAttributeValue("REFID")
 																	+ "?id="
 																	+ refInt.getText()
@@ -710,6 +728,7 @@ public class DataParsing {
 							Element l1Item = (Element) iteratorL1Item.next();
 							Element para = l1Item.getChild("PARA");
 							closeUp += "<li>" + para.getText() + "</li>";
+							stepsCloseUp.add("<ul><li>" + para.getText() + "</li></ul>");
 							List<Element> listCblst = l1Item
 									.getChildren("CBLST");
 							Iterator<Element> iteratorCblst = listCblst
@@ -769,7 +788,7 @@ public class DataParsing {
 									Element paraL2Item = l2Item
 											.getChild("PARA");
 									closeUp += "<li>" + paraL2Item.getText();
-									stepsCloseUp.add(paraL2Item.getText());
+									stepsCloseUp.add("<ul><li>"+paraL2Item.getText()+"</li></ul>");
 									Element refblock = paraL2Item
 											.getChild("REFBLOCK");
 									if (refblock != null) {
@@ -786,14 +805,14 @@ public class DataParsing {
 													+ "?id=" + refInt.getText()
 													+ ">" + refInt.getText()
 													+ "</a></span>";
-											stepsCloseUp
-													.add("<a href="
-															+ refInt.getAttributeValue("REFID")
-															+ "?id="
-															+ refInt.getText()
-															+ ">"
-															+ refInt.getText()
-															+ "</a>");
+											stepsCloseUp.set(stepsCloseUp.size()-1,(stepsCloseUp.get(stepsCloseUp.size()-1).replace("</li></ul>", ""))+"<a href='"
+													+ refInt.getAttributeValue("REFID")
+													+ "?id="
+													+ refInt.getText()
+													+ "'>"
+													+ refInt.getText()
+													+ "</a></li></ul>");
+													
 										}
 									}
 									closeUp += "</li>";

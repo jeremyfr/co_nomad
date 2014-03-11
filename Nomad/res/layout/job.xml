@@ -112,7 +112,7 @@
                 <LinearLayout
                     android:id="@+id/previousLayoutWarn"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:background="@color/background2_light"
                     android:orientation="vertical" >
@@ -120,7 +120,7 @@
                     <ListView
                         android:id="@+id/listPreviousStepWarn"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
@@ -141,7 +141,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/background1_light" >
-
                 </ListView>
             </LinearLayout>
             
@@ -202,7 +201,7 @@
                 <LinearLayout
                     android:id="@+id/previousLayoutJobSetup"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:background="@color/background2_light"
                     android:orientation="vertical" >
@@ -210,7 +209,7 @@
                     <ListView
                         android:id="@+id/listPreviousStepJobSetup"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
@@ -229,7 +228,7 @@
                 <ListView
                     android:id="@+id/listStepJobSetup"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@color/background1_light" >
 
                 </ListView>
@@ -272,13 +271,13 @@
                     </LinearLayout>
 
                     <LinearLayout
-                android:id="@+id/procedure_layout"
-                android:layout_width="match_parent"
-                android:layout_height="129dp"
-                android:layout_weight="1"
-                android:background="@color/background1_light"
-                android:orientation="vertical"
-                android:padding="@dimen/activity_margin" >
+                        android:id="@+id/procedure_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/background1_light"
+                        android:orientation="vertical"
+                        android:padding="@dimen/activity_margin" >
 
                 <Button
                     android:id="@+id/previousButtonProc"
@@ -294,7 +293,7 @@
                 <LinearLayout
                     android:id="@+id/previousLayoutProc"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:background="@color/background2_light"
                     android:orientation="vertical" >
@@ -302,7 +301,7 @@
                     <ListView
                         android:id="@+id/listPreviousStepProc"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
@@ -321,7 +320,7 @@
                 <ListView
                     android:id="@+id/listStepProc"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@color/background1_light" >
 
                 </ListView>
@@ -383,7 +382,7 @@
                 <LinearLayout
                     android:id="@+id/previousLayoutCloseUp"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:background="@color/background2_light"
                     android:orientation="vertical" >
@@ -391,7 +390,7 @@
                     <ListView
                         android:id="@+id/listPreviousStepCloseUp"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
@@ -410,7 +409,7 @@
                 <ListView
                     android:id="@+id/listStepCloseUp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@color/background1_light" >
 
                 </ListView>

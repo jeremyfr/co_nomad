@@ -88,10 +88,12 @@ public class JobCard extends Activity implements PropertyChangeListener,
 	PreviousStepListAdapterWarn stepAdaptPreviousWarn;
 	StepListAdapterJobSetup stepAdaptJobSetup;
 	PreviousStepListAdapterJobSetup stepAdaptPreviousJobSetup;
-
 	StepListAdapterCloseUp stepAdaptCloseUp;
 	PreviousStepListAdapterCloseUp stepAdaptPreviousCloseUp;
-
+	boolean warningFinish=false,setUpFinish=false,procedureFinish=false, closeUpFinish=false; 
+	Button prevWarn,prevJobSetup,prevProc,prevCloseUp;
+	
+	
 	private static final long serialVersionUID = 1L;
 
 	private DataParsing parser;
@@ -177,6 +179,8 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 		setContentView(R.layout.job);
 
+		
+		
 		layout = (LinearLayout) findViewById(R.id.layout_jobcard);
 
 		separatorLayout = (RelativeLayout) findViewById(R.id.separatorLayout);
@@ -398,10 +402,10 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 			listStepWarn = (ListView) findViewById(R.id.listStepWarn);
 			listStepPreviousWarning = (ListView) findViewById(R.id.listPreviousStepWarn);
-			Button prevWarn = (Button) findViewById(R.id.previousButtonWarn);
+			prevWarn = (Button) findViewById(R.id.previousButtonWarn);
 			prevWarn.setOnClickListener(managePreviousWarn);
 			prevWarn.setTag(">");
-
+			prevWarn.setVisibility(View.GONE);
 			String warn = parser.getWarnings();
 
 			previousStepsWarn = new ArrayList<PreviousStep>();
@@ -447,10 +451,10 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 			listStepJobSetup = (ListView) findViewById(R.id.listStepJobSetup);
 			listStepPreviousJobSetup = (ListView) findViewById(R.id.listPreviousStepJobSetup);
-			Button prevJobSetup = (Button) findViewById(R.id.previousButtonJobSetup);
+			prevJobSetup = (Button) findViewById(R.id.previousButtonJobSetup);
 			prevJobSetup.setOnClickListener(managePreviousJobSetup);
 			prevJobSetup.setTag(">");
-
+			prevJobSetup.setVisibility(View.GONE);
 			String jobSetup = parser.getJobSetUp();
 
 			previousStepsJobSetup = new ArrayList<PreviousStep>();
@@ -497,10 +501,10 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 			listStepProc = (ListView) findViewById(R.id.listStepProc);
 			listStepPreviousProc = (ListView) findViewById(R.id.listPreviousStepProc);
-			Button prevProc = (Button) findViewById(R.id.previousButtonProc);
+			prevProc = (Button) findViewById(R.id.previousButtonProc);
 			prevProc.setOnClickListener(managePreviousProc);
 			prevProc.setTag(">");
-
+			prevProc.setVisibility(View.GONE);
 			String proc = parser.getProcedure();
 
 			stepsProc = new ArrayList<Step>();
@@ -536,10 +540,10 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 			listStepCloseUp = (ListView) findViewById(R.id.listStepCloseUp);
 			listStepPreviousCloseUp = (ListView) findViewById(R.id.listPreviousStepCloseUp);
-			Button prevCloseUp = (Button) findViewById(R.id.previousButtonCloseUp);
+			prevCloseUp = (Button) findViewById(R.id.previousButtonCloseUp);
 			prevCloseUp.setOnClickListener(managePreviousCloseUp);
 			prevCloseUp.setTag(">");
-
+			prevCloseUp.setVisibility(View.GONE);
 			String closeUp = parser.getCloseUp();
 
 			stepsCloseUp = new ArrayList<Step>();
@@ -558,7 +562,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			lpc.height = 185 * stepsCloseUp.size();
 			listStepCloseUp.setLayoutParams(lpc);
 
-			listStepPreviousCloseUp = (ListView) findViewById(R.id.listPreviousStepProc);
+			listStepPreviousCloseUp = (ListView) findViewById(R.id.listPreviousStepCloseUp);
 			stepAdaptPreviousCloseUp = new PreviousStepListAdapterCloseUp(this);
 			stepAdaptPreviousCloseUp.setListItems(previousStepsCloseUp);
 			listStepPreviousCloseUp.setAdapter(stepAdaptPreviousCloseUp);
@@ -1272,6 +1276,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						@Override
 						public void onClick(View arg0) {
 							if (pos == 0) {
+								prevWarn.setVisibility(View.VISIBLE);
 								LayoutParams lpc = (LayoutParams) listStepWarn
 										.getLayoutParams();
 								lpc.height -= 185;
@@ -1293,6 +1298,12 @@ public class JobCard extends Activity implements PropertyChangeListener,
 										.setListItems(previousStepsWarn);
 								listStepPreviousWarning
 										.setAdapter(stepAdaptPreviousWarn);
+								if(mStep.isEmpty()){
+									warningFinish = true;
+									stepAdaptJobSetup = new StepListAdapterJobSetup(JobCard.this);
+									stepAdaptJobSetup.setListItems(stepsJobSetup);
+									listStepJobSetup.setAdapter(stepAdaptJobSetup);
+								}
 
 							}
 						}
@@ -1388,7 +1399,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						R.color.background2_light));
 
 				if (pos == (mStep.size()) - 1) {
-
+					
 					h.mButton.setVisibility(View.VISIBLE);
 					h.mButton.setOnClickListener(new OnClickListener() {
 
@@ -1415,7 +1426,11 @@ public class JobCard extends Activity implements PropertyChangeListener,
 								stepAdaptPreviousWarn.setListItems(mStep);
 								listStepPreviousWarning
 										.setAdapter(stepAdaptPreviousWarn);
-
+								warningFinish = false;
+								if(mStep.isEmpty()){
+									prevWarn.setVisibility(View.GONE);
+									collapse((LinearLayout) findViewById(R.id.previousLayoutWarn));
+								}
 							}
 						}
 
@@ -1500,41 +1515,53 @@ public class JobCard extends Activity implements PropertyChangeListener,
 				h.mWV.setBackgroundColor(getResources().getColor(
 						R.color.background1_light));
 				h.mButton = (Button) arg1.findViewById(R.id.Ok);
-				if (pos == 0) {
-					h.mButton.setOnClickListener(new OnClickListener() {
-
-						@Override
-						public void onClick(View arg0) {
-							if (pos == 0) {
-								LayoutParams lpc = (LayoutParams) listStepJobSetup
-										.getLayoutParams();
-								lpc.height -= 185;
-								listStepJobSetup.setLayoutParams(lpc);
-								lpc = (LayoutParams) listStepPreviousJobSetup
-										.getLayoutParams();
-								lpc.height += 185;
-								listStepPreviousJobSetup.setLayoutParams(lpc);
-
-								Step toDel = mStep.remove(pos);
-								stepAdaptJobSetup.notifyDataSetChanged();
-								PreviousStep ps = new PreviousStep();
-								ps.setTask(toDel.getTask());
-
-								previousStepsJobSetup.add(ps);
-								stepAdaptPreviousJobSetup = new PreviousStepListAdapterJobSetup(
-										ct);
-								stepAdaptPreviousJobSetup
-										.setListItems(previousStepsJobSetup);
-								listStepPreviousJobSetup
-										.setAdapter(stepAdaptPreviousJobSetup);
-
-							}
+				
+					if (pos == 0) {
+						if(!warningFinish){
+							h.mButton.setVisibility(View.INVISIBLE);
 						}
+						
+						h.mButton.setOnClickListener(new OnClickListener() {
+	
+							@Override
+							public void onClick(View arg0) {
+								if (pos == 0) {
 
-					});
-				} else {
-					h.mButton.setVisibility(View.INVISIBLE);
-				}
+									prevJobSetup.setVisibility(View.VISIBLE);
+									LayoutParams lpc = (LayoutParams) listStepJobSetup
+											.getLayoutParams();
+									lpc.height -= 185;
+									listStepJobSetup.setLayoutParams(lpc);
+									lpc = (LayoutParams) listStepPreviousJobSetup
+											.getLayoutParams();
+									lpc.height += 185;
+									listStepPreviousJobSetup.setLayoutParams(lpc);
+	
+									Step toDel = mStep.remove(pos);
+									stepAdaptJobSetup.notifyDataSetChanged();
+									PreviousStep ps = new PreviousStep();
+									ps.setTask(toDel.getTask());
+	
+									previousStepsJobSetup.add(ps);
+									stepAdaptPreviousJobSetup = new PreviousStepListAdapterJobSetup(
+											ct);
+									stepAdaptPreviousJobSetup
+											.setListItems(previousStepsJobSetup);
+									listStepPreviousJobSetup
+											.setAdapter(stepAdaptPreviousJobSetup);
+									if(mStep.isEmpty()){
+										setUpFinish = true;
+										stepAdaptProc = new StepListAdapterProcedure(JobCard.this);
+										stepAdaptProc.setListItems(stepsProc);
+										listStepProc.setAdapter(stepAdaptProc);
+									}
+								}
+							}
+	
+						});
+					} else {
+						h.mButton.setVisibility(View.INVISIBLE);
+					}
 				arg1.setTag(h);
 			} else {
 				h = (StepViewHolder) arg1.getTag();
@@ -1650,7 +1677,12 @@ public class JobCard extends Activity implements PropertyChangeListener,
 								stepAdaptPreviousJobSetup.setListItems(mStep);
 								listStepPreviousJobSetup
 										.setAdapter(stepAdaptPreviousJobSetup);
-
+								if(mStep.isEmpty()){
+									prevJobSetup.setVisibility(View.GONE);
+									collapse((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
+									
+								}
+								setUpFinish = false;
 							}
 						}
 
@@ -1725,7 +1757,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			if (arg1 == null) {
 				SwitchTaskManager taskManager = new SwitchTaskManager(
 						JobCard.this, JobCard.this);
-				arg1 = mInf.inflate(R.layout.step, null);
+				arg1 = mInf.inflate(R.layout.step, arg2 ,false);
 				h = new StepViewHolder();
 				// h.mTask = (TextView) arg1.findViewById(R.id.task);
 				h.mWV = (WebView) arg1.findViewById(R.id.webView1);
@@ -1737,11 +1769,15 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						R.color.background1_light));
 				h.mButton = (Button) arg1.findViewById(R.id.Ok);
 				if (pos == 0) {
+					if(!warningFinish && !setUpFinish){
+						h.mButton.setVisibility(View.INVISIBLE);
+					}
 					h.mButton.setOnClickListener(new OnClickListener() {
 
 						@Override
 						public void onClick(View arg0) {
 							if (pos == 0) {
+								prevProc.setVisibility(View.VISIBLE);
 								LayoutParams lpc = (LayoutParams) listStepProc
 										.getLayoutParams();
 								lpc.height -= 185;
@@ -1763,7 +1799,12 @@ public class JobCard extends Activity implements PropertyChangeListener,
 										.setListItems(previousStepsProc);
 								listStepPreviousProc
 										.setAdapter(stepAdaptPreviousProc);
-
+								if(mStep.isEmpty()){
+									procedureFinish = true;
+									stepAdaptCloseUp = new StepListAdapterCloseUp(JobCard.this);
+									stepAdaptCloseUp.setListItems(stepsCloseUp);
+									listStepCloseUp.setAdapter(stepAdaptCloseUp);
+								}
 							}
 						}
 
@@ -1885,7 +1926,12 @@ public class JobCard extends Activity implements PropertyChangeListener,
 								stepAdaptPreviousProc.setListItems(mStep);
 								listStepPreviousProc
 										.setAdapter(stepAdaptPreviousProc);
-
+								if(mStep.isEmpty()){
+									prevJobSetup.setVisibility(View.GONE);
+									collapse((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
+									
+								}
+								setUpFinish = false;
 							}
 						}
 
@@ -1962,7 +2008,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						JobCard.this, JobCard.this);
 				arg1 = mInf.inflate(R.layout.step, null);
 				h = new StepViewHolder();
-				// h.mTask = (TextView) arg1.findViewById(R.id.task);
+				
 				h.mWV = (WebView) arg1.findViewById(R.id.webView1);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
@@ -1972,11 +2018,17 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						R.color.background1_light));
 				h.mButton = (Button) arg1.findViewById(R.id.Ok);
 				if (pos == 0) {
+					if(!warningFinish && !setUpFinish && !procedureFinish){
+						h.mButton.setVisibility(View.VISIBLE);
+					}
 					h.mButton.setOnClickListener(new OnClickListener() {
 
 						@Override
 						public void onClick(View arg0) {
 							if (pos == 0) {
+								
+									prevCloseUp.setVisibility(View.VISIBLE);
+								
 								LayoutParams lpc = (LayoutParams) listStepCloseUp
 										.getLayoutParams();
 								lpc.height -= 185;

@@ -52,7 +52,6 @@ public class MenuApp extends Activity {
 	}
 
 	public void toAMM(View view) {
-		// Intent intent = new Intent(this, ATASelection.class);
 		Intent intent = new Intent(this, PlaneSelection.class);
 		startActivity(intent);
 	}
