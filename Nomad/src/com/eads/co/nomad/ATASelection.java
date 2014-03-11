@@ -31,16 +31,16 @@ public class ATASelection extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		/*getActionBar().setDisplayHomeAsUpEnabled(true);
+		//getActionBar().setDisplayHomeAsUpEnabled(true);
 		String msn, fsn, id, plane;
 		Bundle infos = this.getIntent().getExtras();
 		fsn = infos.getString("FSN");
 		msn = infos.getString("MSN");
 		id = infos.getString("ID");
-		plane = infos.getString("Avion");*/
+		plane = infos.getString("Avion");
 		setContentView(R.layout.activity_ataselection);
-		/*title = "ATA Selection   /   Plane:" + plane + " MSN:" + msn + " FSN:"
-				+ fsn + " ID:" + id;*/
+		title = "ATA Selection   /   Plane:" + plane + " MSN:" + msn + " FSN:"
+				+ fsn + " ID:" + id;
 		//setTitle(title);
 		/*if (Intent.ACTION_SEARCH.equals(getIntent().getAction())) {
 			String query = getIntent().getStringExtra(SearchManager.QUERY);
