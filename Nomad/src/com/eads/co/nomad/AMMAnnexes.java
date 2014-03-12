@@ -879,9 +879,14 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 	}
 
 	private void onHistoricItemClick(int position) {
-		Intent i = new Intent(this, AMMAnnexes.class);
-		i.putExtra("task", ((History) this.getApplication()).getKeyAt(position));
-		this.startActivity(i);
+		Intent intent = new Intent(this, AMMAnnexes.class);
+		intent.putExtra("task", ((History) this.getApplication()).getKeyAt(position));
+		intent.putExtra("titre", title);
+		intent.putExtra("MSN", msn);
+		intent.putExtra("FSN", fsn);
+		intent.putExtra("ID", id);
+		intent.putExtra("Avion", plane);
+		this.startActivity(intent);
 	}
 
 	private View.OnClickListener manageWarnings = new View.OnClickListener() {

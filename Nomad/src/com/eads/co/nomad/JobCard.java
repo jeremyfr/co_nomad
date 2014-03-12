@@ -966,9 +966,10 @@ public class JobCard extends Activity implements PropertyChangeListener,
 	}
 
 	private void onHistoricItemClick(int position) {
-		Intent i = new Intent(this, JobCard.class);
-		i.putExtra("task", ((History) this.getApplication()).getKeyAt(position));
-		this.startActivity(i);
+		Intent intent = new Intent(this, JobCard.class);
+		intent.putExtra("task", ((History) this.getApplication()).getKeyAt(position));
+		intent.putExtra("titre", title);
+		this.startActivity(intent);
 	}
 
 	private View.OnClickListener manageWarnings = new View.OnClickListener() {
