@@ -17,10 +17,18 @@
             android:background="@color/background1_light"
             android:orientation="horizontal" >
 
+            <ImageView
+                android:id="@+id/gauche"
+                android:layout_width="56px"
+                android:layout_height="fill_parent"
+                android:src="@drawable/imageview_gauche"
+                android:scaleType="centerCrop" />
+
             <LinearLayout
                 android:id="@+id/layout_amm"
-                android:layout_width="fill_parent"
+                android:layout_width="0px"
                 android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:orientation="horizontal" >
 
                 <com.eads.co.nomad.OurScrollView
@@ -33,13 +41,14 @@
                         android:layout_height="wrap_content"
                         android:background="@color/background1_light"
                         android:orientation="vertical"
-                        android:paddingLeft="@dimen/activity_margin"
-                        android:paddingRight="@dimen/activity_margin"
-                        android:paddingTop="5dp"
                         android:paddingBottom="@dimen/activity_margin"
+                        android:paddingLeft="@dimen/amm_left_right"
+                        android:paddingRight="@dimen/amm_left_right"
+                        android:paddingTop="5dp"
                         tools:context=".MainActivity" >
 
                         <!-- Date de revision de la procedure -->
+
                         <LinearLayout
                             android:id="@+id/date"
                             android:layout_width="match_parent"
@@ -47,15 +56,16 @@
                             android:background="@color/background1_light"
                             android:gravity="right"
                             android:orientation="horizontal" >
+
                             <TextView
-                            	android:id="@+id/date_text"
-	                            android:layout_width="match_parent"
-	                            android:layout_height="wrap_content"
-                            	android:gravity="right"
-                                android:text=""
+                                android:id="@+id/date_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:fontFamily="@string/font"
+                                android:gravity="right"
+                                android:text=""
                                 android:textColor="@color/text1_light"
-                                android:textSize="@dimen/font_size_4"/>
+                                android:textSize="@dimen/font_size_4" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -420,8 +430,6 @@
                             android:textColor="@color/text1_light"
                             android:textSize="@dimen/font_size_2" />
 
-                      
-
                         <ImageButton
                             android:id="@+id/closeAnnexButton"
                             android:layout_width="wrap_content"
@@ -461,6 +469,13 @@
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/droite"
+                android:layout_width="56px"
+                android:layout_height="fill_parent"
+                android:src="@drawable/imageview_droite"
+                android:scaleType="centerCrop" />
         </LinearLayout>
     </FrameLayout>
     <!-- The navigation drawers -->
