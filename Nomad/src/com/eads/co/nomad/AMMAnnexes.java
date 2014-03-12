@@ -239,15 +239,17 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 		});
 
 		// Listener sur l'infobulle.
-		infobulle.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				int y = y_absolue - scrollView.getScrollY();
-				if (y < ymin || y > ymax) {
-					scrollTo(y_absolue);
-				}
-			}
-		});
+        infobulle.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int y = y_absolue - scrollView.getScrollY();
+                if (y < ymin || y > ymax) {
+                    scrollTo(y_absolue);
+                    return true;
+                }
+                else return false;
+            }
+        });
 
 		// Listener sur la barre verticale.
 		layout.setOnTouchListener(new View.OnTouchListener() {
