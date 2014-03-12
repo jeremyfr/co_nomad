@@ -109,7 +109,7 @@
                                 android:orientation="vertical"
                                 android:padding="@dimen/activity_margin" >
 
-                                <Button
+                               <!-- <Button
                                     android:id="@+id/previousButtonWarn"
                                     style="?android:attr/buttonStyleSmall"
                                     android:layout_width="wrap_content"
@@ -118,7 +118,18 @@
                                     android:paddingLeft="10dp"
                                     android:paddingRight="10dp"
                                     android:text="> Previous Steps"
-                                    android:textColor="@color/background1_light" />
+                                    android:textColor="@color/background1_light" /> -->
+                                    <ImageButton
+						                android:id="@+id/previousButtonWarn"
+						                android:layout_width="wrap_content"
+						                android:layout_height="wrap_content"
+						                android:layout_gravity="bottom"
+						                android:background="@color/background1_light"
+						                android:paddingBottom="10dp"
+						                android:paddingLeft="10dp"
+						                android:paddingRight="10dp"
+						                android:paddingTop="10dp"
+						                android:src="@drawable/button_previouspasderoule" />
 
                                 <LinearLayout
                                     android:id="@+id/previousLayoutWarn"
@@ -196,17 +207,17 @@
                                 android:layout_weight="1"
                                 android:orientation="vertical" >
 
-                                <Button
-                                    android:id="@+id/previousButtonJobSetup"
-                                    style="?android:attr/buttonStyleSmall"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@color/blue"
-                                    android:paddingLeft="10dp"
-                                    android:paddingRight="10dp"
-                                    android:text="> Previous Steps"
-                                    android:textColor="@color/background1_light" />
-
+								<ImageButton
+						                android:id="@+id/previousButtonJobSetup"
+						                android:layout_width="wrap_content"
+						                android:layout_height="wrap_content"
+						                android:layout_gravity="bottom"
+						                android:background="@color/background1_light"
+						                android:paddingBottom="10dp"
+						                android:paddingLeft="10dp"
+						                android:paddingRight="10dp"
+						                android:paddingTop="10dp"
+						                android:src="@drawable/button_previouspasderoule" />
                                 <LinearLayout
                                     android:id="@+id/previousLayoutJobSetup"
                                     android:layout_width="match_parent"
@@ -285,17 +296,17 @@
                                 android:orientation="vertical"
                                 android:padding="@dimen/activity_margin" >
 
-                                <Button
-                                    android:id="@+id/previousButtonProc"
-                                    style="?android:attr/buttonStyleSmall"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@color/blue"
-                                    android:paddingLeft="10dp"
-                                    android:paddingRight="10dp"
-                                    android:text="> Previous Steps"
-                                    android:textColor="@color/background1_light" />
-
+								<ImageButton
+						                android:id="@+id/previousButtonProc"
+						                android:layout_width="wrap_content"
+						                android:layout_height="wrap_content"
+						                android:layout_gravity="bottom"
+						                android:background="@color/background1_light"
+						                android:paddingBottom="10dp"
+						                android:paddingLeft="10dp"
+						                android:paddingRight="10dp"
+						                android:paddingTop="10dp"
+						                android:src="@drawable/button_previouspasderoule" />
                                 <LinearLayout
                                     android:id="@+id/previousLayoutProc"
                                     android:layout_width="match_parent"
@@ -372,17 +383,18 @@
                                 android:layout_weight="1"
                                 android:orientation="vertical" >
 
-                                <Button
-                                    android:id="@+id/previousButtonCloseUp"
-                                    style="?android:attr/buttonStyleSmall"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@color/blue"
-                                    android:paddingLeft="10dp"
-                                    android:paddingRight="10dp"
-                                    android:text="> Previous Steps"
-                                    android:textColor="@color/background1_light" />
-
+                                
+								<ImageButton
+						                android:id="@+id/previousButtonCloseUp"
+						                android:layout_width="wrap_content"
+						                android:layout_height="wrap_content"
+						                android:layout_gravity="bottom"
+						                android:background="@color/background1_light"
+						                android:paddingBottom="10dp"
+						                android:paddingLeft="10dp"
+						                android:paddingRight="10dp"
+						                android:paddingTop="10dp"
+						                android:src="@drawable/button_previouspasderoule" />
                                 <LinearLayout
                                     android:id="@+id/previousLayoutCloseUp"
                                     android:layout_width="match_parent"

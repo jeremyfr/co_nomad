@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -91,7 +92,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 	StepListAdapterCloseUp stepAdaptCloseUp;
 	PreviousStepListAdapterCloseUp stepAdaptPreviousCloseUp;
 	boolean warningFinish=false,setUpFinish=false,procedureFinish=false, closeUpFinish=false; 
-	Button prevWarn,prevJobSetup,prevProc,prevCloseUp;
+	ImageButton prevWarn,prevJobSetup,prevProc,prevCloseUp;
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -422,7 +423,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 			listStepWarn = (ListView) findViewById(R.id.listStepWarn);
 			listStepPreviousWarning = (ListView) findViewById(R.id.listPreviousStepWarn);
-			prevWarn = (Button) findViewById(R.id.previousButtonWarn);
+			prevWarn = (ImageButton) findViewById(R.id.previousButtonWarn);
 			prevWarn.setOnClickListener(managePreviousWarn);
 			prevWarn.setTag(">");
 			prevWarn.setVisibility(View.GONE);
@@ -462,7 +463,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 			listStepJobSetup = (ListView) findViewById(R.id.listStepJobSetup);
 			listStepPreviousJobSetup = (ListView) findViewById(R.id.listPreviousStepJobSetup);
-			prevJobSetup = (Button) findViewById(R.id.previousButtonJobSetup);
+			prevJobSetup = (ImageButton) findViewById(R.id.previousButtonJobSetup);
 			prevJobSetup.setOnClickListener(managePreviousJobSetup);
 			prevJobSetup.setTag(">");
 			prevJobSetup.setVisibility(View.GONE);
@@ -505,7 +506,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 			listStepProc = (ListView) findViewById(R.id.listStepProc);
 			listStepPreviousProc = (ListView) findViewById(R.id.listPreviousStepProc);
-			prevProc = (Button) findViewById(R.id.previousButtonProc);
+			prevProc = (ImageButton) findViewById(R.id.previousButtonProc);
 			prevProc.setOnClickListener(managePreviousProc);
 			prevProc.setTag(">");
 			prevProc.setVisibility(View.GONE);
@@ -545,7 +546,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 			listStepCloseUp = (ListView) findViewById(R.id.listStepCloseUp);
 			listStepPreviousCloseUp = (ListView) findViewById(R.id.listPreviousStepCloseUp);
-			prevCloseUp = (Button) findViewById(R.id.previousButtonCloseUp);
+			prevCloseUp = (ImageButton) findViewById(R.id.previousButtonCloseUp);
 			prevCloseUp.setOnClickListener(managePreviousCloseUp);
 			prevCloseUp.setTag(">");
 			prevCloseUp.setVisibility(View.GONE);
@@ -1005,60 +1006,60 @@ public class JobCard extends Activity implements PropertyChangeListener,
 
 	private View.OnClickListener managePreviousProc = new View.OnClickListener() {
 		public void onClick(View v) {
-			Button b = (Button) findViewById(R.id.previousButtonProc);
+			ImageButton b = (ImageButton) findViewById(R.id.previousButtonProc);
 			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutProc));
 				v.setTag("v");
-				b.setText("v Previous Steps");
+				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previousderoule));
 			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutProc));
 				v.setTag(">");
-				b.setText("> Previous Steps");
+				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previouspasderoule));
 			}
 		}
 	};
 
 	private View.OnClickListener managePreviousWarn = new View.OnClickListener() {
 		public void onClick(View v) {
-			Button b = (Button) findViewById(R.id.previousButtonWarn);
+			ImageButton b = (ImageButton) findViewById(R.id.previousButtonWarn);
 			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutWarn));
 				v.setTag("v");
-				b.setText("v Previous Steps");
+				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previousderoule));
 			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutWarn));
 				v.setTag(">");
-				b.setText("> Previous Steps");
+				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previouspasderoule));
 			}
 		}
 	};
 
 	private View.OnClickListener managePreviousJobSetup = new View.OnClickListener() {
 		public void onClick(View v) {
-			Button b = (Button) findViewById(R.id.previousButtonJobSetup);
+			ImageButton b = (ImageButton) findViewById(R.id.previousButtonJobSetup);
 			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
 				v.setTag("v");
-				b.setText("v Previous Steps");
+				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previousderoule));
 			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
 				v.setTag(">");
-				b.setText("> Previous Steps");
+				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previouspasderoule));
 			}
 		}
 	};
 
 	private View.OnClickListener managePreviousCloseUp = new View.OnClickListener() {
 		public void onClick(View v) {
-			Button b = (Button) findViewById(R.id.previousButtonCloseUp);
+			ImageButton b = (ImageButton) findViewById(R.id.previousButtonCloseUp);
 			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutCloseUp));
 				v.setTag("v");
-				b.setText("v Previous Steps");
+				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previousderoule));
 			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutCloseUp));
 				v.setTag(">");
-				b.setText("> Previous Steps");
+				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previouspasderoule));
 			}
 		}
 	};
@@ -2019,7 +2020,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 				h.mButton = (ImageButton) arg1.findViewById(R.id.Ok);
 				if (pos == 0) {
 					if(!warningFinish && !setUpFinish && !procedureFinish){
-						h.mButton.setVisibility(View.VISIBLE);
+						h.mButton.setVisibility(View.INVISIBLE);
 					}
 					h.mButton.setOnClickListener(new OnClickListener() {
 
@@ -2027,7 +2028,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						public void onClick(View arg0) {
 							if (pos == 0) {
 								
-									prevCloseUp.setVisibility(View.VISIBLE);
+								prevCloseUp.setVisibility(View.VISIBLE);
 								
 								LayoutParams lpc = (LayoutParams) listStepCloseUp
 										.getLayoutParams();
