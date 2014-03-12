@@ -9,8 +9,11 @@ import javax.microedition.khronos.egl.EGLDisplay;
 import javax.microedition.khronos.opengles.GL10;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.threed.jpct.Camera;
@@ -60,6 +63,11 @@ public class Plane3D extends Activity {
 
 	private Light sun = null;
 
+	private int chargement = 0;
+	private Handler h;
+	private Runnable r;
+	private AlertDialog alertDialog;
+
 	protected void onCreate(Bundle savedInstanceState) {
 
 		Logger.log("onCreate");
@@ -70,6 +78,8 @@ public class Plane3D extends Activity {
 
 		super.onCreate(savedInstanceState);
 		mGLView = new GLSurfaceView(getApplication());
+
+		h = new Handler();
 
 		mGLView.setEGLConfigChooser(new GLSurfaceView.EGLConfigChooser() {
 			public EGLConfig chooseConfig(EGL10 egl, EGLDisplay display) {
@@ -279,6 +289,17 @@ public class Plane3D extends Activity {
 		}
 
 		public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+			r = new Runnable() {
+				public void run() {
+					alertDialog = new AlertDialog.Builder(
+							Plane3D.this).create();
+					alertDialog.setTitle("Chargement en cours...");
+					alertDialog.setIcon(R.drawable.ic_launcher);
+					alertDialog.show();
+				}
+			};
+			runOnUiThread(r);
+			chargement = 0;
 		}
 
 		public void onDrawFrame(GL10 gl) {
@@ -306,6 +327,16 @@ public class Plane3D extends Activity {
 			world.renderScene(fb);
 			world.draw(fb);
 			fb.display();
+
+			if (chargement == 0) {
+				runOnUiThread(new Runnable(){
+					@Override
+					public void run() {
+						alertDialog.hide();
+					}	
+				});
+				chargement++;
+			}
 
 			if (System.currentTimeMillis() - time >= 1000) {
 				Logger.log(fps + "fps");
