@@ -27,17 +27,19 @@ public class SwitchTaskManager extends WebViewClient {
 
 	@Override
 	public boolean shouldOverrideUrlLoading(WebView view, String url) {
-		Toast.makeText(context, url, Toast.LENGTH_SHORT).show();
-
 		/* Ouverture d'une annexe */
 		if (url.contains("?id=")) {
 			String[] split = url.split("id=");
+			String t = split[1];
+			System.out.println("split1 :" + t);
+			t = t.replaceAll("\\.\\.", " ");
+			System.out.println("replaceAll :" + t);
 			switch (classe) {
 			case AMM:
-				activityAMM.onAnnexeClic(view, split[1]);
+				activityAMM.onAnnexeClic(view, t);
 				break;
 			case JOBCARD:
-				activityJobCard.onAnnexeClic(view, split[1]);
+				activityJobCard.onAnnexeClic(view, t);
 				break;
 			}
 

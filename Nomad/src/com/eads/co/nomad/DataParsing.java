@@ -24,6 +24,7 @@ public class DataParsing {
 	private ArrayList<String> stepsCloseUp = new ArrayList<String>();
 	private List<Element> listGrphref;
 	private Iterator<Element> iteratorGrphref;
+	private static String header = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element.replace(/ /g, '..')); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
 
 	public DataParsing(InputStream input) throws JDOMException, IOException {
 		super();
@@ -76,7 +77,7 @@ public class DataParsing {
 	}
 
 	public String getWarnings() {
-		String warnings = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
+		String warnings = header;
 		List<Element> listWarnings = racine.getChildren("WARNING");
 		List<Element> listItems;
 		List<Element> listList;
@@ -129,7 +130,7 @@ public class DataParsing {
 	}
 
 	public String getJobSetUp() {
-		String jobSetUp = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
+		String jobSetUp = header;
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -186,10 +187,10 @@ public class DataParsing {
 											Element refInt = (Element) iteratorRefInt
 													.next();
 											jobSetUp += "<li><span id='"
-													+ refInt.getText()
+													+ refInt.getText().replaceAll(" ", "..")
 													+ "'><a href="
-													+ refInt.getAttributeValue("REFID")
-													+ "?id=" + refInt.getText()
+													+ refInt.getAttributeValue("REFID").replaceAll(" ", "..")
+													+ "?id=" + refInt.getText().replaceAll(" ", "..")
 													+ ">" + refInt.getText()
 													+ "</a></span></li>";
 											stepsJobSetup
@@ -267,7 +268,7 @@ public class DataParsing {
 	}
 
 	public String getProcedure() {
-		String procedure = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
+		String procedure = header;
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -346,10 +347,10 @@ public class DataParsing {
 										Element refInt = (Element) iteratorRefInt
 												.next();
 										procedure += "<span id='"
-												+ refInt.getText()
+												+ refInt.getText().replaceAll(" ", "..")
 												+ "'><a href="
-												+ refInt.getAttributeValue("REFID")
-												+ "?id=" + refInt.getText()
+												+ refInt.getAttributeValue("REFID").replaceAll(" ", "..")
+												+ "?id=" + refInt.getText().replaceAll(" ", "..")
 												+ ">" + refInt.getText()
 												+ "</a></span><br>";
 										stepsProcedure
@@ -465,11 +466,11 @@ public class DataParsing {
 												Element refInt = (Element) iteratorRefInt
 														.next();
 												procedure += "<span id='"
-														+ refInt.getText()
+														+ refInt.getText().replaceAll(" ", "..")
 														+ "'><a href="
-														+ refInt.getAttributeValue("REFID")
+														+ refInt.getAttributeValue("REFID").replaceAll(" ", "..")
 														+ "?id="
-														+ refInt.getText()
+														+ refInt.getText().replaceAll(" ", "..")
 														+ ">"
 														+ refInt.getText()
 														+ "</a></span><br>";
@@ -530,11 +531,11 @@ public class DataParsing {
 														Element refInt = (Element) iteratorRefInt
 																.next();
 														procedure += "<span id='"
-																+ refInt.getText()
+																+ refInt.getText().replaceAll(" ", "..")
 																+ "'><a href="
-																+ refInt.getAttributeValue("REFID")
+																+ refInt.getAttributeValue("REFID").replaceAll(" ", "..")
 																+ "?id="
-																+ refInt.getText()
+																+ refInt.getText().replaceAll(" ", "..")
 																+ ">"
 																+ refInt.getText()
 																+ "</a></span><br>";
@@ -588,11 +589,11 @@ public class DataParsing {
 													Element refInt = (Element) iteratorRefInt
 															.next();
 													procedure += "<span id='"
-															+ refInt.getText()
+															+ refInt.getText().replaceAll(" ", "..")
 															+ "'><a href="
-															+ refInt.getAttributeValue("REFID")
+															+ refInt.getAttributeValue("REFID").replaceAll(" ", "..")
 															+ "?id="
-															+ refInt.getText()
+															+ refInt.getText().replaceAll(" ", "..")
 															+ ">"
 															+ refInt.getText()
 															+ "</a></span><br>";
@@ -643,11 +644,11 @@ public class DataParsing {
 													Element refInt = (Element) iteratorRefInt
 															.next();
 													procedure += "<span id='"
-															+ refInt.getText()
+															+ refInt.getText().replaceAll(" ", "..")
 															+ "'><a href="
-															+ refInt.getAttributeValue("REFID")
+															+ refInt.getAttributeValue("REFID").replaceAll(" ", "..")
 															+ "?id="
-															+ refInt.getText()
+															+ refInt.getText().replaceAll(" ", "..")
 															+ ">"
 															+ refInt.getText()
 															+ "</a></span><br>";
@@ -684,7 +685,7 @@ public class DataParsing {
 	}
 
 	public String getCloseUp() {
-		String closeUp = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
+		String closeUp = header;
 		List<Element> listTopic = racine.getChildren("TOPIC");
 		List<Element> listSubTask;
 		List<Element> listList1;
@@ -798,10 +799,10 @@ public class DataParsing {
 											Element refInt = (Element) iteratorRefInt
 													.next();
 											closeUp += "<span id='"
-													+ refInt.getText()
+													+ refInt.getText().replaceAll(" ", "..")
 													+ "'><a href="
-													+ refInt.getAttributeValue("REFID")
-													+ "?id=" + refInt.getText()
+													+ refInt.getAttributeValue("REFID").replaceAll(" ", "..")
+													+ "?id=" + refInt.getText().replaceAll(" ", "..")
 													+ ">" + refInt.getText()
 													+ "</a></span>";
 											stepsCloseUp.set(stepsCloseUp.size()-1,(stepsCloseUp.get(stepsCloseUp.size()-1).replace("</li></ul>", ""))+"<a href='"
@@ -831,7 +832,7 @@ public class DataParsing {
 	}
 
 	public String getTools() {
-		String tools = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
+		String tools = header;
 		List<Element> listPretopic = racine.getChild("TFMATR").getChildren(
 				"PRETOPIC");
 		List<Element> listList1;
@@ -930,11 +931,11 @@ public class DataParsing {
 														.getChild("REFINT");
 												if (para != null) {
 													tools += "<span id='"
-															+ para.getText()
+															+ para.getText().replaceAll(" ", "..")
 															+ "'><a href="
-															+ para.getAttributeValue("REFID")
+															+ para.getAttributeValue("REFID").replaceAll(" ", "..")
 															+ "?id="
-															+ para.getText()
+															+ para.getText().replaceAll(" ", "..")
 															+ ">"
 															+ para.getText()
 															+ "</a></span>";
@@ -943,11 +944,11 @@ public class DataParsing {
 															.getChild("GRPHCREF");
 													if (para != null) {
 														tools += "</td><td><span id='"
-																+ para.getText()
+																+ para.getText().replaceAll(" ", "..")
 																+ "'><a href="
-																+ para.getAttributeValue("REFID")
+																+ para.getAttributeValue("REFID").replaceAll(" ", "..")
 																+ "?id="
-																+ para.getText()
+																+ para.getText().replaceAll(" ", "..")
 																+ ">"
 																+ para.getText()
 																+ "</a></span>";
@@ -992,9 +993,7 @@ public class DataParsing {
 	}
 
 	public String getPictures() {
-		String pictures = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
-		// TODO Auto-generated method stub
-		// pictures += "PICTURES";
+		String pictures = header;
 		List<Element> listPretopic = racine.getChild("TFMATR").getChildren(
 				"PRETOPIC");
 		List<Element> listList1;
