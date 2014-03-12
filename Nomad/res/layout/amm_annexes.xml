@@ -19,7 +19,7 @@
 
             <ImageView
                 android:id="@+id/gauche"
-                android:layout_width="56px"
+                android:layout_width="40px"
                 android:layout_height="fill_parent"
                 android:src="@drawable/imageview_gauche"
                 android:scaleType="centerCrop" />
@@ -472,7 +472,7 @@
 
             <ImageView
                 android:id="@+id/droite"
-                android:layout_width="56px"
+                android:layout_width="40px"
                 android:layout_height="fill_parent"
                 android:src="@drawable/imageview_droite"
                 android:scaleType="centerCrop" />

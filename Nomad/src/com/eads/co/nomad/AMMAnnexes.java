@@ -87,6 +87,7 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 	private static int t2 = 200; // temps avant de récupérer largeur et hauteur.
 	private static int t3 = 300; // temps avant de mettre le scroll au bon
 									// endroit après ouverture d'une annexe.
+	private static int tailleImg = 40; //Taille des images sur le côté
 
 	private int scrollX;
 	private int scrollY;
@@ -112,11 +113,13 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 	private ImageView separator_up; // barre verticale haute.
 	private ImageView separator_down; // barre verticale basse.
 	private ImageView infobulle; // image de l'infobulle.
+	private ImageView droite; //feedback des annexes à droite
 
 	private LinearLayout annexLayout; // layout de l'annexe.
 	private TextView titreAnnexe; // titre de l'annexe
 	private ImageButton closeAnnexButton; // bouton femer.
 	private ImageButton fullScreenAnnexButton; // bouton plein ecran.
+	
 
 	// Pour les annexes multiples
 	private DrawerLayout mDrawerLayout;
@@ -160,6 +163,9 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 		separator_up = (ImageView) findViewById(R.id.separator_up);
 		separator_down = (ImageView) findViewById(R.id.separator_down);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
+		droite = (ImageView) findViewById(R.id.droite);
+		droite.setLayoutParams(new LayoutParams(0,
+				LayoutParams.MATCH_PARENT));
 
 		scrollView = (OurScrollView) findViewById(R.id.scrollView);
 		scrollView.setActivity(this);
@@ -582,7 +588,9 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 		mDrawerLayout.setDrawerLockMode(0, Gravity.END);
 		scrollView.setLayoutParams(new LayoutParams(x - xseparator / 3,
 				LayoutParams.MATCH_PARENT));
-		annexLayout.setLayoutParams(new LayoutParams(xmax - x - xseparator / 3,
+		droite.setLayoutParams(new LayoutParams(tailleImg,
+				LayoutParams.MATCH_PARENT));
+		annexLayout.setLayoutParams(new LayoutParams(xmax - tailleImg - x - xseparator / 3,
 				ymax));
 		// setInfobulle();
 	}
@@ -781,6 +789,8 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 		nb_annexe = 0;
 		setAnnexeX(xmax + xseparator / 3);
 		mDrawerLayout.setDrawerLockMode(1, Gravity.END);
+		droite.setLayoutParams(new LayoutParams(0,
+				LayoutParams.MATCH_PARENT));
 		state = AnnexesState.NOT_DISPLAYED;
 	}
 
@@ -809,6 +819,8 @@ public class AMMAnnexes extends Activity implements PropertyChangeListener,
 			mDrawerLayout.setDrawerLockMode(1, Gravity.END);
 			displaySeparator();
 			fullScreenAnnexButton.setImageResource(R.drawable.btn_fullscreen);
+			droite.setLayoutParams(new LayoutParams(0,
+					LayoutParams.MATCH_PARENT));
 			state = AnnexesState.NOT_DISPLAYED;
 		}
 	}
