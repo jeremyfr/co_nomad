@@ -115,9 +115,9 @@ public class DataParsing {
 						warnings += "<li>"
 								+ currentListListItem.getChild("PARA")
 										.getText() + "</li>";
-						stepsWarning.add("<ul id='warning'>"
+						stepsWarning.add("<ul id='warning'><ul>"
 								+ currentListListItem.getChild("PARA")
-										.getText() + "</ul>");
+										.getText() + "</ul></ul>");
 					}
 					warnings += "</ul>";
 					warnings += "</p>";
@@ -194,19 +194,19 @@ public class DataParsing {
 													+ ">" + refInt.getText()
 													+ "</a></span></li>";
 											stepsJobSetup
-													.set(stepsJobSetup.size()-1,stepsJobSetup.get(stepsJobSetup.size()-1)+"<a href='"
+													.set(stepsJobSetup.size()-1,(stepsJobSetup.get(stepsJobSetup.size()-1).replace("</ul>",""))+"<a href='"
 															+ refInt.getAttributeValue("REFID")
 															+ "?id="
 															+ refInt.getText()
 															+ "'>"
 															+ refInt.getText()
-															+ "</a>");
+															+ "</a></ul>");
 										}
 									}
 								} else {
 									jobSetUp += "<li>" + para.getText()
 											+ "</li>";
-									stepsJobSetup.add(para.getText());
+									stepsJobSetup.add("<ul>"+para.getText()+"</ul>");
 								}
 							}
 
