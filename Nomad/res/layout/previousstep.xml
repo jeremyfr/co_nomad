@@ -36,8 +36,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:background="@color/background1_light"
+                android:paddingBottom="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:paddingTop="10dp"
                 android:src="@drawable/button_invalidate" />
 
     </LinearLayout>
