@@ -1022,7 +1022,7 @@ public class DataParsing {
 		Iterator<Element> iteratorRow;
 		Iterator<Element> iteratorEntry;
 		Iterator<Element> iteratorrefint;
-		pictures += "<br><table><tr><td width='20%'>Title</td><td width='80%'>Picture</td></tr>";
+		pictures += "<br><table><tr><th width='20%'>TITLE</th><th width='80%'>PICTURE</th></tr>";
 		while (iteratorTopics.hasNext()) {
 			Element topic = iteratorTopics.next();
 			listList1 = topic.getChildren("LIST1");
