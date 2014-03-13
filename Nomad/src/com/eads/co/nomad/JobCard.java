@@ -168,16 +168,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 				if (position == 0) {
 					supprimeTout();
 				} else {
-					HashMap<String, Object> map = (HashMap<String, Object>) listview
-							.getItemAtPosition(position);
-					annexe = (String) map.get("titre");
-					Log.e("AnnexeListener", "Nom de l'annexe cliquée" + annexe);
-					titreAnnexe.setText(annexe);
-					int resID = getResources()
-							.getIdentifier((String) map.get("img"), "drawable",
-									"package.name");
-					annexImg.setImageResource(resID);
-					clickedWB = (WebView) map.get("webview");
+					onListViewAnnexeClick(position);
 					if (state != AnnexesState.DISPLAYED_FULLSCREEN) {
 						clickedWB.loadUrl("javascript:getPosition('" + annexe
 								+ "')");
@@ -188,6 +179,20 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			}
 		});
 
+		// Listener sur l'infobulle.
+		infobulle.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				int y = y_absolue - scrollView.getScrollY();
+				if (y < ymin || y > ymax) {
+					scrollTo(y_absolue);
+					return true;
+				} else
+					return false;
+			}
+		});
+
+		// Listener sur la barre verticale.
 		layout.setOnTouchListener(new View.OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -242,20 +247,6 @@ public class JobCard extends AMM implements PropertyChangeListener,
 				return true;
 			}
 		});
-		
-		// Listener sur l'infobulle.
-        infobulle.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                int y = y_absolue - scrollView.getScrollY();
-                if (y < ymin || y > ymax) {
-                    scrollTo(y_absolue);
-                    return true;
-                }
-                else return false;
-            }
-        });
-
 
 		// Listener sur le bouton fermer.
 		closeAnnexButton.setOnClickListener(new View.OnClickListener() {

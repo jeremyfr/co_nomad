@@ -24,9 +24,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,7 +54,7 @@ import com.eads.co.nomad.R.color;
  * Class used to manage the display of the documentation.
  * 
  * @author Nicolas Bruniquel
- * @author JÃ©rÃ©my Fricou
+ * @author Jérémy Fricou
  * @author Florian Lefebvre
  * @author Benjamin Louradour
  * @author Guillaume Saas
@@ -72,23 +70,23 @@ public class AMM extends Activity implements PropertyChangeListener,
 
 	protected DataParsing parser;
 
-	protected int x; // abscisse de la sÃ©paration entre la zone de texte et
-					// l'annexe.
+	protected int x; // abscisse de la séparation entre la zone de texte et
+						// l'annexe.
 	protected static int xmax; // largeur maximale de la zone de texte ou de
 								// l'annexe.
-	protected static int ymax; // ordonnÃ©e d'apparition de la flÃ¨che basse.
+	protected static int ymax; // ordonnée d'apparition de la flèche basse.
 	protected static int xmin; // largeur minimale de la zone de texte ou de
 								// l'annexe.
-	protected static int ymin; // ordonnÃ©e d'apparition de la flÃ¨che haute.
-	protected static int xseparator = 160; // largeur de la barre de sÃ©paration.
+	protected static int ymin; // ordonnée d'apparition de la flèche haute.
+	protected static int xseparator = 160; // largeur de la barre de séparation.
 	protected static int yinfobulle = 331; // hauteur de l'image infobulle.
 
-	protected static int t1 = 50; // frÃ©quence de rafraichissement du pointeur.
-	protected static int t2 = 200; // temps avant de rÃ©cupÃ©rer largeur et
+	protected static int t1 = 50; // fréquence de rafraichissement du pointeur.
+	protected static int t2 = 200; // temps avant de récupérer largeur et
 									// hauteur.
 	protected static int t3 = 300; // temps avant de mettre le scroll au bon
-									// endroit aprÃ¨s ouverture d'une annexe.
-	protected static int tailleImg = 40; // Taille des images sur le cÃ´tÃ©
+									// endroit après ouverture d'une annexe.
+	protected static int tailleImg = 40; // Taille des images sur le cÃ´té
 
 	protected int scrollX;
 	protected int scrollY;
@@ -98,7 +96,8 @@ public class AMM extends Activity implements PropertyChangeListener,
 	protected LinearLayout layout; // layout global contenant documentation et
 									// annexes.
 
-	protected OurScrollView scrollView; // scrollview contenant la documentation.
+	protected OurScrollView scrollView; // scrollview contenant la
+										// documentation.
 
 	protected WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV,
 			picturesWV;
@@ -107,7 +106,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 			pictures;
 
 	protected WebView clickedWB; // WebView contenant le lien de l'annexe
-								// cliquÃ©e.
+									// cliquée.
 	protected String annexe; // Nom de l'annexe.
 	protected int y_absolue; // Position du lien vers l'annexe dans scrollView.
 
@@ -127,7 +126,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 	protected ListView listview;
 	protected int nb_annexe;
 
-	// CrÃ©ation de la ArrayList qui nous permettra de remplir la listView
+	// Création de la ArrayList qui nous permettra de remplir la listView
 	protected ArrayList<HashMap<String, Object>> listItem;
 	protected HashMap<String, Object> map;
 
@@ -137,7 +136,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 
 	protected String title;
 
-	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // Ã©tat de
+	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de
 															// l'annexe.
 
 	@Override
@@ -194,7 +193,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		mDrawerLayout.setDrawerLockMode(1, Gravity.END);
 		nb_annexe = 0;
 
-		// RÃ©cupÃ©ration de la largeur et de la hauteur du layout
+		// Récupération de la largeur et de la hauteur du layout
 		getWidthHeight();
 
 		// Scroll lors d'un clic sur le titre de l'annexe.
@@ -219,16 +218,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 				if (position == 0) {
 					supprimeTout();
 				} else {
-					HashMap<String, Object> map = (HashMap<String, Object>) listview
-							.getItemAtPosition(position);
-					annexe = (String) map.get("titre");
-					Log.e("AnnexeListener", "Nom de l'annexe cliquÃ©e" + annexe);
-					titreAnnexe.setText(annexe);
-					int resID = getResources()
-							.getIdentifier((String) map.get("img"), "drawable",
-									"package.name");
-					annexImg.setImageResource(resID);
-					clickedWB = (WebView) map.get("webview");
+					onListViewAnnexeClick(position);
 					if (state != AnnexesState.DISPLAYED_FULLSCREEN) {
 						clickedWB.loadUrl("javascript:getPosition('" + annexe
 								+ "')");
@@ -542,6 +532,26 @@ public class AMM extends Activity implements PropertyChangeListener,
 		t.start();
 	}
 
+	protected void onListViewAnnexeClick(int position) {
+		HashMap<String, Object> map = (HashMap<String, Object>) listview
+				.getItemAtPosition(position);
+		annexe = (String) map.get("titre");
+		titreAnnexe.setText(annexe);
+		int resID = getResources().getIdentifier((String) map.get("img"),
+				"drawable", "package.name");
+		annexImg.setImageResource(resID);
+		clickedWB = (WebView) map.get("webview");
+	}
+
+	protected void updateAnnexeClick(WebView webView, String annexe) {
+		scrollView.setAnnexe(webView, annexe);
+		this.annexe = annexe;
+		clickedWB = webView;
+		clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
+		ajouteList(annexe, String.valueOf(R.drawable.ata), clickedWB);
+		setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata), clickedWB);
+	}
+
 	protected void displayLastRevision(String procedure) {
 		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
 		File file = new File(getApplicationContext().getFilesDir(),
@@ -584,7 +594,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		return procedureFound;
 	}
 
-	// Scroll Ã une ordonnÃ©e de la documentation.
+	// Scroll Ã une ordonnée de la documentation.
 	protected void scrollTo(int y) {
 		scrollView.scrollTo(scrollView.getScrollX(), y - yinfobulle / 2);
 	}
@@ -601,14 +611,15 @@ public class AMM extends Activity implements PropertyChangeListener,
 		// setInfobulle();
 	}
 
-	// Affiche l'annexe et met l'abscisse du sÃ©parateur.
+	// Affiche l'annexe et met l'abscisse du séparateur.
 	protected void setAnnexeXAndX(int _x) {
 		setAnnexeX(x);
 		x = _x;
 	}
 
 	// Affiche le titre de l'annexe et met l'image de l'annexe
-	protected void setTitleAndImgAnnexe(CharSequence text, String img, WebView wb) {
+	protected void setTitleAndImgAnnexe(CharSequence text, String img,
+			WebView wb) {
 		int resID = getResources().getIdentifier(img, "drawable",
 				"package.name");
 		annexImg.setImageResource(resID);
@@ -619,18 +630,18 @@ public class AMM extends Activity implements PropertyChangeListener,
 				position);
 	}
 
-	// Affiche le sÃ©parateur et l'infobulle.
+	// Affiche le séparateur et l'infobulle.
 	protected void displaySeparator() {
 		separatorLayout.setVisibility(View.VISIBLE);
 	}
 
-	// Cache le sÃ©parateur et l'infobulle.
+	// Cache le séparateur et l'infobulle.
 	protected void hideSeparator() {
 		separatorLayout.setVisibility(View.INVISIBLE);
 
 	}
 
-	// Place l'infobulle selon l'ordonnÃ©e y relative Ã la WebView contenant le
+	// Place l'infobulle selon l'ordonnée y relative Ã la WebView contenant le
 	// lien vers l'annexe.
 	public void setInfobulle(int y) {
 
@@ -711,19 +722,10 @@ public class AMM extends Activity implements PropertyChangeListener,
 	}
 
 	protected void onAnnexeClic(WebView webView, String annexe) {
-		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
 		switch (state) {
 		case NOT_DISPLAYED:
 			setAnnexeX(x);
-			scrollView.setAnnexe(webView, annexe);
-			this.annexe = annexe;
-			clickedWB = webView;
-			clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-			// Image a changer
-			ajouteList(annexe, String.valueOf(R.drawable.ata), clickedWB);
-			// Image a changer
-			setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
-					clickedWB);
+			updateAnnexeClick(webView, annexe);
 			// Mise Ã jour de la position dans la doc.
 			Timer t_ouverture = new Timer();
 			class ScrollTo extends TimerTask {
@@ -748,15 +750,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 				supprimeElt(annexe, webView);
 				state = AnnexesState.DISPLAYED_FREE;
 			} else {
-				scrollView.setAnnexe(webView, annexe);
-				this.annexe = annexe;
-				clickedWB = webView;
-				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-				// Image a changer
-				ajouteList(annexe, String.valueOf(R.drawable.ata), clickedWB);
-				// Image a changer
-				setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
-						clickedWB);
+				updateAnnexeClick(webView, annexe);
 				state = AnnexesState.DISPLAYED_FREE;
 			}
 			break;
@@ -768,7 +762,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 	}
 
 	protected void getWidthHeight() {
-		// RÃ©cupÃ©ration de la largeur et de la hauteur du layout.
+		// Récupération de la largeur et de la hauteur du layout.
 		Timer t = new Timer();
 		class SetMax extends TimerTask {
 			@Override
@@ -783,7 +777,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		t.schedule(new SetMax(), t2);
 	}
 
-	// Fonction pour supprimer tout les Ã©lÃ©ments de la liste
+	// Fonction pour supprimer tout les éléments de la liste
 	protected void supprimeTout() {
 		listItem = new ArrayList<HashMap<String, Object>>();
 		listview.invalidateViews();
@@ -799,15 +793,12 @@ public class AMM extends Activity implements PropertyChangeListener,
 		state = AnnexesState.NOT_DISPLAYED;
 	}
 
-	// Fonction qui supprime un Ã©lÃ©ment de la listview et agit en consÃ©quence
-	// suivant la prÃ¨sence d'autres annexes
+	// Fonction qui supprime un élément de la listview et agit en conséquence
+	// suivant la prèsence d'autres annexes
 	protected void supprimeElt(String titre, WebView wb) {
 		if (listItem.size() != 2) {
-			Log.e("SupprimeElt",
-					"Indice de l'item : " + trouveDansListe(titre, wb));
 			int indice = trouveDansListe(titre, wb);
 			listItem.remove(indice - 1);
-			Log.w("SupprimeElt", "Taille de listItem : " + listItem.size());
 			nb_annexe--;
 			listview.invalidateViews();
 			int position = 1;
@@ -815,8 +806,6 @@ public class AMM extends Activity implements PropertyChangeListener,
 					listview.getAdapter().getView(position, null, null),
 					position, position);
 		} else {
-			Log.e("SupprimeElt",
-					"Indice de l'item : " + trouveDansListe(titre, wb));
 			listItem.remove(trouveDansListe(titre, wb) - 1);
 			listview.invalidateViews();
 			nb_annexe--;
@@ -830,7 +819,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		}
 	}
 
-	// Fonction pour trouver l'indice de l'Ã©lÃ©ment titre.
+	// Fonction pour trouver l'indice de l'élément titre.
 	protected int trouveDansListe(String titre, WebView wb) {
 		Iterator<HashMap<String, Object>> iterateur = listItem.iterator();
 		int numero = 0;
@@ -844,7 +833,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		return numero;
 	}
 
-	// Teste si l'objet de titre titre est l'annexe affichÃ©e actuellement
+	// Teste si l'objet de titre titre est l'annexe affichée actuellement
 	protected boolean testeActuel(String titre, WebView wb) {
 		return (titre.equals(titreAnnexe.getText().toString()) && clickedWB == wb);
 	}
@@ -861,7 +850,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		return test;
 	}
 
-	// Ajoute l'Ã©lÃ©ment titre avec sont image a la listview
+	// Ajoute l'élément titre avec sont image a la listview
 	protected void ajouteList(String titre, String img, WebView wb) {
 		if (!testeObjetDansListe(titre, wb)) {
 			map = new HashMap<String, Object>();
@@ -869,8 +858,8 @@ public class AMM extends Activity implements PropertyChangeListener,
 			map.put("img", img);
 			map.put("webview", wb);
 			listItem.add(map);
-			// CrÃ©ation d'un SimpleAdapter qui se chargera de mettre les items
-			// prÃ©sent dans notre list (listItem) dans la vue affichage_annexes
+			// Création d'un SimpleAdapter qui se chargera de mettre les items
+			// présent dans notre list (listItem) dans la vue affichage_annexes
 			SimpleAdapter mSchedule = new SimpleAdapter(this.getBaseContext(),
 					listItem, R.layout.affiche_annexes, new String[] { "img",
 							"titre" }, new int[] { R.id.listImage,
