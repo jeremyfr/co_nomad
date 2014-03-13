@@ -72,15 +72,15 @@ public class JobCard extends AMM implements PropertyChangeListener,
 	private ListView listStepPreviousJobSetup;
 	private ListView listStepCloseUp;
 	private ListView listStepPreviousCloseUp;
-	private ArrayList<PreviousStep> previousStepsWarn;
-	private ArrayList<Step> stepsWarn;
-	private ArrayList<PreviousStep> previousStepsProc;
-	private ArrayList<Step> stepsProc;
-	private ArrayList<PreviousStep> previousStepsJobSetup;
-	private ArrayList<Step> stepsJobSetup;
-	private ArrayList<PreviousStep> previousStepsCloseUp;
-	private ArrayList<Step> stepsCloseUp;
-	private Step s;
+	private ArrayList<Step> previousStepsWarn;
+	private ArrayList<ActualStep> stepsWarn;
+	private ArrayList<Step> previousStepsProc;
+	private ArrayList<ActualStep> stepsProc;
+	private ArrayList<Step> previousStepsJobSetup;
+	private ArrayList<ActualStep> stepsJobSetup;
+	private ArrayList<Step> previousStepsCloseUp;
+	private ArrayList<ActualStep> stepsCloseUp;
+	private ActualStep s;
 	private StepListAdapterProcedure stepAdaptProc;
 	private PreviousStepListAdapterProcedure stepAdaptPreviousProc;
 	private String head = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
@@ -352,11 +352,11 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			prevWarn.setVisibility(View.GONE);
 			String warn = parser.getWarnings();
 
-			previousStepsWarn = new ArrayList<PreviousStep>();
-			stepsWarn = new ArrayList<Step>();
+			previousStepsWarn = new ArrayList<Step>();
+			stepsWarn = new ArrayList<ActualStep>();
 			ArrayList<String> stepWarn = parser.getStepsWarning();
 			for (int i = 0; i < stepWarn.size(); i++) {
-				s = new Step();
+				s = new ActualStep();
 				s.setTask(head + stepWarn.get(i) + endbody);
 				stepsWarn.add(s);
 			}
@@ -392,11 +392,11 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			prevJobSetup.setVisibility(View.GONE);
 			String jobSetup = parser.getJobSetUp();
 
-			previousStepsJobSetup = new ArrayList<PreviousStep>();
-			stepsJobSetup = new ArrayList<Step>();
+			previousStepsJobSetup = new ArrayList<Step>();
+			stepsJobSetup = new ArrayList<ActualStep>();
 			ArrayList<String> stepJobSetup = parser.getStepsJobSetup();
 			for (int i = 0; i < stepJobSetup.size(); i++) {
-				s = new Step();
+				s = new ActualStep();
 				s.setTask(head + stepJobSetup.get(i) + endbody);
 				stepsJobSetup.add(s);
 			}
@@ -435,15 +435,15 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			prevProc.setVisibility(View.GONE);
 			String proc = parser.getProcedure();
 
-			stepsProc = new ArrayList<Step>();
+			stepsProc = new ArrayList<ActualStep>();
 			ArrayList<String> stepProc = parser.getStepsProcedure();
 			for (int i = 0; i < stepProc.size(); i++) {
-				s = new Step();
+				s = new ActualStep();
 				s.setTask(head + stepProc.get(i) + endbody);
 				stepsProc.add(s);
 			}
 
-			previousStepsProc = new ArrayList<PreviousStep>();
+			previousStepsProc = new ArrayList<Step>();
 			stepAdaptProc = new StepListAdapterProcedure(this);
 			stepAdaptProc.setListItems(stepsProc);
 			listStepProc.setAdapter(stepAdaptProc);
@@ -475,15 +475,15 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			prevCloseUp.setVisibility(View.GONE);
 			String closeUp = parser.getCloseUp();
 
-			stepsCloseUp = new ArrayList<Step>();
+			stepsCloseUp = new ArrayList<ActualStep>();
 			ArrayList<String> stepCloseUp = parser.getStepsCloseUp();
 			for (int i = 0; i < stepCloseUp.size(); i++) {
-				s = new Step();
+				s = new ActualStep();
 				s.setTask(head + stepCloseUp.get(i) + endbody);
 				stepsCloseUp.add(s);
 			}
 
-			previousStepsCloseUp = new ArrayList<PreviousStep>();
+			previousStepsCloseUp = new ArrayList<Step>();
 			stepAdaptCloseUp = new StepListAdapterCloseUp(this);
 			stepAdaptCloseUp.setListItems(stepsCloseUp);
 			listStepCloseUp.setAdapter(stepAdaptCloseUp);
@@ -741,7 +741,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 
 	public class StepListAdapterWarn extends BaseAdapter {
 
-		private List<Step> mStep;
+		private List<ActualStep> mStep;
 		private LayoutInflater mInf;
 		private ImageButton mButton;
 		private Context ct;
@@ -802,9 +802,9 @@ public class JobCard extends AMM implements PropertyChangeListener,
 								lpc.height += 185;
 								listStepPreviousWarning.setLayoutParams(lpc);
 
-								Step toDel = mStep.remove(pos);
+								ActualStep toDel = mStep.remove(pos);
 								stepAdaptWarn.notifyDataSetChanged();
-								PreviousStep ps = new PreviousStep();
+								Step ps = new Step();
 								ps.setTask(toDel.getTask());
 
 								previousStepsWarn.add(ps);
@@ -842,7 +842,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			return arg1;
 		}
 
-		public void setListItems(List<Step> l) {
+		public void setListItems(List<ActualStep> l) {
 			mStep = l;
 		}
 
@@ -864,7 +864,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 
 	public class PreviousStepListAdapterWarn extends BaseAdapter {
 
-		private List<PreviousStep> mStep;
+		private List<Step> mStep;
 		private LayoutInflater mInf;
 
 		private Context ct;
@@ -882,7 +882,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 		}
 
 		@Override
-		public PreviousStep getItem(int arg0) {
+		public Step getItem(int arg0) {
 			return mStep.get(arg0);
 		}
 
@@ -929,9 +929,9 @@ public class JobCard extends AMM implements PropertyChangeListener,
 								lpc.height -= 185;
 								listStepPreviousWarning.setLayoutParams(lpc);
 
-								PreviousStep toDel = mStep.remove(pos);
+								Step toDel = mStep.remove(pos);
 
-								Step s = new Step();
+								ActualStep s = new ActualStep();
 								s.setTask(toDel.getTask());
 								stepsWarn.add(0, s);
 								stepAdaptWarn.notifyDataSetChanged();
@@ -961,7 +961,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			return arg1;
 		}
 
-		public void setListItems(List<PreviousStep> previousSteps) {
+		public void setListItems(List<Step> previousSteps) {
 			mStep = previousSteps;
 		}
 
@@ -984,7 +984,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 
 	public class StepListAdapterJobSetup extends BaseAdapter {
 
-		private List<Step> mStep;
+		private List<ActualStep> mStep;
 		private LayoutInflater mInf;
 		private ImageButton mButton;
 		private Context ct;
@@ -1051,9 +1051,9 @@ public class JobCard extends AMM implements PropertyChangeListener,
 								lpc.height += 185;
 								listStepPreviousJobSetup.setLayoutParams(lpc);
 
-								Step toDel = mStep.remove(pos);
+								ActualStep toDel = mStep.remove(pos);
 								stepAdaptJobSetup.notifyDataSetChanged();
-								PreviousStep ps = new PreviousStep();
+								Step ps = new Step();
 								ps.setTask(toDel.getTask());
 
 								previousStepsJobSetup.add(ps);
@@ -1088,7 +1088,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			return arg1;
 		}
 
-		public void setListItems(List<Step> l) {
+		public void setListItems(List<ActualStep> l) {
 			mStep = l;
 		}
 
@@ -1115,7 +1115,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 
 	public class PreviousStepListAdapterJobSetup extends BaseAdapter {
 
-		private List<PreviousStep> mStep;
+		private List<Step> mStep;
 		private LayoutInflater mInf;
 
 		private Context ct;
@@ -1134,7 +1134,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 		}
 
 		@Override
-		public PreviousStep getItem(int arg0) {
+		public Step getItem(int arg0) {
 			return mStep.get(arg0);
 		}
 
@@ -1181,9 +1181,9 @@ public class JobCard extends AMM implements PropertyChangeListener,
 								lpc.height -= 185;
 								listStepPreviousJobSetup.setLayoutParams(lpc);
 
-								PreviousStep toDel = mStep.remove(pos);
+								Step toDel = mStep.remove(pos);
 
-								Step s = new Step();
+								ActualStep s = new ActualStep();
 								s.setTask(toDel.getTask());
 								stepsJobSetup.add(0, s);
 								stepAdaptJobSetup.notifyDataSetChanged();
@@ -1214,7 +1214,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			return arg1;
 		}
 
-		public void setListItems(List<PreviousStep> previousSteps) {
+		public void setListItems(List<Step> previousSteps) {
 			mStep = previousSteps;
 		}
 
@@ -1237,7 +1237,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 
 	public class StepListAdapterProcedure extends BaseAdapter {
 
-		private List<Step> mStep;
+		private List<ActualStep> mStep;
 		private LayoutInflater mInf;
 		private ImageButton mButton;
 		private Context ct;
@@ -1302,9 +1302,9 @@ public class JobCard extends AMM implements PropertyChangeListener,
 								lpc.height += 185;
 								listStepPreviousProc.setLayoutParams(lpc);
 
-								Step toDel = mStep.remove(pos);
+								ActualStep toDel = mStep.remove(pos);
 								stepAdaptProc.notifyDataSetChanged();
-								PreviousStep ps = new PreviousStep();
+								Step ps = new Step();
 								ps.setTask(toDel.getTask());
 
 								previousStepsProc.add(ps);
@@ -1340,7 +1340,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			return arg1;
 		}
 
-		public void setListItems(List<Step> l) {
+		public void setListItems(List<ActualStep> l) {
 			mStep = l;
 		}
 
@@ -1367,7 +1367,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 
 	public class PreviousStepListAdapterProcedure extends BaseAdapter {
 
-		private List<PreviousStep> mStep;
+		private List<Step> mStep;
 		private LayoutInflater mInf;
 
 		private Context ct;
@@ -1385,7 +1385,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 		}
 
 		@Override
-		public PreviousStep getItem(int arg0) {
+		public Step getItem(int arg0) {
 			return mStep.get(arg0);
 		}
 
@@ -1432,9 +1432,9 @@ public class JobCard extends AMM implements PropertyChangeListener,
 								lpc.height -= 185;
 								listStepPreviousProc.setLayoutParams(lpc);
 
-								PreviousStep toDel = mStep.remove(pos);
+								Step toDel = mStep.remove(pos);
 
-								Step s = new Step();
+								ActualStep s = new ActualStep();
 								s.setTask(toDel.getTask());
 								stepsProc.add(0, s);
 								stepAdaptProc.notifyDataSetChanged();
@@ -1465,7 +1465,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			return arg1;
 		}
 
-		public void setListItems(List<PreviousStep> previousSteps) {
+		public void setListItems(List<Step> previousSteps) {
 			mStep = previousSteps;
 		}
 
@@ -1488,7 +1488,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 
 	public class StepListAdapterCloseUp extends BaseAdapter {
 
-		private List<Step> mStep;
+		private List<ActualStep> mStep;
 		private LayoutInflater mInf;
 		private ImageButton mButton;
 		private Context ct;
@@ -1555,9 +1555,9 @@ public class JobCard extends AMM implements PropertyChangeListener,
 								lpc.height += 185;
 								listStepPreviousCloseUp.setLayoutParams(lpc);
 
-								Step toDel = mStep.remove(pos);
+								ActualStep toDel = mStep.remove(pos);
 								stepAdaptCloseUp.notifyDataSetChanged();
-								PreviousStep ps = new PreviousStep();
+								Step ps = new Step();
 								ps.setTask(toDel.getTask());
 
 								previousStepsCloseUp.add(ps);
@@ -1586,7 +1586,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			return arg1;
 		}
 
-		public void setListItems(List<Step> l) {
+		public void setListItems(List<ActualStep> l) {
 			mStep = l;
 		}
 
@@ -1613,7 +1613,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 
 	public class PreviousStepListAdapterCloseUp extends BaseAdapter {
 
-		private List<PreviousStep> mStep;
+		private List<Step> mStep;
 		private LayoutInflater mInf;
 
 		private Context ct;
@@ -1632,7 +1632,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 		}
 
 		@Override
-		public PreviousStep getItem(int arg0) {
+		public Step getItem(int arg0) {
 			return mStep.get(arg0);
 		}
 
@@ -1679,9 +1679,9 @@ public class JobCard extends AMM implements PropertyChangeListener,
 								lpc.height -= 185;
 								listStepCloseUp.setLayoutParams(lpc);
 
-								PreviousStep toDel = mStep.remove(pos);
+								Step toDel = mStep.remove(pos);
 
-								Step s = new Step();
+								ActualStep s = new ActualStep();
 								s.setTask(toDel.getTask());
 								stepsCloseUp.add(0, s);
 								stepAdaptCloseUp.notifyDataSetChanged();
@@ -1707,7 +1707,7 @@ public class JobCard extends AMM implements PropertyChangeListener,
 			return arg1;
 		}
 
-		public void setListItems(List<PreviousStep> previousSteps) {
+		public void setListItems(List<Step> previousSteps) {
 			mStep = previousSteps;
 		}
 
