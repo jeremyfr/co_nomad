@@ -689,6 +689,33 @@ public class JobCard extends AMM implements PropertyChangeListener,
 	}
 
 	@Override
+	protected void setInfobulle(boolean state, int y, int pos) {
+		if (state) {
+			y_absolue = 140 + 30 * pos + warnings.getHeight()
+					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
+					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
+					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
+					+ (pos >= 4 ? 1 : 0) * tools.getHeight()
+					+ (pos >= 5 ? 1 : 0) * pictures.getHeight()
+					- clickedWB.getHeight() + y;
+		} else {
+			y_absolue = (int) (70 + 30 * pos
+					+ ((pos >= 0 ? 0.5 : 0) + (pos >= 1 ? 0.5 : 0))
+					* warnings.getHeight()
+					+ ((pos >= 1 ? 0.5 : 0) + (pos >= 2 ? 0.5 : 0))
+					* jobSetUp.getHeight()
+					+ ((pos >= 2 ? 0.5 : 0) + (pos >= 3 ? 0.5 : 0))
+					* procedure.getHeight()
+					+ ((pos >= 3 ? 0.5 : 0) + (pos >= 4 ? 0.5 : 0))
+					* closeUp.getHeight()
+					+ ((pos >= 4 ? 0.5 : 0) + (pos >= 5 ? 0.5 : 0))
+					* tools.getHeight() + (pos >= 5 ? 0.5 : 0)
+					* pictures.getHeight());
+		}
+		displayInfobulle(y_absolue - scrollView.getScrollY());
+	}
+	
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
