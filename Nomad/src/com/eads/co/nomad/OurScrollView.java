@@ -7,7 +7,7 @@ import android.widget.ScrollView;
 
 public class OurScrollView extends ScrollView {
 
-	private AMMAnnexes activityAMM;
+	private AMM activityAMM;
 	private JobCard activityJobCard;
 	private String annexe; // Nom de l'annexe affichée (id du HTML).
 	private WebView webView;
@@ -53,7 +53,7 @@ public class OurScrollView extends ScrollView {
 		super.onScrollChanged(l, t, oldl, oldt);
 	}
 
-	public void setActivity(AMMAnnexes activity) {
+	public void setActivity(AMM activity) {
 		this.activityAMM = activity;
 	}
 

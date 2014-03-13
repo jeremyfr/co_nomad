@@ -2,11 +2,11 @@ package com.eads.co.nomad;
 
 public class JavaScriptInterface {
 
-	private AMMAnnexes activityAMM;
+	private AMM activityAMM;
 	private JobCard activityJobCard;
 	private Classe classe;
 
-	public JavaScriptInterface(AMMAnnexes activity) {
+	public JavaScriptInterface(AMM activity) {
 		this.activityAMM = activity;
 		this.classe = Classe.AMM;
 	}

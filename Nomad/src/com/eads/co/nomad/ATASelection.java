@@ -143,7 +143,7 @@ public class ATASelection extends Activity {
 		sousSousListeATA.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Intent intent = new Intent(ATASelection.this, AMMAnnexes.class);
+				Intent intent = new Intent(ATASelection.this, AMM.class);
 				intent.putExtra("MSN", msn);
 				intent.putExtra("FSN", fsn);
 				intent.putExtra("ID", aid);

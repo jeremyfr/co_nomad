@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 public class SwitchTaskManager extends WebViewClient {
 	private Context context;
-	private AMMAnnexes activityAMM;
+	private AMM activityAMM;
 	private JobCard activityJobCard;
 	private Classe classe;
 
@@ -18,7 +18,7 @@ public class SwitchTaskManager extends WebViewClient {
 		this.classe = Classe.JOBCARD;
 	}
 
-	public SwitchTaskManager(Context context, AMMAnnexes activity) {
+	public SwitchTaskManager(Context context, AMM activity) {
 		this.context = context;
 		this.activityAMM = activity;
 		this.classe = Classe.AMM;
@@ -45,7 +45,7 @@ public class SwitchTaskManager extends WebViewClient {
 
 			/* Changement de tache */
 		} else {
-			Intent i = new Intent(context, AMMAnnexes.class);
+			Intent i = new Intent(context, AMM.class);
 			i.putExtra("task", url);
 			context.startActivity(i);
 		}

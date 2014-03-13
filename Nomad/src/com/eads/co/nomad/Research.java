@@ -137,7 +137,7 @@ public class Research extends Activity {
 		public void onItemClick(AdapterView<?> parent, View view,
 				int position, long id) {
 				if (pos > 0){
-					Intent intent = new Intent(Research.this, AMMAnnexes.class);
+					Intent intent = new Intent(Research.this, AMM.class);
 					if (position == pos1) intent.putExtra("task", "EN30115140080100");
 					if (position == pos2) intent.putExtra("task", "EN30115140080200");
 					if (position == pos3) intent.putExtra("task", "EN30210004080100");
