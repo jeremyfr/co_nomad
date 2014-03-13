@@ -61,119 +61,42 @@ import com.eads.co.nomad.PanAndZoomListener.Anchor;
  * @author Guillaume Saas
  */
 @SuppressLint({ "JavascriptInterface", "SetJavaScriptEnabled" })
-public class JobCard extends Activity implements PropertyChangeListener,
+public class JobCard extends AMM implements PropertyChangeListener,
 		Serializable {
 
-	ListView listStepProc;
-	ListView listStepPreviousProc;
-	ListView listStepWarn;
-	ListView listStepPreviousWarning;
-	ListView listStepJobSetup;
-	ListView listStepPreviousJobSetup;
-	ListView listStepCloseUp;
-	ListView listStepPreviousCloseUp;
-	ArrayList<PreviousStep> previousStepsWarn;
-	ArrayList<Step> stepsWarn;
-	ArrayList<PreviousStep> previousStepsProc;
-	ArrayList<Step> stepsProc;
-	ArrayList<PreviousStep> previousStepsJobSetup;
-	ArrayList<Step> stepsJobSetup;
-	ArrayList<PreviousStep> previousStepsCloseUp;
-	ArrayList<Step> stepsCloseUp;
-	Step s;
-	StepListAdapterProcedure stepAdaptProc;
-	PreviousStepListAdapterProcedure stepAdaptPreviousProc;
-	String head = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
-	String endbody = "</body></html>";
-	StepListAdapterWarn stepAdaptWarn;
-	PreviousStepListAdapterWarn stepAdaptPreviousWarn;
-	StepListAdapterJobSetup stepAdaptJobSetup;
-	PreviousStepListAdapterJobSetup stepAdaptPreviousJobSetup;
-	StepListAdapterCloseUp stepAdaptCloseUp;
-	PreviousStepListAdapterCloseUp stepAdaptPreviousCloseUp;
-	boolean warningFinish=false,setUpFinish=false,procedureFinish=false, closeUpFinish=false; 
-	ImageButton prevWarn,prevJobSetup,prevProc,prevCloseUp;
-	
-	
-	private static final long serialVersionUID = 1L;
+	private ListView listStepProc;
+	private ListView listStepPreviousProc;
+	private ListView listStepWarn;
+	private ListView listStepPreviousWarning;
+	private ListView listStepJobSetup;
+	private ListView listStepPreviousJobSetup;
+	private ListView listStepCloseUp;
+	private ListView listStepPreviousCloseUp;
+	private ArrayList<PreviousStep> previousStepsWarn;
+	private ArrayList<Step> stepsWarn;
+	private ArrayList<PreviousStep> previousStepsProc;
+	private ArrayList<Step> stepsProc;
+	private ArrayList<PreviousStep> previousStepsJobSetup;
+	private ArrayList<Step> stepsJobSetup;
+	private ArrayList<PreviousStep> previousStepsCloseUp;
+	private ArrayList<Step> stepsCloseUp;
+	private Step s;
+	private StepListAdapterProcedure stepAdaptProc;
+	private PreviousStepListAdapterProcedure stepAdaptPreviousProc;
+	private String head = "<html><head><meta name=\"viewport\" content=\"minimum-scale=1\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"css/style.css\"/><script type=\"text/javascript\">function getPosition(element){var curtop = 0;var obj = document.getElementById(element); if (obj.offsetParent) {	do {curtop += 2*obj.offsetTop;	} while (obj = obj.offsetParent);}MyAndroid.receiveValueFromJs(curtop);}</script></head><body>";
+	private String endbody = "</body></html>";
+	private StepListAdapterWarn stepAdaptWarn;
+	private PreviousStepListAdapterWarn stepAdaptPreviousWarn;
+	private StepListAdapterJobSetup stepAdaptJobSetup;
+	private PreviousStepListAdapterJobSetup stepAdaptPreviousJobSetup;
+	private StepListAdapterCloseUp stepAdaptCloseUp;
+	private PreviousStepListAdapterCloseUp stepAdaptPreviousCloseUp;
+	private boolean warningFinish = false, setUpFinish = false,
+			procedureFinish = false, closeUpFinish = false;
+	private ImageButton prevWarn, prevJobSetup, prevProc, prevCloseUp;
 
-	private DataParsing parser;
+	private LayoutParams lpc;
 
-	private int x; // abscisse de la séparation entre la zone de texte et
-					// l'annexe.
-	private static int xmax; // largeur maximale de la zone de texte ou de
-								// l'annexe.
-	private static int ymax; // ordonnée d'apparition de la flèche basse.
-	private static int xmin; // largeur minimale de la zone de texte ou de
-								// l'annexe.
-	private static int ymin; // ordonnée d'apparition de la flèche haute.
-	private static int xseparator = 160; // largeur de la barre de séparation.
-	private static int yinfobulle = 331; // hauteur de l'image infobulle.
-
-	private static int t1 = 50; // fréquence de rafraichissement du pointeur.
-	private static int t2 = 200; // temps avant de récupérer largeur et hauteur.
-	private static int t3 = 300; // temps avant de mettre le scroll au bon
-									// endroit après ouverture d'une annexe.
-	private static int tailleImg = 40; //Taille des images sur le côté
-
-	private int scrollX;
-	private int scrollY;
-
-	private LinearLayout layout; // layout global contenant documentation et
-									// annexes.
-
-	private OurScrollView scrollView; // scrollview contenant la documentation.
-
-	private WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV,
-			picturesWV;
-	private TextView dateRevisionTV;
-	private LinearLayout warnings, jobSetUp, procedure, closeUp, tools,
-			pictures;
-
-	private WebView clickedWB; // WebView contenant le lien de l'annexe cliquée.
-	private String annexe; // Nom de l'annexe.
-	private int y_absolue; // Position du lien vers l'annexe dans scrollView.
-
-	private RelativeLayout separatorLayout; // layout de la barre verticale.
-	private ImageView separator_up; // barre verticale haute.
-	private ImageView separator_down; // barre verticale basse.
-	private ImageView infobulle; // image de l'infobulle.
-	private ImageView droite; //feedback des annexes à droite
-
-
-	private LinearLayout annexLayout; // layout de l'annexe.
-	private TextView titreAnnexe; // titre de l'annexe
-	private ImageButton closeAnnexButton; // bouton femer.
-	private ImageButton fullScreenAnnexButton; // bouton plein ecran.
-
-	// Pour les annexes multiples
-	private DrawerLayout mDrawerLayout;
-	private ListView listview;
-	private int nb_annexe;
-
-	// Création de la ArrayList qui nous permettra de remplir la listView
-	ArrayList<HashMap<String, Object>> listItem;
-	HashMap<String, Object> map;
-
-	// Pour le multitouch
-	private ImageView annexImg;
-	private FrameLayout layoutImg;
-	private String title;
-
-	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // état de l'annexe.
-	LayoutParams lpc;
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		getWidthHeight();
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-		getWidthHeight();
-	}
 
 	@SuppressLint("ResourceAsColor")
 	@Override
@@ -668,311 +591,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 		t.start();
 	}
 
-	// Scroll à une ordonnée de la documentation.
-	private void scrollTo(int y) {
-		scrollView.scrollTo(scrollView.getScrollX(), y - yinfobulle / 2);
-	}
-
-	// Affiche l'annexe.
-	private void setAnnexeX(int x) {
-		mDrawerLayout.setDrawerLockMode(0, Gravity.END);
-		scrollView.setLayoutParams(new LayoutParams(x - xseparator / 3,
-				LayoutParams.MATCH_PARENT));
-		droite.setLayoutParams(new LayoutParams(tailleImg,
-				LayoutParams.MATCH_PARENT));
-		annexLayout.setLayoutParams(new LayoutParams(xmax - tailleImg - x - xseparator / 3,
-				ymax));
-		// setInfobulle();
-	}
-
-	// Affiche l'annexe et met l'abscisse du séparateur.
-	private void setAnnexeXAndX(int _x) {
-		setAnnexeX(x);
-		x = _x;
-	}
-
-	// Affiche le titre de l'annexe et met l'image de l'annexe
-	private void setTitleAndImgAnnexe(CharSequence text, String img, WebView wb) {
-		int resID = getResources().getIdentifier(img, "drawable",
-				"package.name");
-		annexImg.setImageResource(resID);
-		titreAnnexe.setText(text);
-		int position = trouveDansListe(titreAnnexe.getText().toString(), wb) - 1;
-		listview.performItemClick(
-				listview.getAdapter().getView(position, null, null), position,
-				position);
-	}
-
-	// Affiche le séparateur et l'infobulle.
-	private void displaySeparator() {
-		separatorLayout.setVisibility(View.VISIBLE);
-	}
-
-	// Cache le séparateur et l'infobulle.
-	private void hideSeparator() {
-		separatorLayout.setVisibility(View.INVISIBLE);
-
-	}
-
-	// Place l'infobulle selon l'ordonnée y relative à la WebView contenant le
-	// lien vers l'annexe.
-	public void setInfobulle(int y) {
-
-		if (clickedWB.equals(warningWV)) {
-			setInfobulle(!isCollapsed(R.id.stateWarning), y, 0);
-		}
-
-		if (clickedWB.equals(jobSetUpWV)) {
-			setInfobulle(!isCollapsed(R.id.stateJobSetUp), y, 1);
-		}
-
-		if (clickedWB.equals(procedureWV)) {
-			setInfobulle(!isCollapsed(R.id.stateProcedure), y, 2);
-		}
-
-		if (clickedWB.equals(closeUpWV)) {
-			setInfobulle(!isCollapsed(R.id.stateCloseUp), y, 3);
-		}
-
-		if (clickedWB.equals(toolsWV)) {
-			setInfobulle(!isCollapsed(R.id.stateTools), y, 4);
-		}
-
-		if (clickedWB.equals(picturesWV)) {
-			setInfobulle(!isCollapsed(R.id.statePictures), y, 5);
-		}
-	}
-
-	private void setInfobulle(boolean state, int y, int pos) {
-		if (state) {
-			y_absolue = 96 + 30 * pos + warnings.getHeight()
-					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
-					+ (pos >= 2 ? 1 : 0) * procedure.getHeight()
-					+ (pos >= 3 ? 1 : 0) * closeUp.getHeight()
-					+ (pos >= 4 ? 1 : 0) * tools.getHeight()
-					+ (pos >= 5 ? 1 : 0) * pictures.getHeight()
-					- clickedWB.getHeight() + y;
-		} else {
-			y_absolue = (int) (70 + 30 * pos
-					+ ((pos >= 0 ? 0.5 : 0) + (pos >= 1 ? 0.5 : 0))
-					* warnings.getHeight()
-					+ ((pos >= 1 ? 0.5 : 0) + (pos >= 2 ? 0.5 : 0))
-					* jobSetUp.getHeight()
-					+ ((pos >= 2 ? 0.5 : 0) + (pos >= 3 ? 0.5 : 0))
-					* procedure.getHeight()
-					+ ((pos >= 3 ? 0.5 : 0) + (pos >= 4 ? 0.5 : 0))
-					* closeUp.getHeight()
-					+ ((pos >= 4 ? 0.5 : 0) + (pos >= 5 ? 0.5 : 0))
-					* tools.getHeight() + (pos >= 5 ? 0.5 : 0)
-					* pictures.getHeight());
-		}
-		displayInfobulle(y_absolue - scrollView.getScrollY());
-	}
-
-	private void displayInfobulle(final int y) {
-		runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-						infobulle.getLayoutParams());
-				if (y < ymin) {
-					infobulle.setImageResource(R.drawable.fleche_haut);
-					separator_up.setVisibility(View.INVISIBLE);
-					params.topMargin = ymin - yinfobulle / 3;
-				} else if (y > ymax) {
-					infobulle.setImageResource(R.drawable.fleche_bas);
-					separator_down.setVisibility(View.INVISIBLE);
-					params.topMargin = ymax - yinfobulle / 3;
-				} else {
-					infobulle.setImageResource(R.drawable.infobulle);
-					separator_up.setVisibility(View.VISIBLE);
-					separator_down.setVisibility(View.VISIBLE);
-					params.topMargin = y - yinfobulle / 3;
-				}
-				infobulle.setLayoutParams(params);
-			}
-		});
-	}
-
-	public void onAnnexeClic(WebView webView, String annexe) {
-		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
-		switch (state) {
-		case NOT_DISPLAYED:
-			setAnnexeX(x);
-			scrollView.setAnnexe(webView, annexe);
-			this.annexe = annexe;
-			clickedWB = webView;
-			clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-			// Image a changer
-			ajouteList(annexe, String.valueOf(R.drawable.ata), clickedWB);
-			// Image a changer
-			setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
-					clickedWB);
-			// Mise à jour de la position dans la doc.
-			Timer t_ouverture = new Timer();
-			class ScrollTo extends TimerTask {
-				@Override
-				public void run() {
-					runOnUiThread(new Runnable() {
-						public void run() {
-							scrollTo(y_absolue);
-						}
-					});
-				}
-			}
-			t_ouverture.schedule(new ScrollTo(), t3);
-			state = AnnexesState.DISPLAYED_FREE;
-			break;
-		case DISPLAYED_FREE:
-			if (testeActuel(annexe, webView) && nb_annexe == 1) {
-				setAnnexeX(xmax + xseparator / 3);
-				supprimeElt(annexe, webView);
-				state = AnnexesState.NOT_DISPLAYED;
-			} else if (testeActuel(annexe, webView)) {
-				supprimeElt(annexe, webView);
-				state = AnnexesState.DISPLAYED_FREE;
-			} else {
-				scrollView.setAnnexe(webView, annexe);
-				this.annexe = annexe;
-				clickedWB = webView;
-				clickedWB.loadUrl("javascript:getPosition('" + annexe + "')");
-				// Image a changer
-				ajouteList(annexe, String.valueOf(R.drawable.ata), clickedWB);
-				// Image a changer
-				setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
-						clickedWB);
-				state = AnnexesState.DISPLAYED_FREE;
-			}
-			break;
-		case DISPLAYED_PRESSED:
-			break;
-		case DISPLAYED_FULLSCREEN:
-			break;
-		}
-	}
-
-	private void getWidthHeight() {
-		// Récupération de la largeur et de la hauteur du layout.
-		Timer t = new Timer();
-		class SetMax extends TimerTask {
-			@Override
-			public void run() {
-				ymax = layout.getHeight();
-				xmax = layout.getWidth();
-				xmin = xmax / 4;
-				ymin = 0;
-				x = xmax / 2;
-			}
-		}
-		t.schedule(new SetMax(), t2);
-	}
-
-	// Fonction pour supprimer tout les éléments de la liste
-	private void supprimeTout() {
-		listItem = new ArrayList<HashMap<String, Object>>();
-		listview.invalidateViews();
-		map = new HashMap<String, Object>();
-		map.put("titre", "Close All");
-		map.put("img", String.valueOf(R.drawable.close));
-		map.put("webview", null);
-		listItem.add(map);
-		nb_annexe = 0;
-		setAnnexeX(xmax + xseparator / 3);
-		mDrawerLayout.setDrawerLockMode(1, Gravity.END);
-		droite.setLayoutParams(new LayoutParams(0,
-				LayoutParams.MATCH_PARENT));
-		state = AnnexesState.NOT_DISPLAYED;
-	}
-
-	// Fonction qui supprime un élément de la listview et agit en conséquence
-	// suivant la prèsence d'autres annexes
-	private void supprimeElt(String titre, WebView wb) {
-		if (listItem.size() != 2) {
-			Log.e("SupprimeElt",
-					"Indice de l'item : " + trouveDansListe(titre, wb));
-			int indice = trouveDansListe(titre, wb);
-			listItem.remove(indice - 1);
-			Log.w("SupprimeElt", "Taille de listItem : " + listItem.size());
-			nb_annexe--;
-			listview.invalidateViews();
-			int position = 1;
-			listview.performItemClick(
-					listview.getAdapter().getView(position, null, null),
-					position, position);
-		} else {
-			Log.e("SupprimeElt",
-					"Indice de l'item : " + trouveDansListe(titre, wb));
-			listItem.remove(trouveDansListe(titre, wb) - 1);
-			listview.invalidateViews();
-			nb_annexe--;
-			setAnnexeX(xmax + xseparator / 3);
-			mDrawerLayout.setDrawerLockMode(1, Gravity.END);
-			displaySeparator();
-			fullScreenAnnexButton.setImageResource(R.drawable.btn_fullscreen);
-			droite.setLayoutParams(new LayoutParams(0,
-					LayoutParams.MATCH_PARENT));
-			state = AnnexesState.NOT_DISPLAYED;
-		}
-	}
-
-	// Fonction pour trouver l'indice de l'élément titre.
-	private int trouveDansListe(String titre, WebView wb) {
-		Iterator<HashMap<String, Object>> iterateur = listItem.iterator();
-		int numero = 0;
-		boolean test = false;
-		while (!test && iterateur.hasNext()) {
-			HashMap<String, Object> mapElt = iterateur.next();
-			test = (mapElt.get("titre").equals(titre) && mapElt.get("webview")
-					.equals(wb));
-			numero++;
-		}
-		return numero;
-	}
-
-	// Teste si l'objet de titre titre est l'annexe affichée actuellement
-	private boolean testeActuel(String titre, WebView wb) {
-		return (titre.equals(titreAnnexe.getText().toString()) && clickedWB == wb);
-	}
-
-	// Teste si l'objet de titre titre est dans la listview
-	private boolean testeObjetDansListe(String titre, WebView wb) {
-		Iterator<HashMap<String, Object>> iterateur = listItem.iterator();
-		boolean test = false;
-		while (!test && iterateur.hasNext()) {
-			HashMap<String, Object> mapElt = iterateur.next();
-			test = (mapElt.get("titre").equals(titre) && mapElt.get("webview")
-					.equals(wb));
-		}
-		return test;
-	}
-
-	// Ajoute l'élément titre avec sont image a la listview
-	private void ajouteList(String titre, String img, WebView wb) {
-		if (!testeObjetDansListe(titre, wb)) {
-			map = new HashMap<String, Object>();
-			map.put("titre", titre);
-			map.put("img", img);
-			map.put("webview", wb);
-			listItem.add(map);
-			// Création d'un SimpleAdapter qui se chargera de mettre les items
-			// présent dans notre list (listItem) dans la vue affichage_annexes
-			SimpleAdapter mSchedule = new SimpleAdapter(this.getBaseContext(),
-					listItem, R.layout.affiche_annexes, new String[] { "img",
-							"titre" }, new int[] { R.id.listImage,
-							R.id.listTitreAnnexe });
-			listview.setAdapter(mSchedule);
-			// +1 annexe
-			nb_annexe++;
-		}
-	}
-
-	private void onHistoricItemClick(int position) {
-		Intent intent = new Intent(this, JobCard.class);
-		intent.putExtra("task", ((History) this.getApplication()).getKeyAt(position));
-		intent.putExtra("titre", title);
-		this.startActivity(intent);
-	}
-
 	private View.OnClickListener manageWarnings = new View.OnClickListener() {
 		public void onClick(View v) {
 			expandOrCollapse(R.id.warnings_layout, R.id.stateWarning);
@@ -1010,11 +628,13 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutProc));
 				v.setTag("v");
-				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previousderoule));
+				b.setImageDrawable(getResources().getDrawable(
+						R.drawable.button_previousderoule));
 			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutProc));
 				v.setTag(">");
-				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previouspasderoule));
+				b.setImageDrawable(getResources().getDrawable(
+						R.drawable.button_previouspasderoule));
 			}
 		}
 	};
@@ -1025,11 +645,13 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutWarn));
 				v.setTag("v");
-				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previousderoule));
+				b.setImageDrawable(getResources().getDrawable(
+						R.drawable.button_previousderoule));
 			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutWarn));
 				v.setTag(">");
-				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previouspasderoule));
+				b.setImageDrawable(getResources().getDrawable(
+						R.drawable.button_previouspasderoule));
 			}
 		}
 	};
@@ -1040,11 +662,13 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
 				v.setTag("v");
-				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previousderoule));
+				b.setImageDrawable(getResources().getDrawable(
+						R.drawable.button_previousderoule));
 			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
 				v.setTag(">");
-				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previouspasderoule));
+				b.setImageDrawable(getResources().getDrawable(
+						R.drawable.button_previouspasderoule));
 			}
 		}
 	};
@@ -1055,70 +679,16 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			if (v.getTag().equals(">")) {
 				expand((LinearLayout) findViewById(R.id.previousLayoutCloseUp));
 				v.setTag("v");
-				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previousderoule));
+				b.setImageDrawable(getResources().getDrawable(
+						R.drawable.button_previousderoule));
 			} else {
 				collapse((LinearLayout) findViewById(R.id.previousLayoutCloseUp));
 				v.setTag(">");
-				b.setImageDrawable(getResources().getDrawable(R.drawable.button_previouspasderoule));
+				b.setImageDrawable(getResources().getDrawable(
+						R.drawable.button_previouspasderoule));
 			}
 		}
 	};
-
-	/**
-	 * Expand or collapse a documentation part.
-	 * 
-	 * @param part
-	 *            , the part to expand or collapse
-	 * @param icon
-	 *            , the icon to manage
-	 */
-	private void expandOrCollapse(int part, int icon) {
-		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag()
-				.toString());
-		if (tag == R.drawable.collapse) {
-			expand(part, icon);
-		} else {
-			collapse(part, icon);
-		}
-	}
-
-	/**
-	 * Expand a documentation part.
-	 * 
-	 * @param part
-	 *            , the part to expand
-	 * @param icon
-	 *            , the icon to manage
-	 */
-	private void expand(int part, int icon) {
-		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag()
-				.toString());
-		if (tag != R.drawable.expand) {
-			expand((LinearLayout) findViewById(part));
-			((ImageView) findViewById(icon))
-					.setImageResource(R.drawable.expand);
-			((ImageView) findViewById(icon)).setTag(R.drawable.expand);
-		}
-	}
-
-	/**
-	 * Collapse a documentation part.
-	 * 
-	 * @param part
-	 *            , the part to collapse
-	 * @param icon
-	 *            , the icon to manage
-	 */
-	private void collapse(int part, int icon) {
-		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag()
-				.toString());
-		if (tag != R.drawable.collapse) {
-			collapse((LinearLayout) findViewById(part));
-			((ImageView) findViewById(icon))
-					.setImageResource(R.drawable.collapse);
-			((ImageView) findViewById(icon)).setTag(R.drawable.collapse);
-		}
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -1154,66 +724,6 @@ public class JobCard extends Activity implements PropertyChangeListener,
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-	}
-
-	private void expand(final View v) {
-		v.measure(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
-		final int targtetHeight = v.getMeasuredHeight();
-
-		v.getLayoutParams().height = 0;
-		v.setVisibility(View.VISIBLE);
-		Animation a = new Animation() {
-			@Override
-			protected void applyTransformation(float interpolatedTime,
-					Transformation t) {
-				v.getLayoutParams().height = interpolatedTime == 1 ? LayoutParams.WRAP_CONTENT
-						: (int) (targtetHeight * interpolatedTime);
-				v.requestLayout();
-			}
-
-			@Override
-			public boolean willChangeBounds() {
-				return true;
-			}
-		};
-
-		// 1dp/ms
-		a.setDuration((int) (targtetHeight / v.getContext().getResources()
-				.getDisplayMetrics().density));
-		v.startAnimation(a);
-	}
-
-	private void collapse(final View v) {
-		final int initialHeight = v.getMeasuredHeight();
-
-		Animation a = new Animation() {
-			@Override
-			protected void applyTransformation(float interpolatedTime,
-					Transformation t) {
-				if (interpolatedTime == 1) {
-					v.setVisibility(View.GONE);
-				} else {
-					v.getLayoutParams().height = initialHeight
-							- (int) (initialHeight * interpolatedTime);
-					v.requestLayout();
-				}
-			}
-
-			@Override
-			public boolean willChangeBounds() {
-				return true;
-			}
-		};
-
-		// 1dp/ms
-		a.setDuration((int) (initialHeight / v.getContext().getResources()
-				.getDisplayMetrics().density));
-		v.startAnimation(a);
-	}
-
-	private boolean isCollapsed(int icon) {
-		return Integer.parseInt(((ImageView) findViewById(icon)).getTag()
-				.toString()) == R.drawable.collapse;
 	}
 
 	@Override
@@ -1304,11 +814,14 @@ public class JobCard extends Activity implements PropertyChangeListener,
 										.setListItems(previousStepsWarn);
 								listStepPreviousWarning
 										.setAdapter(stepAdaptPreviousWarn);
-								if(mStep.isEmpty()){
+								if (mStep.isEmpty()) {
 									warningFinish = true;
-									stepAdaptJobSetup = new StepListAdapterJobSetup(JobCard.this);
-									stepAdaptJobSetup.setListItems(stepsJobSetup);
-									listStepJobSetup.setAdapter(stepAdaptJobSetup);
+									stepAdaptJobSetup = new StepListAdapterJobSetup(
+											JobCard.this);
+									stepAdaptJobSetup
+											.setListItems(stepsJobSetup);
+									listStepJobSetup
+											.setAdapter(stepAdaptJobSetup);
 								}
 
 							}
@@ -1400,7 +913,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						R.color.background2_light));
 
 				if (pos == (mStep.size()) - 1) {
-					
+
 					h.mButton.setVisibility(View.VISIBLE);
 					h.mButton.setOnClickListener(new OnClickListener() {
 
@@ -1428,7 +941,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 								listStepPreviousWarning
 										.setAdapter(stepAdaptPreviousWarn);
 								warningFinish = false;
-								if(mStep.isEmpty()){
+								if (mStep.isEmpty()) {
 									prevWarn.setVisibility(View.GONE);
 									collapse((LinearLayout) findViewById(R.id.previousLayoutWarn));
 								}
@@ -1516,53 +1029,54 @@ public class JobCard extends Activity implements PropertyChangeListener,
 				h.mWV.setBackgroundColor(getResources().getColor(
 						R.color.background1_light));
 				h.mButton = (ImageButton) arg1.findViewById(R.id.Ok);
-				
-					if (pos == 0) {
-						if(!warningFinish){
-							h.mButton.setVisibility(View.INVISIBLE);
-						}
-						
-						h.mButton.setOnClickListener(new OnClickListener() {
-	
-							@Override
-							public void onClick(View arg0) {
-								if (pos == 0) {
 
-									prevJobSetup.setVisibility(View.VISIBLE);
-									LayoutParams lpc = (LayoutParams) listStepJobSetup
-											.getLayoutParams();
-									lpc.height -= 185;
-									listStepJobSetup.setLayoutParams(lpc);
-									lpc = (LayoutParams) listStepPreviousJobSetup
-											.getLayoutParams();
-									lpc.height += 185;
-									listStepPreviousJobSetup.setLayoutParams(lpc);
-	
-									Step toDel = mStep.remove(pos);
-									stepAdaptJobSetup.notifyDataSetChanged();
-									PreviousStep ps = new PreviousStep();
-									ps.setTask(toDel.getTask());
-	
-									previousStepsJobSetup.add(ps);
-									stepAdaptPreviousJobSetup = new PreviousStepListAdapterJobSetup(
-											ct);
-									stepAdaptPreviousJobSetup
-											.setListItems(previousStepsJobSetup);
-									listStepPreviousJobSetup
-											.setAdapter(stepAdaptPreviousJobSetup);
-									if(mStep.isEmpty()){
-										setUpFinish = true;
-										stepAdaptProc = new StepListAdapterProcedure(JobCard.this);
-										stepAdaptProc.setListItems(stepsProc);
-										listStepProc.setAdapter(stepAdaptProc);
-									}
-								}
-							}
-	
-						});
-					} else {
+				if (pos == 0) {
+					if (!warningFinish) {
 						h.mButton.setVisibility(View.INVISIBLE);
 					}
+
+					h.mButton.setOnClickListener(new OnClickListener() {
+
+						@Override
+						public void onClick(View arg0) {
+							if (pos == 0) {
+
+								prevJobSetup.setVisibility(View.VISIBLE);
+								LayoutParams lpc = (LayoutParams) listStepJobSetup
+										.getLayoutParams();
+								lpc.height -= 185;
+								listStepJobSetup.setLayoutParams(lpc);
+								lpc = (LayoutParams) listStepPreviousJobSetup
+										.getLayoutParams();
+								lpc.height += 185;
+								listStepPreviousJobSetup.setLayoutParams(lpc);
+
+								Step toDel = mStep.remove(pos);
+								stepAdaptJobSetup.notifyDataSetChanged();
+								PreviousStep ps = new PreviousStep();
+								ps.setTask(toDel.getTask());
+
+								previousStepsJobSetup.add(ps);
+								stepAdaptPreviousJobSetup = new PreviousStepListAdapterJobSetup(
+										ct);
+								stepAdaptPreviousJobSetup
+										.setListItems(previousStepsJobSetup);
+								listStepPreviousJobSetup
+										.setAdapter(stepAdaptPreviousJobSetup);
+								if (mStep.isEmpty()) {
+									setUpFinish = true;
+									stepAdaptProc = new StepListAdapterProcedure(
+											JobCard.this);
+									stepAdaptProc.setListItems(stepsProc);
+									listStepProc.setAdapter(stepAdaptProc);
+								}
+							}
+						}
+
+					});
+				} else {
+					h.mButton.setVisibility(View.INVISIBLE);
+				}
 				arg1.setTag(h);
 			} else {
 				h = (StepViewHolder) arg1.getTag();
@@ -1678,10 +1192,10 @@ public class JobCard extends Activity implements PropertyChangeListener,
 								stepAdaptPreviousJobSetup.setListItems(mStep);
 								listStepPreviousJobSetup
 										.setAdapter(stepAdaptPreviousJobSetup);
-								if(mStep.isEmpty()){
+								if (mStep.isEmpty()) {
 									prevJobSetup.setVisibility(View.GONE);
 									collapse((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
-									
+
 								}
 								setUpFinish = false;
 							}
@@ -1758,7 +1272,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 			if (arg1 == null) {
 				SwitchTaskManager taskManager = new SwitchTaskManager(
 						JobCard.this, JobCard.this);
-				arg1 = mInf.inflate(R.layout.step, arg2 ,false);
+				arg1 = mInf.inflate(R.layout.step, arg2, false);
 				h = new StepViewHolder();
 				// h.mTask = (TextView) arg1.findViewById(R.id.task);
 				h.mWV = (WebView) arg1.findViewById(R.id.webView1);
@@ -1770,7 +1284,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						R.color.background1_light));
 				h.mButton = (ImageButton) arg1.findViewById(R.id.Ok);
 				if (pos == 0) {
-					if(!warningFinish && !setUpFinish){
+					if (!warningFinish && !setUpFinish) {
 						h.mButton.setVisibility(View.INVISIBLE);
 					}
 					h.mButton.setOnClickListener(new OnClickListener() {
@@ -1800,11 +1314,13 @@ public class JobCard extends Activity implements PropertyChangeListener,
 										.setListItems(previousStepsProc);
 								listStepPreviousProc
 										.setAdapter(stepAdaptPreviousProc);
-								if(mStep.isEmpty()){
+								if (mStep.isEmpty()) {
 									procedureFinish = true;
-									stepAdaptCloseUp = new StepListAdapterCloseUp(JobCard.this);
+									stepAdaptCloseUp = new StepListAdapterCloseUp(
+											JobCard.this);
 									stepAdaptCloseUp.setListItems(stepsCloseUp);
-									listStepCloseUp.setAdapter(stepAdaptCloseUp);
+									listStepCloseUp
+											.setAdapter(stepAdaptCloseUp);
 								}
 							}
 						}
@@ -1927,10 +1443,10 @@ public class JobCard extends Activity implements PropertyChangeListener,
 								stepAdaptPreviousProc.setListItems(mStep);
 								listStepPreviousProc
 										.setAdapter(stepAdaptPreviousProc);
-								if(mStep.isEmpty()){
+								if (mStep.isEmpty()) {
 									prevJobSetup.setVisibility(View.GONE);
 									collapse((LinearLayout) findViewById(R.id.previousLayoutJobSetup));
-									
+
 								}
 								setUpFinish = false;
 							}
@@ -2009,7 +1525,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						JobCard.this, JobCard.this);
 				arg1 = mInf.inflate(R.layout.step, null);
 				h = new StepViewHolder();
-				
+
 				h.mWV = (WebView) arg1.findViewById(R.id.webView1);
 				h.mWV.setWebViewClient(taskManager);
 				h.mWV.getSettings().setJavaScriptEnabled(true);
@@ -2019,7 +1535,7 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						R.color.background1_light));
 				h.mButton = (ImageButton) arg1.findViewById(R.id.Ok);
 				if (pos == 0) {
-					if(!warningFinish && !setUpFinish && !procedureFinish){
+					if (!warningFinish && !setUpFinish && !procedureFinish) {
 						h.mButton.setVisibility(View.INVISIBLE);
 					}
 					h.mButton.setOnClickListener(new OnClickListener() {
@@ -2027,9 +1543,9 @@ public class JobCard extends Activity implements PropertyChangeListener,
 						@Override
 						public void onClick(View arg0) {
 							if (pos == 0) {
-								
+
 								prevCloseUp.setVisibility(View.VISIBLE);
-								
+
 								LayoutParams lpc = (LayoutParams) listStepCloseUp
 										.getLayoutParams();
 								lpc.height -= 185;

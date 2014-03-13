@@ -68,75 +68,77 @@ public class AMM extends Activity implements PropertyChangeListener,
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
 
-	private DataParsing parser;
+	protected DataParsing parser;
 
-	private int x; // abscisse de la sÃ©paration entre la zone de texte et
+	protected int x; // abscisse de la sÃ©paration entre la zone de texte et
 					// l'annexe.
-	private static int xmax; // largeur maximale de la zone de texte ou de
+	protected static int xmax; // largeur maximale de la zone de texte ou de
 								// l'annexe.
-	private static int ymax; // ordonnÃ©e d'apparition de la flÃ¨che basse.
-	private static int xmin; // largeur minimale de la zone de texte ou de
+	protected static int ymax; // ordonnÃ©e d'apparition de la flÃ¨che basse.
+	protected static int xmin; // largeur minimale de la zone de texte ou de
 								// l'annexe.
-	private static int ymin; // ordonnÃ©e d'apparition de la flÃ¨che haute.
-	private static int xseparator = 160; // largeur de la barre de sÃ©paration.
-	private static int yinfobulle = 331; // hauteur de l'image infobulle.
+	protected static int ymin; // ordonnÃ©e d'apparition de la flÃ¨che haute.
+	protected static int xseparator = 160; // largeur de la barre de sÃ©paration.
+	protected static int yinfobulle = 331; // hauteur de l'image infobulle.
 
-	private static int t1 = 50; // frÃ©quence de rafraichissement du pointeur.
-	private static int t2 = 200; // temps avant de rÃ©cupÃ©rer largeur et hauteur.
-	private static int t3 = 300; // temps avant de mettre le scroll au bon
+	protected static int t1 = 50; // frÃ©quence de rafraichissement du pointeur.
+	protected static int t2 = 200; // temps avant de rÃ©cupÃ©rer largeur et
+									// hauteur.
+	protected static int t3 = 300; // temps avant de mettre le scroll au bon
 									// endroit aprÃ¨s ouverture d'une annexe.
-	private static int tailleImg = 40; //Taille des images sur le cÃ´tÃ©
+	protected static int tailleImg = 40; // Taille des images sur le cÃ´tÃ©
 
-	private int scrollX;
-	private int scrollY;
-	
-	private String msn, fsn, id, plane;
+	protected int scrollX;
+	protected int scrollY;
 
-	private LinearLayout layout; // layout global contenant documentation et
+	protected String msn, fsn, id, plane;
+
+	protected LinearLayout layout; // layout global contenant documentation et
 									// annexes.
 
-	private OurScrollView scrollView; // scrollview contenant la documentation.
+	protected OurScrollView scrollView; // scrollview contenant la documentation.
 
-	private WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV,
+	protected WebView warningWV, jobSetUpWV, procedureWV, closeUpWV, toolsWV,
 			picturesWV;
-	private TextView dateRevisionTV;
-	private LinearLayout warnings, jobSetUp, procedure, closeUp, tools,
+	protected TextView dateRevisionTV;
+	protected LinearLayout warnings, jobSetUp, procedure, closeUp, tools,
 			pictures;
 
-	private WebView clickedWB; // WebView contenant le lien de l'annexe cliquÃ©e.
-	private String annexe; // Nom de l'annexe.
-	private int y_absolue; // Position du lien vers l'annexe dans scrollView.
+	protected WebView clickedWB; // WebView contenant le lien de l'annexe
+								// cliquÃ©e.
+	protected String annexe; // Nom de l'annexe.
+	protected int y_absolue; // Position du lien vers l'annexe dans scrollView.
 
-	private RelativeLayout separatorLayout; // layout de la barre verticale.
-	private ImageView separator_up; // barre verticale haute.
-	private ImageView separator_down; // barre verticale basse.
-	private ImageView infobulle; // image de l'infobulle.
-	private ImageView droite; //feedback des annexes Ã  droite
+	protected RelativeLayout separatorLayout; // layout de la barre verticale.
+	protected ImageView separator_up; // barre verticale haute.
+	protected ImageView separator_down; // barre verticale basse.
+	protected ImageView infobulle; // image de l'infobulle.
+	protected ImageView droite; // feedback des annexes Ã droite
 
-	private LinearLayout annexLayout; // layout de l'annexe.
-	private TextView titreAnnexe; // titre de l'annexe
-	private ImageButton closeAnnexButton; // bouton femer.
-	private ImageButton fullScreenAnnexButton; // bouton plein ecran.
-	
+	protected LinearLayout annexLayout; // layout de l'annexe.
+	protected TextView titreAnnexe; // titre de l'annexe
+	protected ImageButton closeAnnexButton; // bouton femer.
+	protected ImageButton fullScreenAnnexButton; // bouton plein ecran.
 
 	// Pour les annexes multiples
-	private DrawerLayout mDrawerLayout;
-	private ListView listview;
-	private int nb_annexe;
+	protected DrawerLayout mDrawerLayout;
+	protected ListView listview;
+	protected int nb_annexe;
 
 	// CrÃ©ation de la ArrayList qui nous permettra de remplir la listView
-	ArrayList<HashMap<String, Object>> listItem;
-	HashMap<String, Object> map;
+	protected ArrayList<HashMap<String, Object>> listItem;
+	protected HashMap<String, Object> map;
 
 	// Pour le multitouch
-	private ImageView annexImg;
-	private FrameLayout layoutImg;
+	protected ImageView annexImg;
+	protected FrameLayout layoutImg;
 
-	private String title;
+	protected String title;
 
-	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // Ã©tat de l'annexe.
+	public AnnexesState state = AnnexesState.NOT_DISPLAYED; // Ã©tat de
+															// l'annexe.
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
@@ -164,8 +166,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		separator_down = (ImageView) findViewById(R.id.separator_down);
 		infobulle = (ImageView) findViewById(R.id.infobulle);
 		droite = (ImageView) findViewById(R.id.droite);
-		droite.setLayoutParams(new LayoutParams(0,
-				LayoutParams.MATCH_PARENT));
+		droite.setLayoutParams(new LayoutParams(0, LayoutParams.MATCH_PARENT));
 
 		scrollView = (OurScrollView) findViewById(R.id.scrollView);
 		scrollView.setActivity(this);
@@ -239,17 +240,17 @@ public class AMM extends Activity implements PropertyChangeListener,
 		});
 
 		// Listener sur l'infobulle.
-        infobulle.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                int y = y_absolue - scrollView.getScrollY();
-                if (y < ymin || y > ymax) {
-                    scrollTo(y_absolue);
-                    return true;
-                }
-                else return false;
-            }
-        });
+		infobulle.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				int y = y_absolue - scrollView.getScrollY();
+				if (y < ymin || y > ymax) {
+					scrollTo(y_absolue);
+					return true;
+				} else
+					return false;
+			}
+		});
 
 		// Listener sur la barre verticale.
 		layout.setOnTouchListener(new View.OnTouchListener() {
@@ -391,13 +392,14 @@ public class AMM extends Activity implements PropertyChangeListener,
 			dateRevisionTV = (TextView) findViewById(R.id.date_text);
 			displayLastRevision(ammPart);
 			// Add procedure to used procedures
-			File file = new File(getApplicationContext().getFilesDir(),"proceduresUsed.txt");
-			if(!procedureUsed(file, ammPart)){
-				FileWriter logWriter = new FileWriter(file);                  
-		        BufferedWriter out = new BufferedWriter(logWriter); 
-		        out.write(ammPart);
-		        out.newLine();
-		        out.close();
+			File file = new File(getApplicationContext().getFilesDir(),
+					"proceduresUsed.txt");
+			if (!procedureUsed(file, ammPart)) {
+				FileWriter logWriter = new FileWriter(file);
+				BufferedWriter out = new BufferedWriter(logWriter);
+				out.write(ammPart);
+				out.newLine();
+				out.close();
 			}
 			/* Warnings part */
 			warnings = (LinearLayout) findViewById(R.id.warnings);
@@ -540,13 +542,14 @@ public class AMM extends Activity implements PropertyChangeListener,
 		t.start();
 	}
 
-	private void displayLastRevision(String procedure) {
+	protected void displayLastRevision(String procedure) {
 		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-		File file = new File(getApplicationContext().getFilesDir(),"proceduresUsed.txt");
-		if(procedureUsed(file, procedure)){
+		File file = new File(getApplicationContext().getFilesDir(),
+				"proceduresUsed.txt");
+		if (procedureUsed(file, procedure)) {
 			dateRevisionTV.setText("Last revision : "
 					+ formatter.format(parser.getLastRevision()));
-		}else{
+		} else {
 			dateRevisionTV.setPadding(70, 0, 0, 0);
 			dateRevisionTV.setTextColor(getResources().getColor(color.red));
 			dateRevisionTV.setTypeface(null, Typeface.BOLD);
@@ -557,16 +560,17 @@ public class AMM extends Activity implements PropertyChangeListener,
 	}
 
 	@SuppressWarnings("resource")
-	private boolean procedureUsed(File file, String procedure){
+	protected boolean procedureUsed(File file, String procedure) {
 		InputStream instream;
 		boolean procedureFound = false;
 		try {
 			instream = new FileInputStream(file);
 			if (instream != null) {
-				BufferedReader buffreader = new BufferedReader(new InputStreamReader(instream));
+				BufferedReader buffreader = new BufferedReader(
+						new InputStreamReader(instream));
 				String line = buffreader.readLine();
 				while (line != null && procedureFound == false) {
-					if(line.contains(procedure)){
+					if (line.contains(procedure)) {
 						procedureFound = true;
 					}
 					line = buffreader.readLine();
@@ -580,31 +584,31 @@ public class AMM extends Activity implements PropertyChangeListener,
 		return procedureFound;
 	}
 
-	// Scroll Ã  une ordonnÃ©e de la documentation.
-	private void scrollTo(int y) {
+	// Scroll Ã une ordonnÃ©e de la documentation.
+	protected void scrollTo(int y) {
 		scrollView.scrollTo(scrollView.getScrollX(), y - yinfobulle / 2);
 	}
 
 	// Affiche l'annexe.
-	private void setAnnexeX(int x) {
+	protected void setAnnexeX(int x) {
 		mDrawerLayout.setDrawerLockMode(0, Gravity.END);
 		scrollView.setLayoutParams(new LayoutParams(x - xseparator / 3,
 				LayoutParams.MATCH_PARENT));
 		droite.setLayoutParams(new LayoutParams(tailleImg,
 				LayoutParams.MATCH_PARENT));
-		annexLayout.setLayoutParams(new LayoutParams(xmax - tailleImg - x - xseparator / 3,
-				ymax));
+		annexLayout.setLayoutParams(new LayoutParams(xmax - tailleImg - x
+				- xseparator / 3, ymax));
 		// setInfobulle();
 	}
 
 	// Affiche l'annexe et met l'abscisse du sÃ©parateur.
-	private void setAnnexeXAndX(int _x) {
+	protected void setAnnexeXAndX(int _x) {
 		setAnnexeX(x);
 		x = _x;
 	}
 
 	// Affiche le titre de l'annexe et met l'image de l'annexe
-	private void setTitleAndImgAnnexe(CharSequence text, String img, WebView wb) {
+	protected void setTitleAndImgAnnexe(CharSequence text, String img, WebView wb) {
 		int resID = getResources().getIdentifier(img, "drawable",
 				"package.name");
 		annexImg.setImageResource(resID);
@@ -616,17 +620,17 @@ public class AMM extends Activity implements PropertyChangeListener,
 	}
 
 	// Affiche le sÃ©parateur et l'infobulle.
-	private void displaySeparator() {
+	protected void displaySeparator() {
 		separatorLayout.setVisibility(View.VISIBLE);
 	}
 
 	// Cache le sÃ©parateur et l'infobulle.
-	private void hideSeparator() {
+	protected void hideSeparator() {
 		separatorLayout.setVisibility(View.INVISIBLE);
 
 	}
 
-	// Place l'infobulle selon l'ordonnÃ©e y relative Ã  la WebView contenant le
+	// Place l'infobulle selon l'ordonnÃ©e y relative Ã la WebView contenant le
 	// lien vers l'annexe.
 	public void setInfobulle(int y) {
 
@@ -655,7 +659,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		}
 	}
 
-	private void setInfobulle(boolean state, int y, int pos) {
+	protected void setInfobulle(boolean state, int y, int pos) {
 		if (state) {
 			y_absolue = 96 + 30 * pos + warnings.getHeight()
 					+ (pos >= 1 ? 1 : 0) * jobSetUp.getHeight()
@@ -681,7 +685,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		displayInfobulle(y_absolue - scrollView.getScrollY());
 	}
 
-	private void displayInfobulle(final int y) {
+	protected void displayInfobulle(final int y) {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
@@ -706,7 +710,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		});
 	}
 
-	public void onAnnexeClic(WebView webView, String annexe) {
+	protected void onAnnexeClic(WebView webView, String annexe) {
 		Log.i("AMMAnnexes", "Clic Annexe : " + annexe);
 		switch (state) {
 		case NOT_DISPLAYED:
@@ -720,7 +724,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 			// Image a changer
 			setTitleAndImgAnnexe(annexe, String.valueOf(R.drawable.ata),
 					clickedWB);
-			// Mise Ã  jour de la position dans la doc.
+			// Mise Ã jour de la position dans la doc.
 			Timer t_ouverture = new Timer();
 			class ScrollTo extends TimerTask {
 				@Override
@@ -763,7 +767,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		}
 	}
 
-	private void getWidthHeight() {
+	protected void getWidthHeight() {
 		// RÃ©cupÃ©ration de la largeur et de la hauteur du layout.
 		Timer t = new Timer();
 		class SetMax extends TimerTask {
@@ -780,7 +784,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 	}
 
 	// Fonction pour supprimer tout les Ã©lÃ©ments de la liste
-	private void supprimeTout() {
+	protected void supprimeTout() {
 		listItem = new ArrayList<HashMap<String, Object>>();
 		listview.invalidateViews();
 		map = new HashMap<String, Object>();
@@ -791,14 +795,13 @@ public class AMM extends Activity implements PropertyChangeListener,
 		nb_annexe = 0;
 		setAnnexeX(xmax + xseparator / 3);
 		mDrawerLayout.setDrawerLockMode(1, Gravity.END);
-		droite.setLayoutParams(new LayoutParams(0,
-				LayoutParams.MATCH_PARENT));
+		droite.setLayoutParams(new LayoutParams(0, LayoutParams.MATCH_PARENT));
 		state = AnnexesState.NOT_DISPLAYED;
 	}
 
 	// Fonction qui supprime un Ã©lÃ©ment de la listview et agit en consÃ©quence
 	// suivant la prÃ¨sence d'autres annexes
-	private void supprimeElt(String titre, WebView wb) {
+	protected void supprimeElt(String titre, WebView wb) {
 		if (listItem.size() != 2) {
 			Log.e("SupprimeElt",
 					"Indice de l'item : " + trouveDansListe(titre, wb));
@@ -828,7 +831,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 	}
 
 	// Fonction pour trouver l'indice de l'Ã©lÃ©ment titre.
-	private int trouveDansListe(String titre, WebView wb) {
+	protected int trouveDansListe(String titre, WebView wb) {
 		Iterator<HashMap<String, Object>> iterateur = listItem.iterator();
 		int numero = 0;
 		boolean test = false;
@@ -842,12 +845,12 @@ public class AMM extends Activity implements PropertyChangeListener,
 	}
 
 	// Teste si l'objet de titre titre est l'annexe affichÃ©e actuellement
-	private boolean testeActuel(String titre, WebView wb) {
+	protected boolean testeActuel(String titre, WebView wb) {
 		return (titre.equals(titreAnnexe.getText().toString()) && clickedWB == wb);
 	}
 
 	// Teste si l'objet de titre titre est dans la listview
-	private boolean testeObjetDansListe(String titre, WebView wb) {
+	protected boolean testeObjetDansListe(String titre, WebView wb) {
 		Iterator<HashMap<String, Object>> iterateur = listItem.iterator();
 		boolean test = false;
 		while (!test && iterateur.hasNext()) {
@@ -859,7 +862,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 	}
 
 	// Ajoute l'Ã©lÃ©ment titre avec sont image a la listview
-	private void ajouteList(String titre, String img, WebView wb) {
+	protected void ajouteList(String titre, String img, WebView wb) {
 		if (!testeObjetDansListe(titre, wb)) {
 			map = new HashMap<String, Object>();
 			map.put("titre", titre);
@@ -878,9 +881,10 @@ public class AMM extends Activity implements PropertyChangeListener,
 		}
 	}
 
-	private void onHistoricItemClick(int position) {
+	protected void onHistoricItemClick(int position) {
 		Intent intent = new Intent(this, AMM.class);
-		intent.putExtra("task", ((History) this.getApplication()).getKeyAt(position));
+		intent.putExtra("task",
+				((History) this.getApplication()).getKeyAt(position));
 		intent.putExtra("titre", title);
 		intent.putExtra("MSN", msn);
 		intent.putExtra("FSN", fsn);
@@ -889,32 +893,32 @@ public class AMM extends Activity implements PropertyChangeListener,
 		this.startActivity(intent);
 	}
 
-	private View.OnClickListener manageWarnings = new View.OnClickListener() {
+	protected View.OnClickListener manageWarnings = new View.OnClickListener() {
 		public void onClick(View v) {
 			expandOrCollapse(R.id.warnings_layout, R.id.stateWarning);
 		}
 	};
-	private View.OnClickListener manageJobSetUp = new View.OnClickListener() {
+	protected View.OnClickListener manageJobSetUp = new View.OnClickListener() {
 		public void onClick(View v) {
 			expandOrCollapse(R.id.jobSetUp_layout, R.id.stateJobSetUp);
 		}
 	};
-	private View.OnClickListener manageProcedure = new View.OnClickListener() {
+	protected View.OnClickListener manageProcedure = new View.OnClickListener() {
 		public void onClick(View v) {
 			expandOrCollapse(R.id.procedure_layout, R.id.stateProcedure);
 		}
 	};
-	private View.OnClickListener manageCloseUp = new View.OnClickListener() {
+	protected View.OnClickListener manageCloseUp = new View.OnClickListener() {
 		public void onClick(View v) {
 			expandOrCollapse(R.id.closeUp_layout, R.id.stateCloseUp);
 		}
 	};
-	private View.OnClickListener manageTools = new View.OnClickListener() {
+	protected View.OnClickListener manageTools = new View.OnClickListener() {
 		public void onClick(View v) {
 			expandOrCollapse(R.id.tools_layout, R.id.stateTools);
 		}
 	};
-	private View.OnClickListener managePictures = new View.OnClickListener() {
+	protected View.OnClickListener managePictures = new View.OnClickListener() {
 		public void onClick(View v) {
 			expandOrCollapse(R.id.pictures_layout, R.id.statePictures);
 		}
@@ -928,7 +932,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 	 * @param icon
 	 *            , the icon to manage
 	 */
-	private void expandOrCollapse(int part, int icon) {
+	protected void expandOrCollapse(int part, int icon) {
 		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag()
 				.toString());
 		if (tag == R.drawable.collapse) {
@@ -946,7 +950,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 	 * @param icon
 	 *            , the icon to manage
 	 */
-	private void expand(int part, int icon) {
+	protected void expand(int part, int icon) {
 		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag()
 				.toString());
 		if (tag != R.drawable.expand) {
@@ -965,7 +969,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 	 * @param icon
 	 *            , the icon to manage
 	 */
-	private void collapse(int part, int icon) {
+	protected void collapse(int part, int icon) {
 		int tag = Integer.parseInt(((ImageView) findViewById(icon)).getTag()
 				.toString());
 		if (tag != R.drawable.collapse) {
@@ -1016,7 +1020,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		}
 	}
 
-	private void expand(final View v) {
+	protected void expand(final View v) {
 		v.measure(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		final int targtetHeight = v.getMeasuredHeight();
 
@@ -1043,7 +1047,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		v.startAnimation(a);
 	}
 
-	private void collapse(final View v) {
+	protected void collapse(final View v) {
 		final int initialHeight = v.getMeasuredHeight();
 
 		Animation a = new Animation() {
@@ -1071,7 +1075,7 @@ public class AMM extends Activity implements PropertyChangeListener,
 		v.startAnimation(a);
 	}
 
-	private boolean isCollapsed(int icon) {
+	protected boolean isCollapsed(int icon) {
 		return Integer.parseInt(((ImageView) findViewById(icon)).getTag()
 				.toString()) == R.drawable.collapse;
 	}
