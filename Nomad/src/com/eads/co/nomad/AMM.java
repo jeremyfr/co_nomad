@@ -1,6 +1,6 @@
 package com.eads.co.nomad;
 
-import java.io.IOException;
+import java.io.aIOException;
 import java.io.InputStream;
 
 import android.app.Activity;
